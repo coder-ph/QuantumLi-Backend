@@ -3,7 +3,7 @@ import logging
 from sqlalchemy import Column, String, Integer, Float, Date, ForeignKey
 from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.orm import relationship
-from src.database import db
+from Backend.src.startup.database import db
 
 # Configure logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
@@ -15,19 +15,18 @@ class Vehicle(db.Model):
     vehicle_id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
     carrier_id = Column(UUID(as_uuid=True), ForeignKey('carriers.carrier_id'), nullable=True)
     registration_number = Column(String(100), nullable=False, unique=True)
-    vehicle_type = Column(String(50), nullable=False)  # truck/van/trailer/etc.
+    vehicle_type = Column(String(50), nullable=False) 
     make = Column(String(100), nullable=False)
     model = Column(String(100), nullable=False)
     year = Column(Integer, nullable=False)
-    max_weight_capacity = Column(Float, nullable=False)  # in tons or kg
-    max_volume_capacity = Column(Float, nullable=False)  # in cubic meters or liters
+    max_weight_capacity = Column(Float, nullable=False)  
+    max_volume_capacity = Column(Float, nullable=False) 
     current_location_id = Column(UUID(as_uuid=True), ForeignKey('locations.location_id'), nullable=True)
-    status = Column(String(50), nullable=False)  # available/in maintenance/ etc.
+    status = Column(String(50), nullable=False)  
     last_maintenance_date = Column(Date, nullable=True)
     next_maintenance_date = Column(Date, nullable=True)
     insurance_expiry = Column(Date, nullable=False)
 
-    # Relationship with Carrier and Location
     carrier = relationship('Carrier', backref='vehicles', lazy=True)
     current_location = relationship('Location', backref='vehicles', lazy=True)
 
