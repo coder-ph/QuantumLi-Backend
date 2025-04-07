@@ -1,7 +1,7 @@
 from uuid import uuid4
 from sqlalchemy import Column, String, ForeignKey, DateTime, Boolean, Enum
 from sqlalchemy.dialects.postgresql import UUID
-from   app import db
+from   src.startup.database import db
 from datetime import datetime
 from src.utils.logger import logger
 

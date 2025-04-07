@@ -1,9 +1,6 @@
 from flask import Blueprint
-from src.handlers.controllers.auth_controller import login
+from src.routers.auth_routes import auth_bp
 
-auth_bp = Blueprint('auth', __name__)
-
-auth_bp.add_url_rule('/login', 'login', login, methods=['POST'])
 
 def register_routes(app):
-    app.register_blueprint(auth_bp, url_prefix='/api/v1')
+     app.register_blueprint(auth_bp, url_prefix='/api/v1/auth')
