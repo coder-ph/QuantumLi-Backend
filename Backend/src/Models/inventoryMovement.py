@@ -3,7 +3,7 @@ from sqlalchemy import Column, String, DateTime, ForeignKey, Integer, Enum, Bool
 from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.orm import relationship
 from datetime import datetime
-from Backend.src.startup.database import db
+from   src.startup.database import db
 import enum
 from src.utils.logger import logger  # Import the logger
 

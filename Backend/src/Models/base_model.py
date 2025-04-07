@@ -2,7 +2,7 @@ from sqlalchemy import Column, Boolean, DateTime
 from datetime import datetime
 from sqlalchemy.ext.declarative import declared_attr
 from src.utils.logger import logger
-from Backend.src.startup.database import db
+from   src.startup.database import db
 
 class BaseModel(db.Model):
     __abstract__ = True

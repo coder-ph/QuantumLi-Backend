@@ -5,7 +5,7 @@ from datetime import datetime
 from sqlalchemy import Column, String, DateTime, Float, Enum
 from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.orm import validates
-from Backend.src.startup.database import db
+from   src.startup.database import db
 from sqlalchemy import UniqueConstraint
 
 

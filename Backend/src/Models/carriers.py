@@ -5,7 +5,7 @@ from sqlalchemy import Column, String, Float, Text
 from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.orm import relationship
 from sqlalchemy.ext.declarative import declarative_base
-from Backend.src.startup.database import db
+from   src.startup.database import db
 
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')

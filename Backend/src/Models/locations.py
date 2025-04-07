@@ -5,7 +5,7 @@ from sqlalchemy import Column, String, Float, Enum, Boolean, Index
 from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.schema import UniqueConstraint
 from sqlalchemy.orm import validates
-from Backend.src.startup.database import db
+from   src.startup.database import db
 
 # logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')

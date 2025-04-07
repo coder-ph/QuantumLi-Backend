@@ -1,7 +1,7 @@
 from uuid import uuid4
 from sqlalchemy import Column, String, ForeignKey, DateTime, Boolean, Enum
 from sqlalchemy.dialects.postgresql import UUID
-from app import db
+from   app import db
 from datetime import datetime
 from src.utils.logger import logger
 
@@ -22,7 +22,7 @@ class System_Users(db.Model):
     updated_at = Column(DateTime, nullable=False, default=datetime.utcnow, onupdate=datetime.utcnow)
 
     employee = db.relationship('Employees', back_populates='system_user', uselist=False)
-
+    audit_logs = db.relationship('Audit_Logs', back_populates='user')
     def __repr__(self):
         return f"<System_Users(user_id={self.user_id}, username={self.username}, role={self.role}, is_active={self.is_active}, is_deleted={self.is_deleted})>"
 

@@ -4,7 +4,7 @@ from datetime import datetime
 from sqlalchemy import Column, Integer, Float, String, ForeignKey, Date
 from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.orm import relationship
-from Backend.src.startup.database import db
+from   src.startup.database import db
 from sqlalchemy.orm import validates
 
 # Configure logging

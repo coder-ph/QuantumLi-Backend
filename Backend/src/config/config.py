@@ -6,11 +6,9 @@ from dotenv import load_dotenv
 load_dotenv()
 
 class Config:
-    """
-    Base configuration class that loads environment variables.
-    """
+  
    
-    SECRET_KEY = os.getenv('SECRET_KEY', 'default_secret_key')
+    SECRET_KEY = os.getenv('SECRET_KEY', '1234erdfch!!ghazswdxt')
 
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     SQLALCHEMY_DATABASE_URI = os.getenv('DATABASE_URI')
@@ -26,12 +24,13 @@ class Config:
     JWT_SECRET_KEY = os.getenv('JWT_SECRET_KEY', 'jwt_secret_key')
     JWT_ACCESS_TOKEN_EXPIRES = int(os.getenv('JWT_ACCESS_TOKEN_EXPIRES', 3600))
     JWT_REFRESH_TOKEN_EXPIRES = int(os.getenv('JWT_REFRESH_TOKEN_EXPIRES', 86400))
+    RATE_LIMIT = '5 per minute'
 
     MPESA_SHORTCODE = os.getenv('MPESA_SHORTCODE')
-    MPESA_LIPA_NGUVU_PAYBILL = os.getenv('MPESA_LIPA_NGUVU_PAYBILL')
+    MPESA_QLEAP_PAYBILL = os.getenv('MPESA_QLEAP_PAYBILL')
     MPESA_API_KEY = os.getenv('MPESA_API_KEY')
 
-    if not MPESA_SHORTCODE or not MPESA_LIPA_NGUVU_PAYBILL or not MPESA_API_KEY:
+    if not MPESA_SHORTCODE or not MPESA_QLEAP_PAYBILL or not MPESA_API_KEY:
         raise ValueError("MPESA configuration variables are not fully set.")
     
 

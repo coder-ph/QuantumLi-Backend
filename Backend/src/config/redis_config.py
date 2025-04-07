@@ -2,6 +2,7 @@ import logging
 from flask import current_app
 import redis
 
+
 def init_redis():
     try:
         redis_host = current_app.config['REDIS_HOST']

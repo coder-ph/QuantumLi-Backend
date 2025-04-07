@@ -3,7 +3,7 @@ from datetime import datetime
 from sqlalchemy import Column, String, Integer, Float, Date, DateTime, Enum, ForeignKey, Boolean
 from sqlalchemy.orm import relationship
 from sqlalchemy.dialects.postgresql import UUID
-from app import db
+from   app import db
 from src.utils.logger import logger  # Assuming you have a logger in your utilities
 
 class Billing(db.Model):

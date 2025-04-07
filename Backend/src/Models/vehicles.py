@@ -3,7 +3,7 @@ import logging
 from sqlalchemy import Column, String, Integer, Float, Date, ForeignKey
 from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.orm import relationship
-from Backend.src.startup.database import db
+from   src.startup.database import db
 
 # Configure logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')

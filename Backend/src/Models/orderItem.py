@@ -5,7 +5,7 @@ import logging
 from sqlalchemy import Column, ForeignKey, String, Integer, Float
 from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.orm import relationship, validates
-from Backend.src.startup.database import db
+from   src.startup.database import db
 
 # Setup logger
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
