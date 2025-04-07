@@ -1,5 +1,6 @@
 import logging
 import traceback
+from app import app
 
 class APIError(Exception):
     """Base class for all custom API errors."""
@@ -9,7 +10,7 @@ class APIError(Exception):
         self.error_code = error_code
         super().__init__(self.message)
 
-        # Log the error automatically when it’s raised
+       
         self.log_error()
 
     def log_error(self):

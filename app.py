@@ -3,6 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_jwt_extended import JWTManager
 from flask_cors import CORS
 from flask_migrate import Migrate
+from .Backend.src.startup.database import db
 from .Backend.src.config.config import Config
 from .Backend.src.config.redis_config import init_redis, init_pubsub
 from .Backend.src.startup.routes import register_routes
@@ -14,7 +15,7 @@ app = Flask(__name__)
 app.config.from_object(Config)
 
 
-db = SQLAlchemy(app)
+db.init_app(app)
 jwt = JWTManager(app)
 CORS(app)
 migrate = Migrate(app, db)
