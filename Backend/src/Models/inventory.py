@@ -1,8 +1,15 @@
 import uuid
+import logging
+from datetime import datetime
 from sqlalchemy import Column, Integer, Float, String, ForeignKey, Date
 from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.orm import relationship
 from Backend.src.startup.database import db
+from sqlalchemy.orm import validates
+
+# Configure logging
+logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+logger = logging.getLogger(__name__)
 
 class Inventory(db.Model):
     __tablename__ = 'inventory'
@@ -18,9 +25,35 @@ class Inventory(db.Model):
     batch_number = Column(String(100), nullable=True)
     expiry_date = Column(Date, nullable=True)
 
-  
     product = relationship("Product", backref="inventory")
     location = relationship("Location", backref="inventory")
 
     def __repr__(self):
         return f"<Inventory(inventory_id={self.inventory_id}, product_id={self.product_id}, location_id={self.location_id})>"
+
+    @validates('quantity_on_hand', 'quantity_allocated', 'quantity_on_order')
+    def validate_non_negative(self, key, value):
+        """Ensures quantities are non-negative."""
+        if value < 0:
+            logger.error(f"{key} must be non-negative. Provided value: {value}")
+            raise ValueError(f"{key} must be non-negative. Provided value: {value}")
+        logger.info(f"Valid {key}: {value}")
+        return value
+
+    @validates('expiry_date')
+    def validate_expiry_date(self, key, value):
+        """Ensures expiry date is in the future."""
+        if value and value <= datetime.utcnow().date():
+            logger.error(f"Expiry date must be in the future. Provided date: {value}")
+            raise ValueError(f"Expiry date must be in the future. Provided date: {value}")
+        logger.info(f"Valid expiry date: {value}")
+        return value
+
+    @validates('batch_number')
+    def validate_batch_number(self, key, value):
+        """Ensures batch number is not empty if provided."""
+        if value and len(value) < 5:
+            logger.error(f"Batch number must be at least 5 characters. Provided batch number: {value}")
+            raise ValueError(f"Batch number must be at least 5 characters. Provided batch number: {value}")
+        logger.info(f"Valid batch number: {value}")
+        return value

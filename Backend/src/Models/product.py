@@ -1,9 +1,14 @@
 import uuid
+import logging
 from sqlalchemy import Column, String, Float, Boolean, ForeignKey, UniqueConstraint
 from sqlalchemy.orm import relationship
 from sqlalchemy.dialects.postgresql import UUID
 from Backend.src.startup.database import db
 from sqlalchemy.orm import validates
+
+# Configure logging
+logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+logger = logging.getLogger(__name__)
 
 class Product(db.Model):
     __tablename__ = 'products'
@@ -24,33 +29,41 @@ class Product(db.Model):
     customs_tariff_code = Column(String(100), nullable=True)
     value = Column(Float, nullable=True)
 
-   
     client = relationship("Client", backref="products")
 
-    
     __table_args__ = (
         UniqueConstraint('client_id', 'sku', name='uq_client_sku'),
     )
 
     @validates('weight')
     def validate_weight(self, key, weight):
+        """Validate that weight is a positive number."""
         if weight is not None and weight <= 0:
+            logger.error(f"Invalid weight: {weight}. Weight must be a positive number.")
             raise ValueError("Weight must be a positive number.")
+        logger.info(f"Valid weight: {weight}")
         return weight
 
     @validates('value')
     def validate_value(self, key, value):
+        """Validate that value is a positive number."""
         if value is not None and value <= 0:
+            logger.error(f"Invalid value: {value}. Value must be a positive number.")
             raise ValueError("Value must be a positive number.")
+        logger.info(f"Valid value: {value}")
         return value
 
     @validates('dimensions')
     def validate_dimensions(self, key, dimensions):
+        """Validate that dimensions are in the format 'LxWxH' where L, W, and H are numbers."""
         if dimensions and not self._is_valid_dimensions_format(dimensions):
+            logger.error(f"Invalid dimensions: {dimensions}. Must be in 'LxWxH' format.")
             raise ValueError("Dimensions must be in the format 'LxWxH' where L, W, and H are numbers.")
+        logger.info(f"Valid dimensions: {dimensions}")
         return dimensions
 
     def _is_valid_dimensions_format(self, dimensions):
+        """Check if the dimensions are in the correct format."""
         parts = dimensions.split('x')
         return len(parts) == 3 and all(part.isdigit() for part in parts)
 
