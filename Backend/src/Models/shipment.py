@@ -3,7 +3,7 @@ from datetime import datetime
 from sqlalchemy import Column, String, Float, Boolean, ForeignKey, DateTime, Enum as SqlEnum
 from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.orm import relationship, validates
-from src.database import db
+from Backend.src.startup.database import db
 from src.Models.enums import ShipmentStatusEnum, ShippingMethodEnum
 from src.Models.base_model import BaseModel
 from src.utils.logger import logger
