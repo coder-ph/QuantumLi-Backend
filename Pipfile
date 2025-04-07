@@ -15,6 +15,7 @@ psycopg2-binary = "*"
 flask-bcrypt = "*"
 flask-socketio = "*"
 apscheduler = "*"
+flask-migrate = "*"
 
 [dev-packages]
 
