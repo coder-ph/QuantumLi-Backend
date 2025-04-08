@@ -66,3 +66,28 @@ class ForbiddenError(APIError):
 class InternalServerError(APIError):
     def __init__(self, message="An unexpected error occurred", error_code="internal_server_error", payload=None):
         super().__init__(message, 500, error_code, payload)
+
+
+class ConflictError(APIError):
+    def __init__(self, message="Conflict occurred", error_code="conflict", payload=None):
+        super().__init__(message, 409, error_code, payload)
+
+
+class BadRequestError(APIError):
+    def __init__(self, message="Bad request", error_code="bad_request", payload=None):
+        super().__init__(message, 400, error_code, payload)
+
+
+class TooManyRequestsError(APIError):
+    def __init__(self, message="Too many requests", error_code="too_many_requests", payload=None):
+        super().__init__(message, 429, error_code, payload)
+
+
+class ServiceUnavailableError(APIError):
+    def __init__(self, message="Service temporarily unavailable", error_code="service_unavailable", payload=None):
+        super().__init__(message, 503, error_code, payload)
+
+
+class UnprocessableEntityError(APIError):
+    def __init__(self, message="Unprocessable entity", error_code="unprocessable_entity", payload=None):
+        super().__init__(message, 422, error_code, payload)

@@ -7,6 +7,8 @@ from src.config.config import Config
 from src.config.redis_config import init_redis, init_pubsub
 from src.startup.routes import register_routes
 from src.utils.rate_limiter import limiter
+from src.services_layer.auth.token_service import is_token_revoked
+from src.utils.logger import logger
 from src.error.apiErrors import APIError, NotFoundError, ValidationError, UnauthorizedError, InternalServerError
 
 app = Flask(__name__)
@@ -15,6 +17,29 @@ app.config.from_object(Config)
 
 db.init_app(app)
 jwt = JWTManager(app)
+@jwt.token_in_blocklist_loader
+def check_if_token_revoked(jwt_header, jwt_payload):
+ 
+    try:
+        jti = jwt_payload.get("jti", None)
+
+        if not jti:
+            logger.warning("JWT payload missing 'jti' — rejecting token by default.")
+            return True  
+
+        revoked = is_token_revoked(jti)
+
+        if revoked:
+            logger.info(f"Blocked revoked token | jti: {jti}")
+        else:
+            logger.debug(f"Valid token passed blocklist check | jti: {jti}")
+
+        return revoked
+
+    except Exception as e:
+        logger.exception(f"Exception during token blocklist check | Reason: {str(e)}")
+        return True 
+    
 CORS(app)
 migrate = Migrate(app, db)
 limiter.init_app(app)

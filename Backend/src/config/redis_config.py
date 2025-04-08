@@ -13,8 +13,9 @@ def init_redis():
             port=redis_port,
             db=redis_db,
             decode_responses=True,
-            socket_timeout=5
-        )
+            socket_timeout=5,                               
+            retry_on_timeout=True, 
+                )
         redis_client.ping()
         print("redis conn established")
         return redis_client

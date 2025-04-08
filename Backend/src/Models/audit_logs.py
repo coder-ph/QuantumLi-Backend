@@ -1,7 +1,7 @@
 from uuid import uuid4
 from sqlalchemy import Column, String, DateTime, ForeignKey
 from sqlalchemy.dialects.postgresql import UUID
-from   app import db
+from   src.startup.database import db
 from datetime import datetime
 
 class Audit_Logs(db.Model):
