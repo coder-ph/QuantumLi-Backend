@@ -2,7 +2,7 @@ from uuid import uuid4
 from datetime import datetime
 from sqlalchemy import Column, String, Float, Date, ForeignKey, Enum, Boolean, DateTime
 from sqlalchemy.dialects.postgresql import UUID
-from   app import db
+from   src.startup.database import db
 from src.utils.logger import logger  
 
 class Rates(db.Model):

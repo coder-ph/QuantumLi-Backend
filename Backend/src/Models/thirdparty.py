@@ -2,7 +2,7 @@ from uuid import uuid4
 from sqlalchemy import Column, String, Boolean, Text, DateTime, Enum
 from sqlalchemy.dialects.postgresql import UUID, JSONB
 from datetime import datetime
-from   app import db
+from   src.startup.database import db
 
 class ThirdPartyService(db.Model):
     __tablename__ = "third_party_services"

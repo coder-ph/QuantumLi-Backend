@@ -1,5 +1,5 @@
 from flask import request, jsonify, current_app
-from flask_jwt_extended import jwt_required, get_jwt_identity, get_jwt
+from flask_jwt_extended import jwt_required, get_jwt_identity, get_jwt, exceptions, decode_token
 from src.services.auth_service import verify_password, generate_tokens, revoke_token
 from src.Models.systemusers import System_Users
 from src.Models.audit_logs import Audit_Logs
@@ -119,7 +119,6 @@ def logout():
         return jsonify({"message": "Internal server error"}), 500
    
     #signup 
-# @auth_bp.route('/signup', methods=['POST'])
 @limiter.limit("5 per minute")  
 def signup():
     try:
@@ -173,3 +172,60 @@ def signup():
     except Exception as e:
         logger.exception(f"Unexpected server error during signup: {str(e)}")
         raise InternalServerError("Something went wrong. Please try again later.")
+    
+#  verify email
+def verify_email():
+    try:
+        token = request.args.get('token')  # Retrieve the token from the URL query parameter
+
+        # Check if the token is present
+        if not token:
+            logger.warning("Verification failed: Missing token in the request.")
+            raise ValidationError("Token is required to verify the email.")
+
+        # Attempt to decode the token
+        try:
+            decoded_token = decode_token(token)
+            user_id = decoded_token['identity']
+        except exceptions.ExpiredSignatureError:
+            logger.warning("Verification failed: Token has expired.")
+            raise ValidationError("The verification token has expired.")
+        except exceptions.InvalidTokenError:
+            logger.warning("Verification failed: Invalid token.")
+            raise ValidationError("Invalid token. Please request a new verification email.")
+
+        # Fetch the user from the database
+        user = System_Users.query.get(user_id)
+        if not user:
+            logger.warning(f"Verification failed: User not found with ID: {user_id}")
+            raise ValidationError("User not found.")
+
+        # Check if the user is already verified
+        if user.status == 'active':
+            logger.info(f"User {user_id} is already verified and attempted another verification.")
+            return jsonify({"message": "User is already verified."}), 200
+
+        # Update the user status to 'active' to mark them as verified
+        user.status = 'active'
+        db.session.commit()
+
+        # Redis Management: Remove the verification token from Redis to prevent reuse
+        redis_client = get_redis_client()
+        redis_key = f"email_verification:{user.id}"
+        if redis_client.exists(redis_key):
+            redis_client.delete(redis_key)
+            logger.info(f"Deleted Redis entry for email verification of user {user_id}. Token can no longer be reused.")
+
+        # Log the success of the verification
+        logger.info(f"User {user_id} verified successfully at {datetime.utcnow()}.")
+
+        return jsonify({"message": "Email verified successfully. You can now log in."}), 200
+
+    except ValidationError as ve:
+       
+        logger.warning(f"Validation error during email verification: {str(ve)}")
+        raise ve
+    except Exception as e:
+        
+        logger.error(f"Unexpected error during email verification: {str(e)}")
+        raise InternalServerError("An error occurred during email verification.")

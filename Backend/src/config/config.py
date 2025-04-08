@@ -25,6 +25,13 @@ class Config:
     JWT_ACCESS_TOKEN_EXPIRES = int(os.getenv('JWT_ACCESS_TOKEN_EXPIRES', 3600))
     JWT_REFRESH_TOKEN_EXPIRES = int(os.getenv('JWT_REFRESH_TOKEN_EXPIRES', 86400))
     RATE_LIMIT = '5 per minute'
+    
+    MAIL_SERVER = 'smtp.mailtrap.io'  
+    MAIL_PORT = 587
+    MAIL_USE_TLS = True
+    MAIL_USERNAME = 'Quantum Leap Innovations'
+    MAIL_PASSWORD = 'qleap@qleap.com'
+    MAIL_DEFAULT_SENDER = 'no-reply@yourdomain.com'
 
     MPESA_SHORTCODE = os.getenv('MPESA_SHORTCODE')
     MPESA_QLEAP_PAYBILL = os.getenv('MPESA_QLEAP_PAYBILL')
@@ -51,3 +58,4 @@ class Config:
 
    
         app.logger.info("App initialized successfully.")
+        

@@ -1,7 +1,7 @@
 import uuid
 import logging
 from datetime import datetime
-from sqlalchemy import Column, Integer, Float, String, ForeignKey, Date
+from sqlalchemy import Column, Integer, Float, String, ForeignKey, Date, Index
 from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.orm import relationship
 from   src.startup.database import db
@@ -15,8 +15,8 @@ class Inventory(db.Model):
     __tablename__ = 'inventory'
     
     inventory_id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
-    product_id = Column(UUID(as_uuid=True), ForeignKey('products.product_id', index=True), nullable=False)
-    location_id = Column(UUID(as_uuid=True), ForeignKey('locations.location_id', index=True), nullable=False)
+    product_id = Column(UUID(as_uuid=True), ForeignKey('products.product_id'), nullable=False)
+    location_id = Column(UUID(as_uuid=True), ForeignKey('locations.location_id'), nullable=False)
     quantity_on_hand = Column(Integer, nullable=False, default=0)
     quantity_allocated = Column(Integer, nullable=False, default=0)
     quantity_on_order = Column(Integer, nullable=False, default=0)
@@ -27,6 +27,11 @@ class Inventory(db.Model):
 
     product = relationship("Product", backref="inventory")
     location = relationship("Location", backref="inventory")
+    
+    __table_args__ = (
+        Index('idx_inventory_product_id', 'product_id'),
+        Index('idx_inventory_location_id', 'location_id'),
+    )
 
     def __repr__(self):
         return f"<Inventory(inventory_id={self.inventory_id}, product_id={self.product_id}, location_id={self.location_id})>"

@@ -1,0 +1,895 @@
+[2025-04-08 11:06:58,571] [ERROR] logistics_app: Unexpected server error during signup: {'full_name': ['Full name is required.'], 'role': ['Must be one of: admin, manager, driver, client.'], 'first_name': ['Unknown field.'], 'last_name': ['Unknown field.']}
+Traceback (most recent call last):
+  File "/home/phyl/Development/Logistics/Backend/src/handlers/controllers/auth_controller.py", line 133, in signup
+    validated_data = schema.load(data)
+                     ^^^^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/marshmallow/schema.py", line 792, in load
+    return self._do_load(
+           ^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/marshmallow/schema.py", line 999, in _do_load
+    raise exc
+marshmallow.exceptions.ValidationError: {'full_name': ['Full name is required.'], 'role': ['Must be one of: admin, manager, driver, client.'], 'first_name': ['Unknown field.'], 'last_name': ['Unknown field.']}
+[2025-04-08 11:06:58,573] [ERROR] logistics_app: APIError Logged: {'message': 'Something went wrong. Please try again later.', 'status_code': 500, 'error_code': 'internal_server_error', 'payload': {}, 'traceback': 'Traceback (most recent call last):\n  File "/home/phyl/Development/Logistics/Backend/src/handlers/controllers/auth_controller.py", line 133, in signup\n    validated_data = schema.load(data)\n                     ^^^^^^^^^^^^^^^^^\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/marshmallow/schema.py", line 792, in load\n    return self._do_load(\n           ^^^^^^^^^^^^^^\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/marshmallow/schema.py", line 999, in _do_load\n    raise exc\nmarshmallow.exceptions.ValidationError: {\'full_name\': [\'Full name is required.\'], \'role\': [\'Must be one of: admin, manager, driver, client.\'], \'first_name\': [\'Unknown field.\'], \'last_name\': [\'Unknown field.\']}\n'}
+[2025-04-08 11:10:27,127] [ERROR] logistics_app: Unexpected server error during signup: {'full_name': ['Full name is required.'], 'role': ['Must be one of: admin, manager, driver, client.'], 'first_name': ['Unknown field.'], 'last_name': ['Unknown field.']}
+Traceback (most recent call last):
+  File "/home/phyl/Development/Logistics/Backend/src/handlers/controllers/auth_controller.py", line 133, in signup
+    validated_data = schema.load(data)
+                     ^^^^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/marshmallow/schema.py", line 792, in load
+    return self._do_load(
+           ^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/marshmallow/schema.py", line 999, in _do_load
+    raise exc
+marshmallow.exceptions.ValidationError: {'full_name': ['Full name is required.'], 'role': ['Must be one of: admin, manager, driver, client.'], 'first_name': ['Unknown field.'], 'last_name': ['Unknown field.']}
+[2025-04-08 11:10:27,129] [ERROR] logistics_app: APIError Logged: {'message': 'Something went wrong. Please try again later.', 'status_code': 500, 'error_code': 'internal_server_error', 'payload': {}, 'traceback': 'Traceback (most recent call last):\n  File "/home/phyl/Development/Logistics/Backend/src/handlers/controllers/auth_controller.py", line 133, in signup\n    validated_data = schema.load(data)\n                     ^^^^^^^^^^^^^^^^^\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/marshmallow/schema.py", line 792, in load\n    return self._do_load(\n           ^^^^^^^^^^^^^^\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/marshmallow/schema.py", line 999, in _do_load\n    raise exc\nmarshmallow.exceptions.ValidationError: {\'full_name\': [\'Full name is required.\'], \'role\': [\'Must be one of: admin, manager, driver, client.\'], \'first_name\': [\'Unknown field.\'], \'last_name\': [\'Unknown field.\']}\n'}
+[2025-04-08 11:18:54,711] [ERROR] logistics_app: Unexpected server error during signup: When initializing mapper Mapper[System_Users(system_users)], expression 'Employees' failed to locate a name ('Employees'). If this is a class name, consider adding this relationship() to the <class 'src.Models.systemusers.System_Users'> class after both dependent classes have been defined.
+Traceback (most recent call last):
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/clsregistry.py", line 516, in _resolve_name
+    rval = d[token]
+           ~^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/util/_collections.py", line 345, in __missing__
+    self[key] = val = self.creator(key)
+                      ^^^^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/clsregistry.py", line 484, in _access_cls
+    return self.fallback[key]
+           ~~~~~~~~~~~~~^^^^^
+KeyError: 'Employees'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/phyl/Development/Logistics/Backend/src/handlers/controllers/auth_controller.py", line 140, in signup
+    existing_user = System_Users.query.filter_by(email=email).first()
+                    ^^^^^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/flask_sqlalchemy/model.py", line 22, in __get__
+    return cls.query_class(
+           ^^^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/query.py", line 276, in __init__
+    self._set_entities(entities)
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/query.py", line 289, in _set_entities
+    coercions.expect(
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/sql/coercions.py", line 388, in expect
+    insp._post_inspect
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/util/langhelpers.py", line 1257, in __get__
+    obj.__dict__[self.__name__] = result = self.fget(obj)
+                                           ^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/mapper.py", line 2724, in _post_inspect
+    self._check_configure()
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/mapper.py", line 2401, in _check_configure
+    _configure_registries({self.registry}, cascade=True)
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/mapper.py", line 4214, in _configure_registries
+    _do_configure_registries(registries, cascade)
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/mapper.py", line 4255, in _do_configure_registries
+    mapper._post_configure_properties()
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/mapper.py", line 2418, in _post_configure_properties
+    prop.init()
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/interfaces.py", line 589, in init
+    self.do_init()
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/relationships.py", line 1656, in do_init
+    self._setup_entity()
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/relationships.py", line 1868, in _setup_entity
+    self._clsregistry_resolve_name(argument)(),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/clsregistry.py", line 520, in _resolve_name
+    self._raise_for_name(name, err)
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/clsregistry.py", line 501, in _raise_for_name
+    raise exc.InvalidRequestError(
+sqlalchemy.exc.InvalidRequestError: When initializing mapper Mapper[System_Users(system_users)], expression 'Employees' failed to locate a name ('Employees'). If this is a class name, consider adding this relationship() to the <class 'src.Models.systemusers.System_Users'> class after both dependent classes have been defined.
+[2025-04-08 11:18:54,722] [ERROR] logistics_app: APIError Logged: {'message': 'Something went wrong. Please try again later.', 'status_code': 500, 'error_code': 'internal_server_error', 'payload': {}, 'traceback': 'Traceback (most recent call last):\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/clsregistry.py", line 516, in _resolve_name\n    rval = d[token]\n           ~^^^^^^^\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/util/_collections.py", line 345, in __missing__\n    self[key] = val = self.creator(key)\n                      ^^^^^^^^^^^^^^^^^\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/clsregistry.py", line 484, in _access_cls\n    return self.fallback[key]\n           ~~~~~~~~~~~~~^^^^^\nKeyError: \'Employees\'\n\nThe above exception was the direct cause of the following exception:\n\nTraceback (most recent call last):\n  File "/home/phyl/Development/Logistics/Backend/src/handlers/controllers/auth_controller.py", line 140, in signup\n    existing_user = System_Users.query.filter_by(email=email).first()\n                    ^^^^^^^^^^^^^^^^^^\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/flask_sqlalchemy/model.py", line 22, in __get__\n    return cls.query_class(\n           ^^^^^^^^^^^^^^^^\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/query.py", line 276, in __init__\n    self._set_entities(entities)\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/query.py", line 289, in _set_entities\n    coercions.expect(\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/sql/coercions.py", line 388, in expect\n    insp._post_inspect\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/util/langhelpers.py", line 1257, in __get__\n    obj.__dict__[self.__name__] = result = self.fget(obj)\n                                           ^^^^^^^^^^^^^^\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/mapper.py", line 2724, in _post_inspect\n    self._check_configure()\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/mapper.py", line 2401, in _check_configure\n    _configure_registries({self.registry}, cascade=True)\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/mapper.py", line 4214, in _configure_registries\n    _do_configure_registries(registries, cascade)\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/mapper.py", line 4255, in _do_configure_registries\n    mapper._post_configure_properties()\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/mapper.py", line 2418, in _post_configure_properties\n    prop.init()\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/interfaces.py", line 589, in init\n    self.do_init()\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/relationships.py", line 1656, in do_init\n    self._setup_entity()\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/relationships.py", line 1868, in _setup_entity\n    self._clsregistry_resolve_name(argument)(),\n    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/clsregistry.py", line 520, in _resolve_name\n    self._raise_for_name(name, err)\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/clsregistry.py", line 501, in _raise_for_name\n    raise exc.InvalidRequestError(\nsqlalchemy.exc.InvalidRequestError: When initializing mapper Mapper[System_Users(system_users)], expression \'Employees\' failed to locate a name (\'Employees\'). If this is a class name, consider adding this relationship() to the <class \'src.Models.systemusers.System_Users\'> class after both dependent classes have been defined.\n'}
+[2025-04-08 11:24:57,697] [ERROR] logistics_app: Unexpected server error during signup: When initializing mapper Mapper[System_Users(system_users)], expression 'Employees' failed to locate a name ('Employees'). If this is a class name, consider adding this relationship() to the <class 'src.Models.systemusers.System_Users'> class after both dependent classes have been defined.
+Traceback (most recent call last):
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/clsregistry.py", line 516, in _resolve_name
+    rval = d[token]
+           ~^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/util/_collections.py", line 345, in __missing__
+    self[key] = val = self.creator(key)
+                      ^^^^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/clsregistry.py", line 484, in _access_cls
+    return self.fallback[key]
+           ~~~~~~~~~~~~~^^^^^
+KeyError: 'Employees'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/phyl/Development/Logistics/Backend/src/handlers/controllers/auth_controller.py", line 140, in signup
+    existing_user = System_Users.query.filter_by(email=email).first()
+                    ^^^^^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/flask_sqlalchemy/model.py", line 22, in __get__
+    return cls.query_class(
+           ^^^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/query.py", line 276, in __init__
+    self._set_entities(entities)
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/query.py", line 289, in _set_entities
+    coercions.expect(
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/sql/coercions.py", line 388, in expect
+    insp._post_inspect
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/util/langhelpers.py", line 1257, in __get__
+    obj.__dict__[self.__name__] = result = self.fget(obj)
+                                           ^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/mapper.py", line 2724, in _post_inspect
+    self._check_configure()
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/mapper.py", line 2401, in _check_configure
+    _configure_registries({self.registry}, cascade=True)
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/mapper.py", line 4214, in _configure_registries
+    _do_configure_registries(registries, cascade)
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/mapper.py", line 4255, in _do_configure_registries
+    mapper._post_configure_properties()
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/mapper.py", line 2418, in _post_configure_properties
+    prop.init()
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/interfaces.py", line 589, in init
+    self.do_init()
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/relationships.py", line 1656, in do_init
+    self._setup_entity()
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/relationships.py", line 1868, in _setup_entity
+    self._clsregistry_resolve_name(argument)(),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/clsregistry.py", line 520, in _resolve_name
+    self._raise_for_name(name, err)
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/clsregistry.py", line 501, in _raise_for_name
+    raise exc.InvalidRequestError(
+sqlalchemy.exc.InvalidRequestError: When initializing mapper Mapper[System_Users(system_users)], expression 'Employees' failed to locate a name ('Employees'). If this is a class name, consider adding this relationship() to the <class 'src.Models.systemusers.System_Users'> class after both dependent classes have been defined.
+[2025-04-08 11:24:57,716] [ERROR] logistics_app: APIError Logged: {'message': 'Something went wrong. Please try again later.', 'status_code': 500, 'error_code': 'internal_server_error', 'payload': {}, 'traceback': 'Traceback (most recent call last):\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/clsregistry.py", line 516, in _resolve_name\n    rval = d[token]\n           ~^^^^^^^\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/util/_collections.py", line 345, in __missing__\n    self[key] = val = self.creator(key)\n                      ^^^^^^^^^^^^^^^^^\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/clsregistry.py", line 484, in _access_cls\n    return self.fallback[key]\n           ~~~~~~~~~~~~~^^^^^\nKeyError: \'Employees\'\n\nThe above exception was the direct cause of the following exception:\n\nTraceback (most recent call last):\n  File "/home/phyl/Development/Logistics/Backend/src/handlers/controllers/auth_controller.py", line 140, in signup\n    existing_user = System_Users.query.filter_by(email=email).first()\n                    ^^^^^^^^^^^^^^^^^^\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/flask_sqlalchemy/model.py", line 22, in __get__\n    return cls.query_class(\n           ^^^^^^^^^^^^^^^^\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/query.py", line 276, in __init__\n    self._set_entities(entities)\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/query.py", line 289, in _set_entities\n    coercions.expect(\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/sql/coercions.py", line 388, in expect\n    insp._post_inspect\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/util/langhelpers.py", line 1257, in __get__\n    obj.__dict__[self.__name__] = result = self.fget(obj)\n                                           ^^^^^^^^^^^^^^\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/mapper.py", line 2724, in _post_inspect\n    self._check_configure()\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/mapper.py", line 2401, in _check_configure\n    _configure_registries({self.registry}, cascade=True)\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/mapper.py", line 4214, in _configure_registries\n    _do_configure_registries(registries, cascade)\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/mapper.py", line 4255, in _do_configure_registries\n    mapper._post_configure_properties()\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/mapper.py", line 2418, in _post_configure_properties\n    prop.init()\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/interfaces.py", line 589, in init\n    self.do_init()\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/relationships.py", line 1656, in do_init\n    self._setup_entity()\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/relationships.py", line 1868, in _setup_entity\n    self._clsregistry_resolve_name(argument)(),\n    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/clsregistry.py", line 520, in _resolve_name\n    self._raise_for_name(name, err)\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/clsregistry.py", line 501, in _raise_for_name\n    raise exc.InvalidRequestError(\nsqlalchemy.exc.InvalidRequestError: When initializing mapper Mapper[System_Users(system_users)], expression \'Employees\' failed to locate a name (\'Employees\'). If this is a class name, consider adding this relationship() to the <class \'src.Models.systemusers.System_Users\'> class after both dependent classes have been defined.\n'}
+[2025-04-08 11:28:54,388] [ERROR] logistics_app: Unexpected server error during signup: When initializing mapper Mapper[System_Users(system_users)], expression 'Employee' failed to locate a name ('Employee'). If this is a class name, consider adding this relationship() to the <class 'src.Models.systemusers.System_Users'> class after both dependent classes have been defined.
+Traceback (most recent call last):
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/clsregistry.py", line 516, in _resolve_name
+    rval = d[token]
+           ~^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/util/_collections.py", line 345, in __missing__
+    self[key] = val = self.creator(key)
+                      ^^^^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/clsregistry.py", line 484, in _access_cls
+    return self.fallback[key]
+           ~~~~~~~~~~~~~^^^^^
+KeyError: 'Employee'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/phyl/Development/Logistics/Backend/src/handlers/controllers/auth_controller.py", line 140, in signup
+    existing_user = System_Users.query.filter_by(email=email).first()
+                    ^^^^^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/flask_sqlalchemy/model.py", line 22, in __get__
+    return cls.query_class(
+           ^^^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/query.py", line 276, in __init__
+    self._set_entities(entities)
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/query.py", line 289, in _set_entities
+    coercions.expect(
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/sql/coercions.py", line 388, in expect
+    insp._post_inspect
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/util/langhelpers.py", line 1257, in __get__
+    obj.__dict__[self.__name__] = result = self.fget(obj)
+                                           ^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/mapper.py", line 2724, in _post_inspect
+    self._check_configure()
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/mapper.py", line 2401, in _check_configure
+    _configure_registries({self.registry}, cascade=True)
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/mapper.py", line 4214, in _configure_registries
+    _do_configure_registries(registries, cascade)
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/mapper.py", line 4255, in _do_configure_registries
+    mapper._post_configure_properties()
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/mapper.py", line 2418, in _post_configure_properties
+    prop.init()
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/interfaces.py", line 589, in init
+    self.do_init()
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/relationships.py", line 1656, in do_init
+    self._setup_entity()
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/relationships.py", line 1868, in _setup_entity
+    self._clsregistry_resolve_name(argument)(),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/clsregistry.py", line 520, in _resolve_name
+    self._raise_for_name(name, err)
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/clsregistry.py", line 501, in _raise_for_name
+    raise exc.InvalidRequestError(
+sqlalchemy.exc.InvalidRequestError: When initializing mapper Mapper[System_Users(system_users)], expression 'Employee' failed to locate a name ('Employee'). If this is a class name, consider adding this relationship() to the <class 'src.Models.systemusers.System_Users'> class after both dependent classes have been defined.
+[2025-04-08 11:28:54,398] [ERROR] logistics_app: APIError Logged: {'message': 'Something went wrong. Please try again later.', 'status_code': 500, 'error_code': 'internal_server_error', 'payload': {}, 'traceback': 'Traceback (most recent call last):\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/clsregistry.py", line 516, in _resolve_name\n    rval = d[token]\n           ~^^^^^^^\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/util/_collections.py", line 345, in __missing__\n    self[key] = val = self.creator(key)\n                      ^^^^^^^^^^^^^^^^^\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/clsregistry.py", line 484, in _access_cls\n    return self.fallback[key]\n           ~~~~~~~~~~~~~^^^^^\nKeyError: \'Employee\'\n\nThe above exception was the direct cause of the following exception:\n\nTraceback (most recent call last):\n  File "/home/phyl/Development/Logistics/Backend/src/handlers/controllers/auth_controller.py", line 140, in signup\n    existing_user = System_Users.query.filter_by(email=email).first()\n                    ^^^^^^^^^^^^^^^^^^\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/flask_sqlalchemy/model.py", line 22, in __get__\n    return cls.query_class(\n           ^^^^^^^^^^^^^^^^\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/query.py", line 276, in __init__\n    self._set_entities(entities)\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/query.py", line 289, in _set_entities\n    coercions.expect(\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/sql/coercions.py", line 388, in expect\n    insp._post_inspect\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/util/langhelpers.py", line 1257, in __get__\n    obj.__dict__[self.__name__] = result = self.fget(obj)\n                                           ^^^^^^^^^^^^^^\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/mapper.py", line 2724, in _post_inspect\n    self._check_configure()\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/mapper.py", line 2401, in _check_configure\n    _configure_registries({self.registry}, cascade=True)\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/mapper.py", line 4214, in _configure_registries\n    _do_configure_registries(registries, cascade)\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/mapper.py", line 4255, in _do_configure_registries\n    mapper._post_configure_properties()\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/mapper.py", line 2418, in _post_configure_properties\n    prop.init()\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/interfaces.py", line 589, in init\n    self.do_init()\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/relationships.py", line 1656, in do_init\n    self._setup_entity()\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/relationships.py", line 1868, in _setup_entity\n    self._clsregistry_resolve_name(argument)(),\n    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/clsregistry.py", line 520, in _resolve_name\n    self._raise_for_name(name, err)\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/clsregistry.py", line 501, in _raise_for_name\n    raise exc.InvalidRequestError(\nsqlalchemy.exc.InvalidRequestError: When initializing mapper Mapper[System_Users(system_users)], expression \'Employee\' failed to locate a name (\'Employee\'). If this is a class name, consider adding this relationship() to the <class \'src.Models.systemusers.System_Users\'> class after both dependent classes have been defined.\n'}
+[2025-04-08 11:32:55,492] [ERROR] logistics_app: Unexpected server error during signup: When initializing mapper Mapper[System_Users(system_users)], expression 'Employee' failed to locate a name ('Employee'). If this is a class name, consider adding this relationship() to the <class 'src.Models.systemusers.System_Users'> class after both dependent classes have been defined.
+Traceback (most recent call last):
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/clsregistry.py", line 516, in _resolve_name
+    rval = d[token]
+           ~^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/util/_collections.py", line 345, in __missing__
+    self[key] = val = self.creator(key)
+                      ^^^^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/clsregistry.py", line 484, in _access_cls
+    return self.fallback[key]
+           ~~~~~~~~~~~~~^^^^^
+KeyError: 'Employee'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/phyl/Development/Logistics/Backend/src/handlers/controllers/auth_controller.py", line 140, in signup
+    existing_user = System_Users.query.filter_by(email=email).first()
+                    ^^^^^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/flask_sqlalchemy/model.py", line 22, in __get__
+    return cls.query_class(
+           ^^^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/query.py", line 276, in __init__
+    self._set_entities(entities)
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/query.py", line 289, in _set_entities
+    coercions.expect(
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/sql/coercions.py", line 388, in expect
+    insp._post_inspect
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/util/langhelpers.py", line 1257, in __get__
+    obj.__dict__[self.__name__] = result = self.fget(obj)
+                                           ^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/mapper.py", line 2724, in _post_inspect
+    self._check_configure()
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/mapper.py", line 2401, in _check_configure
+    _configure_registries({self.registry}, cascade=True)
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/mapper.py", line 4214, in _configure_registries
+    _do_configure_registries(registries, cascade)
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/mapper.py", line 4255, in _do_configure_registries
+    mapper._post_configure_properties()
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/mapper.py", line 2418, in _post_configure_properties
+    prop.init()
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/interfaces.py", line 589, in init
+    self.do_init()
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/relationships.py", line 1656, in do_init
+    self._setup_entity()
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/relationships.py", line 1868, in _setup_entity
+    self._clsregistry_resolve_name(argument)(),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/clsregistry.py", line 520, in _resolve_name
+    self._raise_for_name(name, err)
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/clsregistry.py", line 501, in _raise_for_name
+    raise exc.InvalidRequestError(
+sqlalchemy.exc.InvalidRequestError: When initializing mapper Mapper[System_Users(system_users)], expression 'Employee' failed to locate a name ('Employee'). If this is a class name, consider adding this relationship() to the <class 'src.Models.systemusers.System_Users'> class after both dependent classes have been defined.
+[2025-04-08 11:32:55,504] [ERROR] logistics_app: APIError Logged: {'message': 'Something went wrong. Please try again later.', 'status_code': 500, 'error_code': 'internal_server_error', 'payload': {}, 'traceback': 'Traceback (most recent call last):\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/clsregistry.py", line 516, in _resolve_name\n    rval = d[token]\n           ~^^^^^^^\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/util/_collections.py", line 345, in __missing__\n    self[key] = val = self.creator(key)\n                      ^^^^^^^^^^^^^^^^^\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/clsregistry.py", line 484, in _access_cls\n    return self.fallback[key]\n           ~~~~~~~~~~~~~^^^^^\nKeyError: \'Employee\'\n\nThe above exception was the direct cause of the following exception:\n\nTraceback (most recent call last):\n  File "/home/phyl/Development/Logistics/Backend/src/handlers/controllers/auth_controller.py", line 140, in signup\n    existing_user = System_Users.query.filter_by(email=email).first()\n                    ^^^^^^^^^^^^^^^^^^\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/flask_sqlalchemy/model.py", line 22, in __get__\n    return cls.query_class(\n           ^^^^^^^^^^^^^^^^\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/query.py", line 276, in __init__\n    self._set_entities(entities)\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/query.py", line 289, in _set_entities\n    coercions.expect(\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/sql/coercions.py", line 388, in expect\n    insp._post_inspect\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/util/langhelpers.py", line 1257, in __get__\n    obj.__dict__[self.__name__] = result = self.fget(obj)\n                                           ^^^^^^^^^^^^^^\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/mapper.py", line 2724, in _post_inspect\n    self._check_configure()\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/mapper.py", line 2401, in _check_configure\n    _configure_registries({self.registry}, cascade=True)\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/mapper.py", line 4214, in _configure_registries\n    _do_configure_registries(registries, cascade)\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/mapper.py", line 4255, in _do_configure_registries\n    mapper._post_configure_properties()\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/mapper.py", line 2418, in _post_configure_properties\n    prop.init()\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/interfaces.py", line 589, in init\n    self.do_init()\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/relationships.py", line 1656, in do_init\n    self._setup_entity()\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/relationships.py", line 1868, in _setup_entity\n    self._clsregistry_resolve_name(argument)(),\n    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/clsregistry.py", line 520, in _resolve_name\n    self._raise_for_name(name, err)\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/clsregistry.py", line 501, in _raise_for_name\n    raise exc.InvalidRequestError(\nsqlalchemy.exc.InvalidRequestError: When initializing mapper Mapper[System_Users(system_users)], expression \'Employee\' failed to locate a name (\'Employee\'). If this is a class name, consider adding this relationship() to the <class \'src.Models.systemusers.System_Users\'> class after both dependent classes have been defined.\n'}
+[2025-04-08 11:34:34,677] [ERROR] logistics_app: Unexpected server error during signup: One or more mappers failed to initialize - can't proceed with initialization of other mappers. Triggering mapper: 'Mapper[System_Users(system_users)]'. Original exception was: When initializing mapper Mapper[System_Users(system_users)], expression 'Employee' failed to locate a name ('Employee'). If this is a class name, consider adding this relationship() to the <class 'src.Models.systemusers.System_Users'> class after both dependent classes have been defined.
+Traceback (most recent call last):
+  File "/home/phyl/Development/Logistics/Backend/src/handlers/controllers/auth_controller.py", line 140, in signup
+    existing_user = System_Users.query.filter_by(email=email).first()
+                    ^^^^^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/flask_sqlalchemy/model.py", line 22, in __get__
+    return cls.query_class(
+           ^^^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/query.py", line 276, in __init__
+    self._set_entities(entities)
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/query.py", line 289, in _set_entities
+    coercions.expect(
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/sql/coercions.py", line 388, in expect
+    insp._post_inspect
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/util/langhelpers.py", line 1257, in __get__
+    obj.__dict__[self.__name__] = result = self.fget(obj)
+                                           ^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/mapper.py", line 2724, in _post_inspect
+    self._check_configure()
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/mapper.py", line 2401, in _check_configure
+    _configure_registries({self.registry}, cascade=True)
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/mapper.py", line 4214, in _configure_registries
+    _do_configure_registries(registries, cascade)
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/mapper.py", line 4251, in _do_configure_registries
+    raise e
+sqlalchemy.exc.InvalidRequestError: One or more mappers failed to initialize - can't proceed with initialization of other mappers. Triggering mapper: 'Mapper[System_Users(system_users)]'. Original exception was: When initializing mapper Mapper[System_Users(system_users)], expression 'Employee' failed to locate a name ('Employee'). If this is a class name, consider adding this relationship() to the <class 'src.Models.systemusers.System_Users'> class after both dependent classes have been defined.
+[2025-04-08 11:34:34,683] [ERROR] logistics_app: APIError Logged: {'message': 'Something went wrong. Please try again later.', 'status_code': 500, 'error_code': 'internal_server_error', 'payload': {}, 'traceback': 'Traceback (most recent call last):\n  File "/home/phyl/Development/Logistics/Backend/src/handlers/controllers/auth_controller.py", line 140, in signup\n    existing_user = System_Users.query.filter_by(email=email).first()\n                    ^^^^^^^^^^^^^^^^^^\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/flask_sqlalchemy/model.py", line 22, in __get__\n    return cls.query_class(\n           ^^^^^^^^^^^^^^^^\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/query.py", line 276, in __init__\n    self._set_entities(entities)\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/query.py", line 289, in _set_entities\n    coercions.expect(\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/sql/coercions.py", line 388, in expect\n    insp._post_inspect\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/util/langhelpers.py", line 1257, in __get__\n    obj.__dict__[self.__name__] = result = self.fget(obj)\n                                           ^^^^^^^^^^^^^^\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/mapper.py", line 2724, in _post_inspect\n    self._check_configure()\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/mapper.py", line 2401, in _check_configure\n    _configure_registries({self.registry}, cascade=True)\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/mapper.py", line 4214, in _configure_registries\n    _do_configure_registries(registries, cascade)\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/mapper.py", line 4251, in _do_configure_registries\n    raise e\nsqlalchemy.exc.InvalidRequestError: One or more mappers failed to initialize - can\'t proceed with initialization of other mappers. Triggering mapper: \'Mapper[System_Users(system_users)]\'. Original exception was: When initializing mapper Mapper[System_Users(system_users)], expression \'Employee\' failed to locate a name (\'Employee\'). If this is a class name, consider adding this relationship() to the <class \'src.Models.systemusers.System_Users\'> class after both dependent classes have been defined.\n'}
+[2025-04-08 12:09:07,475] [ERROR] logistics_app: Unexpected server error during signup: Entity namespace for "system_users" has no property "email"
+Traceback (most recent call last):
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/sql/base.py", line 2181, in _entity_namespace_key
+    return getattr(ns, key)  # type: ignore
+           ^^^^^^^^^^^^^^^^
+AttributeError: type object 'System_Users' has no attribute 'email'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/phyl/Development/Logistics/Backend/src/handlers/controllers/auth_controller.py", line 140, in signup
+    existing_user = System_Users.query.filter_by(email=email).first()
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/query.py", line 1992, in filter_by
+    _entity_namespace_key(from_entity, key) == value
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/sql/base.py", line 2183, in _entity_namespace_key
+    raise exc.InvalidRequestError(
+sqlalchemy.exc.InvalidRequestError: Entity namespace for "system_users" has no property "email"
+[2025-04-08 12:09:07,488] [ERROR] logistics_app: APIError Logged: {'message': 'Something went wrong. Please try again later.', 'status_code': 500, 'error_code': 'internal_server_error', 'payload': {}, 'traceback': 'Traceback (most recent call last):\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/sql/base.py", line 2181, in _entity_namespace_key\n    return getattr(ns, key)  # type: ignore\n           ^^^^^^^^^^^^^^^^\nAttributeError: type object \'System_Users\' has no attribute \'email\'\n\nThe above exception was the direct cause of the following exception:\n\nTraceback (most recent call last):\n  File "/home/phyl/Development/Logistics/Backend/src/handlers/controllers/auth_controller.py", line 140, in signup\n    existing_user = System_Users.query.filter_by(email=email).first()\n                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/query.py", line 1992, in filter_by\n    _entity_namespace_key(from_entity, key) == value\n    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/sql/base.py", line 2183, in _entity_namespace_key\n    raise exc.InvalidRequestError(\nsqlalchemy.exc.InvalidRequestError: Entity namespace for "system_users" has no property "email"\n'}
+[2025-04-08 12:11:05,382] [ERROR] logistics_app: Unexpected server error during signup: (psycopg2.OperationalError) connection to server at "localhost" (127.0.0.1), port 5432 failed: Connection refused
+	Is the server running on that host and accepting TCP/IP connections?
+
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+Traceback (most recent call last):
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 146, in __init__
+    self._dbapi_connection = engine.raw_connection()
+                             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 3298, in raw_connection
+    return self.pool.connect()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 449, in connect
+    return _ConnectionFairy._checkout(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 1264, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 713, in checkout
+    rec = pool._do_get()
+          ^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/pool/impl.py", line 179, in _do_get
+    with util.safe_reraise():
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/util/langhelpers.py", line 146, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/pool/impl.py", line 177, in _do_get
+    return self._create_connection()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 390, in _create_connection
+    return _ConnectionRecord(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 675, in __init__
+    self.__connect()
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 901, in __connect
+    with util.safe_reraise():
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/util/langhelpers.py", line 146, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 897, in __connect
+    self.dbapi_connection = connection = pool._invoke_creator(self)
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/engine/create.py", line 646, in connect
+    return dialect.connect(*cargs, **cparams)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 625, in connect
+    return self.loaded_dbapi.connect(*cargs, **cparams)  # type: ignore[no-any-return]  # NOQA: E501
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.OperationalError: connection to server at "localhost" (127.0.0.1), port 5432 failed: Connection refused
+	Is the server running on that host and accepting TCP/IP connections?
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/phyl/Development/Logistics/Backend/src/handlers/controllers/auth_controller.py", line 140, in signup
+    existing_user = System_Users.query.filter_by(email=email).first()
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/query.py", line 2759, in first
+    return self.limit(1)._iter().first()  # type: ignore
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/query.py", line 2858, in _iter
+    result: Union[ScalarResult[_T], Result[_T]] = self.session.execute(
+                                                  ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 2365, in execute
+    return self._execute_internal(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 2241, in _execute_internal
+    conn = self._connection_for_bind(bind)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 2110, in _connection_for_bind
+    return trans._connection_for_bind(engine, execution_options)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<string>", line 2, in _connection_for_bind
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/state_changes.py", line 139, in _go
+    ret_value = fn(self, *arg, **kw)
+                ^^^^^^^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 1189, in _connection_for_bind
+    conn = bind.connect()
+           ^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 3274, in connect
+    return self._connection_cls(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 148, in __init__
+    Connection._handle_dbapi_exception_noconnection(
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 2439, in _handle_dbapi_exception_noconnection
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 146, in __init__
+    self._dbapi_connection = engine.raw_connection()
+                             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 3298, in raw_connection
+    return self.pool.connect()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 449, in connect
+    return _ConnectionFairy._checkout(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 1264, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 713, in checkout
+    rec = pool._do_get()
+          ^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/pool/impl.py", line 179, in _do_get
+    with util.safe_reraise():
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/util/langhelpers.py", line 146, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/pool/impl.py", line 177, in _do_get
+    return self._create_connection()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 390, in _create_connection
+    return _ConnectionRecord(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 675, in __init__
+    self.__connect()
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 901, in __connect
+    with util.safe_reraise():
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/util/langhelpers.py", line 146, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 897, in __connect
+    self.dbapi_connection = connection = pool._invoke_creator(self)
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/engine/create.py", line 646, in connect
+    return dialect.connect(*cargs, **cparams)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 625, in connect
+    return self.loaded_dbapi.connect(*cargs, **cparams)  # type: ignore[no-any-return]  # NOQA: E501
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlalchemy.exc.OperationalError: (psycopg2.OperationalError) connection to server at "localhost" (127.0.0.1), port 5432 failed: Connection refused
+	Is the server running on that host and accepting TCP/IP connections?
+
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+[2025-04-08 12:11:05,424] [ERROR] logistics_app: APIError Logged: {'message': 'Something went wrong. Please try again later.', 'status_code': 500, 'error_code': 'internal_server_error', 'payload': {}, 'traceback': 'Traceback (most recent call last):\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 146, in __init__\n    self._dbapi_connection = engine.raw_connection()\n                             ^^^^^^^^^^^^^^^^^^^^^^^\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 3298, in raw_connection\n    return self.pool.connect()\n           ^^^^^^^^^^^^^^^^^^^\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 449, in connect\n    return _ConnectionFairy._checkout(self)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 1264, in _checkout\n    fairy = _ConnectionRecord.checkout(pool)\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 713, in checkout\n    rec = pool._do_get()\n          ^^^^^^^^^^^^^^\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/pool/impl.py", line 179, in _do_get\n    with util.safe_reraise():\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/util/langhelpers.py", line 146, in __exit__\n    raise exc_value.with_traceback(exc_tb)\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/pool/impl.py", line 177, in _do_get\n    return self._create_connection()\n           ^^^^^^^^^^^^^^^^^^^^^^^^^\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 390, in _create_connection\n    return _ConnectionRecord(self)\n           ^^^^^^^^^^^^^^^^^^^^^^^\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 675, in __init__\n    self.__connect()\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 901, in __connect\n    with util.safe_reraise():\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/util/langhelpers.py", line 146, in __exit__\n    raise exc_value.with_traceback(exc_tb)\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 897, in __connect\n    self.dbapi_connection = connection = pool._invoke_creator(self)\n                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/engine/create.py", line 646, in connect\n    return dialect.connect(*cargs, **cparams)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 625, in connect\n    return self.loaded_dbapi.connect(*cargs, **cparams)  # type: ignore[no-any-return]  # NOQA: E501\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/psycopg2/__init__.py", line 122, in connect\n    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\npsycopg2.OperationalError: connection to server at "localhost" (127.0.0.1), port 5432 failed: Connection refused\n\tIs the server running on that host and accepting TCP/IP connections?\n\n\nThe above exception was the direct cause of the following exception:\n\nTraceback (most recent call last):\n  File "/home/phyl/Development/Logistics/Backend/src/handlers/controllers/auth_controller.py", line 140, in signup\n    existing_user = System_Users.query.filter_by(email=email).first()\n                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/query.py", line 2759, in first\n    return self.limit(1)._iter().first()  # type: ignore\n           ^^^^^^^^^^^^^^^^^^^^^\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/query.py", line 2858, in _iter\n    result: Union[ScalarResult[_T], Result[_T]] = self.session.execute(\n                                                  ^^^^^^^^^^^^^^^^^^^^^\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 2365, in execute\n    return self._execute_internal(\n           ^^^^^^^^^^^^^^^^^^^^^^^\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 2241, in _execute_internal\n    conn = self._connection_for_bind(bind)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 2110, in _connection_for_bind\n    return trans._connection_for_bind(engine, execution_options)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File "<string>", line 2, in _connection_for_bind\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/state_changes.py", line 139, in _go\n    ret_value = fn(self, *arg, **kw)\n                ^^^^^^^^^^^^^^^^^^^^\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 1189, in _connection_for_bind\n    conn = bind.connect()\n           ^^^^^^^^^^^^^^\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 3274, in connect\n    return self._connection_cls(self)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 148, in __init__\n    Connection._handle_dbapi_exception_noconnection(\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 2439, in _handle_dbapi_exception_noconnection\n    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 146, in __init__\n    self._dbapi_connection = engine.raw_connection()\n                             ^^^^^^^^^^^^^^^^^^^^^^^\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 3298, in raw_connection\n    return self.pool.connect()\n           ^^^^^^^^^^^^^^^^^^^\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 449, in connect\n    return _ConnectionFairy._checkout(self)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 1264, in _checkout\n    fairy = _ConnectionRecord.checkout(pool)\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 713, in checkout\n    rec = pool._do_get()\n          ^^^^^^^^^^^^^^\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/pool/impl.py", line 179, in _do_get\n    with util.safe_reraise():\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/util/langhelpers.py", line 146, in __exit__\n    raise exc_value.with_traceback(exc_tb)\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/pool/impl.py", line 177, in _do_get\n    return self._create_connection()\n           ^^^^^^^^^^^^^^^^^^^^^^^^^\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 390, in _create_connection\n    return _ConnectionRecord(self)\n           ^^^^^^^^^^^^^^^^^^^^^^^\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 675, in __init__\n    self.__connect()\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 901, in __connect\n    with util.safe_reraise():\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/util/langhelpers.py", line 146, in __exit__\n    raise exc_value.with_traceback(exc_tb)\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 897, in __connect\n    self.dbapi_connection = connection = pool._invoke_creator(self)\n                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/engine/create.py", line 646, in connect\n    return dialect.connect(*cargs, **cparams)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 625, in connect\n    return self.loaded_dbapi.connect(*cargs, **cparams)  # type: ignore[no-any-return]  # NOQA: E501\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/psycopg2/__init__.py", line 122, in connect\n    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nsqlalchemy.exc.OperationalError: (psycopg2.OperationalError) connection to server at "localhost" (127.0.0.1), port 5432 failed: Connection refused\n\tIs the server running on that host and accepting TCP/IP connections?\n\n(Background on this error at: https://sqlalche.me/e/20/e3q8)\n'}
+[2025-04-08 12:17:57,106] [ERROR] logistics_app: Unexpected server error during signup: (psycopg2.OperationalError) connection to server at "localhost" (127.0.0.1), port 5432 failed: FATAL:  password authentication failed for user "username"
+connection to server at "localhost" (127.0.0.1), port 5432 failed: FATAL:  password authentication failed for user "username"
+
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+Traceback (most recent call last):
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 146, in __init__
+    self._dbapi_connection = engine.raw_connection()
+                             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 3298, in raw_connection
+    return self.pool.connect()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 449, in connect
+    return _ConnectionFairy._checkout(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 1264, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 713, in checkout
+    rec = pool._do_get()
+          ^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/pool/impl.py", line 179, in _do_get
+    with util.safe_reraise():
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/util/langhelpers.py", line 146, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/pool/impl.py", line 177, in _do_get
+    return self._create_connection()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 390, in _create_connection
+    return _ConnectionRecord(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 675, in __init__
+    self.__connect()
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 901, in __connect
+    with util.safe_reraise():
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/util/langhelpers.py", line 146, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 897, in __connect
+    self.dbapi_connection = connection = pool._invoke_creator(self)
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/engine/create.py", line 646, in connect
+    return dialect.connect(*cargs, **cparams)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 625, in connect
+    return self.loaded_dbapi.connect(*cargs, **cparams)  # type: ignore[no-any-return]  # NOQA: E501
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.OperationalError: connection to server at "localhost" (127.0.0.1), port 5432 failed: FATAL:  password authentication failed for user "username"
+connection to server at "localhost" (127.0.0.1), port 5432 failed: FATAL:  password authentication failed for user "username"
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/phyl/Development/Logistics/Backend/src/handlers/controllers/auth_controller.py", line 140, in signup
+    existing_user = System_Users.query.filter_by(email=email).first()
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/query.py", line 2759, in first
+    return self.limit(1)._iter().first()  # type: ignore
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/query.py", line 2858, in _iter
+    result: Union[ScalarResult[_T], Result[_T]] = self.session.execute(
+                                                  ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 2365, in execute
+    return self._execute_internal(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 2241, in _execute_internal
+    conn = self._connection_for_bind(bind)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 2110, in _connection_for_bind
+    return trans._connection_for_bind(engine, execution_options)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<string>", line 2, in _connection_for_bind
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/state_changes.py", line 139, in _go
+    ret_value = fn(self, *arg, **kw)
+                ^^^^^^^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 1189, in _connection_for_bind
+    conn = bind.connect()
+           ^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 3274, in connect
+    return self._connection_cls(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 148, in __init__
+    Connection._handle_dbapi_exception_noconnection(
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 2439, in _handle_dbapi_exception_noconnection
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 146, in __init__
+    self._dbapi_connection = engine.raw_connection()
+                             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 3298, in raw_connection
+    return self.pool.connect()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 449, in connect
+    return _ConnectionFairy._checkout(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 1264, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 713, in checkout
+    rec = pool._do_get()
+          ^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/pool/impl.py", line 179, in _do_get
+    with util.safe_reraise():
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/util/langhelpers.py", line 146, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/pool/impl.py", line 177, in _do_get
+    return self._create_connection()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 390, in _create_connection
+    return _ConnectionRecord(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 675, in __init__
+    self.__connect()
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 901, in __connect
+    with util.safe_reraise():
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/util/langhelpers.py", line 146, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 897, in __connect
+    self.dbapi_connection = connection = pool._invoke_creator(self)
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/engine/create.py", line 646, in connect
+    return dialect.connect(*cargs, **cparams)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 625, in connect
+    return self.loaded_dbapi.connect(*cargs, **cparams)  # type: ignore[no-any-return]  # NOQA: E501
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlalchemy.exc.OperationalError: (psycopg2.OperationalError) connection to server at "localhost" (127.0.0.1), port 5432 failed: FATAL:  password authentication failed for user "username"
+connection to server at "localhost" (127.0.0.1), port 5432 failed: FATAL:  password authentication failed for user "username"
+
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+[2025-04-08 12:17:57,147] [ERROR] logistics_app: APIError Logged: {'message': 'Something went wrong. Please try again later.', 'status_code': 500, 'error_code': 'internal_server_error', 'payload': {}, 'traceback': 'Traceback (most recent call last):\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 146, in __init__\n    self._dbapi_connection = engine.raw_connection()\n                             ^^^^^^^^^^^^^^^^^^^^^^^\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 3298, in raw_connection\n    return self.pool.connect()\n           ^^^^^^^^^^^^^^^^^^^\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 449, in connect\n    return _ConnectionFairy._checkout(self)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 1264, in _checkout\n    fairy = _ConnectionRecord.checkout(pool)\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 713, in checkout\n    rec = pool._do_get()\n          ^^^^^^^^^^^^^^\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/pool/impl.py", line 179, in _do_get\n    with util.safe_reraise():\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/util/langhelpers.py", line 146, in __exit__\n    raise exc_value.with_traceback(exc_tb)\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/pool/impl.py", line 177, in _do_get\n    return self._create_connection()\n           ^^^^^^^^^^^^^^^^^^^^^^^^^\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 390, in _create_connection\n    return _ConnectionRecord(self)\n           ^^^^^^^^^^^^^^^^^^^^^^^\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 675, in __init__\n    self.__connect()\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 901, in __connect\n    with util.safe_reraise():\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/util/langhelpers.py", line 146, in __exit__\n    raise exc_value.with_traceback(exc_tb)\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 897, in __connect\n    self.dbapi_connection = connection = pool._invoke_creator(self)\n                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/engine/create.py", line 646, in connect\n    return dialect.connect(*cargs, **cparams)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 625, in connect\n    return self.loaded_dbapi.connect(*cargs, **cparams)  # type: ignore[no-any-return]  # NOQA: E501\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/psycopg2/__init__.py", line 122, in connect\n    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\npsycopg2.OperationalError: connection to server at "localhost" (127.0.0.1), port 5432 failed: FATAL:  password authentication failed for user "username"\nconnection to server at "localhost" (127.0.0.1), port 5432 failed: FATAL:  password authentication failed for user "username"\n\n\nThe above exception was the direct cause of the following exception:\n\nTraceback (most recent call last):\n  File "/home/phyl/Development/Logistics/Backend/src/handlers/controllers/auth_controller.py", line 140, in signup\n    existing_user = System_Users.query.filter_by(email=email).first()\n                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/query.py", line 2759, in first\n    return self.limit(1)._iter().first()  # type: ignore\n           ^^^^^^^^^^^^^^^^^^^^^\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/query.py", line 2858, in _iter\n    result: Union[ScalarResult[_T], Result[_T]] = self.session.execute(\n                                                  ^^^^^^^^^^^^^^^^^^^^^\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 2365, in execute\n    return self._execute_internal(\n           ^^^^^^^^^^^^^^^^^^^^^^^\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 2241, in _execute_internal\n    conn = self._connection_for_bind(bind)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 2110, in _connection_for_bind\n    return trans._connection_for_bind(engine, execution_options)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File "<string>", line 2, in _connection_for_bind\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/state_changes.py", line 139, in _go\n    ret_value = fn(self, *arg, **kw)\n                ^^^^^^^^^^^^^^^^^^^^\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 1189, in _connection_for_bind\n    conn = bind.connect()\n           ^^^^^^^^^^^^^^\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 3274, in connect\n    return self._connection_cls(self)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 148, in __init__\n    Connection._handle_dbapi_exception_noconnection(\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 2439, in _handle_dbapi_exception_noconnection\n    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 146, in __init__\n    self._dbapi_connection = engine.raw_connection()\n                             ^^^^^^^^^^^^^^^^^^^^^^^\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 3298, in raw_connection\n    return self.pool.connect()\n           ^^^^^^^^^^^^^^^^^^^\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 449, in connect\n    return _ConnectionFairy._checkout(self)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 1264, in _checkout\n    fairy = _ConnectionRecord.checkout(pool)\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 713, in checkout\n    rec = pool._do_get()\n          ^^^^^^^^^^^^^^\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/pool/impl.py", line 179, in _do_get\n    with util.safe_reraise():\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/util/langhelpers.py", line 146, in __exit__\n    raise exc_value.with_traceback(exc_tb)\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/pool/impl.py", line 177, in _do_get\n    return self._create_connection()\n           ^^^^^^^^^^^^^^^^^^^^^^^^^\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 390, in _create_connection\n    return _ConnectionRecord(self)\n           ^^^^^^^^^^^^^^^^^^^^^^^\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 675, in __init__\n    self.__connect()\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 901, in __connect\n    with util.safe_reraise():\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/util/langhelpers.py", line 146, in __exit__\n    raise exc_value.with_traceback(exc_tb)\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 897, in __connect\n    self.dbapi_connection = connection = pool._invoke_creator(self)\n                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/engine/create.py", line 646, in connect\n    return dialect.connect(*cargs, **cparams)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 625, in connect\n    return self.loaded_dbapi.connect(*cargs, **cparams)  # type: ignore[no-any-return]  # NOQA: E501\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/psycopg2/__init__.py", line 122, in connect\n    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nsqlalchemy.exc.OperationalError: (psycopg2.OperationalError) connection to server at "localhost" (127.0.0.1), port 5432 failed: FATAL:  password authentication failed for user "username"\nconnection to server at "localhost" (127.0.0.1), port 5432 failed: FATAL:  password authentication failed for user "username"\n\n(Background on this error at: https://sqlalche.me/e/20/e3q8)\n'}
+[2025-04-08 13:27:59,227] [INFO] logistics_app: Models initialized successfully.
+[2025-04-08 13:27:59,228] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-08 13:28:16,586] [INFO] logistics_app: Models initialized successfully.
+[2025-04-08 13:28:16,587] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-08 13:34:25,181] [INFO] logistics_app: Models initialized successfully.
+[2025-04-08 13:34:25,182] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-08 13:34:31,459] [INFO] logistics_app: Models initialized successfully.
+[2025-04-08 13:34:31,459] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-08 13:34:42,025] [INFO] logistics_app: Models initialized successfully.
+[2025-04-08 13:34:42,025] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-08 13:34:43,585] [INFO] logistics_app: Models initialized successfully.
+[2025-04-08 13:34:43,585] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-08 13:35:12,315] [ERROR] logistics_app: Unexpected server error during signup: When initializing mapper Mapper[Billing(billing)], expression 'Clients' failed to locate a name ('Clients'). If this is a class name, consider adding this relationship() to the <class 'src.Models.billing.Billing'> class after both dependent classes have been defined.
+Traceback (most recent call last):
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/clsregistry.py", line 516, in _resolve_name
+    rval = d[token]
+           ~^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/util/_collections.py", line 345, in __missing__
+    self[key] = val = self.creator(key)
+                      ^^^^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/clsregistry.py", line 484, in _access_cls
+    return self.fallback[key]
+           ~~~~~~~~~~~~~^^^^^
+KeyError: 'Clients'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/phyl/Development/Logistics/Backend/src/handlers/controllers/auth_controller.py", line 140, in signup
+    existing_user = System_Users.query.filter_by(email=email).first()
+                    ^^^^^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/flask_sqlalchemy/model.py", line 22, in __get__
+    return cls.query_class(
+           ^^^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/query.py", line 276, in __init__
+    self._set_entities(entities)
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/query.py", line 289, in _set_entities
+    coercions.expect(
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/sql/coercions.py", line 388, in expect
+    insp._post_inspect
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/util/langhelpers.py", line 1257, in __get__
+    obj.__dict__[self.__name__] = result = self.fget(obj)
+                                           ^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/mapper.py", line 2724, in _post_inspect
+    self._check_configure()
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/mapper.py", line 2401, in _check_configure
+    _configure_registries({self.registry}, cascade=True)
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/mapper.py", line 4214, in _configure_registries
+    _do_configure_registries(registries, cascade)
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/mapper.py", line 4255, in _do_configure_registries
+    mapper._post_configure_properties()
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/mapper.py", line 2418, in _post_configure_properties
+    prop.init()
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/interfaces.py", line 589, in init
+    self.do_init()
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/relationships.py", line 1656, in do_init
+    self._setup_entity()
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/relationships.py", line 1868, in _setup_entity
+    self._clsregistry_resolve_name(argument)(),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/clsregistry.py", line 520, in _resolve_name
+    self._raise_for_name(name, err)
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/clsregistry.py", line 501, in _raise_for_name
+    raise exc.InvalidRequestError(
+sqlalchemy.exc.InvalidRequestError: When initializing mapper Mapper[Billing(billing)], expression 'Clients' failed to locate a name ('Clients'). If this is a class name, consider adding this relationship() to the <class 'src.Models.billing.Billing'> class after both dependent classes have been defined.
+[2025-04-08 13:35:12,339] [ERROR] logistics_app: APIError Logged: {'message': 'Something went wrong. Please try again later.', 'status_code': 500, 'error_code': 'internal_server_error', 'payload': {}, 'traceback': 'Traceback (most recent call last):\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/clsregistry.py", line 516, in _resolve_name\n    rval = d[token]\n           ~^^^^^^^\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/util/_collections.py", line 345, in __missing__\n    self[key] = val = self.creator(key)\n                      ^^^^^^^^^^^^^^^^^\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/clsregistry.py", line 484, in _access_cls\n    return self.fallback[key]\n           ~~~~~~~~~~~~~^^^^^\nKeyError: \'Clients\'\n\nThe above exception was the direct cause of the following exception:\n\nTraceback (most recent call last):\n  File "/home/phyl/Development/Logistics/Backend/src/handlers/controllers/auth_controller.py", line 140, in signup\n    existing_user = System_Users.query.filter_by(email=email).first()\n                    ^^^^^^^^^^^^^^^^^^\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/flask_sqlalchemy/model.py", line 22, in __get__\n    return cls.query_class(\n           ^^^^^^^^^^^^^^^^\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/query.py", line 276, in __init__\n    self._set_entities(entities)\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/query.py", line 289, in _set_entities\n    coercions.expect(\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/sql/coercions.py", line 388, in expect\n    insp._post_inspect\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/util/langhelpers.py", line 1257, in __get__\n    obj.__dict__[self.__name__] = result = self.fget(obj)\n                                           ^^^^^^^^^^^^^^\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/mapper.py", line 2724, in _post_inspect\n    self._check_configure()\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/mapper.py", line 2401, in _check_configure\n    _configure_registries({self.registry}, cascade=True)\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/mapper.py", line 4214, in _configure_registries\n    _do_configure_registries(registries, cascade)\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/mapper.py", line 4255, in _do_configure_registries\n    mapper._post_configure_properties()\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/mapper.py", line 2418, in _post_configure_properties\n    prop.init()\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/interfaces.py", line 589, in init\n    self.do_init()\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/relationships.py", line 1656, in do_init\n    self._setup_entity()\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/relationships.py", line 1868, in _setup_entity\n    self._clsregistry_resolve_name(argument)(),\n    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/clsregistry.py", line 520, in _resolve_name\n    self._raise_for_name(name, err)\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/clsregistry.py", line 501, in _raise_for_name\n    raise exc.InvalidRequestError(\nsqlalchemy.exc.InvalidRequestError: When initializing mapper Mapper[Billing(billing)], expression \'Clients\' failed to locate a name (\'Clients\'). If this is a class name, consider adding this relationship() to the <class \'src.Models.billing.Billing\'> class after both dependent classes have been defined.\n'}
+[2025-04-08 13:36:47,657] [INFO] logistics_app: Models initialized successfully.
+[2025-04-08 13:36:47,657] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-08 13:36:53,856] [INFO] logistics_app: Models initialized successfully.
+[2025-04-08 13:36:53,856] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-08 13:36:58,800] [INFO] logistics_app: Models initialized successfully.
+[2025-04-08 13:36:58,801] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-08 13:37:01,712] [INFO] logistics_app: Models initialized successfully.
+[2025-04-08 13:37:01,712] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-08 13:37:05,761] [INFO] logistics_app: Models initialized successfully.
+[2025-04-08 13:37:05,761] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-08 13:37:09,696] [INFO] logistics_app: Models initialized successfully.
+[2025-04-08 13:37:09,697] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-08 13:37:12,700] [INFO] logistics_app: Models initialized successfully.
+[2025-04-08 13:37:12,701] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-08 13:42:09,199] [INFO] logistics_app: Models initialized successfully.
+[2025-04-08 13:42:09,199] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-08 13:42:10,569] [INFO] logistics_app: Models initialized successfully.
+[2025-04-08 13:42:10,570] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-08 13:42:18,426] [ERROR] logistics_app: Unexpected server error during signup: Error creating backref 'carrier' on relationship 'Carrier.vehicles': property of that name exists on mapper 'Mapper[Vehicle(vehicles)]'
+Traceback (most recent call last):
+  File "/home/phyl/Development/Logistics/Backend/src/handlers/controllers/auth_controller.py", line 140, in signup
+    existing_user = System_Users.query.filter_by(email=email).first()
+                    ^^^^^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/flask_sqlalchemy/model.py", line 22, in __get__
+    return cls.query_class(
+           ^^^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/query.py", line 276, in __init__
+    self._set_entities(entities)
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/query.py", line 289, in _set_entities
+    coercions.expect(
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/sql/coercions.py", line 388, in expect
+    insp._post_inspect
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/util/langhelpers.py", line 1257, in __get__
+    obj.__dict__[self.__name__] = result = self.fget(obj)
+                                           ^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/mapper.py", line 2724, in _post_inspect
+    self._check_configure()
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/mapper.py", line 2401, in _check_configure
+    _configure_registries({self.registry}, cascade=True)
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/mapper.py", line 4214, in _configure_registries
+    _do_configure_registries(registries, cascade)
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/mapper.py", line 4255, in _do_configure_registries
+    mapper._post_configure_properties()
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/mapper.py", line 2418, in _post_configure_properties
+    prop.init()
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/interfaces.py", line 589, in init
+    self.do_init()
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/relationships.py", line 1661, in do_init
+    self._generate_backref()
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/relationships.py", line 2089, in _generate_backref
+    raise sa_exc.ArgumentError(
+sqlalchemy.exc.ArgumentError: Error creating backref 'carrier' on relationship 'Carrier.vehicles': property of that name exists on mapper 'Mapper[Vehicle(vehicles)]'
+[2025-04-08 13:42:18,446] [ERROR] logistics_app: APIError Logged: {'message': 'Something went wrong. Please try again later.', 'status_code': 500, 'error_code': 'internal_server_error', 'payload': {}, 'traceback': 'Traceback (most recent call last):\n  File "/home/phyl/Development/Logistics/Backend/src/handlers/controllers/auth_controller.py", line 140, in signup\n    existing_user = System_Users.query.filter_by(email=email).first()\n                    ^^^^^^^^^^^^^^^^^^\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/flask_sqlalchemy/model.py", line 22, in __get__\n    return cls.query_class(\n           ^^^^^^^^^^^^^^^^\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/query.py", line 276, in __init__\n    self._set_entities(entities)\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/query.py", line 289, in _set_entities\n    coercions.expect(\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/sql/coercions.py", line 388, in expect\n    insp._post_inspect\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/util/langhelpers.py", line 1257, in __get__\n    obj.__dict__[self.__name__] = result = self.fget(obj)\n                                           ^^^^^^^^^^^^^^\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/mapper.py", line 2724, in _post_inspect\n    self._check_configure()\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/mapper.py", line 2401, in _check_configure\n    _configure_registries({self.registry}, cascade=True)\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/mapper.py", line 4214, in _configure_registries\n    _do_configure_registries(registries, cascade)\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/mapper.py", line 4255, in _do_configure_registries\n    mapper._post_configure_properties()\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/mapper.py", line 2418, in _post_configure_properties\n    prop.init()\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/interfaces.py", line 589, in init\n    self.do_init()\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/relationships.py", line 1661, in do_init\n    self._generate_backref()\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/relationships.py", line 2089, in _generate_backref\n    raise sa_exc.ArgumentError(\nsqlalchemy.exc.ArgumentError: Error creating backref \'carrier\' on relationship \'Carrier.vehicles\': property of that name exists on mapper \'Mapper[Vehicle(vehicles)]\'\n'}
+[2025-04-08 13:44:19,435] [INFO] logistics_app: Models initialized successfully.
+[2025-04-08 13:44:19,435] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-08 13:44:41,093] [INFO] logistics_app: Models initialized successfully.
+[2025-04-08 13:44:41,094] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-08 13:48:34,520] [INFO] logistics_app: Models initialized successfully.
+[2025-04-08 13:48:34,520] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-08 13:48:56,048] [INFO] logistics_app: Models initialized successfully.
+[2025-04-08 13:48:56,048] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-08 13:49:06,058] [ERROR] logistics_app: Unexpected server error during signup: Error creating backref 'carrier' on relationship 'Carrier.shipments': property of that name exists on mapper 'Mapper[Shipment(shipments)]'
+Traceback (most recent call last):
+  File "/home/phyl/Development/Logistics/Backend/src/handlers/controllers/auth_controller.py", line 140, in signup
+    existing_user = System_Users.query.filter_by(email=email).first()
+                    ^^^^^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/flask_sqlalchemy/model.py", line 22, in __get__
+    return cls.query_class(
+           ^^^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/query.py", line 276, in __init__
+    self._set_entities(entities)
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/query.py", line 289, in _set_entities
+    coercions.expect(
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/sql/coercions.py", line 388, in expect
+    insp._post_inspect
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/util/langhelpers.py", line 1257, in __get__
+    obj.__dict__[self.__name__] = result = self.fget(obj)
+                                           ^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/mapper.py", line 2724, in _post_inspect
+    self._check_configure()
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/mapper.py", line 2401, in _check_configure
+    _configure_registries({self.registry}, cascade=True)
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/mapper.py", line 4214, in _configure_registries
+    _do_configure_registries(registries, cascade)
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/mapper.py", line 4255, in _do_configure_registries
+    mapper._post_configure_properties()
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/mapper.py", line 2418, in _post_configure_properties
+    prop.init()
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/interfaces.py", line 589, in init
+    self.do_init()
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/relationships.py", line 1661, in do_init
+    self._generate_backref()
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/relationships.py", line 2089, in _generate_backref
+    raise sa_exc.ArgumentError(
+sqlalchemy.exc.ArgumentError: Error creating backref 'carrier' on relationship 'Carrier.shipments': property of that name exists on mapper 'Mapper[Shipment(shipments)]'
+[2025-04-08 13:49:06,079] [ERROR] logistics_app: APIError Logged: {'message': 'Something went wrong. Please try again later.', 'status_code': 500, 'error_code': 'internal_server_error', 'payload': {}, 'traceback': 'Traceback (most recent call last):\n  File "/home/phyl/Development/Logistics/Backend/src/handlers/controllers/auth_controller.py", line 140, in signup\n    existing_user = System_Users.query.filter_by(email=email).first()\n                    ^^^^^^^^^^^^^^^^^^\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/flask_sqlalchemy/model.py", line 22, in __get__\n    return cls.query_class(\n           ^^^^^^^^^^^^^^^^\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/query.py", line 276, in __init__\n    self._set_entities(entities)\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/query.py", line 289, in _set_entities\n    coercions.expect(\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/sql/coercions.py", line 388, in expect\n    insp._post_inspect\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/util/langhelpers.py", line 1257, in __get__\n    obj.__dict__[self.__name__] = result = self.fget(obj)\n                                           ^^^^^^^^^^^^^^\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/mapper.py", line 2724, in _post_inspect\n    self._check_configure()\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/mapper.py", line 2401, in _check_configure\n    _configure_registries({self.registry}, cascade=True)\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/mapper.py", line 4214, in _configure_registries\n    _do_configure_registries(registries, cascade)\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/mapper.py", line 4255, in _do_configure_registries\n    mapper._post_configure_properties()\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/mapper.py", line 2418, in _post_configure_properties\n    prop.init()\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/interfaces.py", line 589, in init\n    self.do_init()\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/relationships.py", line 1661, in do_init\n    self._generate_backref()\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/relationships.py", line 2089, in _generate_backref\n    raise sa_exc.ArgumentError(\nsqlalchemy.exc.ArgumentError: Error creating backref \'carrier\' on relationship \'Carrier.shipments\': property of that name exists on mapper \'Mapper[Shipment(shipments)]\'\n'}
+[2025-04-08 13:53:42,085] [INFO] logistics_app: Models initialized successfully.
+[2025-04-08 13:53:42,085] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-08 13:53:43,596] [INFO] logistics_app: Models initialized successfully.
+[2025-04-08 13:53:43,596] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-08 13:53:51,379] [ERROR] logistics_app: Unexpected server error during signup: When initializing mapper Mapper[Billing(billing)], expression 'Clients' failed to locate a name ('Clients'). If this is a class name, consider adding this relationship() to the <class 'src.Models.billing.Billing'> class after both dependent classes have been defined.
+Traceback (most recent call last):
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/clsregistry.py", line 516, in _resolve_name
+    rval = d[token]
+           ~^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/util/_collections.py", line 345, in __missing__
+    self[key] = val = self.creator(key)
+                      ^^^^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/clsregistry.py", line 484, in _access_cls
+    return self.fallback[key]
+           ~~~~~~~~~~~~~^^^^^
+KeyError: 'Clients'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/phyl/Development/Logistics/Backend/src/handlers/controllers/auth_controller.py", line 140, in signup
+    existing_user = System_Users.query.filter_by(email=email).first()
+                    ^^^^^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/flask_sqlalchemy/model.py", line 22, in __get__
+    return cls.query_class(
+           ^^^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/query.py", line 276, in __init__
+    self._set_entities(entities)
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/query.py", line 289, in _set_entities
+    coercions.expect(
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/sql/coercions.py", line 388, in expect
+    insp._post_inspect
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/util/langhelpers.py", line 1257, in __get__
+    obj.__dict__[self.__name__] = result = self.fget(obj)
+                                           ^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/mapper.py", line 2724, in _post_inspect
+    self._check_configure()
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/mapper.py", line 2401, in _check_configure
+    _configure_registries({self.registry}, cascade=True)
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/mapper.py", line 4214, in _configure_registries
+    _do_configure_registries(registries, cascade)
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/mapper.py", line 4255, in _do_configure_registries
+    mapper._post_configure_properties()
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/mapper.py", line 2418, in _post_configure_properties
+    prop.init()
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/interfaces.py", line 589, in init
+    self.do_init()
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/relationships.py", line 1656, in do_init
+    self._setup_entity()
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/relationships.py", line 1868, in _setup_entity
+    self._clsregistry_resolve_name(argument)(),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/clsregistry.py", line 520, in _resolve_name
+    self._raise_for_name(name, err)
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/clsregistry.py", line 501, in _raise_for_name
+    raise exc.InvalidRequestError(
+sqlalchemy.exc.InvalidRequestError: When initializing mapper Mapper[Billing(billing)], expression 'Clients' failed to locate a name ('Clients'). If this is a class name, consider adding this relationship() to the <class 'src.Models.billing.Billing'> class after both dependent classes have been defined.
+[2025-04-08 13:53:51,408] [ERROR] logistics_app: APIError Logged: {'message': 'Something went wrong. Please try again later.', 'status_code': 500, 'error_code': 'internal_server_error', 'payload': {}, 'traceback': 'Traceback (most recent call last):\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/clsregistry.py", line 516, in _resolve_name\n    rval = d[token]\n           ~^^^^^^^\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/util/_collections.py", line 345, in __missing__\n    self[key] = val = self.creator(key)\n                      ^^^^^^^^^^^^^^^^^\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/clsregistry.py", line 484, in _access_cls\n    return self.fallback[key]\n           ~~~~~~~~~~~~~^^^^^\nKeyError: \'Clients\'\n\nThe above exception was the direct cause of the following exception:\n\nTraceback (most recent call last):\n  File "/home/phyl/Development/Logistics/Backend/src/handlers/controllers/auth_controller.py", line 140, in signup\n    existing_user = System_Users.query.filter_by(email=email).first()\n                    ^^^^^^^^^^^^^^^^^^\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/flask_sqlalchemy/model.py", line 22, in __get__\n    return cls.query_class(\n           ^^^^^^^^^^^^^^^^\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/query.py", line 276, in __init__\n    self._set_entities(entities)\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/query.py", line 289, in _set_entities\n    coercions.expect(\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/sql/coercions.py", line 388, in expect\n    insp._post_inspect\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/util/langhelpers.py", line 1257, in __get__\n    obj.__dict__[self.__name__] = result = self.fget(obj)\n                                           ^^^^^^^^^^^^^^\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/mapper.py", line 2724, in _post_inspect\n    self._check_configure()\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/mapper.py", line 2401, in _check_configure\n    _configure_registries({self.registry}, cascade=True)\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/mapper.py", line 4214, in _configure_registries\n    _do_configure_registries(registries, cascade)\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/mapper.py", line 4255, in _do_configure_registries\n    mapper._post_configure_properties()\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/mapper.py", line 2418, in _post_configure_properties\n    prop.init()\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/interfaces.py", line 589, in init\n    self.do_init()\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/relationships.py", line 1656, in do_init\n    self._setup_entity()\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/relationships.py", line 1868, in _setup_entity\n    self._clsregistry_resolve_name(argument)(),\n    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/clsregistry.py", line 520, in _resolve_name\n    self._raise_for_name(name, err)\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/clsregistry.py", line 501, in _raise_for_name\n    raise exc.InvalidRequestError(\nsqlalchemy.exc.InvalidRequestError: When initializing mapper Mapper[Billing(billing)], expression \'Clients\' failed to locate a name (\'Clients\'). If this is a class name, consider adding this relationship() to the <class \'src.Models.billing.Billing\'> class after both dependent classes have been defined.\n'}
+[2025-04-08 13:57:29,584] [INFO] logistics_app: Models initialized successfully.
+[2025-04-08 13:57:29,584] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-08 13:57:31,021] [INFO] logistics_app: Models initialized successfully.
+[2025-04-08 13:57:31,021] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-08 13:57:37,495] [ERROR] logistics_app: Unexpected server error during signup: When initializing mapper Mapper[Billing(billing)], expression 'Clients' failed to locate a name ('Clients'). If this is a class name, consider adding this relationship() to the <class 'src.Models.billing.Billing'> class after both dependent classes have been defined.
+Traceback (most recent call last):
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/clsregistry.py", line 516, in _resolve_name
+    rval = d[token]
+           ~^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/util/_collections.py", line 345, in __missing__
+    self[key] = val = self.creator(key)
+                      ^^^^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/clsregistry.py", line 484, in _access_cls
+    return self.fallback[key]
+           ~~~~~~~~~~~~~^^^^^
+KeyError: 'Clients'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/phyl/Development/Logistics/Backend/src/handlers/controllers/auth_controller.py", line 140, in signup
+    existing_user = System_Users.query.filter_by(email=email).first()
+                    ^^^^^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/flask_sqlalchemy/model.py", line 22, in __get__
+    return cls.query_class(
+           ^^^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/query.py", line 276, in __init__
+    self._set_entities(entities)
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/query.py", line 289, in _set_entities
+    coercions.expect(
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/sql/coercions.py", line 388, in expect
+    insp._post_inspect
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/util/langhelpers.py", line 1257, in __get__
+    obj.__dict__[self.__name__] = result = self.fget(obj)
+                                           ^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/mapper.py", line 2724, in _post_inspect
+    self._check_configure()
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/mapper.py", line 2401, in _check_configure
+    _configure_registries({self.registry}, cascade=True)
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/mapper.py", line 4214, in _configure_registries
+    _do_configure_registries(registries, cascade)
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/mapper.py", line 4255, in _do_configure_registries
+    mapper._post_configure_properties()
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/mapper.py", line 2418, in _post_configure_properties
+    prop.init()
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/interfaces.py", line 589, in init
+    self.do_init()
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/relationships.py", line 1656, in do_init
+    self._setup_entity()
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/relationships.py", line 1868, in _setup_entity
+    self._clsregistry_resolve_name(argument)(),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/clsregistry.py", line 520, in _resolve_name
+    self._raise_for_name(name, err)
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/clsregistry.py", line 501, in _raise_for_name
+    raise exc.InvalidRequestError(
+sqlalchemy.exc.InvalidRequestError: When initializing mapper Mapper[Billing(billing)], expression 'Clients' failed to locate a name ('Clients'). If this is a class name, consider adding this relationship() to the <class 'src.Models.billing.Billing'> class after both dependent classes have been defined.
+[2025-04-08 13:57:37,522] [ERROR] logistics_app: APIError Logged: {'message': 'Something went wrong. Please try again later.', 'status_code': 500, 'error_code': 'internal_server_error', 'payload': {}, 'traceback': 'Traceback (most recent call last):\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/clsregistry.py", line 516, in _resolve_name\n    rval = d[token]\n           ~^^^^^^^\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/util/_collections.py", line 345, in __missing__\n    self[key] = val = self.creator(key)\n                      ^^^^^^^^^^^^^^^^^\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/clsregistry.py", line 484, in _access_cls\n    return self.fallback[key]\n           ~~~~~~~~~~~~~^^^^^\nKeyError: \'Clients\'\n\nThe above exception was the direct cause of the following exception:\n\nTraceback (most recent call last):\n  File "/home/phyl/Development/Logistics/Backend/src/handlers/controllers/auth_controller.py", line 140, in signup\n    existing_user = System_Users.query.filter_by(email=email).first()\n                    ^^^^^^^^^^^^^^^^^^\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/flask_sqlalchemy/model.py", line 22, in __get__\n    return cls.query_class(\n           ^^^^^^^^^^^^^^^^\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/query.py", line 276, in __init__\n    self._set_entities(entities)\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/query.py", line 289, in _set_entities\n    coercions.expect(\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/sql/coercions.py", line 388, in expect\n    insp._post_inspect\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/util/langhelpers.py", line 1257, in __get__\n    obj.__dict__[self.__name__] = result = self.fget(obj)\n                                           ^^^^^^^^^^^^^^\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/mapper.py", line 2724, in _post_inspect\n    self._check_configure()\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/mapper.py", line 2401, in _check_configure\n    _configure_registries({self.registry}, cascade=True)\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/mapper.py", line 4214, in _configure_registries\n    _do_configure_registries(registries, cascade)\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/mapper.py", line 4255, in _do_configure_registries\n    mapper._post_configure_properties()\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/mapper.py", line 2418, in _post_configure_properties\n    prop.init()\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/interfaces.py", line 589, in init\n    self.do_init()\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/relationships.py", line 1656, in do_init\n    self._setup_entity()\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/relationships.py", line 1868, in _setup_entity\n    self._clsregistry_resolve_name(argument)(),\n    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/clsregistry.py", line 520, in _resolve_name\n    self._raise_for_name(name, err)\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/clsregistry.py", line 501, in _raise_for_name\n    raise exc.InvalidRequestError(\nsqlalchemy.exc.InvalidRequestError: When initializing mapper Mapper[Billing(billing)], expression \'Clients\' failed to locate a name (\'Clients\'). If this is a class name, consider adding this relationship() to the <class \'src.Models.billing.Billing\'> class after both dependent classes have been defined.\n'}
+[2025-04-08 14:05:44,602] [INFO] logistics_app: Models initialized successfully.
+[2025-04-08 14:05:44,602] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-08 14:05:56,027] [INFO] logistics_app: Models initialized successfully.
+[2025-04-08 14:05:56,027] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-08 14:06:20,380] [INFO] logistics_app: Models initialized successfully.
+[2025-04-08 14:06:20,380] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-08 14:06:25,493] [INFO] logistics_app: Models initialized successfully.
+[2025-04-08 14:06:25,493] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-08 14:06:33,981] [ERROR] logistics_app: Unexpected server error during signup: Mapper 'Mapper[Client(clients)]' has no property 'driver_ratings'.  If this property was indicated from other mappers or configure events, ensure registry.configure() has been called.
+Traceback (most recent call last):
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/mapper.py", line 2522, in get_property
+    return self._props[key]
+           ~~~~~~~~~~~^^^^^
+KeyError: 'driver_ratings'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/phyl/Development/Logistics/Backend/src/handlers/controllers/auth_controller.py", line 140, in signup
+    existing_user = System_Users.query.filter_by(email=email).first()
+                    ^^^^^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/flask_sqlalchemy/model.py", line 22, in __get__
+    return cls.query_class(
+           ^^^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/query.py", line 276, in __init__
+    self._set_entities(entities)
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/query.py", line 289, in _set_entities
+    coercions.expect(
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/sql/coercions.py", line 388, in expect
+    insp._post_inspect
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/util/langhelpers.py", line 1257, in __get__
+    obj.__dict__[self.__name__] = result = self.fget(obj)
+                                           ^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/mapper.py", line 2724, in _post_inspect
+    self._check_configure()
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/mapper.py", line 2401, in _check_configure
+    _configure_registries({self.registry}, cascade=True)
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/mapper.py", line 4214, in _configure_registries
+    _do_configure_registries(registries, cascade)
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/mapper.py", line 4255, in _do_configure_registries
+    mapper._post_configure_properties()
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/mapper.py", line 2418, in _post_configure_properties
+    prop.init()
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/interfaces.py", line 589, in init
+    self.do_init()
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/relationships.py", line 1661, in do_init
+    self._generate_backref()
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/relationships.py", line 2147, in _generate_backref
+    self._add_reverse_property(self.back_populates)
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/relationships.py", line 1592, in _add_reverse_property
+    other = self.mapper.get_property(key, _configure_mappers=False)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/mapper.py", line 2524, in get_property
+    raise sa_exc.InvalidRequestError(
+sqlalchemy.exc.InvalidRequestError: Mapper 'Mapper[Client(clients)]' has no property 'driver_ratings'.  If this property was indicated from other mappers or configure events, ensure registry.configure() has been called.
+[2025-04-08 14:06:34,019] [ERROR] logistics_app: APIError Logged: {'message': 'Something went wrong. Please try again later.', 'status_code': 500, 'error_code': 'internal_server_error', 'payload': {}, 'traceback': 'Traceback (most recent call last):\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/mapper.py", line 2522, in get_property\n    return self._props[key]\n           ~~~~~~~~~~~^^^^^\nKeyError: \'driver_ratings\'\n\nThe above exception was the direct cause of the following exception:\n\nTraceback (most recent call last):\n  File "/home/phyl/Development/Logistics/Backend/src/handlers/controllers/auth_controller.py", line 140, in signup\n    existing_user = System_Users.query.filter_by(email=email).first()\n                    ^^^^^^^^^^^^^^^^^^\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/flask_sqlalchemy/model.py", line 22, in __get__\n    return cls.query_class(\n           ^^^^^^^^^^^^^^^^\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/query.py", line 276, in __init__\n    self._set_entities(entities)\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/query.py", line 289, in _set_entities\n    coercions.expect(\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/sql/coercions.py", line 388, in expect\n    insp._post_inspect\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/util/langhelpers.py", line 1257, in __get__\n    obj.__dict__[self.__name__] = result = self.fget(obj)\n                                           ^^^^^^^^^^^^^^\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/mapper.py", line 2724, in _post_inspect\n    self._check_configure()\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/mapper.py", line 2401, in _check_configure\n    _configure_registries({self.registry}, cascade=True)\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/mapper.py", line 4214, in _configure_registries\n    _do_configure_registries(registries, cascade)\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/mapper.py", line 4255, in _do_configure_registries\n    mapper._post_configure_properties()\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/mapper.py", line 2418, in _post_configure_properties\n    prop.init()\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/interfaces.py", line 589, in init\n    self.do_init()\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/relationships.py", line 1661, in do_init\n    self._generate_backref()\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/relationships.py", line 2147, in _generate_backref\n    self._add_reverse_property(self.back_populates)\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/relationships.py", line 1592, in _add_reverse_property\n    other = self.mapper.get_property(key, _configure_mappers=False)\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/mapper.py", line 2524, in get_property\n    raise sa_exc.InvalidRequestError(\nsqlalchemy.exc.InvalidRequestError: Mapper \'Mapper[Client(clients)]\' has no property \'driver_ratings\'.  If this property was indicated from other mappers or configure events, ensure registry.configure() has been called.\n'}
+[2025-04-08 14:09:15,093] [INFO] logistics_app: Models initialized successfully.
+[2025-04-08 14:09:15,094] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-08 14:09:30,429] [INFO] logistics_app: Models initialized successfully.
+[2025-04-08 14:09:30,430] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.

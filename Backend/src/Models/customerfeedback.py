@@ -3,7 +3,7 @@ from datetime import datetime
 from sqlalchemy import Column, Integer, String, Boolean, Date, Text, ForeignKey
 from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.orm import validates
-from   app import db
+from   src.startup.database import db
 from src.utils.logger import logger  # Assuming you have a logger utility
 
 class Customer_Feedback(db.Model):

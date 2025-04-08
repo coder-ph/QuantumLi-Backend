@@ -2,7 +2,7 @@ from uuid import uuid4
 from datetime import datetime
 from sqlalchemy import Column, Integer, String, ForeignKey, Text, Date, Boolean, Enum
 from sqlalchemy.dialects.postgresql import UUID
-from   app import db
+from   src.startup.database import db
 from sqlalchemy.orm import validates
 from src.utils.logger import logger  
 

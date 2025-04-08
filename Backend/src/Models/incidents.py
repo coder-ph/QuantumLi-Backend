@@ -2,7 +2,7 @@ from uuid import uuid4
 from datetime import datetime
 from sqlalchemy import Column, String, Enum, Float, Text, Date, ForeignKey, Boolean, DateTime
 from sqlalchemy.dialects.postgresql import UUID
-from   app import db
+from   src.startup.database import db
 from src.utils.logger import logger  # Assuming you have a logger utility
 
 class Incidents(db.Model):

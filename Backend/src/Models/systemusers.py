@@ -1,5 +1,5 @@
 from uuid import uuid4
-from sqlalchemy import Column, String, ForeignKey, DateTime, Boolean, Enum
+from sqlalchemy import Column, String, ForeignKey, DateTime, Boolean, Enum, Integer
 from sqlalchemy.dialects.postgresql import UUID
 from   src.startup.database import db
 from datetime import datetime
@@ -9,10 +9,12 @@ class System_Users(db.Model):
     __tablename__ = 'system_users'
 
     user_id = Column(UUID(as_uuid=True), primary_key=True, default=uuid4)
-    employee_id = Column(UUID(as_uuid=True), ForeignKey('employees.employee_id'), nullable=True)
+    # employee_id = Column(UUID(as_uuid=True), ForeignKey('employees.employee_id'), nullable=True)
     username = Column(String(50), nullable=False, unique=True)
     password_hash = Column(String(255), nullable=False)
-    role = Column(Enum('admin', 'employee', 'driver', 'manager', name='user_role_enum'), nullable=False)
+    email = Column(String(255), nullable=False, unique=True)
+    phone = Column(Integer, nullable=False)
+    role = Column(Enum('admin', 'employee', 'driver','user', 'manager', name='user_role_enum'), nullable=False)
     last_login = Column(DateTime, nullable=True, default=None)
     is_active = Column(Boolean, default=True)
     password_reset_token = Column(String(255), nullable=True)
@@ -21,7 +23,7 @@ class System_Users(db.Model):
     created_at = Column(DateTime, nullable=False, default=datetime.utcnow)
     updated_at = Column(DateTime, nullable=False, default=datetime.utcnow, onupdate=datetime.utcnow)
 
-    employee = db.relationship('Employees', back_populates='system_user', uselist=False)
+    # employee = db.relationship('Employee', back_populates='system_user', uselist=False, lazy='select')
     audit_logs = db.relationship('Audit_Logs', back_populates='user')
     def __repr__(self):
         return f"<System_Users(user_id={self.user_id}, username={self.username}, role={self.role}, is_active={self.is_active}, is_deleted={self.is_deleted})>"

@@ -43,7 +43,7 @@ class Shipment(BaseModel):
     seal_number = Column(String(100), nullable=True)
 
     # Relationships
-    carrier = relationship('Carrier', backref='shipments', lazy=True)
+    carrier = relationship('Carrier', back_populates='shipments', lazy=True)
     vehicle = relationship('Vehicle', backref='shipments', lazy=True)
     driver = relationship('Driver', backref='shipments', lazy=True)
     origin_location = relationship('Location', foreign_keys=[origin_location_id], backref='origin_shipments', lazy=True)

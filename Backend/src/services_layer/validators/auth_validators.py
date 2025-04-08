@@ -1,7 +1,7 @@
 from marshmallow import Schema, fields, validate, ValidationError, validates
 from src.utils.logger import logger  
 
-ALLOWED_ROLES = ["admin", "manager", "driver", "client"]
+ALLOWED_ROLES = ["admin", "manager", "driver", "client", "user"]
 
 class SignUpSchema(Schema):
     email = fields.Email(
@@ -24,7 +24,7 @@ class SignUpSchema(Schema):
         description="Password (min 8 characters)"
     )
 
-    full_name = fields.String(
+    username= fields.String(
         required=True,
         validate=validate.Length(min=2, max=100),
         error_messages={

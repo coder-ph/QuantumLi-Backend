@@ -3,7 +3,7 @@ from datetime import datetime
 from sqlalchemy import Column, String, Float, ForeignKey, Enum, Boolean, DateTime
 from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.orm import relationship
-from   app import db
+from   src.startup.database import db
 from src.utils.logger import logger  # Assuming you have a logger in your utilities
 
 class InvoiceItems(db.Model):

@@ -3,42 +3,34 @@ from datetime import datetime
 from sqlalchemy import Column, String, Integer, Float, Date, DateTime, Enum, ForeignKey, Boolean
 from sqlalchemy.orm import relationship
 from sqlalchemy.dialects.postgresql import UUID
-from   app import db
+from src.Models.client import Client
+from   src.startup.database import db
 from src.utils.logger import logger  # Assuming you have a logger in your utilities
 
 class Billing(db.Model):
     __tablename__ = 'billing'
 
     invoice_id = Column(UUID(as_uuid=True), primary_key=True, default=uuid4)
-    
-    
     client_id = Column(UUID(as_uuid=True), ForeignKey('clients.client_id'), nullable=False)
-
-   
     invoice_date = Column(Date, nullable=False, default=datetime.utcnow)
     due_date = Column(Date, nullable=False)
-
     total_amount = Column(Float, nullable=False)
     tax_amount = Column(Float, nullable=False)
 
-    
     status = Column(Enum('draft', 'paid', 'overdue', name='invoice_status'), nullable=False, default='draft')
-
     payment_date = Column(Date, nullable=True)
     payment_method = Column(String(50), nullable=True)  #  "Mpesa", "Credit Card", etc.
 
-    
     reference_numbers = Column(String(100), nullable=True)
     notes = Column(String(255), nullable=True)
 
- 
     is_deleted = Column(Boolean, default=False)
 
     created_at = Column(DateTime, nullable=False, default=datetime.utcnow)
     updated_at = Column(DateTime, nullable=False, default=datetime.utcnow, onupdate=datetime.utcnow)
 
   
-    client = relationship("Clients", backref="billing_invoices")
+    client = relationship("Client", backref="billing_invoices")
 
     def __repr__(self):
         return f"<Billing(invoice_id={self.invoice_id}, client_id={self.client_id}, total_amount={self.total_amount}, status={self.status})>"

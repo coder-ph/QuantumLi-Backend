@@ -27,7 +27,7 @@ class Vehicle(db.Model):
     next_maintenance_date = Column(Date, nullable=True)
     insurance_expiry = Column(Date, nullable=False)
 
-    carrier = relationship('Carrier', backref='vehicles', lazy=True)
+    carrier = relationship('Carrier', back_populates='vehicles', lazy=True)
     current_location = relationship('Location', backref='vehicles', lazy=True)
 
     def __repr__(self):

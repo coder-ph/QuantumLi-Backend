@@ -1,7 +1,7 @@
 import uuid
 import re
 import logging
-from sqlalchemy import Column, String, Float, Text
+from sqlalchemy import Column, String, Float, Text, CheckConstraint
 from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.orm import relationship
 from sqlalchemy.ext.declarative import declarative_base
@@ -24,11 +24,15 @@ class Carrier(db.Model):
     contract_details = Column(Text, nullable=True)
     service_levels = Column(Text, nullable=True)
     insurance_details = Column(Text, nullable=True)
-    performance_rating = Column(Float, nullable=True, check='performance_rating >= 0 AND performance_rating <= 5')
+    performance_rating = Column(Float, nullable=True)
 
-    # Relationships (Example)
-    vehicles = relationship("Vehicle", backref="carrier", lazy=True)
-    shipments = relationship("Shipment", backref="carrier", lazy=True)
+    
+    vehicles = relationship("Vehicle", back_populates="carrier", lazy=True)
+    shipments = relationship("Shipment",back_populates ="carrier", lazy=True)
+    
+    __table_args__ = (
+        CheckConstraint('performance_rating >= 0 AND performance_rating <= 5', name='check_performance_rating'),
+    )
 
     def __repr__(self):
         return f"<Carrier(carrier_id={self.carrier_id}, carrier_name={self.carrier_name}, carrier_type={self.carrier_type})>"

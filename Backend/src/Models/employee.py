@@ -26,6 +26,7 @@ class Employee(db.Model):
     updated_at = Column(DateTime, nullable=False, default=datetime.utcnow, onupdate=datetime.utcnow)
     is_deleted = Column(Boolean, default=False)  
 
+    system_user = db.relationship('System_Users', back_populates='employee', uselist=False)
     supervisor = relationship('Employee', remote_side=[employee_id], backref='subordinates', lazy=True)
 
     def __repr__(self):
