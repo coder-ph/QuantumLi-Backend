@@ -10,12 +10,15 @@ flask-sqlalchemy = "*"
 flask-jwt-extended = "*"
 flask-marshmallow = "*"
 flask-cors = "*"
-redis = "*"
 psycopg2-binary = "*"
 flask-bcrypt = "*"
 flask-socketio = "*"
 apscheduler = "*"
 flask-migrate = "*"
+bcrypt = "*"
+redis = "*"
+flask-limiter = "*"
+flask-mail = "*"
 
 [dev-packages]
 

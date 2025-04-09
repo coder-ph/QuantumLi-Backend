@@ -113,7 +113,7 @@ def create_user(validated_data, hashed_pw):
 
         new_user = System_Users(
             email=validated_data['email'].strip().lower(),
-            password=hashed_pw,  
+            password_hash=hashed_pw,  
             username=validated_data['username'].strip(),
             role=validated_data['role'].strip(),
             status='pending_verification'  
