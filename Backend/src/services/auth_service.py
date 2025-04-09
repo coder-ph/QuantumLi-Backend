@@ -114,6 +114,7 @@ def create_user(validated_data, hashed_pw):
         new_user = System_Users(
             email=validated_data['email'].strip().lower(),
             password_hash=hashed_pw,  
+            phone = validated_data['phone'],
             username=validated_data['username'].strip(),
             role=validated_data['role'].strip(),
             status='pending_verification'  
@@ -138,7 +139,7 @@ def create_user(validated_data, hashed_pw):
 def create_verification_token(user):
     try:
         # Generate a JWT token for email verification with 24-hour expiration
-        token = create_access_token(identity=user.id, expires_delta=timedelta(hours=24))
+        token = create_access_token(identity=user.user_id, expires_delta=timedelta(hours=24))
         logger.info(f"Generated verification token for user {user.email}")
         return token
     except Exception as e:

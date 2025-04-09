@@ -8,7 +8,6 @@ from src.Models.base_model import BaseModel
 from src.utils.logger import logger
 import enum
 
-# Enum for operation status
 class OperationStatus(enum.Enum):
     IN_PROGRESS = 'in progress'
     COMPLETED = 'completed'
@@ -20,22 +19,19 @@ class WarehouseOperation(BaseModel):
 
     operation_id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
     location_id = Column(UUID(as_uuid=True), ForeignKey('locations.location_id'), nullable=False)
-    operation_type = Column(String, nullable=False)  # receiving, picking, packing
-    reference_id = Column(UUID(as_uuid=True), nullable=False)  # reference to order, shipment
+    operation_type = Column(String, nullable=False) 
+    reference_id = Column(UUID(as_uuid=True), nullable=False)  
     start_time = Column(DateTime, nullable=False, default=datetime.utcnow)
     end_time = Column(DateTime, nullable=True)
     operator_id = Column(UUID(as_uuid=True), ForeignKey('employees.employee_id'), nullable=False)
-    status = Column(Enum(OperationStatus), nullable=False, default=OperationStatus.PENDING)  # Use Enum for status
-    equipment_used = Column(String, nullable=True)  # Equipment like forklift, pallet jack
-    notes = Column(String, nullable=True)  # Additional notes about the operation
+    status = Column(Enum(OperationStatus), nullable=False, default=OperationStatus.PENDING)  
+    equipment_used = Column(String, nullable=True)  
+    notes = Column(String, nullable=True)  
 
-    
     deleted_at = Column(DateTime, nullable=True)
 
-   
     location = relationship('Location', backref='warehouse_operations', lazy=True)
     operator = relationship('Employee', backref='warehouse_operations', lazy=True)
-
     
     created_at = Column(DateTime, default=datetime.utcnow)
     updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
@@ -51,7 +47,6 @@ class WarehouseOperation(BaseModel):
         """Log updates to warehouse operation."""
         logger.info(f"WarehouseOperation with ID {self.operation_id} updated at {self.updated_at}.")
 
-   
     def delete(self):
         """Mark this record as deleted (soft delete)."""
         self.deleted_at = datetime.utcnow()
