@@ -9,7 +9,7 @@ class System_Users(db.Model):
     __tablename__ = 'system_users'
 
     user_id = Column(UUID(as_uuid=True), primary_key=True, default=uuid4)
-    # employee_id = Column(UUID(as_uuid=True), ForeignKey('employees.employee_id'), nullable=True)
+    employee_id = Column(UUID(as_uuid=True), ForeignKey('employees.employee_id'), nullable=True)
     username = Column(String(50), nullable=False, unique=True)
     password_hash = Column(String(255), nullable=False)
     email = Column(String(255), nullable=False, unique=True)
@@ -19,11 +19,13 @@ class System_Users(db.Model):
     is_active = Column(Boolean, default=True)
     password_reset_token = Column(String(255), nullable=True)
     password_expiry = Column(DateTime, nullable=True)
+    status = Column(String(100))
     is_deleted = Column(Boolean, default=False)
     created_at = Column(DateTime, nullable=False, default=datetime.utcnow)
     updated_at = Column(DateTime, nullable=False, default=datetime.utcnow, onupdate=datetime.utcnow)
+    
 
-    # employee = db.relationship('Employee', back_populates='system_user', uselist=False, lazy='select')
+    employee = db.relationship('Employee', back_populates='system_user', uselist=False, lazy='select')
     audit_logs = db.relationship('Audit_Logs', back_populates='user')
     def __repr__(self):
         return f"<System_Users(user_id={self.user_id}, username={self.username}, role={self.role}, is_active={self.is_active}, is_deleted={self.is_deleted})>"

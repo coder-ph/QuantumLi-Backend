@@ -1,5 +1,5 @@
 from uuid import uuid4
-from sqlalchemy import Column, String, Boolean, Text, DateTime, Enum
+from sqlalchemy import Column, String, Boolean, Text, DateTime, Enum, JSON
 from sqlalchemy.dialects.postgresql import UUID, JSONB
 from datetime import datetime
 from   src.startup.database import db
@@ -16,7 +16,7 @@ class ThirdPartyService(db.Model):
 
     authentication_method = Column(Enum('api_key', 'oauth2', 'basic_auth', 'jwt', name='authentication_method_enum'), nullable=False)
 
-    config_details = Column(JSONB, nullable=False)
+    config_details = Column(JSON, nullable=False)
 
     active_status = Column(Boolean, default=True)
 

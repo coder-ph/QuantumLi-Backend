@@ -102,34 +102,31 @@ def verify_password(stored_password, provided_password):
         logger.error(f"Error while verifying password: {str(e)}")
         return False
     
-def create_user(data):
+def create_user(validated_data, hashed_pw):
     try:
-        # Validate if user already exists (based on email)
-        existing_user = System_Users.query.filter_by(email=data['email']).first()
+        
+        existing_user = System_Users.query.filter_by(email=validated_data['email']).first()
         if existing_user:
-            logger.warning(f"Signup failed: Email already exists - {data['email']}")
+            logger.warning(f"Signup failed: Email already exists - {validated_data['email']}")
             raise ConflictError("Email is already registered.")
 
-        # Hash password before storing it
-        hashed_password = bcrypt.hashpw(data['password'].encode('utf-8'), bcrypt.gensalt())
 
-        # Create user record with 'pending_verification' status
         new_user = System_Users(
-            email=data['email'].strip().lower(),
-            password=hashed_password,
-            first_name=data['first_name'].strip(),
-            last_name=data['last_name'].strip(),
-            status='pending_verification'  # Pending verification until email is verified
+            email=validated_data['email'].strip().lower(),
+            password=hashed_pw,  
+            username=validated_data['username'].strip(),
+            role=validated_data['role'].strip(),
+            status='pending_verification'  
         )
 
-        # Save user to DB
+        
         db.session.add(new_user)
         db.session.commit()
-        
+
         logger.info(f"New user created: {new_user.email}, status: {new_user.status}")
-        
+
         return new_user
-    
+
     except SQLAlchemyError as db_error:
         db.session.rollback()
         logger.error(f"Database error while creating user: {str(db_error)}")

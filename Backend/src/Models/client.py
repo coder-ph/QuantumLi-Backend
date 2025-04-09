@@ -6,6 +6,7 @@ from sqlalchemy import Column, String, DateTime, Float, Enum
 from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.orm import validates
 from   src.startup.database import db
+from src.Models.driverRating import Driver_Ratings
 from sqlalchemy import UniqueConstraint
 
 
@@ -23,7 +24,7 @@ class Client(db.Model):
     address = Column(String(255), nullable=True)
     tax_id = Column(String(50), nullable=True)
     registration_number = Column(String(50), nullable=True)
-    driver_ratings = db.relationship("DriverRating", back_populates="client")
+    driver_ratings = db.relationship("Driver_Ratings", back_populates="client")
     account_status = Column(Enum('active', 'inactive', name='account_status'), default='active')
     credit_limit = Column(Float, nullable=True)
     payment_terms = Column(String(50), nullable=True)
