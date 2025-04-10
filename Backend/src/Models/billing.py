@@ -5,7 +5,7 @@ from sqlalchemy.orm import relationship
 from sqlalchemy.dialects.postgresql import UUID
 from src.Models.client import Client
 from   src.startup.database import db
-from src.utils.logger import logger  # Assuming you have a logger in your utilities
+from src.utils.logger import logger  
 
 class Billing(db.Model):
     __tablename__ = 'billing'

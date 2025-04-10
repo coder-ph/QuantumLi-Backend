@@ -12,10 +12,12 @@ from src.services_layer.auth.token_service import is_token_revoked
 from src.utils.logger import logger
 from src.error.apiErrors import APIError, NotFoundError, ValidationError, UnauthorizedError, InternalServerError
 from src.Models.models import Models
+from flask_socketio import SocketIO
+
 app = Flask(__name__)
 
 app.config.from_object(Config)
-
+socketio = SocketIO(app)
 db.init_app(app)
 models = Models(db)
 models.init_app(app)
@@ -79,4 +81,4 @@ def home():
     return "Welcome to the logistics platform backend!"
 
 if __name__ == '__main__':
-    app.run(debug=True, port=5555)
+    socketio.run(app,debug=True, port=5555)
