@@ -29,7 +29,6 @@ def get_all_users():
         logger.error(f"[get_all_users] Error: {str(e)}", exc_info=True)
         return jsonify({"message": "Internal server error"}), 500
 
-
 @jwt_required()
 @limiter.limit("5 per minute")
 def update_user():
@@ -40,7 +39,6 @@ def update_user():
             logger.warning(f"[update_user] Empty request body for user {current_user_id}.")
             return jsonify({"message": "No data provided"}), 400
 
-        # Validate request data
         validated_data = user_schema.load(data, partial=True)
 
         user = user_service.update_user(current_user_id, validated_data)

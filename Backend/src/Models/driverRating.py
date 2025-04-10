@@ -28,7 +28,7 @@ class Driver_Ratings(db.Model):
 
     @validates('rating')
     def validate_rating(self, key, value):
-        """Ensure that the rating is between 1 and 5."""
+        
         if not (1 <= value <= 5):
             raise ValueError('Rating must be between 1 and 5')
         return value
@@ -37,24 +37,24 @@ class Driver_Ratings(db.Model):
         return f"<Driver_Ratings(rating_id={self.rating_id}, driver_id={self.driver_id}, rating={self.rating}, order_item_id={self.order_item_id})>"
 
     def save(self):
-        """Save the rating entry."""
+       
         db.session.add(self)
         db.session.commit()
         logger.info(f"Driver rating created: {self.rating_id}")
 
     def update(self):
-        """Update the rating entry."""
+       
         db.session.commit()
         logger.info(f"Driver rating updated: {self.rating_id}")
 
     def delete(self):
-        """Soft delete the rating entry."""
+      
         self.is_deleted = True
         db.session.commit()
         logger.info(f"Driver rating soft deleted: {self.rating_id}")
 
     def restore(self):
-        """Restore a soft-deleted rating entry."""
+      
         self.is_deleted = False
         db.session.commit()
         logger.info(f"Driver rating restored: {self.rating_id}")

@@ -5,9 +5,7 @@ from typing import Optional, List
 
 class BillingRepository:
     def create(self, data: dict) -> Optional[Billing]:
-        """
-        Create a new billing record.
-        """
+
         try:
             billing = Billing(**data)
             db.session.add(billing)
@@ -20,9 +18,7 @@ class BillingRepository:
             return None
 
     def get_all(self) -> List[Billing]:
-        """
-        Retrieve all non-deleted billing records.
-        """
+    
         try:
             return Billing.query.filter_by(is_deleted=False).all()
         except Exception as e:
@@ -30,9 +26,7 @@ class BillingRepository:
             return []
 
     def get_by_id(self, invoice_id: str) -> Optional[Billing]:
-        """
-        Get a billing record by invoice ID.
-        """
+       
         try:
             return Billing.query.filter_by(invoice_id=invoice_id, is_deleted=False).first()
         except Exception as e:
@@ -40,9 +34,7 @@ class BillingRepository:
             return None
 
     def update(self, billing: Billing, data: dict) -> Optional[Billing]:
-        """
-        Update a billing record with provided data.
-        """
+    
         try:
             for key, value in data.items():
                 setattr(billing, key, value)
@@ -55,9 +47,7 @@ class BillingRepository:
             return None
 
     def delete(self, billing: Billing) -> Optional[Billing]:
-        """
-        Soft delete a billing record.
-        """
+      
         try:
             billing.is_deleted = True
             db.session.commit()
@@ -69,9 +59,7 @@ class BillingRepository:
             return None
 
     def restore(self, billing: Billing) -> Optional[Billing]:
-        """
-        Restore a soft-deleted billing record.
-        """
+      
         try:
             billing.is_deleted = False
             db.session.commit()

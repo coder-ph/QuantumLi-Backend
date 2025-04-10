@@ -1618,3 +1618,103 @@ src.error.apiErrors.ConflictError: 409 conflict: Email is already registered.
 [2025-04-10 14:53:30,221] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
 [2025-04-10 14:53:42,193] [INFO] logistics_app: Models initialized successfully.
 [2025-04-10 14:53:42,193] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-10 17:41:25,021] [INFO] logistics_app: Models initialized successfully.
+[2025-04-10 17:41:25,022] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-10 17:41:25,835] [INFO] logistics_app: Models initialized successfully.
+[2025-04-10 17:41:25,835] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-10 17:41:49,946] [ERROR] logistics_app: Unexpected server error during signup: Mapper 'Mapper[System_Users(system_users)]' has no property 'employee'.  If this property was indicated from other mappers or configure events, ensure registry.configure() has been called.
+Traceback (most recent call last):
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/mapper.py", line 2522, in get_property
+    return self._props[key]
+           ~~~~~~~~~~~^^^^^
+KeyError: 'employee'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/phyl/Development/Logistics/Backend/src/handlers/controllers/auth_controller.py", line 140, in signup
+    existing_user = System_Users.query.filter_by(email=email).first()
+                    ^^^^^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/flask_sqlalchemy/model.py", line 22, in __get__
+    return cls.query_class(
+           ^^^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/query.py", line 276, in __init__
+    self._set_entities(entities)
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/query.py", line 289, in _set_entities
+    coercions.expect(
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/sql/coercions.py", line 388, in expect
+    insp._post_inspect
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/util/langhelpers.py", line 1257, in __get__
+    obj.__dict__[self.__name__] = result = self.fget(obj)
+                                           ^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/mapper.py", line 2724, in _post_inspect
+    self._check_configure()
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/mapper.py", line 2401, in _check_configure
+    _configure_registries({self.registry}, cascade=True)
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/mapper.py", line 4214, in _configure_registries
+    _do_configure_registries(registries, cascade)
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/mapper.py", line 4255, in _do_configure_registries
+    mapper._post_configure_properties()
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/mapper.py", line 2418, in _post_configure_properties
+    prop.init()
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/interfaces.py", line 589, in init
+    self.do_init()
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/relationships.py", line 1661, in do_init
+    self._generate_backref()
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/relationships.py", line 2147, in _generate_backref
+    self._add_reverse_property(self.back_populates)
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/relationships.py", line 1592, in _add_reverse_property
+    other = self.mapper.get_property(key, _configure_mappers=False)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/mapper.py", line 2524, in get_property
+    raise sa_exc.InvalidRequestError(
+sqlalchemy.exc.InvalidRequestError: Mapper 'Mapper[System_Users(system_users)]' has no property 'employee'.  If this property was indicated from other mappers or configure events, ensure registry.configure() has been called.
+[2025-04-10 17:41:49,968] [ERROR] logistics_app: APIError Logged: {'message': 'Something went wrong. Please try again later.', 'status_code': 500, 'error_code': 'internal_server_error', 'payload': {}, 'traceback': 'Traceback (most recent call last):\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/mapper.py", line 2522, in get_property\n    return self._props[key]\n           ~~~~~~~~~~~^^^^^\nKeyError: \'employee\'\n\nThe above exception was the direct cause of the following exception:\n\nTraceback (most recent call last):\n  File "/home/phyl/Development/Logistics/Backend/src/handlers/controllers/auth_controller.py", line 140, in signup\n    existing_user = System_Users.query.filter_by(email=email).first()\n                    ^^^^^^^^^^^^^^^^^^\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/flask_sqlalchemy/model.py", line 22, in __get__\n    return cls.query_class(\n           ^^^^^^^^^^^^^^^^\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/query.py", line 276, in __init__\n    self._set_entities(entities)\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/query.py", line 289, in _set_entities\n    coercions.expect(\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/sql/coercions.py", line 388, in expect\n    insp._post_inspect\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/util/langhelpers.py", line 1257, in __get__\n    obj.__dict__[self.__name__] = result = self.fget(obj)\n                                           ^^^^^^^^^^^^^^\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/mapper.py", line 2724, in _post_inspect\n    self._check_configure()\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/mapper.py", line 2401, in _check_configure\n    _configure_registries({self.registry}, cascade=True)\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/mapper.py", line 4214, in _configure_registries\n    _do_configure_registries(registries, cascade)\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/mapper.py", line 4255, in _do_configure_registries\n    mapper._post_configure_properties()\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/mapper.py", line 2418, in _post_configure_properties\n    prop.init()\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/interfaces.py", line 589, in init\n    self.do_init()\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/relationships.py", line 1661, in do_init\n    self._generate_backref()\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/relationships.py", line 2147, in _generate_backref\n    self._add_reverse_property(self.back_populates)\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/relationships.py", line 1592, in _add_reverse_property\n    other = self.mapper.get_property(key, _configure_mappers=False)\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/mapper.py", line 2524, in get_property\n    raise sa_exc.InvalidRequestError(\nsqlalchemy.exc.InvalidRequestError: Mapper \'Mapper[System_Users(system_users)]\' has no property \'employee\'.  If this property was indicated from other mappers or configure events, ensure registry.configure() has been called.\n'}
+[2025-04-10 17:45:01,799] [INFO] logistics_app: Models initialized successfully.
+[2025-04-10 17:45:01,799] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-10 17:45:02,621] [INFO] logistics_app: Models initialized successfully.
+[2025-04-10 17:45:02,622] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-10 17:45:14,688] [INFO] logistics_app: Password hashed successfully.
+[2025-04-10 17:45:14,712] [INFO] logistics_app: New user created: phelixmbani@gmail.com, status: pending_verification
+[2025-04-10 17:45:14,712] [INFO] logistics_app: Generated verification token for user phelixmbani@gmail.com
+[2025-04-10 17:45:14,713] [ERROR] logistics_app: Failed to send email to phelixmbani@gmail.com: type object 'Config' has no attribute 'EMAIL_SENDER'
+[2025-04-10 17:45:14,715] [ERROR] logistics_app: APIError Logged: {'message': 'Error sending verification email.', 'status_code': 500, 'error_code': 'internal_server_error', 'payload': {}, 'traceback': 'Traceback (most recent call last):\n  File "/home/phyl/Development/Logistics/Backend/src/utils/email_util.py", line 19, in send_email\n    msg[\'From\'] = Config.EMAIL_SENDER\n                  ^^^^^^^^^^^^^^^^^^^\nAttributeError: type object \'Config\' has no attribute \'EMAIL_SENDER\'. Did you mean: \'MAIL_SERVER\'?\n'}
+[2025-04-10 17:45:14,715] [ERROR] logistics_app: Error sending verification email to phelixmbani@gmail.com: 500 internal_server_error: Error sending verification email.
+[2025-04-10 17:45:14,719] [ERROR] logistics_app: APIError Logged: {'message': 'An error occurred while sending the verification email.', 'status_code': 500, 'error_code': 'internal_server_error', 'payload': {}, 'traceback': 'Traceback (most recent call last):\n  File "/home/phyl/Development/Logistics/Backend/src/utils/email_util.py", line 19, in send_email\n    msg[\'From\'] = Config.EMAIL_SENDER\n                  ^^^^^^^^^^^^^^^^^^^\nAttributeError: type object \'Config\' has no attribute \'EMAIL_SENDER\'. Did you mean: \'MAIL_SERVER\'?\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File "/home/phyl/Development/Logistics/Backend/src/services/auth_service.py", line 159, in send_verification_email\n    send_email(subject, body, email)\n  File "/home/phyl/Development/Logistics/Backend/src/utils/email_util.py", line 47, in send_email\n    raise InternalServerError("Error sending verification email.")\nsrc.error.apiErrors.InternalServerError: 500 internal_server_error: Error sending verification email.\n'}
+[2025-04-10 17:45:14,719] [ERROR] logistics_app: Unexpected server error during signup: 500 internal_server_error: An error occurred while sending the verification email.
+Traceback (most recent call last):
+  File "/home/phyl/Development/Logistics/Backend/src/utils/email_util.py", line 19, in send_email
+    msg['From'] = Config.EMAIL_SENDER
+                  ^^^^^^^^^^^^^^^^^^^
+AttributeError: type object 'Config' has no attribute 'EMAIL_SENDER'. Did you mean: 'MAIL_SERVER'?
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/phyl/Development/Logistics/Backend/src/services/auth_service.py", line 159, in send_verification_email
+    send_email(subject, body, email)
+  File "/home/phyl/Development/Logistics/Backend/src/utils/email_util.py", line 47, in send_email
+    raise InternalServerError("Error sending verification email.")
+src.error.apiErrors.InternalServerError: 500 internal_server_error: Error sending verification email.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/phyl/Development/Logistics/Backend/src/handlers/controllers/auth_controller.py", line 151, in signup
+    send_verification_email(new_user.email, verification_token)
+  File "/home/phyl/Development/Logistics/Backend/src/services/auth_service.py", line 164, in send_verification_email
+    raise InternalServerError("An error occurred while sending the verification email.")
+src.error.apiErrors.InternalServerError: 500 internal_server_error: An error occurred while sending the verification email.
+[2025-04-10 17:45:14,722] [ERROR] logistics_app: APIError Logged: {'message': 'Something went wrong. Please try again later.', 'status_code': 500, 'error_code': 'internal_server_error', 'payload': {}, 'traceback': 'Traceback (most recent call last):\n  File "/home/phyl/Development/Logistics/Backend/src/utils/email_util.py", line 19, in send_email\n    msg[\'From\'] = Config.EMAIL_SENDER\n                  ^^^^^^^^^^^^^^^^^^^\nAttributeError: type object \'Config\' has no attribute \'EMAIL_SENDER\'. Did you mean: \'MAIL_SERVER\'?\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File "/home/phyl/Development/Logistics/Backend/src/services/auth_service.py", line 159, in send_verification_email\n    send_email(subject, body, email)\n  File "/home/phyl/Development/Logistics/Backend/src/utils/email_util.py", line 47, in send_email\n    raise InternalServerError("Error sending verification email.")\nsrc.error.apiErrors.InternalServerError: 500 internal_server_error: Error sending verification email.\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File "/home/phyl/Development/Logistics/Backend/src/handlers/controllers/auth_controller.py", line 151, in signup\n    send_verification_email(new_user.email, verification_token)\n  File "/home/phyl/Development/Logistics/Backend/src/services/auth_service.py", line 164, in send_verification_email\n    raise InternalServerError("An error occurred while sending the verification email.")\nsrc.error.apiErrors.InternalServerError: 500 internal_server_error: An error occurred while sending the verification email.\n'}
+[2025-04-10 17:52:44,440] [INFO] logistics_app: Models initialized successfully.
+[2025-04-10 17:52:44,441] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-10 17:52:48,748] [INFO] logistics_app: Models initialized successfully.
+[2025-04-10 17:52:48,748] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-10 17:52:59,145] [INFO] logistics_app: Models initialized successfully.
+[2025-04-10 17:52:59,145] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-10 17:53:03,466] [INFO] logistics_app: Models initialized successfully.
+[2025-04-10 17:53:03,467] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-10 17:53:21,301] [INFO] logistics_app: Models initialized successfully.
+[2025-04-10 17:53:21,301] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-10 17:56:14,166] [INFO] logistics_app: Models initialized successfully.
+[2025-04-10 17:56:14,166] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.

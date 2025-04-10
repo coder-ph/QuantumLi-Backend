@@ -21,9 +21,7 @@ class ProductRepository:
             self.redis_client = None
 
     def get_product_by_id(self, product_id):
-        """
-        Fetch a product by its ID, using Redis cache if available.
-        """
+      
         cache_key = f"product:{product_id}"
         try:
             if self.redis_client:
@@ -46,9 +44,7 @@ class ProductRepository:
             return None
 
     def create_product(self, product_data):
-        """
-        Create a new product record in the database.
-        """
+        
         try:
             product = Product(**product_data)
             db.session.add(product)
@@ -61,9 +57,7 @@ class ProductRepository:
             raise e
 
     def update_product(self, product_id, update_data):
-        """
-        Update an existing product.
-        """
+       
         try:
             product = Product.query.get(product_id)
             if not product:
@@ -75,7 +69,6 @@ class ProductRepository:
 
             db.session.commit()
 
-            # Invalidate Redis cache
             if self.redis_client:
                 self.redis_client.delete(f"product:{product_id}")
 
@@ -87,9 +80,7 @@ class ProductRepository:
             raise e
 
     def delete_product(self, product_id):
-        """
-        Delete a product by ID.
-        """
+        
         try:
             product = Product.query.get(product_id)
             if not product:

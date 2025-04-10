@@ -18,7 +18,6 @@ def validate_request_data(data):
     if not data.get("incident_type") or not data.get("description"):
         raise BadRequestError("Missing required fields: incident_type and description.")
 
-
 @jwt_required()
 def create_incident():
     """Create a new incident."""
@@ -62,15 +61,13 @@ def get_incident(incident_id):
 def delete_incident(incident_id):
     """Delete an incident (soft delete)."""
     user = get_current_user()
-    # Only admin can delete an incident
     is_authorized(user, ['admin'])
 
     incident = incident_repo.get_by_id(incident_id)
     if not incident:
         logger.warning(f"Incident with ID {incident_id} not found for deletion.")
         raise NotFoundError("Incident not found.")
-    
-    # Soft delete the incident
+
     incident_repo.delete(incident)
     logger.info(f"User {user.email} deleted incident: {incident.incident_id}")
     return jsonify({'message': 'Incident deleted successfully.'}), 200

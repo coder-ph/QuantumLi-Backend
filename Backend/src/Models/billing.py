@@ -35,24 +35,24 @@ class Billing(db.Model):
         return f"<Billing(invoice_id={self.invoice_id}, client_id={self.client_id}, total_amount={self.total_amount}, status={self.status})>"
 
     def save(self):
-        """Save the billing record"""
+        
         db.session.add(self)
         db.session.commit()
         logger.info(f"Billing record created: {self.invoice_id}")
 
     def update(self):
-        """Update the billing record"""
+        
         db.session.commit()
         logger.info(f"Billing record updated: {self.invoice_id}")
 
     def delete(self):
-        """Soft delete the billing record"""
+        
         self.is_deleted = True
         db.session.commit()
         logger.info(f"Billing record soft deleted: {self.invoice_id}")
 
     def restore(self):
-        """Restore soft-deleted billing record"""
+       
         self.is_deleted = False
         db.session.commit()
         logger.info(f"Billing record restored: {self.invoice_id}")

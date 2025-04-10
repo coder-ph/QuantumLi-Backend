@@ -43,7 +43,7 @@ class Client(db.Model):
 
     @validates('email')
     def validate_email(self, key, email):
-        """Validates email format."""
+        
         email_regex = r"(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)"
         if not re.match(email_regex, email):
             logger.error(f"Invalid email format: {email}")
@@ -53,7 +53,7 @@ class Client(db.Model):
 
     @validates('phone')
     def validate_phone(self, key, phone):
-        """Validates phone number format."""
+        
         if phone.startswith('07'):
             if len(phone) != 10:
                 logger.error(f"Phone number starting with '07' must be 10 digits: {phone}")

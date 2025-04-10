@@ -39,7 +39,7 @@ class Carrier(db.Model):
 
     @staticmethod
     def validate_email(email):
-        """Validates email format using regex."""
+        
         email_regex = r"(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)"
         if not re.match(email_regex, email):
             logger.error(f"Invalid email format: {email}")
@@ -49,7 +49,7 @@ class Carrier(db.Model):
 
     @staticmethod
     def validate_phone(phone):
-        """Validates phone number format."""
+        
         if phone.startswith('07'):
             if len(phone) != 10:
                 logger.error(f"Phone number starting with '07' must be 10 digits: {phone}")

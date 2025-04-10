@@ -26,26 +26,26 @@ class Employee(db.Model):
     updated_at = Column(DateTime, nullable=False, default=datetime.utcnow, onupdate=datetime.utcnow)
     is_deleted = Column(Boolean, default=False)  
 
-    system_user = db.relationship('System_Users', back_populates='employee', uselist=False)
+    # system_user = db.relationship('System_Users', back_populates='employee', uselist=False)
     supervisor = relationship('Employee', remote_side=[employee_id], backref='subordinates', lazy=True)
 
     def __repr__(self):
         return f"<Employee(id={self.employee_id}, name={self.first_name} {self.last_name}, position={self.position})>"
 
     def delete(self):
-        """Soft delete functionality"""
+      
         self.is_deleted = True
         db.session.commit()
         logger.info(f"Employee {self.employee_id} soft deleted.")
 
     def restore(self):
-        """Restore soft-deleted entry"""
+        
         self.is_deleted = False
         db.session.commit()
         logger.info(f"Employee {self.employee_id} restored.")
 
     def save(self):
-        """Save a new employee"""
+      
         db.session.add(self)
         db.session.commit()
         logger.info(f"Employee {self.employee_id} created.")

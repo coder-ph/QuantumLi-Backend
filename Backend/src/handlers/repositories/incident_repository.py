@@ -9,7 +9,7 @@ from src.utils.logger import logger
 class IncidentRepository:
 
     def create(self, data, user):
-        """Create a new incident."""
+        
         try:
             data['reported_by'] = user.email  
             incident = Incidents(**data)
@@ -23,7 +23,7 @@ class IncidentRepository:
             raise Exception(f"Failed to create incident: {str(e)}")
 
     def get_all(self):
-        """Get all incidents that are not soft-deleted."""
+      
         try:
             incidents = Incidents.query.filter_by(is_deleted=False).all()
             logger.info(f"Retrieved {len(incidents)} incidents.")
@@ -33,7 +33,7 @@ class IncidentRepository:
             raise Exception(f"Failed to retrieve incidents: {str(e)}")
 
     def get_by_id(self, incident_id):
-        """Get a specific incident by ID."""
+       
         try:
             incident = Incidents.query.get(incident_id)
             if not incident or incident.is_deleted:
@@ -46,7 +46,7 @@ class IncidentRepository:
             raise Exception(f"Failed to retrieve incident with ID {incident_id}: {str(e)}")
 
     def delete(self, incident):
-        """Soft delete an incident."""
+      
         try:
             incident.is_deleted = True
             db.session.commit()
@@ -57,7 +57,7 @@ class IncidentRepository:
             raise Exception(f"Failed to delete incident: {str(e)}")
 
     def update(self, incident, data):
-        """Update an incident with new data."""
+       
         try:
             for key, value in data.items():
                 if hasattr(incident, key):
@@ -71,7 +71,7 @@ class IncidentRepository:
             raise Exception(f"Failed to update incident: {str(e)}")
 
     def restore(self, incident):
-        """Restore a soft-deleted incident."""
+        
         try:
             incident.is_deleted = False
             db.session.commit()

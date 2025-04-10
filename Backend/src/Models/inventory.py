@@ -6,10 +6,8 @@ from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.orm import relationship
 from   src.startup.database import db
 from sqlalchemy.orm import validates
+from src.utils.logger import logger
 
-# Configure logging
-logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
-logger = logging.getLogger(__name__)
 
 class Inventory(db.Model):
     __tablename__ = 'inventory'

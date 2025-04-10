@@ -18,10 +18,8 @@ def create_driver():
 
     data = request.get_json()
     
-    
     if not data:
         raise BadRequestError("No data provided for driver creation.")
-    
     
     try:
         driver = driver_repo.create(data)
@@ -79,7 +77,6 @@ def update_driver(driver_id):
         if not driver:
             raise NotFoundError("Driver not found.")
         
-       
         driver_repo.update(driver, data)
         logger.info(f"User {user.email} updated driver: {driver.driver_id}")
         return jsonify({'message': 'Driver updated successfully.'}), 200

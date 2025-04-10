@@ -7,12 +7,11 @@ from sqlalchemy.exc import SQLAlchemyError
 class DriverRepository:
 
     def create(self, data):
-        """Create a new driver."""
+
         try:
             
             driver = Driver(**data)
             driver.validate_driver()  
-
            
             db.session.add(driver)
             db.session.commit()
@@ -25,7 +24,7 @@ class DriverRepository:
             raise Exception("Error creating driver.") from e
 
     def get_all(self):
-        """Get all drivers that are not soft-deleted."""
+        
         try:
             drivers = Driver.query.filter_by(is_deleted=False).all()
             logger.info(f"Retrieved {len(drivers)} active drivers.")
@@ -35,7 +34,7 @@ class DriverRepository:
             raise Exception("Error retrieving drivers.") from e
 
     def get_by_id(self, driver_id):
-        """Get a driver by ID, checking if not soft-deleted."""
+        
         try:
             driver = Driver.query.filter_by(driver_id=driver_id, is_deleted=False).first()
             if driver:
@@ -48,7 +47,7 @@ class DriverRepository:
             raise Exception(f"Error retrieving driver with ID {driver_id}.") from e
 
     def update(self, driver, data):
-        """Update an existing driver."""
+      
         try:
             
             if not driver:
@@ -69,7 +68,7 @@ class DriverRepository:
             raise Exception(f"Error updating driver {driver.driver_id}.") from e
 
     def delete(self, driver):
-        """Soft delete a driver by setting 'is_deleted' to True."""
+      
         try:
             if not driver:
                 logger.warning("Attempted to delete a non-existing driver.")
@@ -85,7 +84,7 @@ class DriverRepository:
             raise Exception(f"Error deleting driver {driver.driver_id}.") from e
 
     def restore(self, driver):
-        """Restore a soft-deleted driver by setting 'is_deleted' to False."""
+       
         try:
             if not driver:
                 logger.warning("Attempted to restore a non-existing driver.")

@@ -17,8 +17,6 @@ from src.services_layer.validators.auth_validators import SignUpSchema
 from src.services.auth_service import hash_password
 from sqlalchemy.exc import IntegrityError
 
-
-# Initialize Redis client using app config
 def get_redis_client():
     try:
         return redis.StrictRedis(
@@ -31,7 +29,6 @@ def get_redis_client():
         logger.error(f"Failed to connect to Redis: {str(e)}")
         raise InternalServerError("Server configuration error.")
 
-# Login route
 @limiter.limit("5 per minute")
 def login():
     try:
@@ -53,10 +50,8 @@ def login():
             logger.warning(f"Login failed: Invalid password | User ID: {user.id} | IP: {user_ip}")
             raise UnauthorizedError("Invalid credentials.")
 
-        # Generate tokens
         access_token, refresh_token = generate_tokens(user)
 
-        # User session data
         user_session_data = {
             "user_id": user.id,
             "email": user.email,
@@ -65,12 +60,10 @@ def login():
             "user_agent": user_agent,
         }
 
-       
         redis_client = get_redis_client()
         redis_key = f"user_session:{user.id}"
         redis_client.set(redis_key, json.dumps(user_session_data), ex=60 * 60 * 2)  
 
-    
         audit_log = Audit_Logs(
             user_id=user.id,
             action_type="login",
@@ -118,7 +111,6 @@ def logout():
         logger.error(f"Logout error: {str(e)}")
         return jsonify({"message": "Internal server error"}), 500
    
-    #signup 
 @limiter.limit("5 per minute")  
 def signup():
     try:
@@ -128,21 +120,17 @@ def signup():
             logger.warning("Signup request without JSON body.")
             raise ValidationError("Missing JSON body.")
         
-        
         schema = SignUpSchema()
         validated_data = schema.load(data)
 
-        
         email = validated_data["email"].strip().lower()
         phone = validated_data["phone"].strip()
 
-        
         existing_user = System_Users.query.filter_by(email=email).first()
         if existing_user:
             logger.warning(f"Signup failed: Email already exists - {email}")
             raise ConflictError("Email is already registered.")
 
-       
         hashed_pw = hash_password(validated_data["password"])
 
         new_user = create_user(validated_data, hashed_pw)
@@ -155,7 +143,6 @@ def signup():
 
         logger.info(f"New user created and verification email sent | email: {new_user.email}, id: {new_user.id}")
         
-        # Log audit event
         log_audit_event(user_id=new_user.id, action="signup", ip=request.remote_addr)
 
         return jsonify({"message": "User registered successfully. Please verify your email."}), 201
@@ -172,18 +159,15 @@ def signup():
     except Exception as e:
         logger.exception(f"Unexpected server error during signup: {str(e)}")
         raise InternalServerError("Something went wrong. Please try again later.")
-    
-#  verify email
+
 def verify_email():
     try:
-        token = request.args.get('token')  # Retrieve the token from the URL query parameter
+        token = request.args.get('token')  
 
-        # Check if the token is present
         if not token:
             logger.warning("Verification failed: Missing token in the request.")
             raise ValidationError("Token is required to verify the email.")
 
-        # Attempt to decode the token
         try:
             decoded_token = decode_token(token)
             user_id = decoded_token['identity']
@@ -194,29 +178,24 @@ def verify_email():
             logger.warning("Verification failed: Invalid token.")
             raise ValidationError("Invalid token. Please request a new verification email.")
 
-        # Fetch the user from the database
         user = System_Users.query.get(user_id)
         if not user:
             logger.warning(f"Verification failed: User not found with ID: {user_id}")
             raise ValidationError("User not found.")
 
-        # Check if the user is already verified
         if user.status == 'active':
             logger.info(f"User {user_id} is already verified and attempted another verification.")
             return jsonify({"message": "User is already verified."}), 200
 
-        # Update the user status to 'active' to mark them as verified
         user.status = 'active'
         db.session.commit()
-
-        # Redis Management: Remove the verification token from Redis to prevent reuse
+        
         redis_client = get_redis_client()
         redis_key = f"email_verification:{user.id}"
         if redis_client.exists(redis_key):
             redis_client.delete(redis_key)
             logger.info(f"Deleted Redis entry for email verification of user {user_id}. Token can no longer be reused.")
 
-        # Log the success of the verification
         logger.info(f"User {user_id} verified successfully at {datetime.utcnow()}.")
 
         return jsonify({"message": "Email verified successfully. You can now log in."}), 200

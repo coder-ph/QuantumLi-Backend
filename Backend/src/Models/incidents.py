@@ -10,8 +10,6 @@ class Incidents(db.Model):
 
     incident_id = Column(UUID(as_uuid=True), primary_key=True, default=uuid4)
     related_to = Column(Enum('shipment', 'order', name='related_to_enum'), nullable=False)
-
-
     related_id = Column(UUID(as_uuid=True), nullable=False)
     incident_type = Column(Enum('damage', 'delay', 'loss', 'theft', name='incident_type_enum'), nullable=False)
     severity = Column(Enum('high', 'medium', 'low', name='severity_enum'), nullable=False)
@@ -21,7 +19,6 @@ class Incidents(db.Model):
     resolution_status = Column(Enum('open', 'resolved', 'pending', name='resolution_status_enum'), nullable=False)
     resolution_details = Column(Text, nullable=True)
     compensation_amount = Column(Float, nullable=True)
-
     is_deleted = Column(Boolean, default=False)
 
     created_at = Column(DateTime, nullable=False, default=datetime.utcnow)
@@ -31,24 +28,24 @@ class Incidents(db.Model):
         return f"<Incidents(incident_id={self.incident_id}, related_to={self.related_to}, incident_type={self.incident_type}, severity={self.severity})>"
 
     def save(self):
-        """Save the incident entry"""
+       
         db.session.add(self)
         db.session.commit()
         logger.info(f"Incident created: {self.incident_id}")
 
     def update(self):
-        """Update the incident entry"""
+      
         db.session.commit()
         logger.info(f"Incident updated: {self.incident_id}")
 
     def delete(self):
-        """Soft delete the incident entry"""
+      
         self.is_deleted = True
         db.session.commit()
         logger.info(f"Incident soft deleted: {self.incident_id}")
 
     def restore(self):
-        """Restore a soft-deleted incident entry"""
+        
         self.is_deleted = False
         db.session.commit()
         logger.info(f"Incident restored: {self.incident_id}")

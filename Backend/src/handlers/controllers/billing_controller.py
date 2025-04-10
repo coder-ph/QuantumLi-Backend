@@ -98,7 +98,6 @@ def delete_invoice(invoice_id):
         logger.warning(f"Invoice {invoice_id} already deleted.")
         raise BadRequestError("Invoice already deleted.")
 
-   
     try:
         billing_repo.delete(invoice)
         logger.info(f"User {user.email} soft-deleted invoice {invoice_id}")
@@ -111,7 +110,6 @@ def delete_invoice(invoice_id):
 def restore_invoice(invoice_id):
     user = get_current_user()
     is_authorized(user, ['admin', 'manager'])
-
     
     invoice = billing_repo.get_by_id(invoice_id)
     if not invoice:
@@ -122,7 +120,6 @@ def restore_invoice(invoice_id):
         logger.info(f"Invoice {invoice_id} is already active, skipping restore.")
         return jsonify({'message': 'Invoice is already active.'}), 200
 
-  
     try:
         billing_repo.restore(invoice)
         logger.info(f"User {user.email} restored invoice {invoice_id}")

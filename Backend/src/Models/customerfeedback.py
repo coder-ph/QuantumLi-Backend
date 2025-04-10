@@ -23,7 +23,7 @@ class Customer_Feedback(db.Model):
 
     @validates('rating')
     def validate_rating(self, key, value):
-        """Ensure that rating is between 1 and 5"""
+       
         if not (1 <= value <= 5):
             raise ValueError('Rating must be between 1 and 5')
         return value
@@ -32,24 +32,24 @@ class Customer_Feedback(db.Model):
         return f"<Customer_Feedback(feedback_id={self.feedback_id}, client_id={self.client_id}, order_item_id={self.order_item_id}, rating={self.rating})>"
 
     def save(self):
-        """Save the feedback entry"""
+      
         db.session.add(self)
         db.session.commit()
         logger.info(f"Feedback created: {self.feedback_id}")
 
     def update(self):
-        """Update the feedback entry"""
+        
         db.session.commit()
         logger.info(f"Feedback updated: {self.feedback_id}")
 
     def delete(self):
-        """Soft delete the feedback entry"""
+        
         self.is_deleted = True
         db.session.commit()
         logger.info(f"Feedback soft deleted: {self.feedback_id}")
 
     def restore(self):
-        """Restore a soft-deleted feedback entry"""
+        
         self.is_deleted = False
         db.session.commit()
         logger.info(f"Feedback restored: {self.feedback_id}")
