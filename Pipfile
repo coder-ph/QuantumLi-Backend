@@ -12,13 +12,14 @@ flask-marshmallow = "*"
 flask-cors = "*"
 psycopg2-binary = "*"
 flask-bcrypt = "*"
-flask-socketio = "*"
 apscheduler = "*"
 flask-migrate = "*"
 bcrypt = "*"
 redis = "*"
 flask-limiter = "*"
 flask-mail = "*"
+marshmallow-sqlalchemy = "*"
+flask-socketio = "*"
 
 [dev-packages]
 
