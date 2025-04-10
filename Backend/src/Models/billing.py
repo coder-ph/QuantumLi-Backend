@@ -19,8 +19,7 @@ class Billing(db.Model):
 
     status = Column(Enum('draft', 'paid', 'overdue', name='invoice_status'), nullable=False, default='draft')
     payment_date = Column(Date, nullable=True)
-    payment_method = Column(String(50), nullable=True)  #  "Mpesa", "Credit Card", etc.
-
+    payment_method = Column(String(50), nullable=True)  
     reference_numbers = Column(String(100), nullable=True)
     notes = Column(String(255), nullable=True)
 

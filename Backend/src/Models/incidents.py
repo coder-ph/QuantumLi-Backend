@@ -3,7 +3,7 @@ from datetime import datetime
 from sqlalchemy import Column, String, Enum, Float, Text, Date, ForeignKey, Boolean, DateTime
 from sqlalchemy.dialects.postgresql import UUID
 from   src.startup.database import db
-from src.utils.logger import logger  # Assuming you have a logger utility
+from src.utils.logger import logger  
 
 class Incidents(db.Model):
     __tablename__ = 'incidents'
@@ -11,7 +11,7 @@ class Incidents(db.Model):
     incident_id = Column(UUID(as_uuid=True), primary_key=True, default=uuid4)
     related_to = Column(Enum('shipment', 'order', name='related_to_enum'), nullable=False)
 
-    # Foreign key to either the shipment or order, depending on the `related_to` field
+
     related_id = Column(UUID(as_uuid=True), nullable=False)
     incident_type = Column(Enum('damage', 'delay', 'loss', 'theft', name='incident_type_enum'), nullable=False)
     severity = Column(Enum('high', 'medium', 'low', name='severity_enum'), nullable=False)
