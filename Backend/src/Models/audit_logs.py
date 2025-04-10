@@ -12,6 +12,7 @@ class Audit_Logs(db.Model):
     action_type = Column(String(50), nullable=False)
     affected_table = Column(String(100), nullable=False)
     record_id = Column(UUID(as_uuid=True), nullable=False)
+    action = db.Column(db.String(100), nullable=False)
     timestamp = Column(DateTime, default=datetime.utcnow, nullable=False)
     ip_address = Column(String(45), nullable=False)
     user_agent = Column(String(255), nullable=False)

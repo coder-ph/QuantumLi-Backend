@@ -41,24 +41,24 @@ class InventoryMovement(db.Model):
         return f"<InventoryMovement(id={self.movement_id}, quantity={self.quantity}, type={self.movement_type})>"
 
     def delete(self):
-        """Soft delete functionality"""
+        
         self.is_deleted = True
         db.session.commit()
         logger.info(f"InventoryMovement {self.movement_id} soft deleted.")
 
     def restore(self):
-        """Restore soft-deleted entry"""
+       
         self.is_deleted = False
         db.session.commit()
         logger.info(f"InventoryMovement {self.movement_id} restored.")
 
     def save(self):
-        """Save a new inventory movement"""
+      
         db.session.add(self)
         db.session.commit()
         logger.info(f"InventoryMovement {self.movement_id} created.")
 
     def update(self):
-        """Update an existing inventory movement"""
+       
         db.session.commit()
         logger.info(f"InventoryMovement {self.movement_id} updated.")

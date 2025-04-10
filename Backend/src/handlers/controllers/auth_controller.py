@@ -139,11 +139,11 @@ def signup():
         send_verification_email(new_user.email, verification_token)
 
         redis_client = get_redis_client()
-        redis_client.set(f"email_verification:{new_user.id}", verification_token, ex=60 * 60 * 24)  # expires in 24 hours
+        redis_client.set(f"email_verification:{new_user.user_id}", verification_token, ex=60 * 60 * 24)  # expires in 24 hours
 
-        logger.info(f"New user created and verification email sent | email: {new_user.email}, id: {new_user.id}")
+        logger.info(f"New user created and verification email sent | email: {new_user.email}, id: {new_user.user_id}")
         
-        log_audit_event(user_id=new_user.id, action="signup", ip=request.remote_addr)
+        log_audit_event(user_id=new_user.user_id, action="signup", ip=request.remote_addr)
 
         return jsonify({"message": "User registered successfully. Please verify your email."}), 201
 

@@ -40,7 +40,7 @@ class Location(db.Model):
 
     @validates('contact_phone')
     def validate_phone(self, key, value):
-        """Ensures the contact phone is valid, either starting with '07' or '+254'."""
+        
         if value:
             if len(value) == 13 and value.startswith('+254'):
                 logger.info(f"Valid contact_phone with international format: {value}")

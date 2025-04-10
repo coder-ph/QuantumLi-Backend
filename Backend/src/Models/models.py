@@ -5,7 +5,7 @@ from src.config.redis_config import init_redis, init_pubsub
 class Models:
     def __init__(self, db):
         self.db = db
-        # Do not initialize models here, just hold references
+       
         self.audit_logs = None
         self.base_model = None
         self.billing = None
@@ -34,10 +34,10 @@ class Models:
         self.warehouse_operation = None
 
     def init_app(self, app):
-        """Initialize the Models with the app."""
+        
     
         with app.app_context():
-            # Defer model imports to avoid circular import issues
+           
             from src.Models.audit_logs import Audit_Logs
             from src.Models.base_model import BaseModel
             from src.Models.carriers import Carrier
@@ -65,7 +65,7 @@ class Models:
             from src.Models.vehicles import Vehicle
             from src.Models.warehouseOperations import WarehouseOperation
             
-            # Assigning the models to their respective attributes
+
             self.audit_logs = Audit_Logs
             self.base_model = BaseModel
             self.billing = Billing
