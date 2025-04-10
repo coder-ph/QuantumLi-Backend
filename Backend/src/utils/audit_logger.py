@@ -19,10 +19,9 @@ def log_audit_event(user_id, action, ip, metadata=None, user_agent=None, endpoin
     try:
         audit = Audit_Logs(
             user_id=user_id,
-            action=action,
+            action_type=action,
             ip_address=ip,
             user_agent=user_agent,
-            endpoint=endpoint,
             metadata=metadata,
             timestamp=datetime.utcnow()
         )

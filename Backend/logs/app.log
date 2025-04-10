@@ -2108,3 +2108,48 @@ Traceback (most recent call last):
 TypeError: 'action' is an invalid keyword argument for Audit_Logs
 [2025-04-11 00:57:30,179] [INFO] logistics_app: Models initialized successfully.
 [2025-04-11 00:57:30,179] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-11 00:58:39,278] [INFO] logistics_app: Models initialized successfully.
+[2025-04-11 00:58:39,279] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-11 00:58:47,537] [INFO] logistics_app: Models initialized successfully.
+[2025-04-11 00:58:47,538] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-11 00:58:55,109] [INFO] logistics_app: Models initialized successfully.
+[2025-04-11 00:58:55,110] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-11 00:59:28,211] [INFO] logistics_app: Models initialized successfully.
+[2025-04-11 00:59:28,211] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-11 00:59:29,716] [INFO] logistics_app: Models initialized successfully.
+[2025-04-11 00:59:29,716] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-11 00:59:49,763] [INFO] logistics_app: Password hashed successfully.
+[2025-04-11 00:59:49,791] [INFO] logistics_app: New user created: phelixmbani@gmail.com, status: pending_verification
+[2025-04-11 00:59:49,792] [INFO] logistics_app: Generated verification token for user phelixmbani@gmail.com
+[2025-04-11 00:59:53,313] [INFO] logistics_app: Verification email sent to phelixmbani@gmail.com
+[2025-04-11 00:59:53,314] [INFO] logistics_app: Verification email sent to phelixmbani@gmail.com
+[2025-04-11 00:59:53,317] [INFO] logistics_app: New user created and verification email sent | email: phelixmbani@gmail.com, id: 44bb5874-2426-49cb-9369-c37004595d93
+[2025-04-11 00:59:53,320] [ERROR] logistics_app: Failed to log audit event for user 44bb5874-2426-49cb-9369-c37004595d93 | action: signup | Reason: 'endpoint' is an invalid keyword argument for Audit_Logs
+Traceback (most recent call last):
+  File "/home/phyl/Development/Logistics/Backend/src/utils/audit_logger.py", line 20, in log_audit_event
+    audit = Audit_Logs(
+            ^^^^^^^^^^^
+  File "<string>", line 4, in __init__
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/state.py", line 571, in _initialize_instance
+    with util.safe_reraise():
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/util/langhelpers.py", line 146, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/state.py", line 569, in _initialize_instance
+    manager.original_init(*mixed[1:], **kwargs)
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/decl_base.py", line 2175, in _declarative_constructor
+    raise TypeError(
+TypeError: 'endpoint' is an invalid keyword argument for Audit_Logs
+[2025-04-11 01:01:46,468] [INFO] logistics_app: Models initialized successfully.
+[2025-04-11 01:01:46,469] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-11 01:02:18,679] [INFO] logistics_app: Models initialized successfully.
+[2025-04-11 01:02:18,679] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-11 01:02:49,005] [INFO] logistics_app: Models initialized successfully.
+[2025-04-11 01:02:49,006] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-11 01:03:09,569] [INFO] logistics_app: Models initialized successfully.
+[2025-04-11 01:03:09,570] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-11 01:03:16,871] [INFO] logistics_app: Models initialized successfully.
+[2025-04-11 01:03:16,872] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-11 01:56:56,235] [INFO] logistics_app: Models initialized successfully.
+[2025-04-11 01:56:56,235] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-11 01:56:58,014] [INFO] logistics_app: Models initialized successfully.
+[2025-04-11 01:56:58,015] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
