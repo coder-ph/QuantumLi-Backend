@@ -20,6 +20,7 @@ flask-limiter = "*"
 flask-mail = "*"
 marshmallow-sqlalchemy = "*"
 flask-socketio = "*"
+flask-login = "*"
 
 [dev-packages]
 
