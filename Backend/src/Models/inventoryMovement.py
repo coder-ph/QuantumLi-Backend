@@ -5,9 +5,9 @@ from sqlalchemy.orm import relationship
 from datetime import datetime
 from   src.startup.database import db
 import enum
-from src.utils.logger import logger  # Import the logger
+from src.utils.logger import logger  
 
-# Enum for Movement Types
+
 class MovementType(enum.Enum):
     RECEIPT = 'receipt'
     SHIPMENT = 'shipment'
@@ -22,17 +22,17 @@ class InventoryMovement(db.Model):
     to_location_id = Column(UUID(as_uuid=True), ForeignKey('locations.location_id'), nullable=False)
     quantity = Column(Integer, nullable=False)
     movement_type = Column(Enum(MovementType), nullable=False)  
-    reference_id = Column(UUID(as_uuid=True), nullable=True)  # Reference to order, shipment,
-    reference_type = Column(String, nullable=True)  # Type of reference: 'order', 'shipment',
+    reference_id = Column(UUID(as_uuid=True), nullable=True)  
+    reference_type = Column(String, nullable=True) 
     movement_date = Column(DateTime, nullable=False, default=datetime.utcnow)
-    recorded_by = Column(String, nullable=False)  # , user, system
-    batch_number = Column(String, nullable=True)  # Batch number for product, if applicable
-    expiry_date = Column(DateTime, nullable=True)  # Expiry date for perishable products
+    recorded_by = Column(String, nullable=False)  
+    batch_number = Column(String, nullable=True)  
+    expiry_date = Column(DateTime, nullable=True)  
     created_at = Column(DateTime, nullable=False, default=datetime.utcnow)
     updated_at = Column(DateTime, nullable=False, default=datetime.utcnow, onupdate=datetime.utcnow)
-    is_deleted = Column(Boolean, default=False)  # Soft delete flag
+    is_deleted = Column(Boolean, default=False)
 
-    # Relationships
+  
     product = relationship('Product', backref='inventory_movements', lazy=True)
     from_location = relationship('Location', foreign_keys=[from_location_id], backref='inventory_movements_from', lazy=True)
     to_location = relationship('Location', foreign_keys=[to_location_id], backref='inventory_movements_to', lazy=True)

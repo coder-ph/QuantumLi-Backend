@@ -1610,3 +1610,11 @@ src.error.apiErrors.ConflictError: 409 conflict: Email is already registered.
 [2025-04-09 09:40:07,466] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
 [2025-04-09 09:43:16,227] [INFO] logistics_app: Models initialized successfully.
 [2025-04-09 09:43:16,228] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-10 14:50:53,537] [INFO] logistics_app: Models initialized successfully.
+[2025-04-10 14:50:53,538] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-10 14:52:58,499] [INFO] logistics_app: Models initialized successfully.
+[2025-04-10 14:52:58,500] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-10 14:53:30,220] [INFO] logistics_app: Models initialized successfully.
+[2025-04-10 14:53:30,221] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-10 14:53:42,193] [INFO] logistics_app: Models initialized successfully.
+[2025-04-10 14:53:42,193] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.

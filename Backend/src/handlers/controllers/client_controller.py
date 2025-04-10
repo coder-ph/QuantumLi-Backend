@@ -1,5 +1,5 @@
 from flask import request, jsonify
-from src.handlers.repositories import (
+from src.handlers.repositories.client_repository import (
     create_client, get_all_clients, get_client_by_id, 
     update_client, delete_client
 )

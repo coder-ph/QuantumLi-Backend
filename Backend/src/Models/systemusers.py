@@ -25,7 +25,7 @@ class System_Users(db.Model):
     updated_at = Column(DateTime, nullable=False, default=datetime.utcnow, onupdate=datetime.utcnow)
     
 
-    employee = db.relationship('Employee', back_populates='system_user', uselist=False, lazy='select')
+    # employee = db.relationship('Employee', back_populates='system_user', uselist=False, lazy='noload')
     audit_logs = db.relationship('Audit_Logs', back_populates='user')
     def __repr__(self):
         return f"<System_Users(user_id={self.user_id}, username={self.username}, role={self.role}, is_active={self.is_active}, is_deleted={self.is_deleted})>"

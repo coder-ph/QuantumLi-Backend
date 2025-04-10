@@ -1,4 +1,4 @@
-from flask_jwt_extended import create_access_token, create_refresh_token, get_jti, decode_token
+from flask_jwt_extended import create_access_token, create_refresh_token, get_jti, decode_token, get_jwt_identity
 from datetime import timedelta
 from src.utils.logger import logger  
 from src.config.redis_config import init_redis
@@ -6,8 +6,9 @@ from sqlalchemy.exc import SQLAlchemyError
 import bcrypt
 from src.utils.email_util import send_email
 from werkzeug.security import check_password_hash
-from src.error.apiErrors import InternalServerError, ConflictError
+from src.error.apiErrors import InternalServerError, ConflictError, UnauthorizedError
 from src.Models.systemusers import System_Users
+
 from src.startup.database import db
 
 REVOCATION_KEY_PREFIX = "revoked_tokens"
@@ -47,7 +48,6 @@ def generate_tokens(user, access_token_expiry_hours=1, roles=None):
 def revoke_token(token, expires_in):
 
     try:
-       
         if not token:
             logger.warning("Token is missing or invalid.")
             raise ValueError("Token is required.")
@@ -56,7 +56,7 @@ def revoke_token(token, expires_in):
             logger.warning(f"Invalid expiration time: {expires_in}. Must be greater than zero.")
             raise ValueError("Expiration time must be greater than zero.")
        
-        max_ttl = 3600  
+        max_ttl = 3600  # 1 hour max TTL
         if expires_in > max_ttl:
             logger.warning(f"Expires in too long: {expires_in}. Consider reducing the TTL.")
             raise ValueError(f"Expires in is too long. Maximum allowed is {max_ttl} seconds.")
@@ -76,7 +76,6 @@ def revoke_token(token, expires_in):
         logger.warning(f"Invalid input | Reason: {str(e)}")
         return False
     except Exception as e:
-    
         logger.exception(f"Failed to revoke token | Reason: {str(e)}")
         return False
 
@@ -89,6 +88,7 @@ def hash_password(password):
     except Exception as e:
         logger.error(f"Error while hashing password: {str(e)}")
         raise
+
 
 def verify_password(stored_password, provided_password):
     try:
@@ -103,6 +103,7 @@ def verify_password(stored_password, provided_password):
         return False
     
 def create_user(validated_data, hashed_pw):
+    from src.Models.systemusers import System_Users
     try:
         
         existing_user = System_Users.query.filter_by(email=validated_data['email']).first()
@@ -136,6 +137,7 @@ def create_user(validated_data, hashed_pw):
         logger.error(f"Unexpected error during user creation: {str(e)}")
         raise InternalServerError("An unexpected error occurred during user creation.")
 
+
 def create_verification_token(user):
     try:
         # Generate a JWT token for email verification with 24-hour expiration
@@ -160,11 +162,27 @@ def send_verification_email(email, token):
     except Exception as e:
         logger.error(f"Error sending verification email to {email}: {str(e)}")
         raise InternalServerError("An error occurred while sending the verification email.")
-    def decode_verification_token(token):
-        try:
-            # Decoding the token
-            decoded_token = decode_token(token)
-            return decoded_token
-        except Exception as e:
-            logger.error(f"Error decoding verification token: {str(e)}")
-            raise InternalServerError("Failed to decode the verification token.")
+
+
+# NEW: Define get_current_user function
+def get_current_user():
+    """Retrieve the current authenticated user based on JWT."""
+    user_id = get_jwt_identity()  
+    if not user_id:
+        raise UnauthorizedError("User is not authenticated.")
+    
+    user = System_Users.query.get(user_id)  
+    if not user:
+        raise UnauthorizedError("User not found.")
+    
+    return user
+
+
+def decode_verification_token(token):
+    try:
+        
+        decoded_token = decode_token(token)
+        return decoded_token
+    except Exception as e:
+        logger.error(f"Error decoding verification token: {str(e)}")
+        raise InternalServerError("Failed to decode the verification token.")

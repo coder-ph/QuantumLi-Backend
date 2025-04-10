@@ -29,7 +29,7 @@ class Product(db.Model):
     customs_tariff_code = Column(String(100), nullable=True)
     value = Column(Float, nullable=True)
 
-    client = relationship("Client", backref="products")
+    # client = relationship("Client", back_populates="products")
 
     __table_args__ = (
         UniqueConstraint('client_id', 'sku', name='uq_client_sku'),

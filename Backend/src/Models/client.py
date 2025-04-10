@@ -8,7 +8,7 @@ from sqlalchemy.orm import validates
 from   src.startup.database import db
 from src.Models.driverRating import Driver_Ratings
 from sqlalchemy import UniqueConstraint
-
+from sqlalchemy.orm import relationship
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
@@ -31,6 +31,7 @@ class Client(db.Model):
     date_created = Column(DateTime, default=datetime.utcnow)
     last_updated = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
     
+    # products = relationship("Product", back_populates="client")
     __table_args__ = (
         UniqueConstraint('email', name='uq_client_email'),
         UniqueConstraint('tax_id', name='uq_client_tax_id'),
