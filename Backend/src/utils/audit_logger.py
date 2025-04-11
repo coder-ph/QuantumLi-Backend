@@ -4,7 +4,7 @@ from datetime import datetime
 from src.utils.logger import logger
 
 
-def log_audit_event(user_id, action, ip, metadata=None, user_agent=None, endpoint=None):
+def log_audit_event(user_id,  ip,action = None, metadata=None, user_agent=None, endpoint=None):
     """
     Log an audit event to the database.
 
@@ -21,6 +21,7 @@ def log_audit_event(user_id, action, ip, metadata=None, user_agent=None, endpoin
             user_id=user_id,
             action_type=action,
             ip_address=ip,
+            record_id=user_id,
             user_agent=user_agent,
             metadata=metadata,
             timestamp=datetime.utcnow()

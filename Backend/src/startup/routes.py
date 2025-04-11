@@ -9,7 +9,7 @@ from src.routers.client_routes import client_bp
 from src.routers.order_routes import orders_bp
 
 def register_routes(app):
-     app.register_blueprint(auth_bp, url_prefix='/api/v1/auth')
+     app.register_blueprint(auth_bp, url_prefix='/auth')
      app.register_blueprint(product_bp, url_prefix='/api/v1/product')
      app.register_blueprint(system_user_bp, url_prefix='/api/v1/systUser')
      app.register_blueprint(billing_bp, url_prefix='/api/v1/billing')

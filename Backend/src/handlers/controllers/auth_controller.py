@@ -11,6 +11,7 @@ import json
 from src.services.auth_service import hash_password, create_user, send_verification_email, create_verification_token
 from src.utils.audit_logger import log_audit_event
 from datetime import datetime
+import uuid
 from src.startup.database import db
 from src.error.apiErrors import ValidationError, InternalServerError, ConflictError
 from src.services_layer.validators.auth_validators import SignUpSchema
@@ -170,14 +171,16 @@ def verify_email():
 
         try:
             decoded_token = decode_token(token)
-            user_id = decoded_token['identity']
-        except exceptions.ExpiredSignatureError:
+            user_id = decoded_token['sub']
+            logger.info("user verified  ")
+        except exceptions.RevokedTokenError:
             logger.warning("Verification failed: Token has expired.")
             raise ValidationError("The verification token has expired.")
-        except exceptions.InvalidTokenError:
+        except exceptions.JWTExtendedException:
             logger.warning("Verification failed: Invalid token.")
             raise ValidationError("Invalid token. Please request a new verification email.")
 
+        user_id = uuid.UUID(user_id)
         user = System_Users.query.get(user_id)
         if not user:
             logger.warning(f"Verification failed: User not found with ID: {user_id}")
@@ -191,7 +194,7 @@ def verify_email():
         db.session.commit()
         
         redis_client = get_redis_client()
-        redis_key = f"email_verification:{user.id}"
+        redis_key = f"email_verification:{user.user_id}"
         if redis_client.exists(redis_key):
             redis_client.delete(redis_key)
             logger.info(f"Deleted Redis entry for email verification of user {user_id}. Token can no longer be reused.")

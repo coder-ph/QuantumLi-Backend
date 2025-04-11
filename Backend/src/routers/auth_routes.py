@@ -5,7 +5,7 @@ from src.handlers.controllers.auth_controller import login, logout, signup, veri
 auth_bp = Blueprint('auth', __name__)
 
 
-auth_bp.add_url_rule('/login', 'login', login, methods=['POST'])
-auth_bp.add_url_rule('/logout', 'logout', logout, methods=['POST'])  
-auth_bp.add_url_rule('/signup',   'signup',  signup,methods=['POST'])
-auth_bp.add_url_rule('/verify-email', 'verify-email',  verify_email,methods=['GET'])
+auth_bp.route('/login', methods=['POST'])(login)
+auth_bp.route('/logout', methods=['POST'])(logout)
+auth_bp.route('/signup', methods=['POST'])(signup)
+auth_bp.route('/verify-email', methods=['GET'])(verify_email)

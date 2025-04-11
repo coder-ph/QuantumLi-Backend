@@ -2153,3 +2153,651 @@ TypeError: 'endpoint' is an invalid keyword argument for Audit_Logs
 [2025-04-11 01:56:56,235] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
 [2025-04-11 01:56:58,014] [INFO] logistics_app: Models initialized successfully.
 [2025-04-11 01:56:58,015] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-11 09:03:23,689] [INFO] logistics_app: Models initialized successfully.
+[2025-04-11 09:03:23,690] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-11 09:03:35,951] [INFO] logistics_app: Models initialized successfully.
+[2025-04-11 09:03:35,952] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-11 09:03:47,048] [INFO] logistics_app: Models initialized successfully.
+[2025-04-11 09:03:47,049] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-11 09:05:55,155] [INFO] logistics_app: Models initialized successfully.
+[2025-04-11 09:05:55,156] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-11 09:05:58,788] [INFO] logistics_app: Models initialized successfully.
+[2025-04-11 09:05:58,789] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-11 09:06:56,088] [INFO] logistics_app: Password hashed successfully.
+[2025-04-11 09:06:56,127] [INFO] logistics_app: New user created: phelixmbani@gmail.com, status: pending_verification
+[2025-04-11 09:06:56,129] [INFO] logistics_app: Generated verification token for user phelixmbani@gmail.com
+[2025-04-11 09:06:59,882] [INFO] logistics_app: Verification email sent to phelixmbani@gmail.com
+[2025-04-11 09:06:59,883] [INFO] logistics_app: Verification email sent to phelixmbani@gmail.com
+[2025-04-11 09:06:59,886] [INFO] logistics_app: New user created and verification email sent | email: phelixmbani@gmail.com, id: 80facb40-a85b-4f25-8a04-eb2a1bdcd4bb
+[2025-04-11 09:06:59,897] [ERROR] logistics_app: Failed to log audit event for user 80facb40-a85b-4f25-8a04-eb2a1bdcd4bb | action: signup | Reason: (sqlite3.IntegrityError) NOT NULL constraint failed: audit_logs.affected_table
+[SQL: INSERT INTO audit_logs (log_id, user_id, action_type, affected_table, record_id, action, timestamp, ip_address, user_agent, description) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)]
+[parameters: ('5700116547c44cd7a5efdf4af6a302e9', '80facb40a85b4f258a04eb2a1bdcd4bb', 'signup', None, None, None, '2025-04-11 06:06:59.887394', '127.0.0.1', None, None)]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+Traceback (most recent call last):
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1964, in _exec_single_context
+    self.dialect.do_execute(
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 945, in do_execute
+    cursor.execute(statement, parameters)
+sqlite3.IntegrityError: NOT NULL constraint failed: audit_logs.affected_table
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/phyl/Development/Logistics/Backend/src/utils/audit_logger.py", line 29, in log_audit_event
+    db.session.commit()
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/scoping.py", line 599, in commit
+    return self._proxied.commit()
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 2032, in commit
+    trans.commit(_to_root=True)
+  File "<string>", line 2, in commit
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/state_changes.py", line 139, in _go
+    ret_value = fn(self, *arg, **kw)
+                ^^^^^^^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 1313, in commit
+    self._prepare_impl()
+  File "<string>", line 2, in _prepare_impl
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/state_changes.py", line 139, in _go
+    ret_value = fn(self, *arg, **kw)
+                ^^^^^^^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 1288, in _prepare_impl
+    self.session.flush()
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 4353, in flush
+    self._flush(objects)
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 4488, in _flush
+    with util.safe_reraise():
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/util/langhelpers.py", line 146, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 4449, in _flush
+    flush_context.execute()
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/unitofwork.py", line 466, in execute
+    rec.execute(self)
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/unitofwork.py", line 642, in execute
+    util.preloaded.orm_persistence.save_obj(
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/persistence.py", line 93, in save_obj
+    _emit_insert_statements(
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/persistence.py", line 1233, in _emit_insert_statements
+    result = connection.execute(
+             ^^^^^^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1416, in execute
+    return meth(
+           ^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/sql/elements.py", line 523, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1638, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1843, in _execute_context
+    return self._exec_single_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1983, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 2352, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1964, in _exec_single_context
+    self.dialect.do_execute(
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 945, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.IntegrityError: (sqlite3.IntegrityError) NOT NULL constraint failed: audit_logs.affected_table
+[SQL: INSERT INTO audit_logs (log_id, user_id, action_type, affected_table, record_id, action, timestamp, ip_address, user_agent, description) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)]
+[parameters: ('5700116547c44cd7a5efdf4af6a302e9', '80facb40a85b4f258a04eb2a1bdcd4bb', 'signup', None, None, None, '2025-04-11 06:06:59.887394', '127.0.0.1', None, None)]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+[2025-04-11 09:10:09,852] [INFO] logistics_app: Models initialized successfully.
+[2025-04-11 09:10:09,853] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-11 09:11:13,521] [INFO] logistics_app: Models initialized successfully.
+[2025-04-11 09:11:13,521] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-11 09:11:31,936] [INFO] logistics_app: Models initialized successfully.
+[2025-04-11 09:11:31,937] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-11 09:11:45,850] [INFO] logistics_app: Models initialized successfully.
+[2025-04-11 09:11:45,851] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-11 09:11:50,096] [INFO] logistics_app: Models initialized successfully.
+[2025-04-11 09:11:50,098] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-11 09:16:19,319] [INFO] logistics_app: Models initialized successfully.
+[2025-04-11 09:16:19,321] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-11 09:17:00,545] [INFO] logistics_app: Models initialized successfully.
+[2025-04-11 09:17:00,545] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-11 09:17:10,179] [INFO] logistics_app: Models initialized successfully.
+[2025-04-11 09:17:10,180] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-11 09:17:19,231] [INFO] logistics_app: Models initialized successfully.
+[2025-04-11 09:17:19,232] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-11 09:17:31,268] [INFO] logistics_app: Models initialized successfully.
+[2025-04-11 09:17:31,268] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-11 09:17:34,437] [INFO] logistics_app: Models initialized successfully.
+[2025-04-11 09:17:34,438] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-11 09:18:22,931] [INFO] logistics_app: Password hashed successfully.
+[2025-04-11 09:18:22,969] [INFO] logistics_app: New user created: phelixmbani@gmail.com, status: pending_verification
+[2025-04-11 09:18:22,971] [INFO] logistics_app: Generated verification token for user phelixmbani@gmail.com
+[2025-04-11 09:18:26,122] [INFO] logistics_app: Verification email sent to phelixmbani@gmail.com
+[2025-04-11 09:18:26,123] [INFO] logistics_app: Verification email sent to phelixmbani@gmail.com
+[2025-04-11 09:18:26,127] [INFO] logistics_app: New user created and verification email sent | email: phelixmbani@gmail.com, id: 3f27811d-678c-4193-bc36-01cea7f5e12a
+[2025-04-11 09:18:26,140] [ERROR] logistics_app: Failed to log audit event for user 3f27811d-678c-4193-bc36-01cea7f5e12a | action: signup | Reason: (sqlite3.IntegrityError) NOT NULL constraint failed: audit_logs.record_id
+[SQL: INSERT INTO audit_logs (log_id, user_id, action_type, affected_table, record_id, action, timestamp, ip_address, user_agent, description) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)]
+[parameters: ('d53540d95d064890b05d0fc30610ffa2', '3f27811d678c4193bc3601cea7f5e12a', 'signup', None, None, None, '2025-04-11 06:18:26.128225', '127.0.0.1', None, None)]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+Traceback (most recent call last):
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1964, in _exec_single_context
+    self.dialect.do_execute(
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 945, in do_execute
+    cursor.execute(statement, parameters)
+sqlite3.IntegrityError: NOT NULL constraint failed: audit_logs.record_id
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/phyl/Development/Logistics/Backend/src/utils/audit_logger.py", line 29, in log_audit_event
+    db.session.commit()
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/scoping.py", line 599, in commit
+    return self._proxied.commit()
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 2032, in commit
+    trans.commit(_to_root=True)
+  File "<string>", line 2, in commit
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/state_changes.py", line 139, in _go
+    ret_value = fn(self, *arg, **kw)
+                ^^^^^^^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 1313, in commit
+    self._prepare_impl()
+  File "<string>", line 2, in _prepare_impl
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/state_changes.py", line 139, in _go
+    ret_value = fn(self, *arg, **kw)
+                ^^^^^^^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 1288, in _prepare_impl
+    self.session.flush()
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 4353, in flush
+    self._flush(objects)
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 4488, in _flush
+    with util.safe_reraise():
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/util/langhelpers.py", line 146, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 4449, in _flush
+    flush_context.execute()
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/unitofwork.py", line 466, in execute
+    rec.execute(self)
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/unitofwork.py", line 642, in execute
+    util.preloaded.orm_persistence.save_obj(
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/persistence.py", line 93, in save_obj
+    _emit_insert_statements(
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/persistence.py", line 1233, in _emit_insert_statements
+    result = connection.execute(
+             ^^^^^^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1416, in execute
+    return meth(
+           ^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/sql/elements.py", line 523, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1638, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1843, in _execute_context
+    return self._exec_single_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1983, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 2352, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1964, in _exec_single_context
+    self.dialect.do_execute(
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 945, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.IntegrityError: (sqlite3.IntegrityError) NOT NULL constraint failed: audit_logs.record_id
+[SQL: INSERT INTO audit_logs (log_id, user_id, action_type, affected_table, record_id, action, timestamp, ip_address, user_agent, description) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)]
+[parameters: ('d53540d95d064890b05d0fc30610ffa2', '3f27811d678c4193bc3601cea7f5e12a', 'signup', None, None, None, '2025-04-11 06:18:26.128225', '127.0.0.1', None, None)]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+[2025-04-11 09:23:24,638] [INFO] logistics_app: Models initialized successfully.
+[2025-04-11 09:23:24,639] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-11 09:23:35,109] [INFO] logistics_app: Models initialized successfully.
+[2025-04-11 09:23:35,110] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-11 09:24:49,354] [INFO] logistics_app: Models initialized successfully.
+[2025-04-11 09:24:49,355] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-11 09:25:23,606] [INFO] logistics_app: Models initialized successfully.
+[2025-04-11 09:25:23,607] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-11 09:25:39,325] [INFO] logistics_app: Models initialized successfully.
+[2025-04-11 09:25:39,325] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-11 09:25:51,348] [INFO] logistics_app: Models initialized successfully.
+[2025-04-11 09:25:51,349] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-11 09:25:54,282] [INFO] logistics_app: Models initialized successfully.
+[2025-04-11 09:25:54,283] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-11 09:26:00,915] [INFO] logistics_app: Password hashed successfully.
+[2025-04-11 09:26:00,954] [INFO] logistics_app: New user created: phelixmbani@gmail.com, status: pending_verification
+[2025-04-11 09:26:00,955] [INFO] logistics_app: Generated verification token for user phelixmbani@gmail.com
+[2025-04-11 09:26:04,270] [INFO] logistics_app: Verification email sent to phelixmbani@gmail.com
+[2025-04-11 09:26:04,271] [INFO] logistics_app: Verification email sent to phelixmbani@gmail.com
+[2025-04-11 09:26:04,274] [INFO] logistics_app: New user created and verification email sent | email: phelixmbani@gmail.com, id: a3488718-3782-4a3b-95a2-3a87be37d946
+[2025-04-11 09:26:04,284] [ERROR] logistics_app: Failed to log audit event for user a3488718-3782-4a3b-95a2-3a87be37d946 | action: signup | Reason: (builtins.AttributeError) 'str' object has no attribute 'hex'
+[SQL: INSERT INTO audit_logs (log_id, user_id, action_type, affected_table, record_id, action, timestamp, ip_address, user_agent, description) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)]
+[parameters: [{'timestamp': datetime.datetime(2025, 4, 11, 6, 26, 4, 275528), 'user_id': UUID('a3488718-3782-4a3b-95a2-3a87be37d946'), 'ip_address': '127.0.0.1', 'a ... (6 characters truncated) ... type': 'signup', 'record_id': 'a3488718-3782-4a3b-95a2-3a87be37d946', 'user_agent': None, 'action': None, 'description': None, 'affected_table': None}]]
+Traceback (most recent call last):
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1812, in _execute_context
+    context = constructor(
+              ^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 1487, in _init_compiled
+    flattened_processors[key](compiled_params[key])
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/sql/sqltypes.py", line 3712, in process
+    value = value.hex
+            ^^^^^^^^^
+AttributeError: 'str' object has no attribute 'hex'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/phyl/Development/Logistics/Backend/src/utils/audit_logger.py", line 30, in log_audit_event
+    db.session.commit()
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/scoping.py", line 599, in commit
+    return self._proxied.commit()
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 2032, in commit
+    trans.commit(_to_root=True)
+  File "<string>", line 2, in commit
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/state_changes.py", line 139, in _go
+    ret_value = fn(self, *arg, **kw)
+                ^^^^^^^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 1313, in commit
+    self._prepare_impl()
+  File "<string>", line 2, in _prepare_impl
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/state_changes.py", line 139, in _go
+    ret_value = fn(self, *arg, **kw)
+                ^^^^^^^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 1288, in _prepare_impl
+    self.session.flush()
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 4353, in flush
+    self._flush(objects)
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 4488, in _flush
+    with util.safe_reraise():
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/util/langhelpers.py", line 146, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 4449, in _flush
+    flush_context.execute()
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/unitofwork.py", line 466, in execute
+    rec.execute(self)
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/unitofwork.py", line 642, in execute
+    util.preloaded.orm_persistence.save_obj(
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/persistence.py", line 93, in save_obj
+    _emit_insert_statements(
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/persistence.py", line 1233, in _emit_insert_statements
+    result = connection.execute(
+             ^^^^^^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1416, in execute
+    return meth(
+           ^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/sql/elements.py", line 523, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1638, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1818, in _execute_context
+    self._handle_dbapi_exception(
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 2352, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1812, in _execute_context
+    context = constructor(
+              ^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 1487, in _init_compiled
+    flattened_processors[key](compiled_params[key])
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/sql/sqltypes.py", line 3712, in process
+    value = value.hex
+            ^^^^^^^^^
+sqlalchemy.exc.StatementError: (builtins.AttributeError) 'str' object has no attribute 'hex'
+[SQL: INSERT INTO audit_logs (log_id, user_id, action_type, affected_table, record_id, action, timestamp, ip_address, user_agent, description) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)]
+[parameters: [{'timestamp': datetime.datetime(2025, 4, 11, 6, 26, 4, 275528), 'user_id': UUID('a3488718-3782-4a3b-95a2-3a87be37d946'), 'ip_address': '127.0.0.1', 'a ... (6 characters truncated) ... type': 'signup', 'record_id': 'a3488718-3782-4a3b-95a2-3a87be37d946', 'user_agent': None, 'action': None, 'description': None, 'affected_table': None}]]
+[2025-04-11 09:27:47,950] [INFO] logistics_app: Models initialized successfully.
+[2025-04-11 09:27:47,951] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-11 09:27:51,392] [INFO] logistics_app: Models initialized successfully.
+[2025-04-11 09:27:51,393] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-11 09:42:52,022] [INFO] logistics_app: Models initialized successfully.
+[2025-04-11 09:42:52,023] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-11 09:42:55,551] [INFO] logistics_app: Models initialized successfully.
+[2025-04-11 09:42:55,552] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-11 09:47:22,299] [INFO] logistics_app: Models initialized successfully.
+[2025-04-11 09:47:22,300] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-11 09:47:31,626] [INFO] logistics_app: Models initialized successfully.
+[2025-04-11 09:47:31,627] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-11 09:47:44,823] [INFO] logistics_app: Models initialized successfully.
+[2025-04-11 09:47:44,823] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-11 09:48:21,093] [INFO] logistics_app: Models initialized successfully.
+[2025-04-11 09:48:21,094] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-11 09:48:24,266] [INFO] logistics_app: Models initialized successfully.
+[2025-04-11 09:48:24,267] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-11 09:48:25,913] [INFO] logistics_app: Password hashed successfully.
+[2025-04-11 09:48:25,953] [INFO] logistics_app: New user created: phelixmbani@gmail.com, status: pending_verification
+[2025-04-11 09:48:25,956] [INFO] logistics_app: Generated verification token for user phelixmbani@gmail.com
+[2025-04-11 09:48:29,573] [INFO] logistics_app: Verification email sent to phelixmbani@gmail.com
+[2025-04-11 09:48:29,574] [INFO] logistics_app: Verification email sent to phelixmbani@gmail.com
+[2025-04-11 09:48:29,578] [INFO] logistics_app: New user created and verification email sent | email: phelixmbani@gmail.com, id: 88deebfc-daaf-4166-9d6c-8f5b1c6f124a
+[2025-04-11 09:48:29,589] [ERROR] logistics_app: Failed to log audit event for user 88deebfc-daaf-4166-9d6c-8f5b1c6f124a | action: signup | Reason: (sqlite3.IntegrityError) NOT NULL constraint failed: audit_logs.action
+[SQL: INSERT INTO audit_logs (log_id, user_id, action_type, affected_table, record_id, action, timestamp, ip_address, user_agent, description) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)]
+[parameters: ('8bfd6c4394cc48dc9ab23786b2067215', '88deebfcdaaf41669d6c8f5b1c6f124a', 'signup', None, '88deebfcdaaf41669d6c8f5b1c6f124a', None, '2025-04-11 06:48:29.579173', '127.0.0.1', None, None)]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+Traceback (most recent call last):
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1964, in _exec_single_context
+    self.dialect.do_execute(
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 945, in do_execute
+    cursor.execute(statement, parameters)
+sqlite3.IntegrityError: NOT NULL constraint failed: audit_logs.action
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/phyl/Development/Logistics/Backend/src/utils/audit_logger.py", line 30, in log_audit_event
+    db.session.commit()
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/scoping.py", line 599, in commit
+    return self._proxied.commit()
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 2032, in commit
+    trans.commit(_to_root=True)
+  File "<string>", line 2, in commit
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/state_changes.py", line 139, in _go
+    ret_value = fn(self, *arg, **kw)
+                ^^^^^^^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 1313, in commit
+    self._prepare_impl()
+  File "<string>", line 2, in _prepare_impl
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/state_changes.py", line 139, in _go
+    ret_value = fn(self, *arg, **kw)
+                ^^^^^^^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 1288, in _prepare_impl
+    self.session.flush()
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 4353, in flush
+    self._flush(objects)
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 4488, in _flush
+    with util.safe_reraise():
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/util/langhelpers.py", line 146, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 4449, in _flush
+    flush_context.execute()
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/unitofwork.py", line 466, in execute
+    rec.execute(self)
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/unitofwork.py", line 642, in execute
+    util.preloaded.orm_persistence.save_obj(
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/persistence.py", line 93, in save_obj
+    _emit_insert_statements(
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/persistence.py", line 1233, in _emit_insert_statements
+    result = connection.execute(
+             ^^^^^^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1416, in execute
+    return meth(
+           ^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/sql/elements.py", line 523, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1638, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1843, in _execute_context
+    return self._exec_single_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1983, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 2352, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1964, in _exec_single_context
+    self.dialect.do_execute(
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 945, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.IntegrityError: (sqlite3.IntegrityError) NOT NULL constraint failed: audit_logs.action
+[SQL: INSERT INTO audit_logs (log_id, user_id, action_type, affected_table, record_id, action, timestamp, ip_address, user_agent, description) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)]
+[parameters: ('8bfd6c4394cc48dc9ab23786b2067215', '88deebfcdaaf41669d6c8f5b1c6f124a', 'signup', None, '88deebfcdaaf41669d6c8f5b1c6f124a', None, '2025-04-11 06:48:29.579173', '127.0.0.1', None, None)]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+[2025-04-11 09:52:34,992] [INFO] logistics_app: Models initialized successfully.
+[2025-04-11 09:52:34,993] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-11 09:53:02,242] [INFO] logistics_app: Models initialized successfully.
+[2025-04-11 09:53:02,243] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-11 10:01:20,734] [INFO] logistics_app: Models initialized successfully.
+[2025-04-11 10:01:20,735] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-11 10:01:45,825] [INFO] logistics_app: Models initialized successfully.
+[2025-04-11 10:01:45,825] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-11 10:14:52,948] [INFO] logistics_app: Models initialized successfully.
+[2025-04-11 10:14:52,949] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-11 10:14:56,576] [INFO] logistics_app: Models initialized successfully.
+[2025-04-11 10:14:56,577] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-11 10:15:00,982] [WARNING] logistics_app: Signup failed: Email already exists - phelixmbani@gmail.com
+[2025-04-11 10:15:00,984] [ERROR] logistics_app: APIError Logged: {'message': 'Email is already registered.', 'status_code': 409, 'error_code': 'conflict', 'payload': {}, 'traceback': 'No traceback available'}
+[2025-04-11 10:15:00,984] [ERROR] logistics_app: Unexpected server error during signup: 409 conflict: Email is already registered.
+Traceback (most recent call last):
+  File "/home/phyl/Development/Logistics/Backend/src/handlers/controllers/auth_controller.py", line 132, in signup
+    raise ConflictError("Email is already registered.")
+src.error.apiErrors.ConflictError: 409 conflict: Email is already registered.
+[2025-04-11 10:15:00,987] [ERROR] logistics_app: APIError Logged: {'message': 'Something went wrong. Please try again later.', 'status_code': 500, 'error_code': 'internal_server_error', 'payload': {}, 'traceback': 'Traceback (most recent call last):\n  File "/home/phyl/Development/Logistics/Backend/src/handlers/controllers/auth_controller.py", line 132, in signup\n    raise ConflictError("Email is already registered.")\nsrc.error.apiErrors.ConflictError: 409 conflict: Email is already registered.\n'}
+[2025-04-11 10:16:27,908] [INFO] logistics_app: Models initialized successfully.
+[2025-04-11 10:16:27,908] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-11 10:17:09,254] [INFO] logistics_app: Models initialized successfully.
+[2025-04-11 10:17:09,255] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-11 10:17:27,765] [INFO] logistics_app: Models initialized successfully.
+[2025-04-11 10:17:27,766] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-11 10:17:44,466] [INFO] logistics_app: Models initialized successfully.
+[2025-04-11 10:17:44,466] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-11 10:17:47,981] [INFO] logistics_app: Models initialized successfully.
+[2025-04-11 10:17:47,981] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-11 10:17:49,743] [INFO] logistics_app: Password hashed successfully.
+[2025-04-11 10:17:49,780] [INFO] logistics_app: New user created: phelixmbani@gmail.com, status: pending_verification
+[2025-04-11 10:17:49,782] [INFO] logistics_app: Generated verification token for user phelixmbani@gmail.com
+[2025-04-11 10:17:53,122] [INFO] logistics_app: Verification email sent to phelixmbani@gmail.com
+[2025-04-11 10:17:53,123] [INFO] logistics_app: Verification email sent to phelixmbani@gmail.com
+[2025-04-11 10:17:53,127] [INFO] logistics_app: New user created and verification email sent | email: phelixmbani@gmail.com, id: 7bbf1af2-510e-4a64-8324-c2a97223ce9b
+[2025-04-11 10:17:53,137] [ERROR] logistics_app: Failed to log audit event for user 7bbf1af2-510e-4a64-8324-c2a97223ce9b | action: signup | Reason: (sqlite3.IntegrityError) NOT NULL constraint failed: audit_logs.action
+[SQL: INSERT INTO audit_logs (log_id, user_id, action_type, affected_table, record_id, action, timestamp, ip_address, user_agent, description) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)]
+[parameters: ('aea7ee9dd9574e1e9458c849da094934', '7bbf1af2510e4a648324c2a97223ce9b', 'signup', None, '7bbf1af2510e4a648324c2a97223ce9b', None, '2025-04-11 07:17:53.128531', '127.0.0.1', None, None)]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+Traceback (most recent call last):
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1964, in _exec_single_context
+    self.dialect.do_execute(
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 945, in do_execute
+    cursor.execute(statement, parameters)
+sqlite3.IntegrityError: NOT NULL constraint failed: audit_logs.action
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/phyl/Development/Logistics/Backend/src/utils/audit_logger.py", line 30, in log_audit_event
+    db.session.commit()
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/scoping.py", line 599, in commit
+    return self._proxied.commit()
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 2032, in commit
+    trans.commit(_to_root=True)
+  File "<string>", line 2, in commit
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/state_changes.py", line 139, in _go
+    ret_value = fn(self, *arg, **kw)
+                ^^^^^^^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 1313, in commit
+    self._prepare_impl()
+  File "<string>", line 2, in _prepare_impl
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/state_changes.py", line 139, in _go
+    ret_value = fn(self, *arg, **kw)
+                ^^^^^^^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 1288, in _prepare_impl
+    self.session.flush()
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 4353, in flush
+    self._flush(objects)
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 4488, in _flush
+    with util.safe_reraise():
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/util/langhelpers.py", line 146, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 4449, in _flush
+    flush_context.execute()
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/unitofwork.py", line 466, in execute
+    rec.execute(self)
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/unitofwork.py", line 642, in execute
+    util.preloaded.orm_persistence.save_obj(
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/persistence.py", line 93, in save_obj
+    _emit_insert_statements(
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/persistence.py", line 1233, in _emit_insert_statements
+    result = connection.execute(
+             ^^^^^^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1416, in execute
+    return meth(
+           ^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/sql/elements.py", line 523, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1638, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1843, in _execute_context
+    return self._exec_single_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1983, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 2352, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1964, in _exec_single_context
+    self.dialect.do_execute(
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 945, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.IntegrityError: (sqlite3.IntegrityError) NOT NULL constraint failed: audit_logs.action
+[SQL: INSERT INTO audit_logs (log_id, user_id, action_type, affected_table, record_id, action, timestamp, ip_address, user_agent, description) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)]
+[parameters: ('aea7ee9dd9574e1e9458c849da094934', '7bbf1af2510e4a648324c2a97223ce9b', 'signup', None, '7bbf1af2510e4a648324c2a97223ce9b', None, '2025-04-11 07:17:53.128531', '127.0.0.1', None, None)]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+[2025-04-11 10:20:13,017] [ERROR] logistics_app: Unexpected error during email verification: module 'flask_jwt_extended.exceptions' has no attribute 'ExpiredSignatureError'
+[2025-04-11 10:20:13,033] [ERROR] logistics_app: APIError Logged: {'message': 'An error occurred during email verification.', 'status_code': 500, 'error_code': 'internal_server_error', 'payload': {}, 'traceback': 'Traceback (most recent call last):\n  File "/home/phyl/Development/Logistics/Backend/src/handlers/controllers/auth_controller.py", line 173, in verify_email\n    user_id = decoded_token[\'identity\']\n              ~~~~~~~~~~~~~^^^^^^^^^^^^\nKeyError: \'identity\'\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File "/home/phyl/Development/Logistics/Backend/src/handlers/controllers/auth_controller.py", line 175, in verify_email\n    except exceptions.ExpiredSignatureError:\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAttributeError: module \'flask_jwt_extended.exceptions\' has no attribute \'ExpiredSignatureError\'\n'}
+[2025-04-11 10:32:34,853] [INFO] logistics_app: Models initialized successfully.
+[2025-04-11 10:32:34,855] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-11 10:32:38,696] [INFO] logistics_app: Models initialized successfully.
+[2025-04-11 10:32:38,698] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-11 10:32:43,128] [ERROR] logistics_app: Unexpected error during email verification: 'identity'
+[2025-04-11 10:32:43,132] [ERROR] logistics_app: APIError Logged: {'message': 'An error occurred during email verification.', 'status_code': 500, 'error_code': 'internal_server_error', 'payload': {}, 'traceback': 'Traceback (most recent call last):\n  File "/home/phyl/Development/Logistics/Backend/src/handlers/controllers/auth_controller.py", line 173, in verify_email\n    user_id = decoded_token[\'identity\']\n              ~~~~~~~~~~~~~^^^^^^^^^^^^\nKeyError: \'identity\'\n'}
+[2025-04-11 10:34:01,387] [INFO] logistics_app: Models initialized successfully.
+[2025-04-11 10:34:01,388] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-11 10:34:39,081] [INFO] logistics_app: Models initialized successfully.
+[2025-04-11 10:34:39,082] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-11 10:34:55,060] [INFO] logistics_app: Models initialized successfully.
+[2025-04-11 10:34:55,061] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-11 10:37:17,102] [INFO] logistics_app: Models initialized successfully.
+[2025-04-11 10:37:17,103] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-11 10:38:19,384] [INFO] logistics_app: Models initialized successfully.
+[2025-04-11 10:38:19,385] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-11 10:38:29,384] [INFO] logistics_app: Models initialized successfully.
+[2025-04-11 10:38:29,385] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-11 10:39:18,308] [INFO] logistics_app: Models initialized successfully.
+[2025-04-11 10:39:18,308] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-11 10:39:21,677] [INFO] logistics_app: Models initialized successfully.
+[2025-04-11 10:39:21,678] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-11 10:39:30,447] [ERROR] logistics_app: Unexpected error during email verification: 'dict' object is not callable
+[2025-04-11 10:39:30,452] [ERROR] logistics_app: APIError Logged: {'message': 'An error occurred during email verification.', 'status_code': 500, 'error_code': 'internal_server_error', 'payload': {}, 'traceback': 'Traceback (most recent call last):\n  File "/home/phyl/Development/Logistics/Backend/src/handlers/controllers/auth_controller.py", line 173, in verify_email\n    user_id = decoded_token(\'sub\')\n              ^^^^^^^^^^^^^^^^^^^^\nTypeError: \'dict\' object is not callable\n'}
+[2025-04-11 10:41:27,934] [INFO] logistics_app: Models initialized successfully.
+[2025-04-11 10:41:27,935] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-11 10:41:31,684] [INFO] logistics_app: Models initialized successfully.
+[2025-04-11 10:41:31,686] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-11 10:41:46,210] [INFO] logistics_app: user verified  
+[2025-04-11 10:41:46,812] [ERROR] logistics_app: Unexpected error during email verification: (builtins.AttributeError) 'str' object has no attribute 'hex'
+[SQL: SELECT system_users.user_id AS system_users_user_id, system_users.employee_id AS system_users_employee_id, system_users.username AS system_users_username, system_users.password_hash AS system_users_password_hash, system_users.email AS system_users_email, system_users.phone AS system_users_phone, system_users.role AS system_users_role, system_users.last_login AS system_users_last_login, system_users.is_active AS system_users_is_active, system_users.password_reset_token AS system_users_password_reset_token, system_users.password_expiry AS system_users_password_expiry, system_users.status AS system_users_status, system_users.is_deleted AS system_users_is_deleted, system_users.created_at AS system_users_created_at, system_users.updated_at AS system_users_updated_at 
+FROM system_users 
+WHERE system_users.user_id = ?]
+[parameters: [{'pk_1': '7bbf1af2-510e-4a64-8324-c2a97223ce9b'}]]
+[2025-04-11 10:41:46,863] [ERROR] logistics_app: APIError Logged: {'message': 'An error occurred during email verification.', 'status_code': 500, 'error_code': 'internal_server_error', 'payload': {}, 'traceback': 'Traceback (most recent call last):\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1812, in _execute_context\n    context = constructor(\n              ^^^^^^^^^^^^\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 1487, in _init_compiled\n    flattened_processors[key](compiled_params[key])\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/sql/sqltypes.py", line 3712, in process\n    value = value.hex\n            ^^^^^^^^^\nAttributeError: \'str\' object has no attribute \'hex\'\n\nThe above exception was the direct cause of the following exception:\n\nTraceback (most recent call last):\n  File "/home/phyl/Development/Logistics/Backend/src/handlers/controllers/auth_controller.py", line 182, in verify_email\n    user = System_Users.query.get(user_id)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File "<string>", line 2, in get\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/util/deprecations.py", line 386, in warned\n    return fn(*args, **kwargs)  # type: ignore[no-any-return]\n           ^^^^^^^^^^^^^^^^^^^\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/query.py", line 1126, in get\n    return self._get_impl(ident, loading.load_on_pk_identity)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/query.py", line 1135, in _get_impl\n    return self.session._get_impl(\n           ^^^^^^^^^^^^^^^^^^^^^^^\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 3874, in _get_impl\n    return db_load_fn(\n           ^^^^^^^^^^^\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/loading.py", line 694, in load_on_pk_identity\n    session.execute(\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 2365, in execute\n    return self._execute_internal(\n           ^^^^^^^^^^^^^^^^^^^^^^^\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 2251, in _execute_internal\n    result: Result[Any] = compile_state_cls.orm_execute_statement(\n                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/context.py", line 306, in orm_execute_statement\n    result = conn.execute(\n             ^^^^^^^^^^^^^\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1416, in execute\n    return meth(\n           ^^^^^\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/sql/elements.py", line 523, in _execute_on_connection\n    return connection._execute_clauseelement(\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1638, in _execute_clauseelement\n    ret = self._execute_context(\n          ^^^^^^^^^^^^^^^^^^^^^^\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1818, in _execute_context\n    self._handle_dbapi_exception(\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 2352, in _handle_dbapi_exception\n    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1812, in _execute_context\n    context = constructor(\n              ^^^^^^^^^^^^\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 1487, in _init_compiled\n    flattened_processors[key](compiled_params[key])\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/sql/sqltypes.py", line 3712, in process\n    value = value.hex\n            ^^^^^^^^^\nsqlalchemy.exc.StatementError: (builtins.AttributeError) \'str\' object has no attribute \'hex\'\n[SQL: SELECT system_users.user_id AS system_users_user_id, system_users.employee_id AS system_users_employee_id, system_users.username AS system_users_username, system_users.password_hash AS system_users_password_hash, system_users.email AS system_users_email, system_users.phone AS system_users_phone, system_users.role AS system_users_role, system_users.last_login AS system_users_last_login, system_users.is_active AS system_users_is_active, system_users.password_reset_token AS system_users_password_reset_token, system_users.password_expiry AS system_users_password_expiry, system_users.status AS system_users_status, system_users.is_deleted AS system_users_is_deleted, system_users.created_at AS system_users_created_at, system_users.updated_at AS system_users_updated_at \nFROM system_users \nWHERE system_users.user_id = ?]\n[parameters: [{\'pk_1\': \'7bbf1af2-510e-4a64-8324-c2a97223ce9b\'}]]\n'}
+[2025-04-11 10:46:53,983] [INFO] logistics_app: Models initialized successfully.
+[2025-04-11 10:46:53,984] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-11 10:47:07,702] [INFO] logistics_app: Models initialized successfully.
+[2025-04-11 10:47:07,703] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-11 10:47:14,836] [INFO] logistics_app: Models initialized successfully.
+[2025-04-11 10:47:14,837] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-11 10:47:34,933] [INFO] logistics_app: Models initialized successfully.
+[2025-04-11 10:47:34,934] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-11 10:47:38,009] [INFO] logistics_app: Models initialized successfully.
+[2025-04-11 10:47:38,010] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-11 10:47:42,292] [INFO] logistics_app: user verified  
+[2025-04-11 10:47:42,910] [ERROR] logistics_app: Unexpected error during email verification: 'System_Users' object has no attribute 'id'
+[2025-04-11 10:47:42,915] [ERROR] logistics_app: APIError Logged: {'message': 'An error occurred during email verification.', 'status_code': 500, 'error_code': 'internal_server_error', 'payload': {}, 'traceback': 'Traceback (most recent call last):\n  File "/home/phyl/Development/Logistics/Backend/src/handlers/controllers/auth_controller.py", line 197, in verify_email\n    redis_key = f"email_verification:{user.id}"\n                                      ^^^^^^^\nAttributeError: \'System_Users\' object has no attribute \'id\'\n'}
+[2025-04-11 10:48:30,782] [INFO] logistics_app: Models initialized successfully.
+[2025-04-11 10:48:30,783] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-11 10:49:00,887] [INFO] logistics_app: user verified  
+[2025-04-11 10:49:01,437] [INFO] logistics_app: User 7bbf1af2-510e-4a64-8324-c2a97223ce9b is already verified and attempted another verification.
+[2025-04-11 10:50:15,160] [INFO] logistics_app: Models initialized successfully.
+[2025-04-11 10:50:15,160] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-11 10:50:30,695] [INFO] logistics_app: Models initialized successfully.
+[2025-04-11 10:50:30,696] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-11 10:50:43,681] [INFO] logistics_app: Models initialized successfully.
+[2025-04-11 10:50:43,681] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-11 10:58:49,965] [INFO] logistics_app: Models initialized successfully.
+[2025-04-11 10:58:49,965] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-11 10:58:51,038] [INFO] logistics_app: Models initialized successfully.
+[2025-04-11 10:58:51,039] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-11 11:06:22,590] [INFO] logistics_app: Password hashed successfully.
+[2025-04-11 11:06:22,615] [INFO] logistics_app: New user created: phelixmbani@gmail.com, status: pending_verification
+[2025-04-11 11:06:22,616] [INFO] logistics_app: Generated verification token for user phelixmbani@gmail.com
+[2025-04-11 11:06:26,282] [INFO] logistics_app: Verification email sent to phelixmbani@gmail.com
+[2025-04-11 11:06:26,283] [INFO] logistics_app: Verification email sent to phelixmbani@gmail.com
+[2025-04-11 11:06:26,287] [INFO] logistics_app: New user created and verification email sent | email: phelixmbani@gmail.com, id: 5e98802c-7b62-4bf2-a9ce-5c53e1fe7e5b
+[2025-04-11 11:06:26,299] [ERROR] logistics_app: Failed to log audit event for user 5e98802c-7b62-4bf2-a9ce-5c53e1fe7e5b | action: signup | Reason: (sqlite3.IntegrityError) NOT NULL constraint failed: audit_logs.action
+[SQL: INSERT INTO audit_logs (log_id, user_id, action_type, affected_table, record_id, action, timestamp, ip_address, user_agent, description) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)]
+[parameters: ('55c7ac5aa1fd4ad88026cebde3585c47', '5e98802c7b624bf2a9ce5c53e1fe7e5b', 'signup', None, '5e98802c7b624bf2a9ce5c53e1fe7e5b', None, '2025-04-11 08:06:26.288598', '127.0.0.1', None, None)]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+Traceback (most recent call last):
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1964, in _exec_single_context
+    self.dialect.do_execute(
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 945, in do_execute
+    cursor.execute(statement, parameters)
+sqlite3.IntegrityError: NOT NULL constraint failed: audit_logs.action
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/phyl/Development/Logistics/Backend/src/utils/audit_logger.py", line 30, in log_audit_event
+    db.session.commit()
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/scoping.py", line 599, in commit
+    return self._proxied.commit()
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 2032, in commit
+    trans.commit(_to_root=True)
+  File "<string>", line 2, in commit
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/state_changes.py", line 139, in _go
+    ret_value = fn(self, *arg, **kw)
+                ^^^^^^^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 1313, in commit
+    self._prepare_impl()
+  File "<string>", line 2, in _prepare_impl
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/state_changes.py", line 139, in _go
+    ret_value = fn(self, *arg, **kw)
+                ^^^^^^^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 1288, in _prepare_impl
+    self.session.flush()
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 4353, in flush
+    self._flush(objects)
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 4488, in _flush
+    with util.safe_reraise():
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/util/langhelpers.py", line 146, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 4449, in _flush
+    flush_context.execute()
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/unitofwork.py", line 466, in execute
+    rec.execute(self)
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/unitofwork.py", line 642, in execute
+    util.preloaded.orm_persistence.save_obj(
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/persistence.py", line 93, in save_obj
+    _emit_insert_statements(
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/persistence.py", line 1233, in _emit_insert_statements
+    result = connection.execute(
+             ^^^^^^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1416, in execute
+    return meth(
+           ^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/sql/elements.py", line 523, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1638, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1843, in _execute_context
+    return self._exec_single_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1983, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 2352, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1964, in _exec_single_context
+    self.dialect.do_execute(
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 945, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.IntegrityError: (sqlite3.IntegrityError) NOT NULL constraint failed: audit_logs.action
+[SQL: INSERT INTO audit_logs (log_id, user_id, action_type, affected_table, record_id, action, timestamp, ip_address, user_agent, description) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)]
+[parameters: ('55c7ac5aa1fd4ad88026cebde3585c47', '5e98802c7b624bf2a9ce5c53e1fe7e5b', 'signup', None, '5e98802c7b624bf2a9ce5c53e1fe7e5b', None, '2025-04-11 08:06:26.288598', '127.0.0.1', None, None)]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+[2025-04-11 11:07:37,079] [INFO] logistics_app: Models initialized successfully.
+[2025-04-11 11:07:37,079] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-11 11:07:38,222] [INFO] logistics_app: Models initialized successfully.
+[2025-04-11 11:07:38,223] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-11 11:09:47,625] [INFO] logistics_app: user verified  
+[2025-04-11 11:09:47,860] [INFO] logistics_app: Deleted Redis entry for email verification of user 5e98802c-7b62-4bf2-a9ce-5c53e1fe7e5b. Token can no longer be reused.
+[2025-04-11 11:09:47,860] [INFO] logistics_app: User 5e98802c-7b62-4bf2-a9ce-5c53e1fe7e5b verified successfully at 2025-04-11 08:09:47.860716.

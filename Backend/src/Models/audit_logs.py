@@ -9,8 +9,8 @@ class Audit_Logs(db.Model):
 
     log_id = Column(UUID(as_uuid=True), primary_key=True, default=uuid4)
     user_id = Column(UUID(as_uuid=True), ForeignKey('system_users.user_id'), nullable=False)
-    action_type = Column(String(50), nullable=False)
-    affected_table = Column(String(100), nullable=False)
+    action_type = Column(String(50), nullable=True)
+    affected_table = Column(String(100), nullable=True)
     record_id = Column(UUID(as_uuid=True), nullable=False)
     action = db.Column(db.String(100), nullable=False)
     timestamp = Column(DateTime, default=datetime.utcnow, nullable=False)

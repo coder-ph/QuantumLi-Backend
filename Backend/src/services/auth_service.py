@@ -12,7 +12,7 @@ from src.Models.systemusers import System_Users
 from src.startup.database import db
 
 REVOCATION_KEY_PREFIX = "revoked_tokens"
-BASE_URL = "http://localhost:5555"
+BASE_URL = "http://localhost:5555/auth"
 
 def generate_tokens(user, access_token_expiry_hours=1, roles=None):
     try:
@@ -140,7 +140,7 @@ def create_user(validated_data, hashed_pw):
 
 def create_verification_token(user):
     try:
-        # Generate a JWT token for email verification with 24-hour expiration
+       
         token = create_access_token(identity=user.user_id, expires_delta=timedelta(hours=24))
         logger.info(f"Generated verification token for user {user.email}")
         return token
@@ -150,12 +150,12 @@ def create_verification_token(user):
 
 def send_verification_email(email, token):
     try:
-        # Compose the verification email
+        
         verification_link = f"{BASE_URL}/verify-email?token={token}"
         subject = "Email Verification"
         body = f"Hello, please click on the link to verify your email: {verification_link}"
         
-        # Send email using the send_email utility function
+        
         send_email(subject, body, email)
         logger.info(f"Verification email sent to {email}")
     
@@ -164,9 +164,9 @@ def send_verification_email(email, token):
         raise InternalServerError("An error occurred while sending the verification email.")
 
 
-# NEW: Define get_current_user function
+
 def get_current_user():
-    """Retrieve the current authenticated user based on JWT."""
+    
     user_id = get_jwt_identity()  
     if not user_id:
         raise UnauthorizedError("User is not authenticated.")
