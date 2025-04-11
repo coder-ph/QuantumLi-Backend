@@ -20,17 +20,17 @@ def generate_tokens(user, access_token_expiry_hours=1, roles=None):
 
         additional_claims = {
             "roles": roles,
-            "user_id": user.id  
+            "user_id": user.user_id 
         }
 
         access_token = create_access_token(
-            identity=user.id, 
+            identity=user.user_id, 
             fresh=True, 
             expires_delta=timedelta(hours=access_token_expiry_hours),
             additional_claims=additional_claims
         )
 
-        refresh_token = create_refresh_token(identity=user.id)
+        refresh_token = create_refresh_token(identity=user.user_id)
 
         logger.info(f"Generated tokens for user {user.id}, roles: {roles}")
 

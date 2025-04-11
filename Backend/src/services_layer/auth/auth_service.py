@@ -62,7 +62,7 @@ def login_user(username, password):
     fingerprint = get_device_fingerprint()
 
     
-    session_id = f"user_session:{user.id}:{int(time.time())}"
+    session_id = f"user_session:{user.user_id}:{int(time.time())}"
     session_data = {
         "ip": request.remote_addr,
         "user_agent": request.headers.get("User-Agent", ""),
@@ -78,7 +78,7 @@ def login_user(username, password):
         "access_token": access_token,
         "refresh_token": refresh_token,
         "user": {
-            "id": user.id,
+            "id": user.user_id,
             "username": user.username,
             "role": user.role
         },

@@ -41,20 +41,29 @@ def login():
             logger.warning(f"Login attempt missing credentials | IP: {user_ip} | Agent: {user_agent}")
             raise ValidationError("Email and password are required.")
 
+        logger.debug(f"Login data received: {data}")
+
         user = System_Users.query.filter_by(email=data['email']).first()
 
         if not user:
             logger.warning(f"Login failed: User not found | Email: {data['email']} | IP: {user_ip}")
             raise UnauthorizedError("Invalid credentials.")
 
-        if not verify_password(user.password, data['password']):
-            logger.warning(f"Login failed: Invalid password | User ID: {user.id} | IP: {user_ip}")
+        # UUID validation
+        try:
+            user_uuid = uuid.UUID(str(user.user_id))
+        except (ValueError, AttributeError) as e:
+            logger.error(f"Invalid user_id format: {user.user_id} | Error: {str(e)}")
+            raise InternalServerError("System data integrity error")
+
+        if not verify_password(user.password_hash, data['password']):
+            logger.warning(f"Login failed: Invalid password | User ID: {user.user_id} | IP: {user_ip}")
             raise UnauthorizedError("Invalid credentials.")
 
         access_token, refresh_token = generate_tokens(user)
 
         user_session_data = {
-            "user_id": user.id,
+            "user_id": str(user.user_id),
             "email": user.email,
             "role": user.role if hasattr(user, "role") else "user",
             "ip": user_ip,
@@ -62,14 +71,14 @@ def login():
         }
 
         redis_client = get_redis_client()
-        redis_key = f"user_session:{user.id}"
-        redis_client.set(redis_key, json.dumps(user_session_data), ex=60 * 60 * 2)  
+        redis_key = f"user_session:{user.user_id}"
+        redis_client.set(redis_key, json.dumps(user_session_data), ex=60 * 60 * 2)
 
         audit_log = Audit_Logs(
-            user_id=user.id,
+            user_id=user.user_id,
             action_type="login",
             affected_table="users",
-            record_id=user.id,
+            record_id=user.user_id,
             timestamp=datetime.utcnow(),
             ip_address=user_ip,
             user_agent=user_agent
@@ -77,7 +86,7 @@ def login():
         db.session.add(audit_log)
         db.session.commit()
 
-        logger.info(f"User login successful | ID: {user.id} | IP: {user_ip} | Agent: {user_agent}")
+        logger.info(f"User login successful | ID: {user.user_id} | IP: {user_ip} | Agent: {user_agent}")
 
         return jsonify({
             "access_token": access_token,

@@ -1,4 +1,5 @@
 from uuid import uuid4
+import uuid
 from sqlalchemy import Column, String, ForeignKey, DateTime, Boolean, Enum, Integer
 from sqlalchemy.dialects.postgresql import UUID
 from   src.startup.database import db
@@ -8,7 +9,7 @@ from src.utils.logger import logger
 class System_Users(db.Model):
     __tablename__ = 'system_users'
 
-    user_id = Column(UUID(as_uuid=True), primary_key=True, default=uuid4)
+    user_id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
     employee_id = Column(UUID(as_uuid=True), ForeignKey('employees.employee_id'), nullable=True)
     username = Column(String(50), nullable=False, unique=True)
     password_hash = Column(String(255), nullable=False)
@@ -74,3 +75,7 @@ class System_Users(db.Model):
             logger.warning(f"Password for user {self.username} has expired.")
             return True
         return False
+    
+    @property
+    def id(self):
+        return self.user_id
