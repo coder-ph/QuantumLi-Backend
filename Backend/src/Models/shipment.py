@@ -13,32 +13,25 @@ class Shipment(BaseModel):
 
     shipment_id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
     shipment_reference = Column(String(50), nullable=False, unique=True)
-
     order_id = Column(UUID(as_uuid=True), ForeignKey('orders.order_id'), nullable=True)
     carrier_id = Column(UUID(as_uuid=True), ForeignKey('carriers.carrier_id'), nullable=True)
     vehicle_id = Column(UUID(as_uuid=True), ForeignKey('vehicles.vehicle_id'), nullable=True)
     driver_id = Column(UUID(as_uuid=True), ForeignKey('drivers.driver_id'), nullable=True)
-
     origin_location_id = Column(UUID(as_uuid=True), ForeignKey('locations.location_id'), nullable=False)
     destination_location_id = Column(UUID(as_uuid=True), ForeignKey('locations.location_id'), nullable=False)
-
     planned_departure = Column(DateTime, nullable=True)
     actual_departure = Column(DateTime, nullable=True)
     planned_arrival = Column(DateTime, nullable=True)
     actual_arrival = Column(DateTime, nullable=True)
-
     status = Column(SqlEnum(ShipmentStatusEnum), nullable=False, default=ShipmentStatusEnum.PLANNED)
     shipping_method = Column(SqlEnum(ShippingMethodEnum), nullable=True)
-
     tracking_number = Column(String(100), nullable=True, unique=True)
     total_weight = Column(Float, nullable=True)
     total_volume = Column(Float, nullable=True)
     bill_of_lading_number = Column(String(100), nullable=True)
-
     shipping_cost = Column(Float, nullable=True)
     fuel_surcharge = Column(Float, nullable=True)
     accessorial_charges = Column(Float, nullable=True)
-
     temperature_monitoring = Column(Boolean, default=False)
     seal_number = Column(String(100), nullable=True)
 

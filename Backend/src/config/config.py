@@ -44,6 +44,7 @@ class Config:
     MPESA_SHORTCODE = os.getenv('MPESA_SHORTCODE')
     MPESA_QLEAP_PAYBILL = os.getenv('MPESA_QLEAP_PAYBILL')
     MPESA_API_KEY = os.getenv('MPESA_API_KEY')
+    MPESA_SHORTCODE=os.getenv('MPESA_SHORTCODE')
 
     if not MPESA_SHORTCODE or not MPESA_QLEAP_PAYBILL or not MPESA_API_KEY:
         raise ValueError("MPESA configuration variables are not fully set.")

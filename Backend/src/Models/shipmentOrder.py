@@ -13,15 +13,10 @@ class ShipmentOrder(BaseModel):
     shipment_order_id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
     shipment_id = Column(UUID(as_uuid=True), ForeignKey('shipments.shipment_id'), nullable=False)
     order_id = Column(UUID(as_uuid=True), ForeignKey('orders.order_id'), nullable=False)
-
     loading_sequence = Column(Integer, nullable=False)
     unloading_sequence = Column(Integer, nullable=False)
-
-   
     created_at = Column(DateTime, default=datetime.utcnow)
     updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
-
-    
     shipment = relationship('Shipment', backref='shipment_orders', lazy=True)
     order = relationship('Order', backref='shipment_orders', lazy=True)
 

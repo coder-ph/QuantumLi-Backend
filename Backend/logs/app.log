@@ -3204,3 +3204,292 @@ sqlalchemy.exc.IntegrityError: (sqlite3.IntegrityError) NOT NULL constraint fail
 [2025-04-11 13:54:13,207] [INFO] logistics_app: Password verification successful.
 [2025-04-11 13:54:13,208] [INFO] logistics_app: Generated tokens for user 2e59a8d9-b2f4-49f5-8bb9-75848dc80d82, roles: []
 [2025-04-11 13:54:13,226] [INFO] logistics_app: User login successful | ID: 2e59a8d9-b2f4-49f5-8bb9-75848dc80d82 | IP: 127.0.0.1 | Agent: Thunder Client (https://www.thunderclient.com)
+[2025-04-11 17:23:09,603] [INFO] logistics_app: Models initialized successfully.
+[2025-04-11 17:23:09,603] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-11 17:23:13,076] [INFO] logistics_app: Models initialized successfully.
+[2025-04-11 17:23:13,078] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-11 17:24:15,129] [INFO] logistics_app: Password hashed successfully.
+[2025-04-11 17:24:15,159] [INFO] logistics_app: New user created: ike.halliday@gmail.com, status: pending_verification
+[2025-04-11 17:24:15,160] [INFO] logistics_app: Generated verification token for user ike.halliday@gmail.com
+[2025-04-11 17:24:18,216] [INFO] logistics_app: Verification email sent to ike.halliday@gmail.com
+[2025-04-11 17:24:18,220] [INFO] logistics_app: Verification email sent to ike.halliday@gmail.com
+[2025-04-11 17:24:18,228] [INFO] logistics_app: New user created and verification email sent | email: ike.halliday@gmail.com, id: 2f7c8c87-cc4f-4c7e-ac65-ff28a09362f3
+[2025-04-11 17:24:18,232] [ERROR] logistics_app: Unexpected server error during signup: log_audit_event() missing 1 required positional argument: 'user_agent'
+Traceback (most recent call last):
+  File "/home/phyl/Development/Logistics/Backend/src/handlers/controllers/auth_controller.py", line 156, in signup
+    log_audit_event(user_id=new_user.user_id, action="signup", ip=request.remote_addr)
+TypeError: log_audit_event() missing 1 required positional argument: 'user_agent'
+[2025-04-11 17:24:18,243] [ERROR] logistics_app: APIError Logged: {'message': 'Something went wrong. Please try again later.', 'status_code': 500, 'error_code': 'internal_server_error', 'payload': {}, 'traceback': 'Traceback (most recent call last):\n  File "/home/phyl/Development/Logistics/Backend/src/handlers/controllers/auth_controller.py", line 156, in signup\n    log_audit_event(user_id=new_user.user_id, action="signup", ip=request.remote_addr)\nTypeError: log_audit_event() missing 1 required positional argument: \'user_agent\'\n'}
+[2025-04-11 17:27:07,819] [INFO] logistics_app: Models initialized successfully.
+[2025-04-11 17:27:07,820] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-12 11:43:47,242] [INFO] logistics_app: Models initialized successfully.
+[2025-04-12 11:43:47,242] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-12 11:43:57,105] [INFO] logistics_app: Models initialized successfully.
+[2025-04-12 11:43:57,106] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-12 11:44:06,154] [INFO] logistics_app: Models initialized successfully.
+[2025-04-12 11:44:06,155] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-12 11:44:32,074] [INFO] logistics_app: Models initialized successfully.
+[2025-04-12 11:44:32,075] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-12 11:44:33,821] [INFO] logistics_app: Models initialized successfully.
+[2025-04-12 11:44:33,822] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-12 11:44:40,601] [INFO] logistics_app: Password hashed successfully.
+[2025-04-12 11:44:40,626] [INFO] logistics_app: New user created: phelixmbani@gmail.com, status: pending_verification
+[2025-04-12 11:44:40,627] [INFO] logistics_app: Generated verification token for user phelixmbani@gmail.com
+[2025-04-12 11:44:44,795] [INFO] logistics_app: Verification email sent to phelixmbani@gmail.com
+[2025-04-12 11:44:44,796] [INFO] logistics_app: Verification email sent to phelixmbani@gmail.com
+[2025-04-12 11:44:44,800] [INFO] logistics_app: New user created and verification email sent | email: phelixmbani@gmail.com, id: e4c91b90-08fd-4027-b239-aacecae59228
+[2025-04-12 11:44:44,801] [ERROR] logistics_app: Unexpected server error during signup: log_audit_event() missing 1 required positional argument: 'user_agent'
+Traceback (most recent call last):
+  File "/home/phyl/Development/Logistics/Backend/src/handlers/controllers/auth_controller.py", line 156, in signup
+    log_audit_event(user_id=new_user.user_id, action="signup", ip=request.remote_addr)
+TypeError: log_audit_event() missing 1 required positional argument: 'user_agent'
+[2025-04-12 11:44:44,805] [ERROR] logistics_app: APIError Logged: {'message': 'Something went wrong. Please try again later.', 'status_code': 500, 'error_code': 'internal_server_error', 'payload': {}, 'traceback': 'Traceback (most recent call last):\n  File "/home/phyl/Development/Logistics/Backend/src/handlers/controllers/auth_controller.py", line 156, in signup\n    log_audit_event(user_id=new_user.user_id, action="signup", ip=request.remote_addr)\nTypeError: log_audit_event() missing 1 required positional argument: \'user_agent\'\n'}
+[2025-04-12 11:47:51,183] [INFO] logistics_app: Models initialized successfully.
+[2025-04-12 11:47:51,184] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-12 11:47:54,329] [INFO] logistics_app: Models initialized successfully.
+[2025-04-12 11:47:54,330] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-12 11:48:29,689] [INFO] logistics_app: user verified  
+[2025-04-12 11:48:30,152] [INFO] logistics_app: Deleted Redis entry for email verification of user e4c91b90-08fd-4027-b239-aacecae59228. Token can no longer be reused.
+[2025-04-12 11:48:30,152] [INFO] logistics_app: User e4c91b90-08fd-4027-b239-aacecae59228 verified successfully at 2025-04-12 08:48:30.152439.
+[2025-04-12 11:49:02,804] [INFO] logistics_app: Password verification successful.
+[2025-04-12 11:49:02,805] [INFO] logistics_app: Generated tokens for user e4c91b90-08fd-4027-b239-aacecae59228, roles: []
+[2025-04-12 11:49:02,820] [INFO] logistics_app: User login successful | ID: e4c91b90-08fd-4027-b239-aacecae59228 | IP: 127.0.0.1 | Agent: Thunder Client (https://www.thunderclient.com)
+[2025-04-12 12:01:04,729] [INFO] logistics_app: Models initialized successfully.
+[2025-04-12 12:01:04,729] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-12 12:01:09,981] [INFO] logistics_app: Models initialized successfully.
+[2025-04-12 12:01:09,982] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-12 12:01:15,211] [INFO] logistics_app: Models initialized successfully.
+[2025-04-12 12:01:15,211] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-12 12:01:22,570] [INFO] logistics_app: Models initialized successfully.
+[2025-04-12 12:01:22,571] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-12 12:01:29,984] [INFO] logistics_app: Models initialized successfully.
+[2025-04-12 12:01:29,985] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-12 12:01:35,107] [INFO] logistics_app: Models initialized successfully.
+[2025-04-12 12:01:35,107] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-12 12:01:45,622] [INFO] logistics_app: Models initialized successfully.
+[2025-04-12 12:01:45,622] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-12 12:01:50,856] [INFO] logistics_app: Models initialized successfully.
+[2025-04-12 12:01:50,856] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-12 12:04:47,785] [INFO] logistics_app: Models initialized successfully.
+[2025-04-12 12:04:47,785] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-12 12:14:01,449] [INFO] logistics_app: Models initialized successfully.
+[2025-04-12 12:14:01,449] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-12 12:14:03,173] [INFO] logistics_app: Models initialized successfully.
+[2025-04-12 12:14:03,173] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-12 12:15:36,203] [INFO] logistics_app: Password verification successful.
+[2025-04-12 12:15:36,204] [INFO] logistics_app: Generated tokens for user e4c91b90-08fd-4027-b239-aacecae59228, roles: []
+[2025-04-12 12:15:36,234] [INFO] logistics_app: User login successful | ID: e4c91b90-08fd-4027-b239-aacecae59228 | IP: 127.0.0.1 | Agent: Thunder Client (https://www.thunderclient.com)
+[2025-04-12 12:16:53,140] [ERROR] logistics_app:  Error checking if token is revoked | jti: 636bb2de-c069-4da8-a735-e86aba9f2444 | Reason: 'function' object has no attribute 'redis_client'
+Traceback (most recent call last):
+  File "/home/phyl/Development/Logistics/Backend/src/services_layer/auth/token_service.py", line 37, in is_token_revoked
+    is_revoked = init_redis.redis_client.exists(key) == 1
+                 ^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'function' object has no attribute 'redis_client'
+[2025-04-12 12:16:53,148] [INFO] logistics_app: Blocked revoked token | jti: 636bb2de-c069-4da8-a735-e86aba9f2444
+[2025-04-12 12:17:30,360] [ERROR] logistics_app:  Error checking if token is revoked | jti: 636bb2de-c069-4da8-a735-e86aba9f2444 | Reason: 'function' object has no attribute 'redis_client'
+Traceback (most recent call last):
+  File "/home/phyl/Development/Logistics/Backend/src/services_layer/auth/token_service.py", line 37, in is_token_revoked
+    is_revoked = init_redis.redis_client.exists(key) == 1
+                 ^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'function' object has no attribute 'redis_client'
+[2025-04-12 12:17:30,367] [INFO] logistics_app: Blocked revoked token | jti: 636bb2de-c069-4da8-a735-e86aba9f2444
+[2025-04-12 12:20:37,623] [INFO] logistics_app: Models initialized successfully.
+[2025-04-12 12:20:37,623] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-12 12:20:43,070] [INFO] logistics_app: Models initialized successfully.
+[2025-04-12 12:20:43,070] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-12 12:20:48,453] [INFO] logistics_app: Models initialized successfully.
+[2025-04-12 12:20:48,453] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-12 12:27:44,471] [INFO] logistics_app: Models initialized successfully.
+[2025-04-12 12:27:44,471] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-12 12:28:56,917] [ERROR] logistics_app:  Error checking if token is revoked | jti: 636bb2de-c069-4da8-a735-e86aba9f2444 | Reason: 'function' object has no attribute 'redis_client'
+Traceback (most recent call last):
+  File "/home/phyl/Development/Logistics/Backend/src/services_layer/auth/token_service.py", line 37, in is_token_revoked
+    is_revoked = init_redis.redis_client.exists(key) == 1
+                 ^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'function' object has no attribute 'redis_client'
+[2025-04-12 12:28:56,926] [INFO] logistics_app: Blocked revoked token | jti: 636bb2de-c069-4da8-a735-e86aba9f2444
+[2025-04-12 12:35:00,863] [INFO] logistics_app: Models initialized successfully.
+[2025-04-12 12:35:00,864] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-12 12:35:02,632] [INFO] logistics_app: Models initialized successfully.
+[2025-04-12 12:35:02,632] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-12 12:35:11,767] [ERROR] logistics_app:  Error checking if token is revoked | jti: 636bb2de-c069-4da8-a735-e86aba9f2444 | Reason: 'function' object has no attribute 'redis_client'
+Traceback (most recent call last):
+  File "/home/phyl/Development/Logistics/Backend/src/services_layer/auth/token_service.py", line 37, in is_token_revoked
+    is_revoked = init_redis.redis_client.exists(key) == 1
+                 ^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'function' object has no attribute 'redis_client'
+[2025-04-12 12:35:11,770] [INFO] logistics_app: Blocked revoked token | jti: 636bb2de-c069-4da8-a735-e86aba9f2444
+[2025-04-12 12:35:27,720] [INFO] logistics_app: Models initialized successfully.
+[2025-04-12 12:35:27,720] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-12 12:35:32,205] [ERROR] logistics_app:  Error checking if token is revoked | jti: 636bb2de-c069-4da8-a735-e86aba9f2444 | Reason: 'function' object has no attribute 'redis_client'
+Traceback (most recent call last):
+  File "/home/phyl/Development/Logistics/Backend/src/services_layer/auth/token_service.py", line 37, in is_token_revoked
+    is_revoked = init_redis.redis_client.exists(key) == 1
+                 ^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'function' object has no attribute 'redis_client'
+[2025-04-12 12:35:32,208] [INFO] logistics_app: Blocked revoked token | jti: 636bb2de-c069-4da8-a735-e86aba9f2444
+[2025-04-12 12:51:31,793] [INFO] logistics_app: Models initialized successfully.
+[2025-04-12 12:51:31,793] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-12 12:51:33,386] [INFO] logistics_app: Models initialized successfully.
+[2025-04-12 12:51:33,386] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-12 12:51:48,626] [ERROR] logistics_app:  Error checking if token is revoked | jti: 636bb2de-c069-4da8-a735-e86aba9f2444 | Reason: 'function' object has no attribute 'redis_client'
+Traceback (most recent call last):
+  File "/home/phyl/Development/Logistics/Backend/src/services_layer/auth/token_service.py", line 37, in is_token_revoked
+    is_revoked = init_redis.redis_client.exists(key) == 1
+                 ^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'function' object has no attribute 'redis_client'
+[2025-04-12 12:51:48,638] [INFO] logistics_app: Blocked revoked token | jti: 636bb2de-c069-4da8-a735-e86aba9f2444
+[2025-04-12 12:54:48,801] [INFO] logistics_app: Models initialized successfully.
+[2025-04-12 12:54:48,801] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-12 13:18:59,906] [INFO] logistics_app: Models initialized successfully.
+[2025-04-12 13:18:59,906] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-12 13:19:01,604] [INFO] logistics_app: Models initialized successfully.
+[2025-04-12 13:19:01,604] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-12 14:03:58,359] [ERROR] logistics_app: Unexpected server error during signup: {'username': ['Full name is required.'], 'phone': ['Phone number is required.']}
+Traceback (most recent call last):
+  File "/home/phyl/Development/Logistics/Backend/src/handlers/controllers/auth_controller.py", line 134, in signup
+    validated_data = schema.load(data)
+                     ^^^^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/marshmallow/schema.py", line 792, in load
+    return self._do_load(
+           ^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/marshmallow/schema.py", line 999, in _do_load
+    raise exc
+marshmallow.exceptions.ValidationError: {'username': ['Full name is required.'], 'phone': ['Phone number is required.']}
+[2025-04-12 14:03:58,365] [ERROR] logistics_app: APIError Logged: {'message': 'Something went wrong. Please try again later.', 'status_code': 500, 'error_code': 'internal_server_error', 'payload': {}, 'traceback': 'Traceback (most recent call last):\n  File "/home/phyl/Development/Logistics/Backend/src/handlers/controllers/auth_controller.py", line 134, in signup\n    validated_data = schema.load(data)\n                     ^^^^^^^^^^^^^^^^^\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/marshmallow/schema.py", line 792, in load\n    return self._do_load(\n           ^^^^^^^^^^^^^^\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/marshmallow/schema.py", line 999, in _do_load\n    raise exc\nmarshmallow.exceptions.ValidationError: {\'username\': [\'Full name is required.\'], \'phone\': [\'Phone number is required.\']}\n'}
+[2025-04-12 14:04:25,657] [INFO] logistics_app: Password verification successful.
+[2025-04-12 14:04:25,658] [INFO] logistics_app: Generated tokens for user e4c91b90-08fd-4027-b239-aacecae59228, roles: []
+[2025-04-12 14:04:25,685] [INFO] logistics_app: User login successful | ID: e4c91b90-08fd-4027-b239-aacecae59228 | IP: 127.0.0.1 | Agent: Thunder Client (https://www.thunderclient.com)
+[2025-04-12 14:07:20,502] [ERROR] logistics_app:  Error checking if token is revoked | jti: b0eb877d-0d08-41cd-bcb3-f25f42855c8e | Reason: 'function' object has no attribute 'redis_client'
+Traceback (most recent call last):
+  File "/home/phyl/Development/Logistics/Backend/src/services_layer/auth/token_service.py", line 35, in is_token_revoked
+    is_revoked = init_redis.redis_client.exists(key) == 1
+                 ^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'function' object has no attribute 'redis_client'
+[2025-04-12 14:07:20,510] [INFO] logistics_app: Blocked revoked token | jti: b0eb877d-0d08-41cd-bcb3-f25f42855c8e
+[2025-04-12 14:07:36,255] [ERROR] logistics_app:  Error checking if token is revoked | jti: b0eb877d-0d08-41cd-bcb3-f25f42855c8e | Reason: 'function' object has no attribute 'redis_client'
+Traceback (most recent call last):
+  File "/home/phyl/Development/Logistics/Backend/src/services_layer/auth/token_service.py", line 35, in is_token_revoked
+    is_revoked = init_redis.redis_client.exists(key) == 1
+                 ^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'function' object has no attribute 'redis_client'
+[2025-04-12 14:07:36,262] [INFO] logistics_app: Blocked revoked token | jti: b0eb877d-0d08-41cd-bcb3-f25f42855c8e
+[2025-04-12 14:08:13,013] [ERROR] logistics_app:  Error checking if token is revoked | jti: b0eb877d-0d08-41cd-bcb3-f25f42855c8e | Reason: 'function' object has no attribute 'redis_client'
+Traceback (most recent call last):
+  File "/home/phyl/Development/Logistics/Backend/src/services_layer/auth/token_service.py", line 35, in is_token_revoked
+    is_revoked = init_redis.redis_client.exists(key) == 1
+                 ^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'function' object has no attribute 'redis_client'
+[2025-04-12 14:08:13,020] [INFO] logistics_app: Blocked revoked token | jti: b0eb877d-0d08-41cd-bcb3-f25f42855c8e
+[2025-04-13 08:44:51,559] [INFO] logistics_app: Models initialized successfully.
+[2025-04-13 08:44:51,559] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-13 08:44:53,188] [INFO] logistics_app: Models initialized successfully.
+[2025-04-13 08:44:53,188] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-13 08:46:02,235] [INFO] logistics_app: Password verification successful.
+[2025-04-13 08:46:02,236] [INFO] logistics_app: Generated tokens for user e4c91b90-08fd-4027-b239-aacecae59228, roles: []
+[2025-04-13 08:46:02,263] [INFO] logistics_app: User login successful | ID: e4c91b90-08fd-4027-b239-aacecae59228 | IP: 127.0.0.1 | Agent: Thunder Client (https://www.thunderclient.com)
+[2025-04-13 08:46:23,024] [INFO] logistics_app: Models initialized successfully.
+[2025-04-13 08:46:23,024] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-13 08:46:35,619] [INFO] logistics_app: Models initialized successfully.
+[2025-04-13 08:46:35,620] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-13 08:47:10,002] [ERROR] logistics_app:  Error checking if token is revoked | jti: 23e09393-7508-4054-9055-467e6230583f | Reason: 'function' object has no attribute 'redis_client'
+Traceback (most recent call last):
+  File "/home/phyl/Development/Logistics/Backend/src/services_layer/auth/token_service.py", line 35, in is_token_revoked
+    is_revoked = init_redis.redis_client.exists(key) == 1
+                 ^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'function' object has no attribute 'redis_client'
+[2025-04-13 08:47:10,009] [INFO] logistics_app: Blocked revoked token | jti: 23e09393-7508-4054-9055-467e6230583f
+[2025-04-13 08:48:24,157] [INFO] logistics_app: Models initialized successfully.
+[2025-04-13 08:48:24,157] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-13 08:48:31,291] [INFO] logistics_app: Models initialized successfully.
+[2025-04-13 08:48:31,291] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-13 08:49:07,580] [INFO] logistics_app: Models initialized successfully.
+[2025-04-13 08:49:07,580] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-13 08:51:35,065] [INFO] logistics_app: Models initialized successfully.
+[2025-04-13 08:51:35,065] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-13 08:51:42,427] [INFO] logistics_app: Models initialized successfully.
+[2025-04-13 08:51:42,428] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-13 08:52:40,149] [INFO] logistics_app: Models initialized successfully.
+[2025-04-13 08:52:40,150] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-13 08:53:15,501] [INFO] logistics_app: Models initialized successfully.
+[2025-04-13 08:53:15,501] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-13 08:53:23,843] [INFO] logistics_app: Models initialized successfully.
+[2025-04-13 08:53:23,844] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-13 09:11:31,300] [INFO] logistics_app: Models initialized successfully.
+[2025-04-13 09:11:31,300] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-13 09:11:32,151] [INFO] logistics_app: Models initialized successfully.
+[2025-04-13 09:11:32,151] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-13 09:17:00,357] [INFO] logistics_app: Models initialized successfully.
+[2025-04-13 09:17:00,357] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-13 09:17:01,267] [INFO] logistics_app: Models initialized successfully.
+[2025-04-13 09:17:01,267] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-13 09:25:02,924] [INFO] logistics_app: Models initialized successfully.
+[2025-04-13 09:25:02,924] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-13 09:25:18,994] [INFO] logistics_app: Models initialized successfully.
+[2025-04-13 09:25:18,994] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-13 09:25:19,938] [INFO] logistics_app: Models initialized successfully.
+[2025-04-13 09:25:19,938] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-13 09:29:12,645] [INFO] logistics_app: Models initialized successfully.
+[2025-04-13 09:29:12,645] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-13 09:31:51,092] [INFO] logistics_app: Models initialized successfully.
+[2025-04-13 09:31:51,092] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-13 09:32:03,717] [INFO] logistics_app: Models initialized successfully.
+[2025-04-13 09:32:03,718] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-13 09:32:07,921] [INFO] logistics_app: Models initialized successfully.
+[2025-04-13 09:32:07,921] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-13 09:32:14,799] [ERROR] logistics_app: Role claim missing in token for user None (127.0.0.1)
+[2025-04-13 09:47:01,676] [INFO] logistics_app: Models initialized successfully.
+[2025-04-13 09:47:01,677] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-13 09:47:02,537] [INFO] logistics_app: Models initialized successfully.
+[2025-04-13 09:47:02,538] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-13 09:47:36,878] [INFO] logistics_app: Password verification successful.
+[2025-04-13 09:47:36,879] [INFO] logistics_app: Generated tokens for user e4c91b90-08fd-4027-b239-aacecae59228, roles: user
+[2025-04-13 09:47:36,899] [INFO] logistics_app: User login successful | ID: e4c91b90-08fd-4027-b239-aacecae59228 | IP: 127.0.0.1 | Agent: Thunder Client (https://www.thunderclient.com)
+[2025-04-13 09:48:34,089] [ERROR] logistics_app: Role claim missing in token for user None (127.0.0.1)
+[2025-04-13 09:51:51,037] [INFO] logistics_app: Models initialized successfully.
+[2025-04-13 09:51:51,037] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-13 09:52:01,550] [ERROR] logistics_app: Role claim missing in token for user None (127.0.0.1)
+[2025-04-13 09:53:50,546] [INFO] logistics_app: Models initialized successfully.
+[2025-04-13 09:53:50,546] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-13 09:53:53,045] [INFO] logistics_app: Models initialized successfully.
+[2025-04-13 09:53:53,045] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-13 09:53:55,679] [INFO] logistics_app: Models initialized successfully.
+[2025-04-13 09:53:55,679] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-13 09:54:56,919] [INFO] logistics_app: Password verification successful.
+[2025-04-13 09:54:56,919] [ERROR] logistics_app: Unexpected error during login: 'System_Users' object has no attribute 'roles' | IP: 127.0.0.1
+[2025-04-13 09:54:56,920] [ERROR] logistics_app: APIError Logged: {'message': 'An unexpected error occurred. Please try again later.', 'status_code': 500, 'error_code': 'internal_server_error', 'payload': {}, 'traceback': 'Traceback (most recent call last):\n  File "/home/phyl/Development/Logistics/Backend/src/handlers/controllers/auth_controller.py", line 63, in login\n    roles = user.roles\n            ^^^^^^^^^^\nAttributeError: \'System_Users\' object has no attribute \'roles\'. Did you mean: \'role\'?\n'}
+[2025-04-13 09:55:22,077] [INFO] logistics_app: Password verification successful.
+[2025-04-13 09:55:22,077] [ERROR] logistics_app: Unexpected error during login: 'System_Users' object has no attribute 'roles' | IP: 127.0.0.1
+[2025-04-13 09:55:22,078] [ERROR] logistics_app: APIError Logged: {'message': 'An unexpected error occurred. Please try again later.', 'status_code': 500, 'error_code': 'internal_server_error', 'payload': {}, 'traceback': 'Traceback (most recent call last):\n  File "/home/phyl/Development/Logistics/Backend/src/handlers/controllers/auth_controller.py", line 63, in login\n    roles = user.roles\n            ^^^^^^^^^^\nAttributeError: \'System_Users\' object has no attribute \'roles\'. Did you mean: \'role\'?\n'}
+[2025-04-13 09:56:06,272] [INFO] logistics_app: Password verification successful.
+[2025-04-13 09:56:06,273] [ERROR] logistics_app: Unexpected error during login: 'System_Users' object has no attribute 'roles' | IP: 127.0.0.1
+[2025-04-13 09:56:06,273] [ERROR] logistics_app: APIError Logged: {'message': 'An unexpected error occurred. Please try again later.', 'status_code': 500, 'error_code': 'internal_server_error', 'payload': {}, 'traceback': 'Traceback (most recent call last):\n  File "/home/phyl/Development/Logistics/Backend/src/handlers/controllers/auth_controller.py", line 63, in login\n    roles = user.roles\n            ^^^^^^^^^^\nAttributeError: \'System_Users\' object has no attribute \'roles\'. Did you mean: \'role\'?\n'}
+[2025-04-13 09:57:01,312] [INFO] logistics_app: Models initialized successfully.
+[2025-04-13 09:57:01,313] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-13 09:57:10,818] [INFO] logistics_app: Password verification successful.
+[2025-04-13 09:57:10,819] [INFO] logistics_app: Generated tokens for user e4c91b90-08fd-4027-b239-aacecae59228, roles: user
+[2025-04-13 09:57:10,838] [INFO] logistics_app: User login successful | ID: e4c91b90-08fd-4027-b239-aacecae59228 | IP: 127.0.0.1 | Agent: Thunder Client (https://www.thunderclient.com)
+[2025-04-13 09:58:33,015] [ERROR] logistics_app: Role claim missing in token for user None (127.0.0.1)
+[2025-04-13 10:00:02,448] [INFO] logistics_app: Models initialized successfully.
+[2025-04-13 10:00:02,449] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-13 10:00:07,755] [INFO] logistics_app: Models initialized successfully.
+[2025-04-13 10:00:07,756] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-13 10:07:44,971] [INFO] logistics_app: Models initialized successfully.
+[2025-04-13 10:07:44,971] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-13 10:08:42,483] [INFO] logistics_app: Models initialized successfully.
+[2025-04-13 10:08:42,483] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-13 10:08:50,859] [INFO] logistics_app: Models initialized successfully.
+[2025-04-13 10:08:50,860] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-13 10:08:57,189] [INFO] logistics_app: Models initialized successfully.
+[2025-04-13 10:08:57,189] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-13 10:09:10,140] [INFO] logistics_app: Models initialized successfully.
+[2025-04-13 10:09:10,140] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-13 10:09:10,956] [INFO] logistics_app: Models initialized successfully.
+[2025-04-13 10:09:10,956] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-13 10:09:48,188] [INFO] logistics_app: Password verification successful.
+[2025-04-13 10:09:48,189] [INFO] logistics_app: Generated tokens for user e4c91b90-08fd-4027-b239-aacecae59228, role: user
+[2025-04-13 10:09:48,209] [INFO] logistics_app: User login successful | ID: e4c91b90-08fd-4027-b239-aacecae59228 | IP: 127.0.0.1 | Agent: Thunder Client (https://www.thunderclient.com)
+[2025-04-13 10:10:18,921] [INFO] logistics_app: Models initialized successfully.
+[2025-04-13 10:10:18,921] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-13 10:10:29,402] [INFO] logistics_app: Models initialized successfully.
+[2025-04-13 10:10:29,403] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.

@@ -71,7 +71,7 @@ def login_user(username, password):
     }
     redis_client.set(session_id, json.dumps(session_data), ex=86400)  
 
-    roles = [user.role]  
+    roles = user.role
     access_token, refresh_token = generate_tokens(user, roles=roles)
 
     return {

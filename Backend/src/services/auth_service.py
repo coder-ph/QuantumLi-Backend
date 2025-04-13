@@ -17,31 +17,40 @@ BASE_URL = "http://localhost:5555/auth"
 def generate_tokens(user, access_token_expiry_hours=1, roles=None):
     try:
         roles = roles or []
+        if not roles:
+            logger.error(f"Roles are missing for user {user.user_id}.")
+            raise ValueError("Roles are required to generate tokens.")
+
+        
+        if isinstance(roles, list):
+            role = roles[0]
+        else:
+            role = roles
 
         additional_claims = {
-            "roles": roles,
-            "user_id": user.user_id 
+            "role": role,  
+            "user_id": str(user.user_id)
         }
 
         access_token = create_access_token(
-            identity=user.user_id, 
-            fresh=True, 
+            identity=str(user.user_id),
+            fresh=True,
             expires_delta=timedelta(hours=access_token_expiry_hours),
             additional_claims=additional_claims
         )
 
-        refresh_token = create_refresh_token(identity=user.user_id)
+        refresh_token = create_refresh_token(identity=str(user.user_id))
 
-        logger.info(f"Generated tokens for user {user.id}, roles: {roles}")
+        logger.info(f"Generated tokens for user {user.user_id}, role: {role}")
 
         return access_token, refresh_token
-    
+
     except SQLAlchemyError as db_error:
-        logger.error(f"Database error while generating tokens for user {user.id}: {str(db_error)}")
+        logger.error(f"Database error while generating tokens for user {user.user_id}: {str(db_error)}")
         return None
-    
+
     except Exception as e:
-        logger.error(f"Unexpected error occurred while generating tokens for user {user.id}: {str(e)}")
+        logger.error(f"Unexpected error occurred while generating tokens for user {user.user_id}: {str(e)}")
         return None
 
 
@@ -172,7 +181,7 @@ def get_current_user():
         raise UnauthorizedError("User is not authenticated.")
     
     user = System_Users.query.get(user_id)  
-    if not user:
+    if not user or not user.roles:
         raise UnauthorizedError("User not found.")
     
     return user

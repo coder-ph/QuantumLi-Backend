@@ -60,7 +60,8 @@ def login():
             logger.warning(f"Login failed: Invalid password | User ID: {user.user_id} | IP: {user_ip}")
             raise UnauthorizedError("Invalid credentials.")
 
-        access_token, refresh_token = generate_tokens(user)
+        roles = user.role
+        access_token, refresh_token = generate_tokens(user, roles=roles)
 
         user_session_data = {
             "user_id": str(user.user_id),
@@ -153,7 +154,7 @@ def signup():
 
         logger.info(f"New user created and verification email sent | email: {new_user.email}, id: {new_user.user_id}")
         
-        log_audit_event(user_id=new_user.user_id, action="signup", ip=request.remote_addr)
+        log_audit_event(user_id=new_user.user_id, action="signup", ip=request.remote_addr, user_agent=request.headers.get("User-Agent"))
 
         return jsonify({"message": "User registered successfully. Please verify your email."}), 201
 
@@ -180,6 +181,7 @@ def verify_email():
 
         try:
             decoded_token = decode_token(token)
+            print(decoded_token)
             user_id = decoded_token['sub']
             logger.info("user verified  ")
         except exceptions.RevokedTokenError:

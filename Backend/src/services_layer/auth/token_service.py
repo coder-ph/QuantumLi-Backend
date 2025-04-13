@@ -2,6 +2,7 @@ from flask_jwt_extended import get_jti
 from datetime import timedelta
 from src.config.redis_config import init_redis 
 from src.utils.logger import logger
+from src.config.redis_config import get_redis_client
 import json
 
 REVOCATION_KEY_PREFIX = "revoked_tokens"
@@ -25,16 +26,14 @@ def revoke_token(token, expires_in):
 
 
 def is_token_revoked(jti):
-    """
-    Check if a token's JTI is marked as revoked in Redis.
-    """
     try:
         if not jti:
             logger.warning("JTI check called with None or empty value.")
             return True
 
         key = f"{REVOCATION_KEY_PREFIX}:{jti}"
-        is_revoked = init_redis.redis_client.exists(key) == 1
+        redis_client = get_redis_client()  
+        is_revoked = redis_client.exists(key) == 1
 
         logger.debug(f"{' Revoked' if is_revoked else ' Valid'} token | jti: {jti}")
         return is_revoked

@@ -1,11 +1,12 @@
 from flask import request, jsonify
+from flask_jwt_extended import jwt_required
 from src.handlers.repositories.order_repository import (
     create_order, get_all_orders, get_order_by_id,
     update_order, assign_driver_to_order
 )
 from src.decorators.permissions import role_required
 from src.utils.logger import logger
-
+@jwt_required()
 @role_required(['admin', 'employee', 'user', 'manager'])
 def create_order_view():
     """Create a new order"""
@@ -21,6 +22,7 @@ def create_order_view():
         logger.error(f"Unexpected error creating order: {str(e)}")
         return jsonify({"message": "Internal server error"}), 500
 
+@jwt_required()
 @role_required(['admin', 'employee', 'driver', 'user', 'manager'])
 def get_orders_view():
     """Get all orders"""
@@ -31,6 +33,7 @@ def get_orders_view():
         logger.error(f"Error fetching orders: {str(e)}")
         return jsonify({"message": "Internal server error"}), 500
 
+@jwt_required()
 @role_required(['admin', 'employee', 'driver', 'user', 'manager'])
 def get_order_view(order_id):
     """Get an order by ID"""
@@ -43,6 +46,7 @@ def get_order_view(order_id):
         logger.error(f"Error fetching order {order_id}: {str(e)}")
         return jsonify({"message": "Internal server error"}), 500
 
+@jwt_required()
 @role_required(['admin', 'employee', 'user', 'manager'])
 def update_order_view(order_id):
     """Update an existing order"""
@@ -57,6 +61,7 @@ def update_order_view(order_id):
         logger.error(f"Error updating order {order_id}: {str(e)}")
         return jsonify({"message": "Internal server error"}), 500
 
+@jwt_required()
 @role_required(['admin', 'manager'])
 def assign_driver_view(order_id):
     """Assign a driver to an order"""

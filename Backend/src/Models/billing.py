@@ -16,15 +16,12 @@ class Billing(db.Model):
     due_date = Column(Date, nullable=False)
     total_amount = Column(Float, nullable=False)
     tax_amount = Column(Float, nullable=False)
-
     status = Column(Enum('draft', 'paid', 'overdue', name='invoice_status'), nullable=False, default='draft')
     payment_date = Column(Date, nullable=True)
     payment_method = Column(String(50), nullable=True)  
     reference_numbers = Column(String(100), nullable=True)
     notes = Column(String(255), nullable=True)
-
     is_deleted = Column(Boolean, default=False)
-
     created_at = Column(DateTime, nullable=False, default=datetime.utcnow)
     updated_at = Column(DateTime, nullable=False, default=datetime.utcnow, onupdate=datetime.utcnow)
 

@@ -25,7 +25,6 @@ class System_Users(db.Model):
     created_at = Column(DateTime, nullable=False, default=datetime.utcnow)
     updated_at = Column(DateTime, nullable=False, default=datetime.utcnow, onupdate=datetime.utcnow)
     
-
     # employee = db.relationship('Employee', back_populates='system_user', uselist=False, lazy='noload')
     audit_logs = db.relationship('Audit_Logs', back_populates='user')
     def __repr__(self):
@@ -79,3 +78,5 @@ class System_Users(db.Model):
     @property
     def id(self):
         return self.user_id
+
+
