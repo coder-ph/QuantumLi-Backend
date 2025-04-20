@@ -3493,3 +3493,7 @@ AttributeError: 'function' object has no attribute 'redis_client'
 [2025-04-13 10:10:18,921] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
 [2025-04-13 10:10:29,402] [INFO] logistics_app: Models initialized successfully.
 [2025-04-13 10:10:29,403] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-20 15:48:06,987] [INFO] logistics_app: Models initialized successfully.
+[2025-04-20 15:48:06,988] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-20 15:48:15,901] [INFO] logistics_app: Models initialized successfully.
+[2025-04-20 15:48:15,902] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.

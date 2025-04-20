@@ -8,10 +8,12 @@ def init_redis():
         redis_host = current_app.config['REDIS_HOST']
         redis_port = current_app.config["REDIS_PORT"]
         redis_db = current_app.config["REDIS_DB"]
+        redis_password = current_app.config["REDIS_PASSWORD"]
         redis_client = redis.StrictRedis(
             host=redis_host,
             port=redis_port,
             db=redis_db,
+            password=redis_password,
             decode_responses=True,
             socket_timeout=5,                               
             retry_on_timeout=True, 

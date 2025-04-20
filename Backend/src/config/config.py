@@ -17,9 +17,10 @@ class Config:
     
     DEBUG = os.getenv('DEBUG', 'False').lower() in ['true', '1', 't', 'y', 'yes']
     
-    REDIS_HOST = os.getenv('REDIS_HOST', 'localhost')
-    REDIS_PORT = int(os.getenv('REDIS_PORT', 6379))  
+    REDIS_HOST = os.getenv('REDIS_HOST')
+    REDIS_PORT = int(os.getenv('REDIS_PORT'))  
     REDIS_DB = int(os.getenv('REDIS_DB', 0))  
+    REDIS_PASSWORD = os.getenv('REDIS_PASSWORD')
 
     JWT_SECRET_KEY = os.getenv('JWT_SECRET_KEY', 'jwt_secret_key')
     JWT_ACCESS_TOKEN_EXPIRES = int(os.getenv('JWT_ACCESS_TOKEN_EXPIRES', 3600))
