@@ -88,3 +88,25 @@ class ServiceUnavailableError(APIError):
 class UnprocessableEntityError(APIError):
     def __init__(self, message="Unprocessable entity", error_code="unprocessable_entity", payload=None):
         super().__init__(message, 422, error_code, payload)
+
+
+"""Basic connection example.
+"""
+
+import redis
+
+r = redis.Redis(
+    host='redis-15568.c9.us-east-1-2.ec2.redns.redis-cloud.com',
+    port=15568,
+    decode_responses=True,
+    username="default",
+    password="WHi8cKK4NvYOA2zFBUaiA34oiKUhKrlx",
+)
+
+success = r.set('foo', 'bar')
+# True
+
+result = r.get('foo')
+print(result)
+# >>> bar
+

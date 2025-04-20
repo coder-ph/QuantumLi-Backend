@@ -23,12 +23,17 @@ def get_redis_client():
         return redis.StrictRedis(
             host=current_app.config.get("REDIS_HOST", "localhost"),
             port=current_app.config.get("REDIS_PORT", 6379),
-            db=current_app.config.get("REDIS_DB", 0),
-            decode_responses=True
+            # db=current_app.config.get("REDIS_DB", 0),
+            password=current_app.config.get("REDIS_PASSWORD"),  
+            username=current_app.config.get("REDIS_USER", "default"),
+            decode_responses=True,
+            socket_timeout=10,
+            retry_on_timeout=True
         )
     except Exception as e:
         logger.error(f"Failed to connect to Redis: {str(e)}")
         raise InternalServerError("Server configuration error.")
+
 
 @limiter.limit("5 per minute")
 def login():
@@ -49,13 +54,6 @@ def login():
             logger.warning(f"Login failed: User not found | Email: {data['email']} | IP: {user_ip}")
             raise UnauthorizedError("Invalid credentials.")
 
-  
-        try:
-            user_uuid = uuid.UUID(str(user.user_id))
-        except (ValueError, AttributeError) as e:
-            logger.error(f"Invalid user_id format: {user.user_id} | Error: {str(e)}")
-            raise InternalServerError("System data integrity error")
-
         if not verify_password(user.password_hash, data['password']):
             logger.warning(f"Login failed: Invalid password | User ID: {user.user_id} | IP: {user_ip}")
             raise UnauthorizedError("Invalid credentials.")
@@ -71,10 +69,16 @@ def login():
             "user_agent": user_agent,
         }
 
-        redis_client = get_redis_client()
-        redis_key = f"user_session:{user.user_id}"
-        redis_client.set(redis_key, json.dumps(user_session_data), ex=60 * 60 * 2)
+        # Handle Redis interaction with error handling
+        try:
+            redis_client = get_redis_client()  # Ensure Redis client connection is successful
+            redis_key = f"user_session:{user.user_id}"
+            redis_client.set(redis_key, json.dumps(user_session_data), ex=60 * 60 * 2)
+        except Exception as redis_error:
+            logger.error(f"Redis error during login: {str(redis_error)}")
+            raise InternalServerError("Unable to store session in Redis. Please try again later.")
 
+        # Continue with the rest of the process...
         audit_log = Audit_Logs(
             user_id=user.user_id,
             action_type="login",
@@ -125,7 +129,6 @@ def logout():
 @limiter.limit("5 per minute")  
 def signup():
     try:
-        
         data = request.get_json()
         if not data:
             logger.warning("Signup request without JSON body.")
@@ -149,8 +152,13 @@ def signup():
         verification_token = create_verification_token(new_user)
         send_verification_email(new_user.email, verification_token)
 
-        redis_client = get_redis_client()
-        redis_client.set(f"email_verification:{new_user.user_id}", verification_token, ex=60 * 60 * 24)  # expires in 24 hours
+        
+        try:
+            redis_client = get_redis_client()  
+            redis_client.set(f"email_verification:{new_user.user_id}", verification_token, ex=60 * 60 * 24)  # expires in 24 hours
+        except Exception as redis_error:
+            logger.error(f"Redis error during signup: {str(redis_error)}")
+            raise InternalServerError("Unable to store verification data in Redis. Please try again later.")
 
         logger.info(f"New user created and verification email sent | email: {new_user.email}, id: {new_user.user_id}")
         
@@ -161,12 +169,10 @@ def signup():
     except ValidationError as ve:
         logger.warning(f"Validation error on signup: {ve.messages}")
         raise ve
-
     except IntegrityError as db_err:
         db.session.rollback()
         logger.error(f"Database IntegrityError during signup: {str(db_err)}")
         raise ConflictError("User with this email already exists.")
-
     except Exception as e:
         logger.exception(f"Unexpected server error during signup: {str(e)}")
         raise InternalServerError("Something went wrong. Please try again later.")
@@ -181,9 +187,7 @@ def verify_email():
 
         try:
             decoded_token = decode_token(token)
-            print(decoded_token)
             user_id = decoded_token['sub']
-            logger.info("user verified  ")
         except exceptions.RevokedTokenError:
             logger.warning("Verification failed: Token has expired.")
             raise ValidationError("The verification token has expired.")
@@ -203,22 +207,24 @@ def verify_email():
 
         user.status = 'active'
         db.session.commit()
-        
-        redis_client = get_redis_client()
-        redis_key = f"email_verification:{user.user_id}"
-        if redis_client.exists(redis_key):
-            redis_client.delete(redis_key)
-            logger.info(f"Deleted Redis entry for email verification of user {user_id}. Token can no longer be reused.")
+       
+        try:
+            redis_client = get_redis_client()  
+            redis_key = f"email_verification:{user.user_id}"
+            if redis_client.exists(redis_key):
+                redis_client.delete(redis_key)
+                logger.info(f"Deleted Redis entry for email verification of user {user_id}. Token can no longer be reused.")
+        except Exception as redis_error:
+            logger.error(f"Redis error during email verification: {str(redis_error)}")
+            raise InternalServerError("Unable to verify email in Redis. Please try again later.")
 
         logger.info(f"User {user_id} verified successfully at {datetime.utcnow()}.")
 
         return jsonify({"message": "Email verified successfully. You can now log in."}), 200
 
     except ValidationError as ve:
-       
         logger.warning(f"Validation error during email verification: {str(ve)}")
         raise ve
     except Exception as e:
-        
         logger.error(f"Unexpected error during email verification: {str(e)}")
         raise InternalServerError("An error occurred during email verification.")
