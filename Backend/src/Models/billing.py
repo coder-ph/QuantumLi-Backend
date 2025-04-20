@@ -55,5 +55,5 @@ class Billing(db.Model):
         logger.info(f"Billing record restored: {self.invoice_id}")
 
     def is_overdue(self):
-        """Check if the billing is overdue"""
+        
         return self.due_date < datetime.utcnow().date() and self.status != 'paid'

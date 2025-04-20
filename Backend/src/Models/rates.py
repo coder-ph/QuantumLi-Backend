@@ -17,15 +17,10 @@ class Rates(db.Model):
     service_type = Column(Enum('air', 'road', 'sea', 'rail', name='service_type_enum'), nullable=False)
     origin_zone = Column(String(255), nullable=False)
     destination_zone = Column(String(255), nullable=False)
-    # Weight break that applies to the rate (e.g., 0-100kg, 101-500kg)
     weight_break = Column(String(255), nullable=False)
-    # Volume break that applies to the rate (e.g., 0-1 cubic meter, 1-5 cubic meters)
     volume_break = Column(String(255), nullable=False)
-    # Rate per unit (could be per kg, per cubic meter, etc.)
     rate_per_unit = Column(Float, nullable=False)
-    # Minimum charge that applies to the rate
     minimum_charge = Column(Float, nullable=False)
-    # Any accessorial charges (e.g., fuel surcharge, handling fees)
     accessorial_charges = Column(Float, nullable=True)
 
     # # Currency in which the rate is quoted (e.g., USD, EUR, KES)
@@ -42,24 +37,24 @@ class Rates(db.Model):
         return f"<Rates(rate_id={self.rate_id}, rate_name={self.rate_name}, service_type={self.service_type}, origin_zone={self.origin_zone}, destination_zone={self.destination_zone})>"
 
     def save(self):
-        """Save the rate entry"""
+       
         db.session.add(self)
         db.session.commit()
         logger.info(f"Rate created: {self.rate_id}")
 
     def update(self):
-        """Update the rate entry"""
+       
         db.session.commit()
         logger.info(f"Rate updated: {self.rate_id}")
 
     def delete(self):
-        """Soft delete the rate entry"""
+        
         self.is_deleted = True
         db.session.commit()
         logger.info(f"Rate soft deleted: {self.rate_id}")
 
     def restore(self):
-        """Restore a soft-deleted rate entry"""
+      
         self.is_deleted = False
         db.session.commit()
         logger.info(f"Rate restored: {self.rate_id}")

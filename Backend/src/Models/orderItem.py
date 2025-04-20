@@ -6,10 +6,11 @@ from sqlalchemy import Column, ForeignKey, String, Integer, Float
 from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.orm import relationship, validates
 from   src.startup.database import db
+from src.utils.logger import logger
+from datetime import datetime
 
-# Setup logger
-logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
-logger = logging.getLogger(__name__)
+
+
 
 class OrderItem(db.Model):
     __tablename__ = 'order_items'

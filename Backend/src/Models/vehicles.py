@@ -36,7 +36,7 @@ class Vehicle(db.Model):
 
     @staticmethod
     def validate_registration_number(registration_number):
-        """Ensure the registration number is alphanumeric and not too long."""
+       
         if len(registration_number) > 100 or not registration_number.isalnum():
             logger.error(f"Invalid registration number: {registration_number}. It should be alphanumeric and less than 100 characters.")
             raise ValueError("Registration number must be alphanumeric and no more than 100 characters.")
@@ -45,7 +45,7 @@ class Vehicle(db.Model):
 
     @staticmethod
     def validate_capacity(capacity, field_name):
-        """Ensure that capacities are positive numbers."""
+        
         if capacity <= 0:
             logger.error(f"Invalid {field_name}: {capacity}. {field_name} must be a positive number.")
             raise ValueError(f"{field_name} must be a positive number.")
@@ -54,7 +54,7 @@ class Vehicle(db.Model):
 
     @staticmethod
     def validate_year(year):
-        """Ensure the year is within a reasonable range (e.g., 1900 to current year)."""
+      
         current_year = 2025
         if year < 1900 or year > current_year:
             logger.error(f"Invalid year: {year}. Year must be between 1900 and {current_year}.")
@@ -63,7 +63,7 @@ class Vehicle(db.Model):
         return year
 
     def validate_vehicle(self):
-        """Validate the vehicle data."""
+    
         try:
             self.registration_number = self.validate_registration_number(self.registration_number)
             self.max_weight_capacity = self.validate_capacity(self.max_weight_capacity, "max_weight_capacity")

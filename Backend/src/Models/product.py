@@ -37,7 +37,6 @@ class Product(db.Model):
 
     @validates('weight')
     def validate_weight(self, key, weight):
-        """Validate that weight is a positive number."""
         if weight is not None and weight <= 0:
             logger.error(f"Invalid weight: {weight}. Weight must be a positive number.")
             raise ValueError("Weight must be a positive number.")
@@ -46,7 +45,7 @@ class Product(db.Model):
 
     @validates('value')
     def validate_value(self, key, value):
-        """Validate that value is a positive number."""
+       
         if value is not None and value <= 0:
             logger.error(f"Invalid value: {value}. Value must be a positive number.")
             raise ValueError("Value must be a positive number.")
@@ -55,7 +54,6 @@ class Product(db.Model):
 
     @validates('dimensions')
     def validate_dimensions(self, key, dimensions):
-        """Validate that dimensions are in the format 'LxWxH' where L, W, and H are numbers."""
         if dimensions and not self._is_valid_dimensions_format(dimensions):
             logger.error(f"Invalid dimensions: {dimensions}. Must be in 'LxWxH' format.")
             raise ValueError("Dimensions must be in the format 'LxWxH' where L, W, and H are numbers.")
@@ -63,7 +61,6 @@ class Product(db.Model):
         return dimensions
 
     def _is_valid_dimensions_format(self, dimensions):
-        """Check if the dimensions are in the correct format."""
         parts = dimensions.split('x')
         return len(parts) == 3 and all(part.isdigit() for part in parts)
 

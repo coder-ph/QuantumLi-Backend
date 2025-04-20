@@ -36,7 +36,7 @@ class Inventory(db.Model):
 
     @validates('quantity_on_hand', 'quantity_allocated', 'quantity_on_order')
     def validate_non_negative(self, key, value):
-        """Ensures quantities are non-negative."""
+    
         if value < 0:
             logger.error(f"{key} must be non-negative. Provided value: {value}")
             raise ValueError(f"{key} must be non-negative. Provided value: {value}")
@@ -45,7 +45,7 @@ class Inventory(db.Model):
 
     @validates('expiry_date')
     def validate_expiry_date(self, key, value):
-        """Ensures expiry date is in the future."""
+     
         if value and value <= datetime.utcnow().date():
             logger.error(f"Expiry date must be in the future. Provided date: {value}")
             raise ValueError(f"Expiry date must be in the future. Provided date: {value}")
@@ -54,7 +54,6 @@ class Inventory(db.Model):
 
     @validates('batch_number')
     def validate_batch_number(self, key, value):
-        """Ensures batch number is not empty if provided."""
         if value and len(value) < 5:
             logger.error(f"Batch number must be at least 5 characters. Provided batch number: {value}")
             raise ValueError(f"Batch number must be at least 5 characters. Provided batch number: {value}")

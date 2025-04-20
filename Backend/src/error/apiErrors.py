@@ -3,10 +3,7 @@ from src.utils.logger import logger
 
 
 class APIError(Exception):
-    """
-    Base class for all custom API errors.
-    Supports custom message, status code, error code, and optional payload (dict).
-    """
+
 
     def __init__(self, message, status_code=400, error_code=None, payload=None, log=True):
         self.message = message

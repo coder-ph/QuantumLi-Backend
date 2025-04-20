@@ -49,7 +49,7 @@ def login():
             logger.warning(f"Login failed: User not found | Email: {data['email']} | IP: {user_ip}")
             raise UnauthorizedError("Invalid credentials.")
 
-        # UUID validation
+  
         try:
             user_uuid = uuid.UUID(str(user.user_id))
         except (ValueError, AttributeError) as e:

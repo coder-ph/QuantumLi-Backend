@@ -35,7 +35,7 @@ class Shipment(BaseModel):
     temperature_monitoring = Column(Boolean, default=False)
     seal_number = Column(String(100), nullable=True)
 
-    # Relationships
+    
     carrier = relationship('Carrier', back_populates='shipments', lazy=True)
     vehicle = relationship('Vehicle', backref='shipments', lazy=True)
     driver = relationship('Driver', backref='shipments', lazy=True)
@@ -46,7 +46,7 @@ class Shipment(BaseModel):
     def __repr__(self):
         return f"<Shipment(shipment_id={self.shipment_id}, reference={self.shipment_reference}, status={self.status.value})>"
 
-    # Validations
+
     @validates('total_weight', 'total_volume', 'shipping_cost', 'fuel_surcharge', 'accessorial_charges')
     def validate_positive_numbers(self, key, value):
         if value is not None and value < 0:

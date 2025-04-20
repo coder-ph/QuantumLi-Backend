@@ -9,7 +9,7 @@ from src.utils.logger import logger
 @jwt_required()
 @role_required(['admin', 'employee', 'user', 'manager'])
 def create_order_view():
-    """Create a new order"""
+    
     data = request.get_json()
     try:
         order = create_order(data)
@@ -25,7 +25,7 @@ def create_order_view():
 @jwt_required()
 @role_required(['admin', 'employee', 'driver', 'user', 'manager'])
 def get_orders_view():
-    """Get all orders"""
+    
     try:
         orders = get_all_orders()
         return jsonify([order.to_dict() for order in orders]), 200
@@ -36,7 +36,7 @@ def get_orders_view():
 @jwt_required()
 @role_required(['admin', 'employee', 'driver', 'user', 'manager'])
 def get_order_view(order_id):
-    """Get an order by ID"""
+   
     try:
         order = get_order_by_id(order_id)
         if not order:
@@ -49,7 +49,7 @@ def get_order_view(order_id):
 @jwt_required()
 @role_required(['admin', 'employee', 'user', 'manager'])
 def update_order_view(order_id):
-    """Update an existing order"""
+   
     data = request.get_json()
     try:
         order = update_order(order_id, data)
@@ -64,7 +64,7 @@ def update_order_view(order_id):
 @jwt_required()
 @role_required(['admin', 'manager'])
 def assign_driver_view(order_id):
-    """Assign a driver to an order"""
+    
     try:
         data = request.get_json()
         driver_id = data.get("driver_id")

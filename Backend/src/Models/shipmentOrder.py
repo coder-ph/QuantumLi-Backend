@@ -26,7 +26,7 @@ class ShipmentOrder(BaseModel):
     
     @validates('loading_sequence', 'unloading_sequence')
     def validate_sequence(self, key, value):
-        """Ensure loading and unloading sequence are positive integers."""
+        
         if value < 0:
             logger.error(f"Validation failed for {key}: {value} is invalid (must be positive).")
             raise ValueError(f"{key.replace('_', ' ').title()} must be a positive integer.")
@@ -34,9 +34,9 @@ class ShipmentOrder(BaseModel):
         return value
 
     def log_creation(self):
-        """Log creation of shipment order."""
+      
         logger.info(f"ShipmentOrder with ID {self.shipment_order_id} created at {self.created_at}.")
 
     def log_update(self):
-        """Log updates to shipment order."""
+       
         logger.info(f"ShipmentOrder with ID {self.shipment_order_id} updated at {self.updated_at}.")

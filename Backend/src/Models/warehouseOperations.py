@@ -39,20 +39,20 @@ class WarehouseOperation(BaseModel):
         return f"<WarehouseOperation(id={self.operation_id}, operation_type={self.operation_type}, status={self.status})>"
 
     def log_creation(self):
-        """Log creation of a warehouse operation."""
+      
         logger.info(f"WarehouseOperation with ID {self.operation_id} created at {self.created_at}.")
 
     def log_update(self):
-        """Log updates to warehouse operation."""
+       
         logger.info(f"WarehouseOperation with ID {self.operation_id} updated at {self.updated_at}.")
 
     def delete(self):
-        """Mark this record as deleted (soft delete)."""
+       
         self.deleted_at = datetime.utcnow()
         db.session.commit()
         logger.info(f"WarehouseOperation with ID {self.operation_id} marked as deleted at {self.deleted_at}.")
         
     @classmethod
     def query(cls):
-        """Override the query to exclude soft-deleted records."""
+        
         return db.session.query(cls).filter(cls.deleted_at == None)

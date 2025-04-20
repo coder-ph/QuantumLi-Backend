@@ -18,7 +18,7 @@ class TrackingEvent(BaseModel):
     location_id = Column(UUID(as_uuid=True), ForeignKey('locations.location_id'), nullable=False)
     gps_coordinates = Column(String, nullable=True)  
     event_description = Column(String, nullable=True)
-    recorded_by = Column(String, nullable=False)  # user, driver, or system
+    recorded_by = Column(String, nullable=False) 
     signature = Column(String, nullable=True) 
  
 
@@ -38,7 +38,7 @@ class TrackingEvent(BaseModel):
 
     @validates('gps_coordinates')
     def validate_gps_coordinates(self, key, value):
-        """Ensure gps_coordinates is in a valid format (latitude, longitude)."""
+       
         if value:
             pattern = r"^[-+]?([1-8]?\d(\.\d+)?|90(\.0+)?),\s?[-+]?((1[0-7]\d)|([1-9]?\d))(\.\d+)?$"
             if not re.match(pattern, value):

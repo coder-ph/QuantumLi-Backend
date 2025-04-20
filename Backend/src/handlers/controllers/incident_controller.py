@@ -8,19 +8,19 @@ from src.utils.logger import logger
 incident_repo = IncidentRepository()
 
 def is_authorized(user, allowed_roles):
-    """Check if the current user has one of the allowed roles."""
+ 
     if user.role not in allowed_roles:
         logger.warning(f"Unauthorized access attempt by user {user.email} with role {user.role}")
         raise UnauthorizedError(f"Role '{user.role}' not permitted for this action.")
 
 def validate_request_data(data):
-    """Validate the incoming request data for creating or updating an incident."""
+  
     if not data.get("incident_type") or not data.get("description"):
         raise BadRequestError("Missing required fields: incident_type and description.")
 
 @jwt_required()
 def create_incident():
-    """Create a new incident."""
+   
     user = get_current_user()
     data = request.get_json()
 
@@ -38,7 +38,7 @@ def create_incident():
 
 @jwt_required()
 def get_all_incidents():
-    """Get all incidents."""
+
     user = get_current_user()
    
     incidents = incident_repo.get_all()
@@ -49,7 +49,7 @@ def get_all_incidents():
 
 @jwt_required()
 def get_incident(incident_id):
-    """Get a specific incident by ID."""
+    
     user = get_current_user()
     incident = incident_repo.get_by_id(incident_id)
     if not incident:
@@ -59,7 +59,7 @@ def get_incident(incident_id):
 
 @jwt_required()
 def delete_incident(incident_id):
-    """Delete an incident (soft delete)."""
+   
     user = get_current_user()
     is_authorized(user, ['admin'])
 
