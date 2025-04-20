@@ -48,21 +48,21 @@ class TrackingEvent(BaseModel):
         return value
 
     def log_creation(self):
-        """Log creation of a tracking event."""
+        
+        self.created_at = datetime.utcnow()
         logger.info(f"TrackingEvent with ID {self.tracking_event_id} created at {self.created_at}.")
 
     def log_update(self):
-        """Log updates to tracking event."""
+       
         logger.info(f"TrackingEvent with ID {self.tracking_event_id} updated at {self.updated_at}.")
 
     
     def delete(self):
-        """Mark this record as deleted (soft delete)."""
+       
         self.deleted_at = datetime.utcnow()
         db.session.commit()
         logger.info(f"TrackingEvent with ID {self.tracking_event_id} marked as deleted at {self.deleted_at}.")
         
     @classmethod
     def query(cls):
-        """Override the query to exclude soft-deleted records."""
         return db.session.query(cls).filter(cls.deleted_at == None)
