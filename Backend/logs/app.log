@@ -5197,3 +5197,384 @@ AttributeError: 'SystemUserSchema' object has no attribute 'jsonify'
 [2025-04-21 15:03:53,999] [INFO] logistics_app: Retrieved 0 incidents.
 [2025-04-21 15:03:54,000] [INFO] logistics_app: No incidents found. Returning empty list.
 [2025-04-21 15:04:11,214] [INFO] logistics_app: Retrieved 0 active drivers.
+[2025-04-21 15:50:01,220] [INFO] logistics_app: Models initialized successfully.
+[2025-04-21 15:50:01,221] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-21 15:50:05,326] [INFO] logistics_app: Models initialized successfully.
+[2025-04-21 15:50:05,327] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-21 15:50:43,493] [INFO] logistics_app: Models initialized successfully.
+[2025-04-21 15:50:43,493] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-21 15:53:34,168] [INFO] logistics_app: Models initialized successfully.
+[2025-04-21 15:53:34,169] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-21 15:53:48,037] [INFO] logistics_app: Models initialized successfully.
+[2025-04-21 15:53:48,038] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-21 15:54:20,028] [INFO] logistics_app: Models initialized successfully.
+[2025-04-21 15:54:20,029] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-21 15:54:28,432] [INFO] logistics_app: Models initialized successfully.
+[2025-04-21 15:54:28,433] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-21 15:54:35,733] [INFO] logistics_app: Models initialized successfully.
+[2025-04-21 15:54:35,733] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-21 15:56:22,439] [INFO] logistics_app: Models initialized successfully.
+[2025-04-21 15:56:22,441] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-21 15:56:29,651] [INFO] logistics_app: Models initialized successfully.
+[2025-04-21 15:56:29,652] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-21 15:56:46,273] [INFO] logistics_app: Models initialized successfully.
+[2025-04-21 15:56:46,274] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-21 16:00:49,421] [ERROR] logistics_app: [request_password_reset] Error: 'SystemUserService' object has no attribute 'initiate_password_reset'
+Traceback (most recent call last):
+  File "/home/phyl/Development/Logistics/Backend/src/handlers/controllers/system_user_controller.py", line 72, in request_password_reset
+    result = user_service.initiate_password_reset(email)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'SystemUserService' object has no attribute 'initiate_password_reset'
+[2025-04-21 16:15:51,305] [INFO] logistics_app: Models initialized successfully.
+[2025-04-21 16:15:51,306] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-21 16:15:55,437] [INFO] logistics_app: Models initialized successfully.
+[2025-04-21 16:15:55,438] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-21 16:16:02,064] [ERROR] logistics_app: [initiate_password_reset] Error initiating password reset for phelixotty@gmail.com: 'SystemUserRepository' object has no attribute 'get_user_by_email'
+Traceback (most recent call last):
+  File "/home/phyl/Development/Logistics/Backend/src/handlers/services/system_user_service.py", line 52, in initiate_password_reset
+    user = self.user_repository.get_user_by_email(email)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'SystemUserRepository' object has no attribute 'get_user_by_email'. Did you mean: 'get_user_by_id'?
+[2025-04-21 16:16:02,066] [WARNING] logistics_app: [request_password_reset] No user found for email: phelixotty@gmail.com.
+[2025-04-21 16:18:01,250] [INFO] logistics_app: Models initialized successfully.
+[2025-04-21 16:18:01,251] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-21 16:18:06,912] [ERROR] logistics_app: [generate_reset_token] Error generating reset token: Object of type UUID is not JSON serializable
+Traceback (most recent call last):
+  File "/home/phyl/Development/Logistics/Backend/src/handlers/services/system_user_service.py", line 76, in generate_reset_token
+    reset_token = jwt.encode(payload, 'your_secret_key', algorithm='HS256')
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/jwt/api_jwt.py", line 72, in encode
+    json_payload = self._encode_payload(
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/jwt/api_jwt.py", line 99, in _encode_payload
+    return json.dumps(
+           ^^^^^^^^^^^
+  File "/home/phyl/.pyenv/versions/3.12.0/lib/python3.12/json/__init__.py", line 238, in dumps
+    **kw).encode(obj)
+          ^^^^^^^^^^^
+  File "/home/phyl/.pyenv/versions/3.12.0/lib/python3.12/json/encoder.py", line 200, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/phyl/.pyenv/versions/3.12.0/lib/python3.12/json/encoder.py", line 258, in iterencode
+    return _iterencode(o, 0)
+           ^^^^^^^^^^^^^^^^^
+  File "/home/phyl/.pyenv/versions/3.12.0/lib/python3.12/json/encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type UUID is not JSON serializable
+[2025-04-21 16:18:06,922] [ERROR] logistics_app: [initiate_password_reset] Error initiating password reset for phelixotty@gmail.com: Object of type UUID is not JSON serializable
+Traceback (most recent call last):
+  File "/home/phyl/Development/Logistics/Backend/src/handlers/services/system_user_service.py", line 57, in initiate_password_reset
+    reset_token = self.generate_reset_token(user)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/Backend/src/handlers/services/system_user_service.py", line 76, in generate_reset_token
+    reset_token = jwt.encode(payload, 'your_secret_key', algorithm='HS256')
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/jwt/api_jwt.py", line 72, in encode
+    json_payload = self._encode_payload(
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/jwt/api_jwt.py", line 99, in _encode_payload
+    return json.dumps(
+           ^^^^^^^^^^^
+  File "/home/phyl/.pyenv/versions/3.12.0/lib/python3.12/json/__init__.py", line 238, in dumps
+    **kw).encode(obj)
+          ^^^^^^^^^^^
+  File "/home/phyl/.pyenv/versions/3.12.0/lib/python3.12/json/encoder.py", line 200, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/phyl/.pyenv/versions/3.12.0/lib/python3.12/json/encoder.py", line 258, in iterencode
+    return _iterencode(o, 0)
+           ^^^^^^^^^^^^^^^^^
+  File "/home/phyl/.pyenv/versions/3.12.0/lib/python3.12/json/encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type UUID is not JSON serializable
+[2025-04-21 16:18:06,924] [WARNING] logistics_app: [request_password_reset] No user found for email: phelixotty@gmail.com.
+[2025-04-21 16:21:01,399] [INFO] logistics_app: Models initialized successfully.
+[2025-04-21 16:21:01,400] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-21 16:21:05,453] [INFO] logistics_app: Models initialized successfully.
+[2025-04-21 16:21:05,455] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-21 16:21:19,477] [INFO] logistics_app: Verification email sent to phelixotty@gmail.com
+[2025-04-21 16:21:19,478] [INFO] logistics_app: [initiate_password_reset] Password reset email sent to phelixotty@gmail.com.
+[2025-04-21 16:21:19,480] [INFO] logistics_app: [request_password_reset] Password reset request initiated for phelixotty@gmail.com.
+[2025-04-21 16:27:48,553] [INFO] logistics_app: Models initialized successfully.
+[2025-04-21 16:27:48,555] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-21 16:29:13,031] [INFO] logistics_app: Models initialized successfully.
+[2025-04-21 16:29:13,032] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-21 16:29:17,723] [INFO] logistics_app: Models initialized successfully.
+[2025-04-21 16:29:17,724] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-21 16:29:23,313] [WARNING] logistics_app: [reset_password] Missing reset token or new password.
+[2025-04-21 16:31:51,229] [INFO] logistics_app: Models initialized successfully.
+[2025-04-21 16:31:51,229] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-21 16:32:04,015] [INFO] logistics_app: Models initialized successfully.
+[2025-04-21 16:32:04,016] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-21 16:32:13,914] [WARNING] logistics_app: [reset_password] Missing reset token or new password.
+[2025-04-21 16:34:30,965] [ERROR] logistics_app: [reset_password] Error: 'SystemUserService' object has no attribute 'reset_password'
+Traceback (most recent call last):
+  File "/home/phyl/Development/Logistics/Backend/src/handlers/controllers/system_user_controller.py", line 101, in reset_password
+    result = user_service.reset_password(reset_token, new_password)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'SystemUserService' object has no attribute 'reset_password'
+[2025-04-21 16:36:04,242] [INFO] logistics_app: Models initialized successfully.
+[2025-04-21 16:36:04,243] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-21 16:36:18,991] [INFO] logistics_app: Models initialized successfully.
+[2025-04-21 16:36:18,992] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-21 16:36:37,248] [INFO] logistics_app: Models initialized successfully.
+[2025-04-21 16:36:37,249] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-21 16:41:43,754] [INFO] logistics_app: Models initialized successfully.
+[2025-04-21 16:41:43,755] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-21 16:41:48,015] [INFO] logistics_app: Models initialized successfully.
+[2025-04-21 16:41:48,020] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-21 16:41:53,726] [ERROR] logistics_app: [get_user_by_id] DB error for user eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjNGY2YTgwYS1kMjYxLTRhZmQtYjMyNi1iOGM2NmYzYmY3MjAiLCJlbWFpbCI6InBoZWxpeG90dHlAZ21haWwuY29tIiwiZXhwIjoxNzQ1MjQzNDc1fQ.Yq8mxF8KSfhgDcIL6aUfKyGKTyltn4DqGgjSixjxoOM: (psycopg2.errors.InvalidTextRepresentation) invalid input syntax for type uuid: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjNGY2YTgwYS1kMjYxLTRhZmQtYjMyNi1iOGM2NmYzYmY3MjAiLCJlbWFpbCI6InBoZWxpeG90dHlAZ21haWwuY29tIiwiZXhwIjoxNzQ1MjQzNDc1fQ.Yq8mxF8KSfhgDcIL6aUfKyGKTyltn4DqGgjSixjxoOM"
+LINE 3: WHERE system_users.user_id = 'eyJhbGciOiJIUzI1NiIsInR5cCI6Ik...
+                                     ^
+
+[SQL: SELECT system_users.user_id AS system_users_user_id, system_users.employee_id AS system_users_employee_id, system_users.username AS system_users_username, system_users.password_hash AS system_users_password_hash, system_users.email AS system_users_email, system_users.phone AS system_users_phone, system_users.role AS system_users_role, system_users.last_login AS system_users_last_login, system_users.is_active AS system_users_is_active, system_users.password_reset_token AS system_users_password_reset_token, system_users.password_expiry AS system_users_password_expiry, system_users.status AS system_users_status, system_users.is_deleted AS system_users_is_deleted, system_users.created_at AS system_users_created_at, system_users.updated_at AS system_users_updated_at 
+FROM system_users 
+WHERE system_users.user_id = %(user_id_1)s::UUID AND system_users.is_deleted = false 
+ LIMIT %(param_1)s]
+[parameters: {'user_id_1': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjNGY2YTgwYS1kMjYxLTRhZmQtYjMyNi1iOGM2NmYzYmY3MjAiLCJlbWFpbCI6InBoZWxpeG90dHlAZ21haWwuY29tIiwiZXhwIjoxNzQ1MjQzNDc1fQ.Yq8mxF8KSfhgDcIL6aUfKyGKTyltn4DqGgjSixjxoOM', 'param_1': 1}]
+(Background on this error at: https://sqlalche.me/e/20/9h9h)
+Traceback (most recent call last):
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1964, in _exec_single_context
+    self.dialect.do_execute(
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 945, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.errors.InvalidTextRepresentation: invalid input syntax for type uuid: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjNGY2YTgwYS1kMjYxLTRhZmQtYjMyNi1iOGM2NmYzYmY3MjAiLCJlbWFpbCI6InBoZWxpeG90dHlAZ21haWwuY29tIiwiZXhwIjoxNzQ1MjQzNDc1fQ.Yq8mxF8KSfhgDcIL6aUfKyGKTyltn4DqGgjSixjxoOM"
+LINE 3: WHERE system_users.user_id = 'eyJhbGciOiJIUzI1NiIsInR5cCI6Ik...
+                                     ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/phyl/Development/Logistics/Backend/src/handlers/repositories/system_user_repository.py", line 22, in get_user_by_id
+    user = System_Users.query.filter_by(user_id=user_id, is_deleted=False).first()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/query.py", line 2759, in first
+    return self.limit(1)._iter().first()  # type: ignore
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/query.py", line 2858, in _iter
+    result: Union[ScalarResult[_T], Result[_T]] = self.session.execute(
+                                                  ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 2365, in execute
+    return self._execute_internal(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 2251, in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/context.py", line 306, in orm_execute_statement
+    result = conn.execute(
+             ^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1416, in execute
+    return meth(
+           ^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/sql/elements.py", line 523, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1638, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1843, in _execute_context
+    return self._exec_single_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1983, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 2352, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1964, in _exec_single_context
+    self.dialect.do_execute(
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 945, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.DataError: (psycopg2.errors.InvalidTextRepresentation) invalid input syntax for type uuid: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjNGY2YTgwYS1kMjYxLTRhZmQtYjMyNi1iOGM2NmYzYmY3MjAiLCJlbWFpbCI6InBoZWxpeG90dHlAZ21haWwuY29tIiwiZXhwIjoxNzQ1MjQzNDc1fQ.Yq8mxF8KSfhgDcIL6aUfKyGKTyltn4DqGgjSixjxoOM"
+LINE 3: WHERE system_users.user_id = 'eyJhbGciOiJIUzI1NiIsInR5cCI6Ik...
+                                     ^
+
+[SQL: SELECT system_users.user_id AS system_users_user_id, system_users.employee_id AS system_users_employee_id, system_users.username AS system_users_username, system_users.password_hash AS system_users_password_hash, system_users.email AS system_users_email, system_users.phone AS system_users_phone, system_users.role AS system_users_role, system_users.last_login AS system_users_last_login, system_users.is_active AS system_users_is_active, system_users.password_reset_token AS system_users_password_reset_token, system_users.password_expiry AS system_users_password_expiry, system_users.status AS system_users_status, system_users.is_deleted AS system_users_is_deleted, system_users.created_at AS system_users_created_at, system_users.updated_at AS system_users_updated_at 
+FROM system_users 
+WHERE system_users.user_id = %(user_id_1)s::UUID AND system_users.is_deleted = false 
+ LIMIT %(param_1)s]
+[parameters: {'user_id_1': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjNGY2YTgwYS1kMjYxLTRhZmQtYjMyNi1iOGM2NmYzYmY3MjAiLCJlbWFpbCI6InBoZWxpeG90dHlAZ21haWwuY29tIiwiZXhwIjoxNzQ1MjQzNDc1fQ.Yq8mxF8KSfhgDcIL6aUfKyGKTyltn4DqGgjSixjxoOM', 'param_1': 1}]
+(Background on this error at: https://sqlalche.me/e/20/9h9h)
+[2025-04-21 16:41:53,735] [WARNING] logistics_app: [update_user] Cannot update - user eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjNGY2YTgwYS1kMjYxLTRhZmQtYjMyNi1iOGM2NmYzYmY3MjAiLCJlbWFpbCI6InBoZWxpeG90dHlAZ21haWwuY29tIiwiZXhwIjoxNzQ1MjQzNDc1fQ.Yq8mxF8KSfhgDcIL6aUfKyGKTyltn4DqGgjSixjxoOM not found.
+[2025-04-21 16:41:53,735] [WARNING] logistics_app: [reset_password] Failed to update password for user eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjNGY2YTgwYS1kMjYxLTRhZmQtYjMyNi1iOGM2NmYzYmY3MjAiLCJlbWFpbCI6InBoZWxpeG90dHlAZ21haWwuY29tIiwiZXhwIjoxNzQ1MjQzNDc1fQ.Yq8mxF8KSfhgDcIL6aUfKyGKTyltn4DqGgjSixjxoOM
+[2025-04-21 16:41:53,735] [WARNING] logistics_app: [reset_password] Invalid or expired reset token.
+[2025-04-21 16:50:08,267] [INFO] logistics_app: Models initialized successfully.
+[2025-04-21 16:50:08,268] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-21 16:50:12,199] [INFO] logistics_app: Models initialized successfully.
+[2025-04-21 16:50:12,199] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-21 16:50:18,498] [ERROR] logistics_app: [get_user_by_id] Invalid user_id type: <class 'str'>. Expected int.
+[2025-04-21 16:50:18,499] [WARNING] logistics_app: [update_user] Cannot update - user eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjNGY2YTgwYS1kMjYxLTRhZmQtYjMyNi1iOGM2NmYzYmY3MjAiLCJlbWFpbCI6InBoZWxpeG90dHlAZ21haWwuY29tIiwiZXhwIjoxNzQ1MjQzNDc1fQ.Yq8mxF8KSfhgDcIL6aUfKyGKTyltn4DqGgjSixjxoOM not found.
+[2025-04-21 16:50:18,500] [WARNING] logistics_app: [reset_password] Failed to update password for user eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjNGY2YTgwYS1kMjYxLTRhZmQtYjMyNi1iOGM2NmYzYmY3MjAiLCJlbWFpbCI6InBoZWxpeG90dHlAZ21haWwuY29tIiwiZXhwIjoxNzQ1MjQzNDc1fQ.Yq8mxF8KSfhgDcIL6aUfKyGKTyltn4DqGgjSixjxoOM
+[2025-04-21 16:50:18,500] [WARNING] logistics_app: [reset_password] Invalid or expired reset token.
+[2025-04-21 16:53:11,121] [INFO] logistics_app: Models initialized successfully.
+[2025-04-21 16:53:11,121] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-21 16:59:14,557] [INFO] logistics_app: Models initialized successfully.
+[2025-04-21 16:59:14,557] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-21 17:00:05,135] [INFO] logistics_app: Models initialized successfully.
+[2025-04-21 17:00:05,136] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-21 17:00:14,495] [WARNING] logistics_app: [verify_reset_token] Invalid token: Signature verification failed
+[2025-04-21 17:00:14,496] [WARNING] logistics_app: [reset_password] Invalid or expired reset token.
+[2025-04-21 17:00:55,026] [ERROR] logistics_app: [generate_reset_token] Error: 'NoneType' object has no attribute 'setex'
+Traceback (most recent call last):
+  File "/home/phyl/Development/Logistics/Backend/src/handlers/services/system_user_service.py", line 89, in generate_reset_token
+    redis_client.setex(redis_key, timedelta(minutes=RESET_TOKEN_EXPIRE_MINUTES), token)
+    ^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'setex'
+[2025-04-21 17:00:55,027] [ERROR] logistics_app: [initiate_password_reset] Failed to generate reset token for phelixotty@gmail.com.
+[2025-04-21 17:00:55,027] [WARNING] logistics_app: [request_password_reset] No user found for email: phelixotty@gmail.com.
+[2025-04-21 17:06:08,590] [INFO] logistics_app: Models initialized successfully.
+[2025-04-21 17:06:08,591] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-21 17:06:13,002] [INFO] logistics_app: Models initialized successfully.
+[2025-04-21 17:06:13,003] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-21 17:06:15,334] [ERROR] logistics_app: [generate_reset_token] Error: 'NoneType' object has no attribute 'ping'
+Traceback (most recent call last):
+  File "/home/phyl/Development/Logistics/Backend/src/handlers/services/system_user_service.py", line 89, in generate_reset_token
+    if not redis_client.ping():
+           ^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'ping'
+[2025-04-21 17:06:15,335] [ERROR] logistics_app: [initiate_password_reset] Failed to generate reset token for phelixotty@gmail.com.
+[2025-04-21 17:06:15,335] [WARNING] logistics_app: [request_password_reset] No user found for email: phelixotty@gmail.com.
+[2025-04-21 17:09:41,642] [INFO] logistics_app: Models initialized successfully.
+[2025-04-21 17:09:41,643] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-21 17:10:01,719] [ERROR] logistics_app: [generate_reset_token] Error: 'NoneType' object has no attribute 'ping'
+Traceback (most recent call last):
+  File "/home/phyl/Development/Logistics/Backend/src/handlers/services/system_user_service.py", line 89, in generate_reset_token
+    if not redis_client.ping():
+           ^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'ping'
+[2025-04-21 17:10:01,720] [ERROR] logistics_app: [initiate_password_reset] Failed to generate reset token for phelixotty@gmail.com.
+[2025-04-21 17:10:01,720] [WARNING] logistics_app: [request_password_reset] No user found for email: phelixotty@gmail.com.
+[2025-04-21 17:13:11,837] [INFO] logistics_app: Models initialized successfully.
+[2025-04-21 17:13:11,838] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-21 17:13:17,211] [INFO] logistics_app: [generate_reset_token] Token generated for user phelixotty@gmail.com
+[2025-04-21 17:13:20,960] [INFO] logistics_app: Verification email sent to phelixotty@gmail.com
+[2025-04-21 17:13:20,961] [INFO] logistics_app: [initiate_password_reset] Password reset email sent to phelixotty@gmail.com.
+[2025-04-21 17:13:20,962] [INFO] logistics_app: [request_password_reset] Password reset request initiated for phelixotty@gmail.com.
+[2025-04-21 17:16:28,064] [INFO] logistics_app: Models initialized successfully.
+[2025-04-21 17:16:28,065] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-21 17:16:44,845] [INFO] logistics_app: Models initialized successfully.
+[2025-04-21 17:16:44,847] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-21 17:18:33,631] [WARNING] logistics_app: [reset_password] Missing reset token or new password.
+[2025-04-21 17:19:50,440] [ERROR] logistics_app: [reset_password] Error: 400 Bad Request: Failed to decode JSON object: Expecting value: line 1 column 1 (char 0)
+Traceback (most recent call last):
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/werkzeug/wrappers/request.py", line 611, in get_json
+    rv = self.json_module.loads(data)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/flask/json/provider.py", line 187, in loads
+    return json.loads(s, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/phyl/.pyenv/versions/3.12.0/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/phyl/.pyenv/versions/3.12.0/lib/python3.12/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/phyl/.pyenv/versions/3.12.0/lib/python3.12/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/phyl/Development/Logistics/Backend/src/handlers/controllers/system_user_controller.py", line 89, in reset_password
+    data = request.get_json()
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/werkzeug/wrappers/request.py", line 620, in get_json
+    rv = self.on_json_loading_failed(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/flask/wrappers.py", line 214, in on_json_loading_failed
+    return super().on_json_loading_failed(e)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/werkzeug/wrappers/request.py", line 645, in on_json_loading_failed
+    raise BadRequest(f"Failed to decode JSON object: {e}")
+werkzeug.exceptions.BadRequest: 400 Bad Request: Failed to decode JSON object: Expecting value: line 1 column 1 (char 0)
+[2025-04-21 17:20:21,615] [ERROR] logistics_app: [reset_password] Error: 400 Bad Request: Failed to decode JSON object: Expecting value: line 1 column 1 (char 0)
+Traceback (most recent call last):
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/werkzeug/wrappers/request.py", line 611, in get_json
+    rv = self.json_module.loads(data)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/flask/json/provider.py", line 187, in loads
+    return json.loads(s, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/phyl/.pyenv/versions/3.12.0/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/phyl/.pyenv/versions/3.12.0/lib/python3.12/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/phyl/.pyenv/versions/3.12.0/lib/python3.12/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/phyl/Development/Logistics/Backend/src/handlers/controllers/system_user_controller.py", line 89, in reset_password
+    data = request.get_json()
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/werkzeug/wrappers/request.py", line 620, in get_json
+    rv = self.on_json_loading_failed(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/flask/wrappers.py", line 214, in on_json_loading_failed
+    return super().on_json_loading_failed(e)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/werkzeug/wrappers/request.py", line 645, in on_json_loading_failed
+    raise BadRequest(f"Failed to decode JSON object: {e}")
+werkzeug.exceptions.BadRequest: 400 Bad Request: Failed to decode JSON object: Expecting value: line 1 column 1 (char 0)
+[2025-04-21 17:20:29,698] [WARNING] logistics_app: [reset_password] Missing reset token or new password.
+[2025-04-21 17:23:49,238] [INFO] logistics_app: Models initialized successfully.
+[2025-04-21 17:23:49,239] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-21 17:24:45,828] [INFO] logistics_app: Models initialized successfully.
+[2025-04-21 17:24:45,829] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-21 17:24:50,860] [INFO] logistics_app: Models initialized successfully.
+[2025-04-21 17:24:50,861] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-21 17:24:53,212] [INFO] logistics_app: [reset_password] Received data: {'reset_token ': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjNGY2YTgwYS1kMjYxLTRhZmQtYjMyNi1iOGM2NmYzYmY3MjAiLCJlbWFpbCI6InBoZWxpeG90dHlAZ21haWwuY29tIiwiZXhwIjoxNzQ1MjQ2NTk3fQ.sCcAubU7wTiMIYN5tAVXrpaVTjs-gXsOxPkd-4rk5iM', 'new_password': 'NewSecurePass123!', 'confirm_password': 'NewSecurePass123!'}
+[2025-04-21 17:24:53,213] [WARNING] logistics_app: [reset_password] Missing reset token or new password.
+[2025-04-21 17:25:55,073] [INFO] logistics_app: Models initialized successfully.
+[2025-04-21 17:25:55,074] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-21 17:26:09,844] [INFO] logistics_app: [reset_password] Received data: {'reset_token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjNGY2YTgwYS1kMjYxLTRhZmQtYjMyNi1iOGM2NmYzYmY3MjAiLCJlbWFpbCI6InBoZWxpeG90dHlAZ21haWwuY29tIiwiZXhwIjoxNzQ1MjQ2NTk3fQ.sCcAubU7wTiMIYN5tAVXrpaVTjs-gXsOxPkd-4rk5iM', 'new_password': 'NewSecurePass123!', 'confirm_password': 'NewSecurePass123!'}
+[2025-04-21 17:26:09,846] [ERROR] logistics_app: [verify_reset_token] Unexpected error: invalid literal for int() with base 10: 'c4f6a80a-d261-4afd-b326-b8c66f3bf720'
+Traceback (most recent call last):
+  File "/home/phyl/Development/Logistics/Backend/src/handlers/services/system_user_service.py", line 93, in verify_reset_token
+    user_id = int(payload.get("sub"))
+              ^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: invalid literal for int() with base 10: 'c4f6a80a-d261-4afd-b326-b8c66f3bf720'
+[2025-04-21 17:26:09,848] [WARNING] logistics_app: [reset_password] Invalid or expired reset token.
+[2025-04-21 17:28:12,715] [INFO] logistics_app: Models initialized successfully.
+[2025-04-21 17:28:12,716] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-21 17:29:00,405] [INFO] logistics_app: Models initialized successfully.
+[2025-04-21 17:29:00,406] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-21 17:29:10,733] [INFO] logistics_app: Models initialized successfully.
+[2025-04-21 17:29:10,734] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-21 17:29:32,325] [INFO] logistics_app: [reset_password] Received data: {'reset_token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjNGY2YTgwYS1kMjYxLTRhZmQtYjMyNi1iOGM2NmYzYmY3MjAiLCJlbWFpbCI6InBoZWxpeG90dHlAZ21haWwuY29tIiwiZXhwIjoxNzQ1MjQ2NTk3fQ.sCcAubU7wTiMIYN5tAVXrpaVTjs-gXsOxPkd-4rk5iM', 'new_password': 'NewSecurePass123!', 'confirm_password': 'NewSecurePass123!'}
+[2025-04-21 17:29:32,327] [ERROR] logistics_app: [get_user_by_id] Invalid user_id type: <class 'uuid.UUID'>. Expected int.
+[2025-04-21 17:29:32,328] [WARNING] logistics_app: [reset_password] Invalid or expired reset token.
+[2025-04-21 17:30:06,796] [INFO] logistics_app: Models initialized successfully.
+[2025-04-21 17:30:06,797] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-21 17:30:14,126] [INFO] logistics_app: Models initialized successfully.
+[2025-04-21 17:30:14,127] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-21 17:30:18,411] [INFO] logistics_app: [reset_password] Received data: {'reset_token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjNGY2YTgwYS1kMjYxLTRhZmQtYjMyNi1iOGM2NmYzYmY3MjAiLCJlbWFpbCI6InBoZWxpeG90dHlAZ21haWwuY29tIiwiZXhwIjoxNzQ1MjQ2NTk3fQ.sCcAubU7wTiMIYN5tAVXrpaVTjs-gXsOxPkd-4rk5iM', 'new_password': 'NewSecurePass123!', 'confirm_password': 'NewSecurePass123!'}
+[2025-04-21 17:30:18,413] [ERROR] logistics_app: [get_user_by_id] Invalid user_id type: <class 'str'>. Expected int.
+[2025-04-21 17:30:18,414] [WARNING] logistics_app: [reset_password] Invalid or expired reset token.
+[2025-04-21 17:30:50,929] [INFO] logistics_app: Models initialized successfully.
+[2025-04-21 17:30:50,930] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-21 17:30:52,491] [INFO] logistics_app: [reset_password] Received data: {'reset_token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjNGY2YTgwYS1kMjYxLTRhZmQtYjMyNi1iOGM2NmYzYmY3MjAiLCJlbWFpbCI6InBoZWxpeG90dHlAZ21haWwuY29tIiwiZXhwIjoxNzQ1MjQ2NTk3fQ.sCcAubU7wTiMIYN5tAVXrpaVTjs-gXsOxPkd-4rk5iM', 'new_password': 'NewSecurePass123!', 'confirm_password': 'NewSecurePass123!'}
+[2025-04-21 17:30:52,493] [ERROR] logistics_app: [get_user_by_id] Invalid user_id type: <class 'uuid.UUID'>. Expected int.
+[2025-04-21 17:30:52,494] [WARNING] logistics_app: [reset_password] Invalid or expired reset token.
+[2025-04-21 17:34:25,548] [INFO] logistics_app: Models initialized successfully.
+[2025-04-21 17:34:25,549] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-21 17:35:25,065] [INFO] logistics_app: Models initialized successfully.
+[2025-04-21 17:35:25,067] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-21 17:35:29,832] [INFO] logistics_app: Models initialized successfully.
+[2025-04-21 17:35:29,833] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-21 17:35:32,089] [INFO] logistics_app: [reset_password] Received data: {'reset_token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjNGY2YTgwYS1kMjYxLTRhZmQtYjMyNi1iOGM2NmYzYmY3MjAiLCJlbWFpbCI6InBoZWxpeG90dHlAZ21haWwuY29tIiwiZXhwIjoxNzQ1MjQ2NTk3fQ.sCcAubU7wTiMIYN5tAVXrpaVTjs-gXsOxPkd-4rk5iM', 'new_password': 'NewSecurePass123!', 'confirm_password': 'NewSecurePass123!'}
+[2025-04-21 17:35:32,405] [INFO] logistics_app: User c4f6a80a-d261-4afd-b326-b8c66f3bf720 found.
+[2025-04-21 17:35:32,606] [INFO] logistics_app: User c4f6a80a-d261-4afd-b326-b8c66f3bf720 found.
+[2025-04-21 17:35:32,620] [INFO] logistics_app: [update_user] User c4f6a80a-d261-4afd-b326-b8c66f3bf720 updated successfully.
+[2025-04-21 17:35:32,620] [INFO] logistics_app: [reset_password] Password updated for user c4f6a80a-d261-4afd-b326-b8c66f3bf720
+[2025-04-21 17:35:32,620] [INFO] logistics_app: [reset_password] Password reset successfully.
+[2025-04-21 17:36:01,136] [INFO] logistics_app: Models initialized successfully.
+[2025-04-21 17:36:01,138] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-21 17:36:09,856] [INFO] logistics_app: Models initialized successfully.
+[2025-04-21 17:36:09,857] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-21 17:36:16,262] [INFO] logistics_app: Models initialized successfully.
+[2025-04-21 17:36:16,263] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.

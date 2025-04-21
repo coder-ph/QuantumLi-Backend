@@ -44,7 +44,11 @@ def init_redis():
 def get_redis_client():
     global _redis_client
     if _redis_client is None:
-        _redis_client = init_redis()
+        try:
+            _redis_client = init_redis()
+        except Exception as e:
+            logging.error(f"Failed to initialize Redis client: {str(e)}")
+            _redis_client = None  # Ensure the client remains None if failed
     return _redis_client
 
 def init_pubsub():

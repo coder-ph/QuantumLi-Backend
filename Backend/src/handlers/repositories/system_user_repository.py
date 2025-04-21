@@ -3,7 +3,7 @@ from sqlalchemy.exc import SQLAlchemyError
 from src.startup.database import db
 from src.Models.systemusers import System_Users
 from src.utils.logger import logger
-
+from uuid import UUID
 
 class SystemUserRepository:
     def get_all_users(self) -> Optional[List[System_Users]]:
@@ -17,7 +17,14 @@ class SystemUserRepository:
             logger.error(f"[get_all_users] Unexpected error: {str(e)}", exc_info=True)
         return None
 
-    def get_user_by_id(self, user_id: int) -> Optional[System_Users]:
+    def get_user_by_id(self, user_id) -> Optional[System_Users]:
+    
+        if isinstance(user_id, UUID):
+            user_id = str(user_id)
+        elif not isinstance(user_id, int):
+            logger.error(f"[get_user_by_id] Invalid user_id type: {type(user_id)}. Expected int or UUID.")
+            return None
+        
         try:
             user = System_Users.query.filter_by(user_id=user_id, is_deleted=False).first()
             if user:
@@ -30,6 +37,7 @@ class SystemUserRepository:
         except Exception as e:
             logger.error(f"[get_user_by_id] Unexpected error for user {user_id}: {str(e)}", exc_info=True)
         return None
+
 
     def update_user(self, user_id: int, update_data: Dict[str, Any]) -> Optional[System_Users]:
         user = self.get_user_by_id(user_id)
@@ -54,3 +62,11 @@ class SystemUserRepository:
             db.session.rollback()
             logger.error(f"[update_user] Unexpected error while updating user {user_id}: {str(e)}", exc_info=True)
         return None
+    
+    def get_user_by_email(self, email: str):
+        try:
+            user = System_Users.query.filter_by(email=email).first()
+            return user
+        except Exception as e:
+            logger.error(f"[get_user_by_email] Error fetching user with email {email}: {str(e)}", exc_info=True)
+            return None
