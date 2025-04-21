@@ -1,6 +1,7 @@
 import uuid
 import logging
 from datetime import datetime
+from src.Models.base_model import BaseModel
 from sqlalchemy import Column, String, Integer, Date, ForeignKey
 from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.orm import relationship
@@ -11,7 +12,7 @@ import re
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
 
-class Driver(db.Model):
+class Driver(BaseModel):
     __tablename__ = 'drivers'
     
     driver_id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)

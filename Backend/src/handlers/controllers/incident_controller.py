@@ -38,13 +38,13 @@ def create_incident():
 
 @jwt_required()
 def get_all_incidents():
-
     user = get_current_user()
-   
+
     incidents = incident_repo.get_all()
     if not incidents:
-        logger.warning("No incidents found.")
-        return jsonify({'message': 'No incidents found.'}), 404
+        logger.info("No incidents found. Returning empty list.")
+        return jsonify([]), 200
+
     return jsonify([incident.to_dict() for incident in incidents]), 200
 
 @jwt_required()

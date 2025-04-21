@@ -69,16 +69,15 @@ def login():
             "user_agent": user_agent,
         }
 
-        # Handle Redis interaction with error handling
+        
         try:
-            redis_client = get_redis_client()  # Ensure Redis client connection is successful
+            redis_client = get_redis_client()  
             redis_key = f"user_session:{user.user_id}"
             redis_client.set(redis_key, json.dumps(user_session_data), ex=60 * 60 * 2)
         except Exception as redis_error:
             logger.error(f"Redis error during login: {str(redis_error)}")
             raise InternalServerError("Unable to store session in Redis. Please try again later.")
 
-        # Continue with the rest of the process...
         audit_log = Audit_Logs(
             user_id=user.user_id,
             action_type="login",

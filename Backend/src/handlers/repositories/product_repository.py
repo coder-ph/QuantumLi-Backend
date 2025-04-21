@@ -99,3 +99,25 @@ class ProductRepository:
             db.session.rollback()
             logger.error(f"[ProductRepository] DB error during deletion: {str(e)}")
             raise e
+        
+    def get_all_products(self):
+        cache_key = "products:all"
+        try:
+            if self.redis_client:
+                cached_products = self.redis_client.get(cache_key)
+                if cached_products:
+                    logger.info("[ProductRepository] Cache hit for all products")
+                    return json.loads(cached_products)
+
+            products = Product.query.all()
+            product_list = [product.to_dict() for product in products]
+
+            if self.redis_client:
+                self.redis_client.setex(cache_key, 3600, json.dumps(product_list))
+
+            logger.info("[ProductRepository] Retrieved all products from DB")
+            return product_list
+        except Exception as e:
+            logger.error(f"[ProductRepository] Error fetching all products: {str(e)}")
+            return []
+

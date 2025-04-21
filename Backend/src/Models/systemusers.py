@@ -3,8 +3,9 @@ import uuid
 from sqlalchemy import Column, String, ForeignKey, DateTime, Boolean, Enum, Integer
 from sqlalchemy.dialects.postgresql import UUID
 from   src.startup.database import db
-from datetime import datetime
+from datetime import datetime, timedelta
 from src.utils.logger import logger
+import secrets
 
 class System_Users(db.Model):
     __tablename__ = 'system_users'
@@ -15,7 +16,7 @@ class System_Users(db.Model):
     password_hash = Column(String(255), nullable=False)
     email = Column(String(255), nullable=False, unique=True)
     phone = Column(Integer, nullable=False)
-    role = Column(Enum('admin', 'employee', 'driver','user', 'manager', name='user_role_enum'), nullable=False)
+    role = Column(Enum('admin', 'employee', 'driver', 'user', 'manager', name='user_role_enum'), nullable=False)
     last_login = Column(DateTime, nullable=True, default=None)
     is_active = Column(Boolean, default=True)
     password_reset_token = Column(String(255), nullable=True)
@@ -25,8 +26,8 @@ class System_Users(db.Model):
     created_at = Column(DateTime, nullable=False, default=datetime.utcnow)
     updated_at = Column(DateTime, nullable=False, default=datetime.utcnow, onupdate=datetime.utcnow)
     
-    # employee = db.relationship('Employee', back_populates='system_user', uselist=False, lazy='noload')
     audit_logs = db.relationship('Audit_Logs', back_populates='user')
+
     def __repr__(self):
         return f"<System_Users(user_id={self.user_id}, username={self.username}, role={self.role}, is_active={self.is_active}, is_deleted={self.is_deleted})>"
 
@@ -79,4 +80,24 @@ class System_Users(db.Model):
     def id(self):
         return self.user_id
 
+   
+    def generate_password_reset_token(self):
+        token = secrets.token_urlsafe(64) 
+        self.password_reset_token = token
+        self.password_expiry = datetime.utcnow() + timedelta(hours=1)
+        db.session.commit()
+        return token
 
+
+    def is_reset_token_valid(self, token):
+        if self.password_reset_token == token and self.password_expiry > datetime.utcnow():
+            return True
+        return False
+
+ 
+    def reset_password(self, new_password):
+        self.password_hash = new_password
+        self.password_reset_token = None
+        self.password_expiry = None
+        db.session.commit()
+        logger.info(f"Password for user {self.username} reset successfully.")

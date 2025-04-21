@@ -2,20 +2,18 @@ from marshmallow import fields, validate
 from marshmallow_sqlalchemy import SQLAlchemyAutoSchema
 from src.Models.systemusers import System_Users
 
-
 class SystemUserSchema(SQLAlchemyAutoSchema):
     class Meta:
         model = System_Users
         load_instance = True
         include_relationships = True
-        exclude = ('password_hash', 'password_reset_token')
+        exclude = ('password_hash', 'password_reset_token')  # Excluding sensitive fields
 
-    # ID & timestamps
+    # Basic Fields
     user_id = fields.UUID(dump_only=True, description="Unique identifier for the user")
     created_at = fields.DateTime(dump_only=True, description="Account creation timestamp")
     updated_at = fields.DateTime(dump_only=True, description="Last update timestamp")
 
-    # Basic fields
     username = fields.Str(
         required=True,
         validate=validate.Length(min=3, max=50),
@@ -43,3 +41,15 @@ class SystemUserSchema(SQLAlchemyAutoSchema):
         validate=validate.OneOf(["active", "inactive", "suspended"]),
         description="Account status"
     )
+
+    
+    password_reset_token = fields.Str(
+        dump_only=True, 
+        description="Password reset token (only returned when generating or validating a reset)"
+    )
+    password_expiry = fields.DateTime(
+        dump_only=True,
+        description="Expiry date of the password reset token"
+    )
+
+    

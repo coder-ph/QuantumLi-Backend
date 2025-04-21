@@ -4826,3 +4826,374 @@ src.error.apiErrors.InternalServerError: 500 internal_server_error: Unable to st
 [2025-04-21 01:05:59,170] [INFO] logistics_app: Password verification successful.
 [2025-04-21 01:05:59,171] [INFO] logistics_app: Generated tokens for user 58c8be8b-634c-4a1c-9799-acc1140cac3d, role: admin
 [2025-04-21 01:06:00,634] [INFO] logistics_app: User login successful | ID: 58c8be8b-634c-4a1c-9799-acc1140cac3d | IP: 127.0.0.1 | Agent: Thunder Client (https://www.thunderclient.com)
+[2025-04-21 09:41:07,546] [INFO] logistics_app: Models initialized successfully.
+[2025-04-21 09:41:07,547] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-21 09:41:13,520] [INFO] logistics_app: Models initialized successfully.
+[2025-04-21 09:41:13,521] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-21 09:42:43,114] [INFO] logistics_app: Password verification successful.
+[2025-04-21 09:42:43,117] [INFO] logistics_app: Generated tokens for user 58c8be8b-634c-4a1c-9799-acc1140cac3d, role: admin
+[2025-04-21 09:42:44,816] [INFO] logistics_app: User login successful | ID: 58c8be8b-634c-4a1c-9799-acc1140cac3d | IP: 127.0.0.1 | Agent: Thunder Client (https://www.thunderclient.com)
+[2025-04-21 09:52:50,583] [INFO] logistics_app: Models initialized successfully.
+[2025-04-21 09:52:50,584] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-21 09:53:02,406] [INFO] logistics_app: Models initialized successfully.
+[2025-04-21 09:53:02,407] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-21 09:53:12,591] [INFO] logistics_app: Models initialized successfully.
+[2025-04-21 09:53:12,592] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-21 09:53:22,491] [INFO] logistics_app: Models initialized successfully.
+[2025-04-21 09:53:22,492] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-21 09:53:39,193] [INFO] logistics_app: Models initialized successfully.
+[2025-04-21 09:53:39,194] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-21 09:54:10,828] [ERROR] logistics_app: Error retrieving drivers: Entity namespace for "drivers" has no property "is_deleted"
+[2025-04-21 09:54:10,830] [ERROR] logistics_app: Error retrieving drivers: Error retrieving drivers.
+[2025-04-21 09:58:54,274] [INFO] logistics_app: Models initialized successfully.
+[2025-04-21 09:58:54,275] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-21 09:59:00,258] [INFO] logistics_app: Models initialized successfully.
+[2025-04-21 09:59:00,259] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-21 09:59:09,995] [ERROR] logistics_app: Error retrieving drivers: (sqlite3.OperationalError) no such column: drivers.is_deleted
+[SQL: SELECT drivers.driver_id AS drivers_driver_id, drivers.carrier_id AS drivers_carrier_id, drivers.first_name AS drivers_first_name, drivers.last_name AS drivers_last_name, drivers.license_number AS drivers_license_number, drivers.license_type AS drivers_license_type, drivers.license_expiry AS drivers_license_expiry, drivers.contact_phone AS drivers_contact_phone, drivers.email AS drivers_email, drivers.address AS drivers_address, drivers.emergency_contact AS drivers_emergency_contact, drivers.medical_certificate_expiry AS drivers_medical_certificate_expiry, drivers.training_certifications AS drivers_training_certifications, drivers.status AS drivers_status, drivers.is_deleted AS drivers_is_deleted, drivers.created_at AS drivers_created_at, drivers.updated_at AS drivers_updated_at 
+FROM drivers 
+WHERE drivers.is_deleted = 0]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+[2025-04-21 09:59:09,997] [ERROR] logistics_app: Error retrieving drivers: Error retrieving drivers.
+[2025-04-21 09:59:58,222] [INFO] logistics_app: Models initialized successfully.
+[2025-04-21 09:59:58,223] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-21 10:00:17,372] [INFO] logistics_app: Models initialized successfully.
+[2025-04-21 10:00:17,373] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-21 10:13:21,346] [INFO] logistics_app: Models initialized successfully.
+[2025-04-21 10:13:21,346] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-21 10:15:41,225] [INFO] logistics_app: Models initialized successfully.
+[2025-04-21 10:15:41,226] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-21 10:16:15,374] [INFO] logistics_app: Models initialized successfully.
+[2025-04-21 10:16:15,375] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-21 10:16:21,396] [INFO] logistics_app: Models initialized successfully.
+[2025-04-21 10:16:21,397] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-21 10:16:27,980] [ERROR] logistics_app: APIError Logged: {'message': 'User not found', 'status_code': 401, 'error_code': 'unauthorized', 'payload': {}, 'traceback': 'No traceback available'}
+[2025-04-21 10:17:10,905] [ERROR] logistics_app: Unexpected error during login: 'int' object has no attribute 'replace' | IP: 127.0.0.1
+[2025-04-21 10:17:10,943] [ERROR] logistics_app: APIError Logged: {'message': 'An unexpected error occurred. Please try again later.', 'status_code': 500, 'error_code': 'internal_server_error', 'payload': {}, 'traceback': 'Traceback (most recent call last):\n  File "/home/phyl/Development/Logistics/Backend/src/handlers/controllers/auth_controller.py", line 51, in login\n    user = System_Users.query.filter_by(email=data[\'email\']).first()\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/query.py", line 2759, in first\n    return self.limit(1)._iter().first()  # type: ignore\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/engine/result.py", line 1784, in first\n    return self._only_one_row(\n           ^^^^^^^^^^^^^^^^^^^\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/engine/result.py", line 749, in _only_one_row\n    row: Optional[_InterimRowType[Any]] = onerow(hard_close=True)\n                                          ^^^^^^^^^^^^^^^^^^^^^^^\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/engine/result.py", line 1671, in _fetchone_impl\n    return self._real_result._fetchone_impl(hard_close=hard_close)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/engine/result.py", line 2257, in _fetchone_impl\n    row = next(self.iterator, _NO_ROW)\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/loading.py", line 219, in chunks\n    fetch = cursor._raw_all_rows()\n            ^^^^^^^^^^^^^^^^^^^^^^\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/engine/result.py", line 541, in _raw_all_rows\n    return [make_row(row) for row in rows]\n            ^^^^^^^^^^^^^\n  File "lib/sqlalchemy/cyextension/resultproxy.pyx", line 22, in sqlalchemy.cyextension.resultproxy.BaseRow.__init__\n  File "lib/sqlalchemy/cyextension/resultproxy.pyx", line 79, in sqlalchemy.cyextension.resultproxy._apply_processors\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/sql/sqltypes.py", line 3737, in process\n    value = _python_UUID(value)\n            ^^^^^^^^^^^^^^^^^^^\n  File "/home/phyl/.pyenv/versions/3.12.0/lib/python3.12/uuid.py", line 175, in __init__\n    hex = hex.replace(\'urn:\', \'\').replace(\'uuid:\', \'\')\n          ^^^^^^^^^^^\nAttributeError: \'int\' object has no attribute \'replace\'\n'}
+[2025-04-21 10:17:47,809] [ERROR] logistics_app: Unexpected error during login: 'int' object has no attribute 'replace' | IP: 127.0.0.1
+[2025-04-21 10:17:47,821] [ERROR] logistics_app: APIError Logged: {'message': 'An unexpected error occurred. Please try again later.', 'status_code': 500, 'error_code': 'internal_server_error', 'payload': {}, 'traceback': 'Traceback (most recent call last):\n  File "/home/phyl/Development/Logistics/Backend/src/handlers/controllers/auth_controller.py", line 51, in login\n    user = System_Users.query.filter_by(email=data[\'email\']).first()\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/query.py", line 2759, in first\n    return self.limit(1)._iter().first()  # type: ignore\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/engine/result.py", line 1784, in first\n    return self._only_one_row(\n           ^^^^^^^^^^^^^^^^^^^\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/engine/result.py", line 749, in _only_one_row\n    row: Optional[_InterimRowType[Any]] = onerow(hard_close=True)\n                                          ^^^^^^^^^^^^^^^^^^^^^^^\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/engine/result.py", line 1671, in _fetchone_impl\n    return self._real_result._fetchone_impl(hard_close=hard_close)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/engine/result.py", line 2257, in _fetchone_impl\n    row = next(self.iterator, _NO_ROW)\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/loading.py", line 219, in chunks\n    fetch = cursor._raw_all_rows()\n            ^^^^^^^^^^^^^^^^^^^^^^\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/engine/result.py", line 541, in _raw_all_rows\n    return [make_row(row) for row in rows]\n            ^^^^^^^^^^^^^\n  File "lib/sqlalchemy/cyextension/resultproxy.pyx", line 22, in sqlalchemy.cyextension.resultproxy.BaseRow.__init__\n  File "lib/sqlalchemy/cyextension/resultproxy.pyx", line 79, in sqlalchemy.cyextension.resultproxy._apply_processors\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/sql/sqltypes.py", line 3737, in process\n    value = _python_UUID(value)\n            ^^^^^^^^^^^^^^^^^^^\n  File "/home/phyl/.pyenv/versions/3.12.0/lib/python3.12/uuid.py", line 175, in __init__\n    hex = hex.replace(\'urn:\', \'\').replace(\'uuid:\', \'\')\n          ^^^^^^^^^^^\nAttributeError: \'int\' object has no attribute \'replace\'\n'}
+[2025-04-21 10:21:38,575] [INFO] logistics_app: Models initialized successfully.
+[2025-04-21 10:21:38,576] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-21 10:21:57,296] [INFO] logistics_app: Models initialized successfully.
+[2025-04-21 10:21:57,297] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-21 10:22:05,851] [ERROR] logistics_app: Unexpected error during login: 'int' object has no attribute 'replace' | IP: 127.0.0.1
+[2025-04-21 10:22:05,882] [ERROR] logistics_app: APIError Logged: {'message': 'An unexpected error occurred. Please try again later.', 'status_code': 500, 'error_code': 'internal_server_error', 'payload': {}, 'traceback': 'Traceback (most recent call last):\n  File "/home/phyl/Development/Logistics/Backend/src/handlers/controllers/auth_controller.py", line 51, in login\n    user = System_Users.query.filter_by(email=data[\'email\']).first()\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/query.py", line 2759, in first\n    return self.limit(1)._iter().first()  # type: ignore\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/engine/result.py", line 1784, in first\n    return self._only_one_row(\n           ^^^^^^^^^^^^^^^^^^^\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/engine/result.py", line 749, in _only_one_row\n    row: Optional[_InterimRowType[Any]] = onerow(hard_close=True)\n                                          ^^^^^^^^^^^^^^^^^^^^^^^\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/engine/result.py", line 1671, in _fetchone_impl\n    return self._real_result._fetchone_impl(hard_close=hard_close)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/engine/result.py", line 2257, in _fetchone_impl\n    row = next(self.iterator, _NO_ROW)\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/loading.py", line 219, in chunks\n    fetch = cursor._raw_all_rows()\n            ^^^^^^^^^^^^^^^^^^^^^^\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/engine/result.py", line 541, in _raw_all_rows\n    return [make_row(row) for row in rows]\n            ^^^^^^^^^^^^^\n  File "lib/sqlalchemy/cyextension/resultproxy.pyx", line 22, in sqlalchemy.cyextension.resultproxy.BaseRow.__init__\n  File "lib/sqlalchemy/cyextension/resultproxy.pyx", line 79, in sqlalchemy.cyextension.resultproxy._apply_processors\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/sql/sqltypes.py", line 3737, in process\n    value = _python_UUID(value)\n            ^^^^^^^^^^^^^^^^^^^\n  File "/home/phyl/.pyenv/versions/3.12.0/lib/python3.12/uuid.py", line 175, in __init__\n    hex = hex.replace(\'urn:\', \'\').replace(\'uuid:\', \'\')\n          ^^^^^^^^^^^\nAttributeError: \'int\' object has no attribute \'replace\'\n'}
+[2025-04-21 10:30:00,669] [INFO] logistics_app: Models initialized successfully.
+[2025-04-21 10:30:00,670] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-21 10:30:18,314] [INFO] logistics_app: Models initialized successfully.
+[2025-04-21 10:30:18,315] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-21 10:30:33,627] [INFO] logistics_app: Models initialized successfully.
+[2025-04-21 10:30:33,628] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-21 10:31:38,934] [INFO] logistics_app: Models initialized successfully.
+[2025-04-21 10:31:38,935] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-21 10:31:45,845] [INFO] logistics_app: Models initialized successfully.
+[2025-04-21 10:31:45,845] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-21 10:32:07,329] [INFO] logistics_app: Password hashed successfully.
+[2025-04-21 10:32:07,366] [INFO] logistics_app: New user created: phelixotty@gmail.com, status: pending_verification
+[2025-04-21 10:32:07,368] [INFO] logistics_app: Generated verification token for user phelixotty@gmail.com
+[2025-04-21 10:32:10,690] [INFO] logistics_app: Verification email sent to phelixotty@gmail.com
+[2025-04-21 10:32:10,691] [INFO] logistics_app: Verification email sent to phelixotty@gmail.com
+[2025-04-21 10:32:12,642] [INFO] logistics_app: New user created and verification email sent | email: phelixotty@gmail.com, id: 36b64080-ade5-48fd-86d1-3a1a49d1d2fb
+[2025-04-21 10:32:12,667] [INFO] logistics_app: Audit log created for user 36b64080-ade5-48fd-86d1-3a1a49d1d2fb | action: signup | IP: 127.0.0.1
+[2025-04-21 10:32:44,228] [INFO] logistics_app: Deleted Redis entry for email verification of user 36b64080-ade5-48fd-86d1-3a1a49d1d2fb. Token can no longer be reused.
+[2025-04-21 10:32:44,229] [INFO] logistics_app: User 36b64080-ade5-48fd-86d1-3a1a49d1d2fb verified successfully at 2025-04-21 07:32:44.229715.
+[2025-04-21 10:34:11,241] [INFO] logistics_app: Password verification successful.
+[2025-04-21 10:34:11,243] [INFO] logistics_app: Generated tokens for user 36b64080-ade5-48fd-86d1-3a1a49d1d2fb, role: admin
+[2025-04-21 10:34:12,955] [INFO] logistics_app: User login successful | ID: 36b64080-ade5-48fd-86d1-3a1a49d1d2fb | IP: 127.0.0.1 | Agent: Thunder Client (https://www.thunderclient.com)
+[2025-04-21 10:36:35,387] [ERROR] logistics_app: Failed to create order: 'email' is an invalid keyword argument for Order
+[2025-04-21 10:36:35,388] [ERROR] logistics_app: Unexpected error creating order: 'email' is an invalid keyword argument for Order
+[2025-04-21 10:38:42,765] [INFO] logistics_app: Models initialized successfully.
+[2025-04-21 10:38:42,766] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-21 10:39:06,132] [INFO] logistics_app: Models initialized successfully.
+[2025-04-21 10:39:06,133] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-21 10:39:18,971] [INFO] logistics_app: Models initialized successfully.
+[2025-04-21 10:39:18,971] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-21 10:39:29,549] [INFO] logistics_app: Models initialized successfully.
+[2025-04-21 10:39:29,551] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-21 10:39:43,687] [INFO] logistics_app: User phelixotty@gmail.com fetched 0 invoices.
+[2025-04-21 10:57:35,954] [INFO] logistics_app: Models initialized successfully.
+[2025-04-21 10:57:35,955] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-21 10:57:42,993] [INFO] logistics_app: Models initialized successfully.
+[2025-04-21 10:57:42,994] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-21 10:57:48,914] [ERROR] logistics_app: Error retrieving all clients
+Traceback (most recent call last):
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/sql/base.py", line 2181, in _entity_namespace_key
+    return getattr(ns, key)  # type: ignore
+           ^^^^^^^^^^^^^^^^
+AttributeError: type object 'Client' has no attribute 'is_deleted'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/phyl/Development/Logistics/Backend/src/handlers/repositories/client_repository.py", line 20, in get_all_clients
+    clients = Client.query.filter_by(is_deleted=False).all()
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/query.py", line 1992, in filter_by
+    _entity_namespace_key(from_entity, key) == value
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/sql/base.py", line 2183, in _entity_namespace_key
+    raise exc.InvalidRequestError(
+sqlalchemy.exc.InvalidRequestError: Entity namespace for "clients" has no property "is_deleted"
+[2025-04-21 10:57:48,932] [ERROR] logistics_app: Error fetching clients: Entity namespace for "clients" has no property "is_deleted"
+[2025-04-21 11:00:28,091] [INFO] logistics_app: Models initialized successfully.
+[2025-04-21 11:00:28,092] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-21 11:00:43,663] [INFO] logistics_app: Models initialized successfully.
+[2025-04-21 11:00:43,664] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-21 11:00:50,693] [INFO] logistics_app: Models initialized successfully.
+[2025-04-21 11:00:50,694] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-21 11:01:05,048] [ERROR] logistics_app: Error retrieving all clients
+Traceback (most recent call last):
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1964, in _exec_single_context
+    self.dialect.do_execute(
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 945, in do_execute
+    cursor.execute(statement, parameters)
+sqlite3.OperationalError: no such column: clients.is_deleted
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/phyl/Development/Logistics/Backend/src/handlers/repositories/client_repository.py", line 20, in get_all_clients
+    clients = Client.query.filter_by(is_deleted=False).all()
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/query.py", line 2704, in all
+    return self._iter().all()  # type: ignore
+           ^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/query.py", line 2858, in _iter
+    result: Union[ScalarResult[_T], Result[_T]] = self.session.execute(
+                                                  ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 2365, in execute
+    return self._execute_internal(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 2251, in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/context.py", line 306, in orm_execute_statement
+    result = conn.execute(
+             ^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1416, in execute
+    return meth(
+           ^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/sql/elements.py", line 523, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1638, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1843, in _execute_context
+    return self._exec_single_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1983, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 2352, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1964, in _exec_single_context
+    self.dialect.do_execute(
+  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 945, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such column: clients.is_deleted
+[SQL: SELECT clients.client_id AS clients_client_id, clients.company_name AS clients_company_name, clients.contact_person AS clients_contact_person, clients.email AS clients_email, clients.phone AS clients_phone, clients.address AS clients_address, clients.tax_id AS clients_tax_id, clients.registration_number AS clients_registration_number, clients.account_status AS clients_account_status, clients.credit_limit AS clients_credit_limit, clients.payment_terms AS clients_payment_terms, clients.date_created AS clients_date_created, clients.last_updated AS clients_last_updated, clients.is_deleted AS clients_is_deleted, clients.created_at AS clients_created_at, clients.updated_at AS clients_updated_at 
+FROM clients 
+WHERE clients.is_deleted = 0]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+[2025-04-21 11:01:05,076] [ERROR] logistics_app: Error fetching clients: (sqlite3.OperationalError) no such column: clients.is_deleted
+[SQL: SELECT clients.client_id AS clients_client_id, clients.company_name AS clients_company_name, clients.contact_person AS clients_contact_person, clients.email AS clients_email, clients.phone AS clients_phone, clients.address AS clients_address, clients.tax_id AS clients_tax_id, clients.registration_number AS clients_registration_number, clients.account_status AS clients_account_status, clients.credit_limit AS clients_credit_limit, clients.payment_terms AS clients_payment_terms, clients.date_created AS clients_date_created, clients.last_updated AS clients_last_updated, clients.is_deleted AS clients_is_deleted, clients.created_at AS clients_created_at, clients.updated_at AS clients_updated_at 
+FROM clients 
+WHERE clients.is_deleted = 0]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+[2025-04-21 11:02:02,801] [INFO] logistics_app: Models initialized successfully.
+[2025-04-21 11:02:02,802] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-21 11:02:18,572] [INFO] logistics_app: Models initialized successfully.
+[2025-04-21 11:02:18,573] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-21 11:02:42,628] [INFO] logistics_app: Models initialized successfully.
+[2025-04-21 11:02:42,629] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-21 11:02:49,451] [INFO] logistics_app: Models initialized successfully.
+[2025-04-21 11:02:49,452] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-21 11:06:33,171] [INFO] logistics_app: Models initialized successfully.
+[2025-04-21 11:06:33,172] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-21 11:07:10,458] [ERROR] logistics_app: APIError Logged: {'message': 'User not found', 'status_code': 401, 'error_code': 'unauthorized', 'payload': {}, 'traceback': 'No traceback available'}
+[2025-04-21 11:16:46,557] [INFO] logistics_app: Models initialized successfully.
+[2025-04-21 11:16:46,557] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-21 11:16:53,766] [INFO] logistics_app: Models initialized successfully.
+[2025-04-21 11:16:53,767] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-21 11:17:24,838] [ERROR] logistics_app: APIError Logged: {'message': 'User not found', 'status_code': 401, 'error_code': 'unauthorized', 'payload': {}, 'traceback': 'No traceback available'}
+[2025-04-21 11:37:28,543] [INFO] logistics_app: Models initialized successfully.
+[2025-04-21 11:37:28,544] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-21 11:37:34,707] [INFO] logistics_app: Models initialized successfully.
+[2025-04-21 11:37:34,708] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-21 11:38:15,709] [ERROR] logistics_app: Unexpected error during login: 'int' object has no attribute 'replace' | IP: 127.0.0.1
+[2025-04-21 11:38:15,729] [ERROR] logistics_app: APIError Logged: {'message': 'An unexpected error occurred. Please try again later.', 'status_code': 500, 'error_code': 'internal_server_error', 'payload': {}, 'traceback': 'Traceback (most recent call last):\n  File "/home/phyl/Development/Logistics/Backend/src/handlers/controllers/auth_controller.py", line 51, in login\n    user = System_Users.query.filter_by(email=data[\'email\']).first()\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/query.py", line 2759, in first\n    return self.limit(1)._iter().first()  # type: ignore\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/engine/result.py", line 1784, in first\n    return self._only_one_row(\n           ^^^^^^^^^^^^^^^^^^^\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/engine/result.py", line 749, in _only_one_row\n    row: Optional[_InterimRowType[Any]] = onerow(hard_close=True)\n                                          ^^^^^^^^^^^^^^^^^^^^^^^\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/engine/result.py", line 1671, in _fetchone_impl\n    return self._real_result._fetchone_impl(hard_close=hard_close)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/engine/result.py", line 2257, in _fetchone_impl\n    row = next(self.iterator, _NO_ROW)\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/orm/loading.py", line 219, in chunks\n    fetch = cursor._raw_all_rows()\n            ^^^^^^^^^^^^^^^^^^^^^^\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/engine/result.py", line 541, in _raw_all_rows\n    return [make_row(row) for row in rows]\n            ^^^^^^^^^^^^^\n  File "lib/sqlalchemy/cyextension/resultproxy.pyx", line 22, in sqlalchemy.cyextension.resultproxy.BaseRow.__init__\n  File "lib/sqlalchemy/cyextension/resultproxy.pyx", line 79, in sqlalchemy.cyextension.resultproxy._apply_processors\n  File "/home/phyl/Development/Logistics/.venv/lib/python3.12/site-packages/sqlalchemy/sql/sqltypes.py", line 3737, in process\n    value = _python_UUID(value)\n            ^^^^^^^^^^^^^^^^^^^\n  File "/home/phyl/.pyenv/versions/3.12.0/lib/python3.12/uuid.py", line 175, in __init__\n    hex = hex.replace(\'urn:\', \'\').replace(\'uuid:\', \'\')\n          ^^^^^^^^^^^\nAttributeError: \'int\' object has no attribute \'replace\'\n'}
+[2025-04-21 12:07:31,100] [INFO] logistics_app: Models initialized successfully.
+[2025-04-21 12:07:31,101] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-21 12:08:05,692] [INFO] logistics_app: Models initialized successfully.
+[2025-04-21 12:08:05,693] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-21 12:08:22,002] [INFO] logistics_app: Models initialized successfully.
+[2025-04-21 12:08:22,002] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-21 12:28:42,733] [INFO] logistics_app: Models initialized successfully.
+[2025-04-21 12:28:42,733] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-21 12:31:28,336] [INFO] logistics_app: Models initialized successfully.
+[2025-04-21 12:31:28,336] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-21 12:32:12,418] [INFO] logistics_app: Models initialized successfully.
+[2025-04-21 12:32:12,418] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-21 12:33:01,997] [INFO] logistics_app: Models initialized successfully.
+[2025-04-21 12:33:01,998] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-21 12:33:05,649] [INFO] logistics_app: Models initialized successfully.
+[2025-04-21 12:33:05,649] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-21 12:34:10,776] [INFO] logistics_app: Password hashed successfully.
+[2025-04-21 12:34:10,798] [INFO] logistics_app: New user created: phelixotty@gmail.com, status: pending_verification
+[2025-04-21 12:34:10,799] [INFO] logistics_app: Generated verification token for user phelixotty@gmail.com
+[2025-04-21 12:34:13,927] [INFO] logistics_app: Verification email sent to phelixotty@gmail.com
+[2025-04-21 12:34:13,927] [INFO] logistics_app: Verification email sent to phelixotty@gmail.com
+[2025-04-21 12:34:15,978] [INFO] logistics_app: New user created and verification email sent | email: phelixotty@gmail.com, id: c4f6a80a-d261-4afd-b326-b8c66f3bf720
+[2025-04-21 12:34:15,991] [INFO] logistics_app: Audit log created for user c4f6a80a-d261-4afd-b326-b8c66f3bf720 | action: signup | IP: 127.0.0.1
+[2025-04-21 12:34:41,118] [INFO] logistics_app: Deleted Redis entry for email verification of user c4f6a80a-d261-4afd-b326-b8c66f3bf720. Token can no longer be reused.
+[2025-04-21 12:34:41,119] [INFO] logistics_app: User c4f6a80a-d261-4afd-b326-b8c66f3bf720 verified successfully at 2025-04-21 09:34:41.119026.
+[2025-04-21 12:35:11,501] [ERROR] logistics_app: Error while verifying password: argument 'hashed_password': 'str' object cannot be converted to 'PyBytes'
+[2025-04-21 12:35:11,501] [WARNING] logistics_app: Login failed: Invalid password | User ID: c4f6a80a-d261-4afd-b326-b8c66f3bf720 | IP: 127.0.0.1
+[2025-04-21 12:35:11,502] [ERROR] logistics_app: APIError Logged: {'message': 'Invalid credentials.', 'status_code': 401, 'error_code': 'unauthorized', 'payload': {}, 'traceback': 'No traceback available'}
+[2025-04-21 12:35:23,516] [ERROR] logistics_app: Error while verifying password: argument 'hashed_password': 'str' object cannot be converted to 'PyBytes'
+[2025-04-21 12:35:23,517] [WARNING] logistics_app: Login failed: Invalid password | User ID: c4f6a80a-d261-4afd-b326-b8c66f3bf720 | IP: 127.0.0.1
+[2025-04-21 12:35:23,517] [ERROR] logistics_app: APIError Logged: {'message': 'Invalid credentials.', 'status_code': 401, 'error_code': 'unauthorized', 'payload': {}, 'traceback': 'No traceback available'}
+[2025-04-21 12:41:53,293] [INFO] logistics_app: Models initialized successfully.
+[2025-04-21 12:41:53,294] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-21 12:41:59,980] [INFO] logistics_app: Models initialized successfully.
+[2025-04-21 12:41:59,981] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-21 12:43:00,283] [INFO] logistics_app: Models initialized successfully.
+[2025-04-21 12:43:00,284] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-21 12:43:06,175] [INFO] logistics_app: Models initialized successfully.
+[2025-04-21 12:43:06,176] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-21 12:43:19,229] [ERROR] logistics_app: Error while verifying password: argument 'hashed_password': 'str' object cannot be converted to 'PyBytes'
+[2025-04-21 12:43:19,230] [WARNING] logistics_app: Login failed: Invalid password | User ID: c4f6a80a-d261-4afd-b326-b8c66f3bf720 | IP: 127.0.0.1
+[2025-04-21 12:43:19,230] [ERROR] logistics_app: APIError Logged: {'message': 'Invalid credentials.', 'status_code': 401, 'error_code': 'unauthorized', 'payload': {}, 'traceback': 'No traceback available'}
+[2025-04-21 12:46:15,557] [INFO] logistics_app: Models initialized successfully.
+[2025-04-21 12:46:15,558] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-21 12:46:22,438] [INFO] logistics_app: Models initialized successfully.
+[2025-04-21 12:46:22,439] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-21 12:46:30,991] [INFO] logistics_app: Models initialized successfully.
+[2025-04-21 12:46:30,992] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-21 12:46:37,339] [INFO] logistics_app: Models initialized successfully.
+[2025-04-21 12:46:37,340] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-21 12:50:17,706] [INFO] logistics_app: Models initialized successfully.
+[2025-04-21 12:50:17,706] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-21 12:54:27,505] [ERROR] logistics_app: Error while verifying password: Invalid salt
+[2025-04-21 12:54:27,506] [WARNING] logistics_app: Login failed: Invalid password | User ID: c4f6a80a-d261-4afd-b326-b8c66f3bf720 | IP: 127.0.0.1
+[2025-04-21 12:54:27,506] [ERROR] logistics_app: APIError Logged: {'message': 'Invalid credentials.', 'status_code': 401, 'error_code': 'unauthorized', 'payload': {}, 'traceback': 'No traceback available'}
+[2025-04-21 12:57:47,072] [INFO] logistics_app: Models initialized successfully.
+[2025-04-21 12:57:47,073] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-21 12:57:55,159] [INFO] logistics_app: Models initialized successfully.
+[2025-04-21 12:57:55,159] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-21 12:58:05,061] [INFO] logistics_app: Generated tokens for user c4f6a80a-d261-4afd-b326-b8c66f3bf720, role: admin
+[2025-04-21 12:58:07,201] [INFO] logistics_app: User login successful | ID: c4f6a80a-d261-4afd-b326-b8c66f3bf720 | IP: 127.0.0.1 | Agent: Thunder Client (https://www.thunderclient.com)
+[2025-04-21 13:01:58,540] [INFO] logistics_app: Retrieved 0 active drivers.
+[2025-04-21 13:02:26,286] [INFO] logistics_app: Retrieved 0 incidents.
+[2025-04-21 13:02:26,288] [WARNING] logistics_app: No incidents found.
+[2025-04-21 13:05:03,845] [INFO] logistics_app: Models initialized successfully.
+[2025-04-21 13:05:03,846] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-21 13:05:34,223] [INFO] logistics_app: Retrieved 0 incidents.
+[2025-04-21 13:05:34,223] [INFO] logistics_app: No incidents found. Returning empty list.
+[2025-04-21 13:08:37,152] [INFO] logistics_app: Models initialized successfully.
+[2025-04-21 13:08:37,152] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-21 13:13:43,243] [INFO] logistics_app: Models initialized successfully.
+[2025-04-21 13:13:43,243] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-21 13:13:46,919] [INFO] logistics_app: Models initialized successfully.
+[2025-04-21 13:13:46,919] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-21 13:14:08,995] [ERROR] logistics_app: [ProductController] Error fetching products: 'ProductService' object has no attribute 'get_all_products'
+[2025-04-21 13:16:00,646] [INFO] logistics_app: Models initialized successfully.
+[2025-04-21 13:16:00,646] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-21 13:16:09,335] [INFO] logistics_app: Models initialized successfully.
+[2025-04-21 13:16:09,335] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-21 13:16:19,027] [INFO] logistics_app: [ProductRepository] Retrieved all products from DB
+[2025-04-21 13:16:19,027] [INFO] logistics_app: [ProductService] Retrieved 0 products successfully.
+[2025-04-21 13:16:19,027] [INFO] logistics_app: [ProductController] Retrieved 0 products.
+[2025-04-21 13:16:19,028] [ERROR] logistics_app: [ProductController] Error fetching products: 'ProductSchema' object has no attribute 'jsonify'
+[2025-04-21 13:17:04,870] [INFO] logistics_app: Models initialized successfully.
+[2025-04-21 13:17:04,871] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-21 13:17:25,148] [INFO] logistics_app: Models initialized successfully.
+[2025-04-21 13:17:25,149] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-21 13:17:38,126] [INFO] logistics_app: [ProductRepository] Cache hit for all products
+[2025-04-21 13:17:38,127] [INFO] logistics_app: [ProductService] Retrieved 0 products successfully.
+[2025-04-21 13:17:38,128] [INFO] logistics_app: [ProductController] Retrieved 0 products.
+[2025-04-21 13:17:38,128] [ERROR] logistics_app: [ProductController] Error fetching products: 'ProductSchema' object has no attribute 'jsonify'
+[2025-04-21 13:19:10,312] [INFO] logistics_app: Models initialized successfully.
+[2025-04-21 13:19:10,313] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-21 13:19:14,551] [INFO] logistics_app: Models initialized successfully.
+[2025-04-21 13:19:14,551] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-21 13:19:16,472] [INFO] logistics_app: [ProductRepository] Cache hit for all products
+[2025-04-21 13:19:16,473] [INFO] logistics_app: [ProductService] Retrieved 0 products successfully.
+[2025-04-21 13:19:16,473] [INFO] logistics_app: [ProductController] Retrieved 0 products.
+[2025-04-21 13:21:37,875] [ERROR] logistics_app: Error in roles_required decorator: 'str' object has no attribute 'get'
+[2025-04-21 13:35:12,161] [INFO] logistics_app: Models initialized successfully.
+[2025-04-21 13:35:12,162] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-21 13:35:16,756] [INFO] logistics_app: Models initialized successfully.
+[2025-04-21 13:35:16,758] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-21 13:35:24,795] [ERROR] logistics_app: Error in roles_required decorator: 'str' object has no attribute 'get'
+[2025-04-21 13:36:44,982] [INFO] logistics_app: Models initialized successfully.
+[2025-04-21 13:36:44,983] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-21 13:41:26,426] [INFO] logistics_app: Models initialized successfully.
+[2025-04-21 13:41:26,427] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-21 13:41:30,883] [INFO] logistics_app: Models initialized successfully.
+[2025-04-21 13:41:30,884] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-21 13:41:33,373] [WARNING] logistics_app: Unauthorized access attempt: User identity missing or invalid.
+[2025-04-21 13:42:04,015] [INFO] logistics_app: Models initialized successfully.
+[2025-04-21 13:42:04,016] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-21 13:42:26,438] [WARNING] logistics_app: Unauthorized access attempt: User identity missing or invalid.
+[2025-04-21 13:44:28,181] [INFO] logistics_app: Models initialized successfully.
+[2025-04-21 13:44:28,182] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-21 13:45:38,887] [INFO] logistics_app: Models initialized successfully.
+[2025-04-21 13:45:38,888] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-21 13:45:51,154] [INFO] logistics_app: Current user identity: c4f6a80a-d261-4afd-b326-b8c66f3bf720
+[2025-04-21 13:45:51,155] [ERROR] logistics_app: Error in roles_required decorator: 'str' object has no attribute 'get'
+[2025-04-21 13:50:05,731] [INFO] logistics_app: Models initialized successfully.
+[2025-04-21 13:50:05,732] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-21 13:50:10,155] [INFO] logistics_app: Models initialized successfully.
+[2025-04-21 13:50:10,156] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-21 13:50:18,499] [ERROR] logistics_app: Error in roles_required decorator: 'str' object has no attribute 'get'
+[2025-04-21 13:55:25,338] [INFO] logistics_app: Models initialized successfully.
+[2025-04-21 13:55:25,339] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-21 13:55:29,842] [INFO] logistics_app: Models initialized successfully.
+[2025-04-21 13:55:29,843] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-21 13:55:39,238] [INFO] logistics_app: Models initialized successfully.
+[2025-04-21 13:55:39,239] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-21 13:55:43,056] [INFO] logistics_app: Fetched 1 active users.
+[2025-04-21 13:55:43,056] [INFO] logistics_app: [get_all_users] Retrieved 1 users.
+[2025-04-21 13:55:43,056] [INFO] logistics_app: [get_all_users] Retrieved 1 users by admin.
+[2025-04-21 13:55:43,057] [ERROR] logistics_app: [get_all_users] Error: 'SystemUserSchema' object has no attribute 'jsonify'
+Traceback (most recent call last):
+  File "/home/phyl/Development/Logistics/Backend/src/handlers/controllers/system_user_controller.py", line 25, in get_all_users
+    return users_schema.jsonify(users), 200
+           ^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'SystemUserSchema' object has no attribute 'jsonify'
+[2025-04-21 13:57:08,617] [INFO] logistics_app: Models initialized successfully.
+[2025-04-21 13:57:08,618] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-21 13:57:14,101] [INFO] logistics_app: Fetched 1 active users.
+[2025-04-21 13:57:14,101] [INFO] logistics_app: [get_all_users] Retrieved 1 users.
+[2025-04-21 13:57:14,102] [INFO] logistics_app: [get_all_users] Retrieved 1 users by admin.
+[2025-04-21 13:57:54,824] [INFO] logistics_app: Models initialized successfully.
+[2025-04-21 13:57:54,825] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-21 13:58:04,694] [INFO] logistics_app: Models initialized successfully.
+[2025-04-21 13:58:04,695] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-21 13:58:11,284] [INFO] logistics_app: Models initialized successfully.
+[2025-04-21 13:58:11,285] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-21 14:05:26,891] [INFO] logistics_app: [ProductRepository] Cache hit for all products
+[2025-04-21 14:05:26,892] [INFO] logistics_app: [ProductService] Retrieved 0 products successfully.
+[2025-04-21 14:05:26,893] [INFO] logistics_app: [ProductController] Retrieved 0 products.
+[2025-04-21 14:06:15,506] [INFO] logistics_app: [ProductRepository] Cache hit for all products
+[2025-04-21 14:06:15,507] [INFO] logistics_app: [ProductService] Retrieved 0 products successfully.
+[2025-04-21 14:06:15,508] [INFO] logistics_app: [ProductController] Retrieved 0 products.
+[2025-04-21 14:12:28,754] [INFO] logistics_app: [ProductRepository] Cache hit for all products
+[2025-04-21 14:12:28,755] [INFO] logistics_app: [ProductService] Retrieved 0 products successfully.
+[2025-04-21 14:12:28,756] [INFO] logistics_app: [ProductController] Retrieved 0 products.
+[2025-04-21 14:58:56,457] [INFO] logistics_app: Models initialized successfully.
+[2025-04-21 14:58:56,458] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-21 14:59:01,037] [INFO] logistics_app: Models initialized successfully.
+[2025-04-21 14:59:01,038] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-21 15:00:04,675] [INFO] logistics_app: Generated tokens for user c4f6a80a-d261-4afd-b326-b8c66f3bf720, role: admin
+[2025-04-21 15:00:07,265] [INFO] logistics_app: User login successful | ID: c4f6a80a-d261-4afd-b326-b8c66f3bf720 | IP: 127.0.0.1 | Agent: Thunder Client (https://www.thunderclient.com)
+[2025-04-21 15:02:51,142] [INFO] logistics_app: Fetched 1 active users.
+[2025-04-21 15:02:51,143] [INFO] logistics_app: [get_all_users] Retrieved 1 users.
+[2025-04-21 15:02:51,144] [INFO] logistics_app: [get_all_users] Retrieved 1 users by admin.
+[2025-04-21 15:03:16,822] [INFO] logistics_app: [ProductRepository] Retrieved all products from DB
+[2025-04-21 15:03:16,823] [INFO] logistics_app: [ProductService] Retrieved 0 products successfully.
+[2025-04-21 15:03:16,823] [INFO] logistics_app: [ProductController] Retrieved 0 products.
+[2025-04-21 15:03:53,999] [INFO] logistics_app: Retrieved 0 incidents.
+[2025-04-21 15:03:54,000] [INFO] logistics_app: No incidents found. Returning empty list.
+[2025-04-21 15:04:11,214] [INFO] logistics_app: Retrieved 0 active drivers.

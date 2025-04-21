@@ -9,11 +9,12 @@ from   src.startup.database import db
 from src.Models.driverRating import Driver_Ratings
 from sqlalchemy import UniqueConstraint
 from sqlalchemy.orm import relationship
+from src.Models.base_model import BaseModel
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
 
-class Client(db.Model):
+class Client(BaseModel):
     __tablename__ = 'clients'
     
     client_id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)

@@ -6,7 +6,7 @@ from sqlalchemy.exc import SQLAlchemyError
 
 class DriverRepository:
 
-    def create(self, data):
+    def create_driver(self, data):
 
         try:
             
@@ -23,7 +23,7 @@ class DriverRepository:
             logger.error(f"Error creating driver: {str(e)}")
             raise Exception("Error creating driver.") from e
 
-    def get_all(self):
+    def get_all_drivers(self):
         
         try:
             drivers = Driver.query.filter_by(is_deleted=False).all()
@@ -33,7 +33,7 @@ class DriverRepository:
             logger.error(f"Error retrieving drivers: {str(e)}")
             raise Exception("Error retrieving drivers.") from e
 
-    def get_by_id(self, driver_id):
+    def get_driver_by_id(self, driver_id):
         
         try:
             driver = Driver.query.filter_by(driver_id=driver_id, is_deleted=False).first()
@@ -46,7 +46,7 @@ class DriverRepository:
             logger.error(f"Error retrieving driver by ID {driver_id}: {str(e)}")
             raise Exception(f"Error retrieving driver with ID {driver_id}.") from e
 
-    def update(self, driver, data):
+    def update_driver(self, driver, data):
       
         try:
             
@@ -67,7 +67,7 @@ class DriverRepository:
             logger.error(f"Error updating driver {driver.driver_id}: {str(e)}")
             raise Exception(f"Error updating driver {driver.driver_id}.") from e
 
-    def delete(self, driver):
+    def delete_driver(self, driver):
       
         try:
             if not driver:
@@ -83,7 +83,7 @@ class DriverRepository:
             logger.error(f"Error deleting driver {driver.driver_id}: {str(e)}")
             raise Exception(f"Error deleting driver {driver.driver_id}.") from e
 
-    def restore(self, driver):
+    def restore_driver(self, driver):
        
         try:
             if not driver:

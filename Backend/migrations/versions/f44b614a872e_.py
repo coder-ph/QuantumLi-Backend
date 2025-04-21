@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: 8f6cd9ab4f7b
+Revision ID: f44b614a872e
 Revises: 
-Create Date: 2025-04-20 17:47:18.646681
+Create Date: 2025-04-21 12:31:29.953128
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '8f6cd9ab4f7b'
+revision = 'f44b614a872e'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -48,6 +48,9 @@ def upgrade():
     sa.Column('payment_terms', sa.String(length=50), nullable=True),
     sa.Column('date_created', sa.DateTime(), nullable=True),
     sa.Column('last_updated', sa.DateTime(), nullable=True),
+    sa.Column('is_deleted', sa.Boolean(), nullable=True),
+    sa.Column('created_at', sa.DateTime(), nullable=True),
+    sa.Column('updated_at', sa.DateTime(), nullable=True),
     sa.PrimaryKeyConstraint('client_id'),
     sa.UniqueConstraint('email'),
     sa.UniqueConstraint('email', name='uq_client_email'),
@@ -172,6 +175,9 @@ def upgrade():
     sa.Column('medical_certificate_expiry', sa.Date(), nullable=False),
     sa.Column('training_certifications', sa.String(length=255), nullable=True),
     sa.Column('status', sa.String(length=50), nullable=False),
+    sa.Column('is_deleted', sa.Boolean(), nullable=True),
+    sa.Column('created_at', sa.DateTime(), nullable=True),
+    sa.Column('updated_at', sa.DateTime(), nullable=True),
     sa.ForeignKeyConstraint(['carrier_id'], ['carriers.carrier_id'], ),
     sa.PrimaryKeyConstraint('driver_id'),
     sa.UniqueConstraint('email'),

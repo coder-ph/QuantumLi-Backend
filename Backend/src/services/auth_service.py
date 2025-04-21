@@ -4,6 +4,8 @@ from src.utils.logger import logger
 from src.config.redis_config import init_redis
 from sqlalchemy.exc import SQLAlchemyError
 import bcrypt
+import uuid
+import codecs
 from src.utils.email_util import send_email
 from werkzeug.security import check_password_hash
 from src.error.apiErrors import InternalServerError, ConflictError, UnauthorizedError
@@ -21,7 +23,6 @@ def generate_tokens(user, access_token_expiry_hours=1, roles=None):
             logger.error(f"Roles are missing for user {user.user_id}.")
             raise ValueError("Roles are required to generate tokens.")
 
-        
         if isinstance(roles, list):
             role = roles[0]
         else:
@@ -31,14 +32,12 @@ def generate_tokens(user, access_token_expiry_hours=1, roles=None):
             "role": role,  
             "user_id": str(user.user_id)
         }
-
         access_token = create_access_token(
-            identity=str(user.user_id),
+            identity=str(user.user_id),  
             fresh=True,
             expires_delta=timedelta(hours=access_token_expiry_hours),
-            additional_claims=additional_claims
+            additional_claims={"role": user.role, **additional_claims}  
         )
-
         refresh_token = create_refresh_token(identity=str(user.user_id))
 
         logger.info(f"Generated tokens for user {user.user_id}, role: {role}")
@@ -55,7 +54,6 @@ def generate_tokens(user, access_token_expiry_hours=1, roles=None):
 
 
 def revoke_token(token, expires_in):
-
     try:
         if not token:
             logger.warning("Token is missing or invalid.")
@@ -65,7 +63,7 @@ def revoke_token(token, expires_in):
             logger.warning(f"Invalid expiration time: {expires_in}. Must be greater than zero.")
             raise ValueError("Expiration time must be greater than zero.")
        
-        max_ttl = 3600  # 1 hour max TTL
+        max_ttl = 3600  
         if expires_in > max_ttl:
             logger.warning(f"Expires in too long: {expires_in}. Consider reducing the TTL.")
             raise ValueError(f"Expires in is too long. Maximum allowed is {max_ttl} seconds.")
@@ -101,25 +99,25 @@ def hash_password(password):
 
 def verify_password(stored_password, provided_password):
     try:
-        if bcrypt.checkpw(provided_password.encode('utf-8'), stored_password):
-            logger.info(f"Password verification successful.")
-            return True
-        else:
-            logger.warning(f"Password verification failed.")
-            return False
+        # Convert the hex-encoded bytea (e.g., from PostgreSQL) to bytes
+        if isinstance(stored_password, memoryview):
+            stored_password = stored_password.tobytes()
+        elif isinstance(stored_password, str) and stored_password.startswith("\\x"):
+            stored_password = codecs.decode(stored_password[2:], "hex")
+
+        return bcrypt.checkpw(provided_password.encode('utf-8'), stored_password)
     except Exception as e:
         logger.error(f"Error while verifying password: {str(e)}")
         return False
-    
+
+
 def create_user(validated_data, hashed_pw):
     from src.Models.systemusers import System_Users
     try:
-        
         existing_user = System_Users.query.filter_by(email=validated_data['email']).first()
         if existing_user:
             logger.warning(f"Signup failed: Email already exists - {validated_data['email']}")
             raise ConflictError("Email is already registered.")
-
 
         new_user = System_Users(
             email=validated_data['email'].strip().lower(),
@@ -130,7 +128,6 @@ def create_user(validated_data, hashed_pw):
             status='pending_verification'  
         )
 
-        
         db.session.add(new_user)
         db.session.commit()
 
@@ -149,7 +146,6 @@ def create_user(validated_data, hashed_pw):
 
 def create_verification_token(user):
     try:
-       
         token = create_access_token(identity=user.user_id, expires_delta=timedelta(hours=24))
         logger.info(f"Generated verification token for user {user.email}")
         return token
@@ -157,13 +153,12 @@ def create_verification_token(user):
         logger.error(f"Error generating verification token: {str(e)}")
         raise InternalServerError("An error occurred while generating the verification token.")
 
+
 def send_verification_email(email, token):
     try:
-        
         verification_link = f"{BASE_URL}/verify-email?token={token}"
         subject = "Email Verification"
         body = f"Hello, please click on the link to verify your email: {verification_link}"
-        
         
         send_email(subject, body, email)
         logger.info(f"Verification email sent to {email}")
@@ -173,25 +168,89 @@ def send_verification_email(email, token):
         raise InternalServerError("An error occurred while sending the verification email.")
 
 
-
 def get_current_user():
-    
-    user_id = get_jwt_identity()  
-    if not user_id:
-        raise UnauthorizedError("User is not authenticated.")
-    
-    user = System_Users.query.get(user_id)  
-    if not user or not user.roles:
-        raise UnauthorizedError("User not found.")
-    
+    user_id_str = get_jwt_identity()
+    try:
+        user_uuid = uuid.UUID(user_id_str)  
+    except ValueError:
+        raise UnauthorizedError("Invalid user ID format")
+
+    user = System_Users.query.get(user_uuid)
+    if not user:
+        raise UnauthorizedError("User not found")
+
     return user
 
 
 def decode_verification_token(token):
     try:
-        
         decoded_token = decode_token(token)
         return decoded_token
     except Exception as e:
         logger.error(f"Error decoding verification token: {str(e)}")
         raise InternalServerError("Failed to decode the verification token.")
+
+
+
+
+def generate_password_reset_token(user):
+    """Generate a password reset token for the user."""
+    try:
+        reset_token = create_access_token(
+            identity=user.user_id,
+            expires_delta=timedelta(hours=1),  
+            additional_claims={"action": "password_reset"}
+        )
+        logger.info(f"Generated password reset token for user {user.email}")
+        return reset_token
+    except Exception as e:
+        logger.error(f"Error generating password reset token: {str(e)}")
+        raise InternalServerError("Error generating password reset token.")
+
+
+def send_password_reset_email(user):
+    """Send password reset email to the user."""
+    try:
+        reset_token = generate_password_reset_token(user)
+        reset_link = f"{BASE_URL}/reset-password?token={reset_token}"
+        subject = "Password Reset"
+        body = f"Hello, please click the link below to reset your password:\n{reset_link}"
+
+        send_email(subject, body, user.email)
+        logger.info(f"Password reset email sent to {user.email}")
+    except Exception as e:
+        logger.error(f"Error sending password reset email to {user.email}: {str(e)}")
+        raise InternalServerError("Error sending password reset email.")
+
+
+def validate_password_reset_token(token):
+    """Validate the password reset token."""
+    try:
+        decoded_token = decode_token(token)
+        if decoded_token["claims"].get("action") != "password_reset":
+            logger.warning(f"Invalid token action: {token}")
+            raise UnauthorizedError("Invalid reset token.")
+
+        
+        user = System_Users.query.get(decoded_token["identity"])
+        if not user:
+            logger.warning(f"User not found for reset token: {token}")
+            raise UnauthorizedError("User not found.")
+
+        return user
+    except Exception as e:
+        logger.error(f"Error validating password reset token: {str(e)}")
+        raise UnauthorizedError("Invalid or expired reset token.")
+
+
+def reset_user_password(user, new_password):
+    """Reset the user's password after validating the reset token."""
+    try:
+        hashed_password = hash_password(new_password)  
+        user.password_hash = hashed_password
+        db.session.commit()
+        logger.info(f"Password reset successfully for user {user.email}")
+        return user
+    except Exception as e:
+        logger.error(f"Error resetting password for user {user.email}: {str(e)}")
+        raise InternalServerError("Error resetting the password.")

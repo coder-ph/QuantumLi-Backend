@@ -23,6 +23,15 @@ class ProductService:
         except Exception as e:
             logger.error(f"[ProductService] Error creating product: {str(e)}")
             return None
+    def get_all_products(self):
+        try:
+            products = self.product_repository.get_all_products()
+            logger.info(f"[ProductService] Retrieved {len(products)} products successfully.")
+            return products
+        except Exception as e:
+            logger.error(f"[ProductService] Error retrieving all products: {str(e)}")
+            raise e
+
 
     def update_product(self, product_id, update_data):
         

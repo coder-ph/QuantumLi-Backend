@@ -1,18 +1,19 @@
 from flask import Blueprint
 from src.handlers.controllers.billing_controller import (
-    create_invoice,
-    get_all_invoices,
-    get_invoice,
-    update_invoice,
-    delete_invoice,
-    restore_invoice
+    create_invoice_view,
+    get_all_invoices_view,
+    get_invoice_view,
+    update_invoice_view,
+    delete_invoice_view,
+    restore_invoice_view
+ 
 )
 
-billing_bp = Blueprint('billing', __name__, url_prefix='/billing')
+billing_bp = Blueprint('billing', __name__)
 
-billing_bp.route('/', methods=['POST'])(create_invoice)
-billing_bp.route('/', methods=['GET'])(get_all_invoices)
-billing_bp.route('/<uuid:invoice_id>', methods=['GET'])(get_invoice)
-billing_bp.route('/<uuid:invoice_id>', methods=['PUT'])(update_invoice)
-billing_bp.route('/<uuid:invoice_id>', methods=['DELETE'])(delete_invoice)
-billing_bp.route('/<uuid:invoice_id>/restore', methods=['PUT'])(restore_invoice)
+billing_bp.route('/billing', methods=['POST'])(create_invoice_view)
+billing_bp.route('/billing', methods=['GET'])(get_all_invoices_view)
+billing_bp.route('/billing/<uuid:invoice_id>', methods=['GET'])(get_invoice_view)
+billing_bp.route('/billing/<uuid:invoice_id>', methods=['PUT'])(update_invoice_view)
+billing_bp.route('/billing/<uuid:invoice_id>', methods=['DELETE'])(delete_invoice_view)
+billing_bp.route('/billing/<uuid:invoice_id>/restore', methods=['PUT'])(restore_invoice_view)

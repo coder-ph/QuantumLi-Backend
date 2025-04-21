@@ -7,6 +7,7 @@ from src.utils.decorators import roles_required
 from flask_limiter import Limiter
 from flask_limiter.util import get_remote_address
 from marshmallow import ValidationError
+from datetime import datetime
 
 limiter = Limiter(key_func=get_remote_address)
 
@@ -22,7 +23,8 @@ def get_all_users():
         users = user_service.get_all_users()
         if users:
             logger.info(f"[get_all_users] Retrieved {len(users)} users by admin.")
-            return users_schema.jsonify(users), 200
+            users_data = users_schema.dump(users)
+            return jsonify(users_data), 200
         logger.warning("[get_all_users] No users found.")
         return jsonify({"message": "No users found"}), 404
     except Exception as e:
@@ -54,4 +56,55 @@ def update_user():
         return jsonify({"errors": ve.messages}), 422
     except Exception as e:
         logger.error(f"[update_user] Error updating user {current_user_id}: {str(e)}", exc_info=True)
+        return jsonify({"message": "Internal server error"}), 500
+
+@jwt_required()
+@roles_required('admin')
+@limiter.limit("5 per minute")
+def request_password_reset():
+    """ Endpoint to request a password reset (via email). """
+    try:
+        data = request.get_json()
+        email = data.get('email', None)
+        
+        if not email:
+            logger.warning("[request_password_reset] No email provided.")
+            return jsonify({"message": "Email is required."}), 400
+        
+        result = user_service.initiate_password_reset(email)
+        if result:
+            logger.info(f"[request_password_reset] Password reset request initiated for {email}.")
+            return jsonify({"message": "Password reset email sent successfully."}), 200
+        
+        logger.warning(f"[request_password_reset] No user found for email: {email}.")
+        return jsonify({"message": "User with this email does not exist."}), 404
+
+    except Exception as e:
+        logger.error(f"[request_password_reset] Error: {str(e)}", exc_info=True)
+        return jsonify({"message": "Internal server error"}), 500
+
+@jwt_required()
+@roles_required('admin')
+@limiter.limit("5 per minute")
+def reset_password():
+    """ Endpoint to actually reset the password using token. """
+    try:
+        data = request.get_json()
+        reset_token = data.get('reset_token', None)
+        new_password = data.get('new_password', None)
+        
+        if not reset_token or not new_password:
+            logger.warning("[reset_password] Missing reset token or new password.")
+            return jsonify({"message": "Reset token and new password are required."}), 400
+        
+        result = user_service.reset_password(reset_token, new_password)
+        if result:
+            logger.info("[reset_password] Password reset successfully.")
+            return jsonify({"message": "Password has been reset successfully."}), 200
+        
+        logger.warning("[reset_password] Invalid or expired reset token.")
+        return jsonify({"message": "Invalid or expired reset token."}), 400
+
+    except Exception as e:
+        logger.error(f"[reset_password] Error: {str(e)}", exc_info=True)
         return jsonify({"message": "Internal server error"}), 500

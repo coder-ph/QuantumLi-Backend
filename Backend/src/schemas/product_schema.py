@@ -2,6 +2,7 @@ from marshmallow import Schema, fields, validate, validates_schema, ValidationEr
 from src.utils.logger import logger
 
 
+
 class ProductSchema(Schema):
   
     product_id = fields.UUID(dump_only=True)
