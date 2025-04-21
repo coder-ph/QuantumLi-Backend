@@ -1,0 +1,44 @@
+
+
+services:
+  flask-db:
+    image: postgres:13
+    container_name: flask-db
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: Mamba@2025!
+      POSTGRES_DB: logistics_db
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    networks:
+      - app-network
+    ports:
+      - "5432:5432"
+
+  flask-app:
+    build:
+      context: .
+      dockerfile: dockerfile
+    container_name: flask-app
+    restart: always
+    depends_on:
+      - flask-db
+    env_file:
+      - .env
+    environment:
+      - REDIS_URL=redis://default:WHi8cKK4NvYOA2zFBUaiA34oiKUhKrlx@redis-15568.c9.us-east-1-2.ec2.redns.redis-cloud.com:15568
+    ports:
+      - "5000:5000"
+    volumes:
+      - .:/app
+    command: >
+      sh -c "flask db upgrade && flask run --host=0.0.0.0 --port=5000"
+    networks:
+      - app-network
+
+volumes:
+  postgres-data:
+
+networks:
+  app-network:
