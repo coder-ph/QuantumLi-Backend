@@ -14,6 +14,9 @@ from src.Models.models import Models
 from flask_socketio import SocketIO
 from flask_login import LoginManager
 
+
+from  src.Models import *
+
 app = Flask(__name__)
 
 login_manager = LoginManager(app)
