@@ -21,6 +21,7 @@ flask-mail = "*"
 marshmallow-sqlalchemy = "*"
 flask-socketio = "*"
 flask-login = "*"
+flask-apscheduler = "*"
 
 [dev-packages]
 
