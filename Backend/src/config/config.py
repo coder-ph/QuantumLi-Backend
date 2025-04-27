@@ -7,6 +7,7 @@ load_dotenv()
 
 class Config:
   
+    SCHEDULER_API_ENABLED=True
    
     SECRET_KEY = os.getenv('SECRET_KEY')
 
