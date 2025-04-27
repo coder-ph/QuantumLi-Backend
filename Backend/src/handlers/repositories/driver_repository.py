@@ -4,6 +4,9 @@ from uuid import uuid4
 from src.utils.logger import logger
 from sqlalchemy.exc import SQLAlchemyError
 
+from datetime import datetime
+from src.Models.driver_schedule import DriverSchedule
+
 class DriverRepository:
 
     def create_driver(self, data):
@@ -98,3 +101,45 @@ class DriverRepository:
             db.session.rollback()  
             logger.error(f"Error restoring driver {driver.driver_id}: {str(e)}")
             raise Exception(f"Error restoring driver {driver.driver_id}.") from e
+        
+    def update_drivers_statuses(self):
+       
+        try:
+            now = datetime.utcnow()
+            current_day = now.strftime("%A")
+            current_time = now.time()
+
+            drivers = self.get_all_drivers()
+            schedules = DriverSchedule.query.filter_by(day_of_week=current_day).all()
+
+            schedule_map = {}
+            for schedule in schedules:
+                driver_id = schedule.driver_id
+                schedule_map[driver_id] = schedule
+
+            for driver in drivers:
+                schedule = schedule_map.get(driver.driver_id)               
+
+                if not schedule:
+                    driver.status = "offline"
+                    # logger.info(f"Driver {driver.driver_id} status changed to offline.")
+                    continue
+                
+                if schedule.start_time <= current_time <= schedule.end_time:
+                    if schedule.break_start <= current_time <= schedule.break_end:
+                        driver.status = "on_break"
+                        # logger.info(f"Driver {driver.driver_id} status changed to on_break.")
+                    else:
+                        driver.status = "online"
+                        # logger.info(f"Driver {driver.driver_id} status changed to online.")
+                else:
+                    driver.status = "offline"
+                    # logger.info(f"Driver {driver.driver_id} status changed to offline.")
+            
+            db.session.commit()
+            logger.info("Drivers statuses changed successfully.")
+
+        except SQLAlchemyError as e:
+            db.session.rollback()  
+            logger.error(f"Error changing status for driver: {str(e)}")
+            raise Exception("Error changing status for driver.") from e        
