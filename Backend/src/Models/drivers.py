@@ -33,7 +33,7 @@ class Driver(BaseModel):
 
    
     carrier = relationship('Carrier', backref='drivers', lazy=True)
-    location = relationship('DriverLocation', backref='driver')
+    # location = relationship('DriverLocation', backref='driver')
     documents = relationship('Document', back_populates='driver', lazy=True)
 
     responses = relationship('OrderResponse', backref='drivers', lazy=True)
@@ -82,15 +82,6 @@ class Driver(BaseModel):
         
         logger.info(f"Valid {field_name}: {expiry_date}")
         return expiry_date
-
-    # @staticmethod
-    # def validate_status(status):
-    
-    #     if status not in ['online', 'offline', 'on_break']:
-    #         logger.error(f"Invalid status: {status}. It must be either online, offline or on_break.")
-    #         raise ValueError("Status must be valid.")
-    #     logger.info(f"Valid status: {status}")
-    #     return status
 
     def validate_driver(self):
         try:
