@@ -1,5 +1,5 @@
 from src.Models.drivers import Driver
-from src.Models.driverLocation import DriverLocation
+# from src.Models.driverLocation import DriverLocation
 from src.Models.documents import Document
 from src.startup.database import db
 from uuid import uuid4
