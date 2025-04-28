@@ -6,7 +6,6 @@ from sqlalchemy import Column, String, Integer, Date, ForeignKey
 from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.orm import relationship
 from src.startup.database import db
-from src.Models.documents import Document
 
 import re
 
@@ -30,11 +29,11 @@ class Driver(BaseModel):
     emergency_contact = Column(String(255), nullable=True)
     medical_certificate_expiry = Column(Date, nullable=False)
     training_certifications = Column(String(255), nullable=True)
-    status = Column(String(50), nullable=False, default="offline")  
+    status = Column(String(50), nullable=False, default='active')  
 
    
     carrier = relationship('Carrier', backref='drivers', lazy=True)
-    location = relationship('DriverLocation', backref='driver')
+    # location = relationship('DriverLocation', backref='driver')
     documents = relationship('Document', back_populates='driver', lazy=True)
 
     responses = relationship('OrderResponse', backref='drivers', lazy=True)
@@ -84,15 +83,6 @@ class Driver(BaseModel):
         logger.info(f"Valid {field_name}: {expiry_date}")
         return expiry_date
 
-    @staticmethod
-    def validate_status(status):
-    
-        if status not in ['online', 'offline', 'on_break']:
-            logger.error(f"Invalid status: {status}. It must be either online, offline or on_break.")
-            raise ValueError("Status must be valid.")
-        logger.info(f"Valid status: {status}")
-        return status
-
     def validate_driver(self):
         try:
             self.license_number = self.validate_license_number(self.license_number)
@@ -100,7 +90,7 @@ class Driver(BaseModel):
             self.email = self.validate_email(self.email)
             self.license_expiry = self.validate_expiry_date(self.license_expiry, "license_expiry")
             self.medical_certificate_expiry = self.validate_expiry_date(self.medical_certificate_expiry, "medical_certificate_expiry")
-            self.status = self.validate_status(self.status)
+            # self.status = self.validate_status(self.status)
         except ValueError as e:
             logger.error(f"Validation failed: {str(e)}")
             raise e

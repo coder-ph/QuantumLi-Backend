@@ -15,6 +15,8 @@ from flask_socketio import SocketIO
 from flask_login import LoginManager
 import os
 
+from flask_apscheduler import APScheduler
+from src.handlers.repositories.driver_repository import DriverRepository
 
 
 app = Flask(__name__)
@@ -59,20 +61,15 @@ with app.app_context():
 
 register_routes(app)
 
-#mark
-# from flask_apscheduler import APScheduler
-# from src.handlers.repositories.driver_repository import DriverRepository
 
-# scheduler = APScheduler()
-# scheduler.init_app(app)
-# scheduler.start()
+scheduler = APScheduler()
+scheduler.init_app(app)
+scheduler.start()
 
-# def update_driver_status_cronjob():
-#     DriverRepository.update_drivers_statuses()
+def update_driver_status_cronjob():
+    DriverRepository.update_all_driver_statuses()
 
-# scheduler.add_job(id='Update Driver Status', func=update_driver_status_cronjob, trigger='interval', minutes=5)
-
-
+scheduler.add_job(id='Update Driver Status', func=update_driver_status_cronjob, trigger='interval', minutes=5)
 
 @app.errorhandler(APIError)
 def handle_api_error(error):
