@@ -71,8 +71,6 @@ def update_driver_status_cronjob():
 
 scheduler.add_job(id='Update Driver Status', func=update_driver_status_cronjob, trigger='interval', minutes=5)
 
-
-
 @app.errorhandler(APIError)
 def handle_api_error(error):
     
