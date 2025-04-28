@@ -7,7 +7,8 @@ from src.utils.logger import logger
 from sqlalchemy.exc import SQLAlchemyError
 
 from datetime import datetime
-# from src.Models.driver_schedule import DriverSchedule #mark
+from src.Models.driver_schedule import DriverSchedule #mark
+from src.Models.driverStatus import DriverStatus
 from werkzeug.utils import secure_filename
 import os
 from datetime import datetime
@@ -179,108 +180,143 @@ class DriverRepository:
             logger.error(f"Error retrieving document by ID {document_id}: {str(e)}")
             raise Exception(f"Error retrieving document with ID {document_id}.") from e
         
-    # def update_drivers_statuses(self): #mark
+    def update_all_driver_statuses(self):
        
-    #     try:
-    #         now = datetime.utcnow()
-    #         current_day = now.strftime("%A")
-    #         current_time = now.time()
+        try:
+            now = datetime.utcnow()
+            current_day = now.strftime("%A")
+            current_time = now.time()
 
-    #         drivers = self.get_all_drivers()
-    #         schedules = DriverSchedule.query.filter_by(day_of_week=current_day).all()
+            drivers = self.get_all_drivers()
+            schedules = DriverSchedule.query.filter_by(day_of_week=current_day).all()
 
-    #         schedule_map = {}
-    #         for schedule in schedules:
-    #             driver_id = schedule.driver_id
-    #             schedule_map[driver_id] = schedule
+            schedule_map = {schedule.driver_id: schedule for schedule in schedules}
 
-    #         for driver in drivers:
-    #             schedule = schedule_map.get(driver.driver_id)               
+            for driver in drivers:
 
-    #             if not schedule:
-    #                 driver.status = "offline"
-    #                 # logger.info(f"Driver {driver.driver_id} status changed to offline.")
-    #                 continue
+                manual_status = DriverStatus.query.filter_by(driver_id=driver.driver_id).first()
+
+                if manual_status and not manual_status.is_active:
+                    driver.status = "inactive"
+                    continue
+
+                schedule = schedule_map.get(driver.driver_id)               
+
+                if not schedule:
+                    driver.status = "inactive"
+                    # logger.info(f"Driver {driver.driver_id} status changed to offline.")
+                    continue
                 
-    #             if schedule.start_time <= current_time <= schedule.end_time:
-    #                 if schedule.break_start <= current_time <= schedule.break_end:
-    #                     driver.status = "on_break"
-    #                     # logger.info(f"Driver {driver.driver_id} status changed to on_break.")
-    #                 else:
-    #                     driver.status = "online"
-    #                     # logger.info(f"Driver {driver.driver_id} status changed to online.")
-    #             else:
-    #                 driver.status = "offline"
-    #                 # logger.info(f"Driver {driver.driver_id} status changed to offline.")
+                if schedule.start_time <= current_time <= schedule.end_time:
+                    if schedule.break_start and schedule.break_end and  schedule.break_start <= current_time <= schedule.break_end:
+                        driver.status = "inactive"
+                        # logger.info(f"Driver {driver.driver_id} status changed to on_break.")
+                    else:
+                        driver.status = "active"
+                        # logger.info(f"Driver {driver.driver_id} status changed to online.")
+                else:
+                    driver.status = "inactive"
+                    # logger.info(f"Driver {driver.driver_id} status changed to offline.")
             
-    #         db.session.commit()
-    #         logger.info("Drivers statuses changed successfully.")
-
-    #     except SQLAlchemyError as e:
-    #         db.session.rollback()  
-    #         logger.error(f"Error changing status for driver: {str(e)}")
-    #         raise Exception("Error changing status for driver.") from e     
-
-    def create_driver_location(self, data):
-
-        try:
-            driver_location = DriverLocation(**data)
-            db.session.add(driver_location)
             db.session.commit()
+            logger.info("Drivers statuses changed successfully.")
 
-            logger.info(f"Driver location created successfully: {driver_location.driver_location_id}")
-            return driver_location
-        
         except SQLAlchemyError as e:
-            db.session.rollback() 
-            logger.error(f"Error creating driver location: {str(e)}")
-            raise Exception("Error creating driver location.") from e
+            db.session.rollback()  
+            logger.error(f"Error changing status for driver: {str(e)}")
+            raise Exception("Error changing status for driver.") from e     
 
-    def get_all_driver_location(self):
+    def update_manual_driver_status(self, driver_id, data):
 
         try:
-            driver_locations = DriverLocation.query.all()
-            logger.info(f"Retrieved {len(driver_locations)} active driver locations.")
-            return driver_locations
-        
-        except SQLAlchemyError as e:
-            logger.error(f"Error retrieving driver locations: {str(e)}")
-            raise Exception("Error retrieving drivers locations.") from e
+            manual_driver_status = DriverStatus.query.filter_by(driver_id=driver_id).first()
+            if not manual_driver_status:
+                logger.error(f"Error retrieving driver manual status using driver ID {driver_id}")
+                raise Exception(f"Error updating manual driver status of driver ID {driver_id}")
 
-    def get_driver_location_by_id(self, driver_id):
-        
-        try:
-            driver_location = DriverLocation.query.filter_by(driver_id=driver_id).first()
-            if driver_location:
-                logger.info(f"Driver location for driver ID {driver_id} found.")
-            else:
-                logger.warning(f"Driver location for driver ID {driver_id} not found.")
-            return driver_location
-        
-        except SQLAlchemyError as e:
-            logger.error(f"Error retrieving driver location by driver ID {driver_id}: {str(e)}")
-            raise Exception(f"Error retrieving driver location of driver ID {driver_id}.") from e
+            if data['is_active'] == False:
 
-
-    def update_driver_location(self, driver_id, data):
-
-        try:
-            driver_location = DriverLocation.query.filter_by(driver_id=driver_id).first()
-            if not driver_location:
-                logger.error(f"Error retrieving driver location using driver ID {driver_id}")
+                if not data['reason']:
+                    logger.error(f"Reason is required to set driver {driver_id} to inactive.")
+                    raise ValueError("A reason is required when setting driver to inactive.")
 
             for key, value in data.items():
-                setattr(driver_location, key, value)
+                setattr(manual_driver_status, key, value)
             
-            driver_location.updated_at = datetime.utcnow() 
+            manual_driver_status.updated_at = datetime.utcnow() 
 
             db.session.commit()
-            logger.info(f"Driver location updated successfully")
+            logger.info(f"Driver manual status updated successfully")
             
-            return driver_location
+            return manual_driver_status
         
         except SQLAlchemyError as e:
             db.session.rollback()
-            logger.error(f"Error updating driver {driver_id} location: {str(e)}")
-            raise Exception(f"Error updating driver {driver_id}.") from e
+            logger.error(f"Error updating manual driver status of driver ID {driver_id}: {str(e)}")
+            raise Exception(f"Error updating manual driver status of driver ID {driver_id}") from e
+   
+   
+    # def create_driver_location(self, data):
+
+    #     try:
+    #         driver_location = DriverLocation(**data)
+    #         db.session.add(driver_location)
+    #         db.session.commit()
+
+    #         logger.info(f"Driver location created successfully: {driver_location.driver_location_id}")
+    #         return driver_location
+        
+    #     except SQLAlchemyError as e:
+    #         db.session.rollback() 
+    #         logger.error(f"Error creating driver location: {str(e)}")
+    #         raise Exception("Error creating driver location.") from e
+
+    # def get_all_driver_location(self):
+
+    #     try:
+    #         driver_locations = DriverLocation.query.all()
+    #         logger.info(f"Retrieved {len(driver_locations)} active driver locations.")
+    #         return driver_locations
+        
+    #     except SQLAlchemyError as e:
+    #         logger.error(f"Error retrieving driver locations: {str(e)}")
+    #         raise Exception("Error retrieving drivers locations.") from e
+
+    # def get_driver_location_by_id(self, driver_id):
+        
+    #     try:
+    #         driver_location = DriverLocation.query.filter_by(driver_id=driver_id).first()
+    #         if driver_location:
+    #             logger.info(f"Driver location for driver ID {driver_id} found.")
+    #         else:
+    #             logger.warning(f"Driver location for driver ID {driver_id} not found.")
+    #         return driver_location
+        
+    #     except SQLAlchemyError as e:
+    #         logger.error(f"Error retrieving driver location by driver ID {driver_id}: {str(e)}")
+    #         raise Exception(f"Error retrieving driver location of driver ID {driver_id}.") from e
+
+
+    # def update_driver_location(self, driver_id, data):
+
+    #     try:
+    #         driver_location = DriverLocation.query.filter_by(driver_id=driver_id).first()
+    #         if not driver_location:
+    #             logger.error(f"Error retrieving driver location using driver ID {driver_id}")
+
+    #         for key, value in data.items():
+    #             setattr(driver_location, key, value)
+            
+    #         driver_location.updated_at = datetime.utcnow() 
+
+    #         db.session.commit()
+    #         logger.info(f"Driver location updated successfully")
+            
+    #         return driver_location
+        
+    #     except SQLAlchemyError as e:
+    #         db.session.rollback()
+    #         logger.error(f"Error updating driver {driver_id} location: {str(e)}")
+    #         raise Exception(f"Error updating driver {driver_id}.") from e
+        
 
