@@ -86,3 +86,4 @@ def restore_driver_view(driver_id):
     except Exception as e:
         logger.error(f"Error restoring driver {driver_id}: {str(e)}")
         return jsonify({"message": "Internal server error"}), 500
+    

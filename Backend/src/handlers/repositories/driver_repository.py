@@ -98,3 +98,6 @@ class DriverRepository:
             db.session.rollback()  
             logger.error(f"Error restoring driver {driver.driver_id}: {str(e)}")
             raise Exception(f"Error restoring driver {driver.driver_id}.") from e
+        
+
+

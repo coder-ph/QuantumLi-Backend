@@ -5602,3 +5602,22 @@ ValueError: invalid literal for int() with base 10: 'c4f6a80a-d261-4afd-b326-b8c
 [2025-04-21 15:33:48,165] [WARNING] logistics_app: [Redis] Connection failed. Caching will be disabled.
 [2025-04-21 15:33:49,570] [INFO] logistics_app: Models initialized successfully.
 [2025-04-21 15:33:49,570] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-27 19:22:33,228] [WARNING] logistics_app: [Redis] Connection failed. Caching will be disabled.
+[2025-04-27 19:22:35,559] [INFO] logistics_app: Models initialized successfully.
+[2025-04-27 19:22:35,560] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-27 19:22:37,851] [WARNING] logistics_app: [Redis] Connection failed. Caching will be disabled.
+[2025-04-27 19:22:39,666] [INFO] logistics_app: Models initialized successfully.
+[2025-04-27 19:22:39,668] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-27 19:24:32,910] [WARNING] logistics_app: [Redis] Connection failed. Caching will be disabled.
+[2025-04-27 19:24:34,779] [INFO] logistics_app: Models initialized successfully.
+[2025-04-27 19:24:34,780] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-27 19:33:28,925] [WARNING] logistics_app: [Redis] Connection failed. Caching will be disabled.
+[2025-04-27 19:33:31,453] [INFO] logistics_app: Models initialized successfully.
+[2025-04-27 19:33:31,453] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-28 10:37:29,630] [WARNING] logistics_app: [Redis] Connection failed. Caching will be disabled.
+[2025-04-28 10:37:32,295] [INFO] logistics_app: Models initialized successfully.
+[2025-04-28 10:37:32,296] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-28 10:41:07,941] [WARNING] logistics_app: [Redis] Connection failed. Caching will be disabled.
+[2025-04-28 10:41:10,393] [INFO] logistics_app: Models initialized successfully.
+[2025-04-28 10:41:10,394] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-28 10:47:09,110] [WARNING] logistics_app: [Redis] Connection failed. Caching will be disabled.
