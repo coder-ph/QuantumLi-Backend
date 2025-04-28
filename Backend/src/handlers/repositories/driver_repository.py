@@ -7,7 +7,7 @@ from src.utils.logger import logger
 from sqlalchemy.exc import SQLAlchemyError
 
 from datetime import datetime
-from src.Models.driver_schedule import DriverSchedule #mark
+from src.Models.driverWorkSchedule import DriverRecurringSchedule, DriverOffDay
 from src.Models.driverStatus import DriverStatus
 from werkzeug.utils import secure_filename
 import os
@@ -180,46 +180,81 @@ class DriverRepository:
             logger.error(f"Error retrieving document by ID {document_id}: {str(e)}")
             raise Exception(f"Error retrieving document with ID {document_id}.") from e
         
+    def create_driver_status(self, data):
+        try:
+            driver_status = DriverStatus(**data)
+            db.session.add(driver_status)
+            db.session.commit()
+            logger.info(f"Driver Status created successfully for driver ID: {driver_status.driver_id}")
+            return driver_status
+        
+        except SQLAlchemyError as e:
+            db.session.rollback() 
+            logger.error(f"Error creating driver status: {str(e)}")
+            raise Exception("Error creating driver status.") from e
+
+    def get_all_drivers_statuses(self):
+        try:
+            all_drivers_statuses = DriverStatus.query.all()
+            logger.info(f"Retrieved {len(all_drivers_statuses)} driver status.")
+            return all_drivers_statuses
+        
+        except SQLAlchemyError as e:
+            logger.error(f"Error retrieving drivers statuses: {str(e)}")
+            raise Exception("Error retrieving drivers statuses.") from e
+
+    def get_driver_status_by_id(self, driver_id):
+        try:
+            driver_status = DriverStatus.query.filter_by(driver_id=driver_id).first()
+            if driver_status:
+                logger.info(f"Driver Status for driver ID: {driver_status.driver_id} found")
+            else:
+                logger.warning(f"Driver status for driver ID {driver_id} not found.")
+            return driver_status
+        except SQLAlchemyError as e:
+            logger.error(f"Error retrieving driver status for driver ID {driver_id}: {str(e)}")
+            raise Exception(f"Error retrieving driver status for driver ID {driver_id}.") from e
+
+
     def update_all_driver_statuses(self):
        
         try:
             now = datetime.utcnow()
             current_day = now.strftime("%A")
             current_time = now.time()
+            today_date = now.date()
 
             drivers = self.get_all_drivers()
-            schedules = DriverSchedule.query.filter_by(day_of_week=current_day).all()
 
+            schedules = DriverRecurringSchedule.query.filter_by(day_of_week=current_day).all()
             schedule_map = {schedule.driver_id: schedule for schedule in schedules}
 
+            off_days = DriverOffDay.query.filter_by(off_date=today_date).all()
+            off_day_map = {off.driver_id: off for off in off_days}
+
             for driver in drivers:
-
+                
                 manual_status = DriverStatus.query.filter_by(driver_id=driver.driver_id).first()
-
                 if manual_status and not manual_status.is_active:
                     driver.status = "inactive"
                     continue
 
-                schedule = schedule_map.get(driver.driver_id)               
+                if driver.driver_id in off_day_map:
+                    driver.status = "inactive"
+                    continue
 
+                schedule = schedule_map.get(driver.driver_id)
                 if not schedule:
                     driver.status = "inactive"
-                    # logger.info(f"Driver {driver.driver_id} status changed to offline.")
                     continue
-                
+
                 if schedule.start_time <= current_time <= schedule.end_time:
-                    if schedule.break_start and schedule.break_end and  schedule.break_start <= current_time <= schedule.break_end:
-                        driver.status = "inactive"
-                        # logger.info(f"Driver {driver.driver_id} status changed to on_break.")
-                    else:
-                        driver.status = "active"
-                        # logger.info(f"Driver {driver.driver_id} status changed to online.")
+                    driver.status = "active"
                 else:
                     driver.status = "inactive"
-                    # logger.info(f"Driver {driver.driver_id} status changed to offline.")
-            
+
             db.session.commit()
-            logger.info("Drivers statuses changed successfully.")
+            logger.info("Drivers statuses updated successfully.")
 
         except SQLAlchemyError as e:
             db.session.rollback()  
