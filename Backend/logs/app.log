@@ -6195,3 +6195,11 @@ WHERE documents.driver_id = ?]
 [2025-04-28 10:41:10,393] [INFO] logistics_app: Models initialized successfully.
 [2025-04-28 10:41:10,394] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
 [2025-04-28 10:47:09,110] [WARNING] logistics_app: [Redis] Connection failed. Caching will be disabled.
+[2025-04-28 16:21:59,170] [WARNING] logistics_app: [Redis] Connection failed. Caching will be disabled.
+[2025-04-28 16:23:32,059] [WARNING] logistics_app: [Redis] Connection failed. Caching will be disabled.
+[2025-04-28 16:24:05,556] [WARNING] logistics_app: [Redis] Connection failed. Caching will be disabled.
+[2025-04-28 16:24:07,549] [INFO] logistics_app: Models initialized successfully.
+[2025-04-28 16:24:07,549] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-28 16:24:22,461] [WARNING] logistics_app: [Redis] Connection failed. Caching will be disabled.
+[2025-04-28 16:24:24,536] [INFO] logistics_app: Models initialized successfully.
+[2025-04-28 16:24:24,536] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
