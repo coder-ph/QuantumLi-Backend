@@ -1,0 +1,34 @@
+services:
+  - type: web
+    name: logistics-backend
+    env: docker
+    plan: free
+    branch: main
+    dockerfilePath: ./dockerfile
+    buildCommand: ""
+    startCommand: >
+      sh -c "flask db upgrade && flask run --host=0.0.0.0 --port=5000"
+    autoDeploy: true
+    envVars:
+      - key: REDIS_URL
+        value: redis://default:WHi8cKK4NvYOA2zFBUaiA34oiKUhKrlx@redis-15568.c9.us-east-1-2.ec2.redns.redis-cloud.com:15568
+      - key: POSTGRES_USER
+        value: postgres
+      - key: POSTGRES_PASSWORD
+        value: Mamba@2025!
+      - key: POSTGRES_DB
+        value: logistics_db
+      - key: DATABASE_URL
+        fromDatabase:
+          name: logistics-db
+          property: connectionString
+      - key: FLASK_ENV
+        value: production
+      - key: SECRET_KEY
+        value: your-production-secret-key
+
+databases:
+  - name: logistics-db
+    plan: free
+    databaseName: logistics_db
+    user: postgres
