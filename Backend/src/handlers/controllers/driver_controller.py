@@ -242,4 +242,41 @@ def update_driver_status_view(driver_id):
     except Exception as e:
         logger.error(f"Error updating manual status of driver {driver_id}: {str(e)}")
         return jsonify({"message": "Internal server error"}), 500
-    
+
+
+# @jwt_required()  # Authorization required
+# @role_required(['admin', 'manager'])
+def create_driver_status_view():
+    try:
+        data = request.get_json()
+        driver_status = driver_repo.create_driver_status(data)
+        logger.info(f"Driver Status created for driver ID {driver_status.driver_id}")
+        return jsonify({"message": "Driver Status created successfully", "driver_id": str(driver_status.driver_id)}), 201
+    except ValueError as e:
+        logger.warning(f"Driver Status creation failed: {str(e)}")
+        return jsonify({"message": str(e)}), 400
+    except Exception as e:
+        logger.error(f"Unexpected error creating driver status: {str(e)}")
+        return jsonify({"message": "Internal server error"}), 500
+
+# @jwt_required()  # Authorization required
+# @role_required(['admin', 'manager'])
+def get_all_drivers_statuses_view():
+    try:
+        all_drivers_statuses = driver_repo.get_all_drivers_statuses()
+        return jsonify(all_drivers_statuses if all_drivers_statuses else []), 200
+    except Exception as e:
+        logger.error(f"Error fetching drivers statuses: {str(e)}")
+        return jsonify({"message": "Internal server error"}), 500
+
+# @jwt_required()  # Authorization required
+# @role_required(['admin', 'manager', 'employee'])
+def get_driver_status_by_id_view(driver_id):
+    try:
+        driver_status = driver_repo.get_driver_status_by_id(driver_id)
+        if not driver_status:
+            return jsonify({"message": "Driver status not found"}), 404
+        return jsonify(driver_status), 200
+    except Exception as e:
+        logger.error(f"Error fetching driver status of driver ID: {driver_id}: {str(e)}")
+        return jsonify({"message": "Internal server error"}), 500
