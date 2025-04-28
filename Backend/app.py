@@ -16,7 +16,6 @@ from flask_login import LoginManager
 import os
 
 
-from  src.Models import *
 
 app = Flask(__name__)
 
