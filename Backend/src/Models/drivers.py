@@ -8,6 +8,7 @@ from sqlalchemy.orm import relationship
 from src.startup.database import db
 
 import re
+from driverWorkSchedule import DriverOffDay, DriverRecurringSchedule
 
 # Configure logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
@@ -105,3 +106,32 @@ class Driver(BaseModel):
     #     logger.info(f"Valid {field_name}: {expiry_date}")
     #     return expiry_date
    
+        
+    def is_driver_available(driver_id, check_date):
+        
+        # check if today is a spontaneous off day
+        off_day = db.session.query(DriverOffDay).filter_by(
+            driver_id=driver_id,
+            off_date=check_date
+        ).first()
+
+        if off_day:
+            # Driver has taken this day off
+            return False
+        
+        # Then: check if today is a normal work day
+        day_of_week = check_date.strftime('%A')  # e.g., "Monday"
+        
+        recurring_schedule = db.session.query(DriverRecurringSchedule).filter_by(
+            driver_id=driver_id,
+            day_of_week=day_of_week,
+            is_active=True
+        ).first()
+
+        if recurring_schedule:
+            # Driver normally works today
+            return True
+        
+        # Otherwise, not scheduled to work
+        return False
+
