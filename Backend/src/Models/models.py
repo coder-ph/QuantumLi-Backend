@@ -13,6 +13,7 @@ class Models:
         self.carrier = None
         self.customer_feedback = None
         self.driver_ratings = None
+        self.driver_location = None
         self.driver = None
         self.system_users = None
         self.employee = None
@@ -45,6 +46,7 @@ class Models:
             from src.Models.client import Client
             from src.Models.customerfeedback import Customer_Feedback
             from src.Models.driverRating import Driver_Ratings
+            from src.Models.driverLocation import DriverLocation
             from src.Models.drivers import Driver
             from src.Models.systemusers import System_Users
             from src.Models.employee import Employee
@@ -73,6 +75,7 @@ class Models:
             self.carrier = Carrier
             self.customer_feedback = Customer_Feedback
             self.driver_ratings = Driver_Ratings
+            self.driver_location = DriverLocation
             self.driver = Driver
             self.system_users = System_Users
             self.employee = Employee
