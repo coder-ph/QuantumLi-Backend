@@ -6,6 +6,8 @@ from src.handlers.repositories.order_repository import (
 )
 from src.decorators.permissions import role_required
 from src.utils.logger import logger
+from src.handlers.services.notification_service import NotificationService
+
 @jwt_required()
 @role_required(['admin', 'employee', 'user', 'manager'])
 def create_order_view():
@@ -74,6 +76,15 @@ def assign_driver_view(order_id):
         order = assign_driver_to_order(order_id, driver_id)
         if not order:
             return jsonify({"message": "Order not found"}), 404
+
+        # Notify the driver
+        NotificationService.create_notification(
+            recipient_id=driver_id,
+            message=f"You have been assigned to Order {order_id}.",
+            type="task_assignment",
+            related_entity="order",
+            related_id=order_id
+        )
 
         logger.info(f"Driver {driver_id} assigned to order {order.id}")
         return jsonify(order.to_dict()), 200

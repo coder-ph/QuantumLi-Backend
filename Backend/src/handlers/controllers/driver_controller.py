@@ -1,5 +1,5 @@
 from flask import request, jsonify
-from flask_jwt_extended import jwt_required
+from flask_jwt_extended import jwt_required, get_jwt_identity
 from src.handlers.repositories.driver_repository import DriverRepository
 from src.decorators.permissions import role_required
 from src.utils.logger import logger
@@ -218,3 +218,14 @@ def get_documents_view(driver_id):
         logger.error(f"Error fetching documents for driver {driver_id}: {str(e)}")
         return jsonify({"message": "Internal server error"}), 500
 
+
+#@jwt_required()
+#@role_required(['driver'])
+def get_notifications_view():
+    try:
+        driver_id = get_jwt_identity()
+        notifications = Notifications.query.filter_by(recipient_id=driver_id).all()
+        return jsonify([notification.to_dict() for notification in notifications]), 200
+    except Exception as e:
+        logger.error(f"Error fetching notifications for driver {driver_id}: {str(e)}")
+        return jsonify({"message": "Internal server error"}), 500

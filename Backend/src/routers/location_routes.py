@@ -112,3 +112,21 @@ def handle_location_update(data):
     except Exception as e:
         logger.error(f"[SocketIO] Error in location_update: {str(e)}", exc_info=True)
         emit('error', {'msg': 'Failed to update location'})
+
+
+@socketio.on('notify_driver')
+def notify_driver(data):
+    try:
+        driver_id = data.get('driver_id')
+        message = data.get('message')
+
+        if not driver_id or not message:
+            emit('error', {'msg': 'Driver ID and message are required'})
+            logger.warning(f"[SocketIO] Missing data for notify_driver: {data}")
+            return
+
+        logger.info(f"[SocketIO] Sending notification to driver {driver_id}: {message}")
+        emit('driver_notification', {'message': message}, room=driver_id)
+    except Exception as e:
+        logger.error(f"[SocketIO] Error in notify_driver: {str(e)}", exc_info=True)
+        emit('error', {'msg': 'Failed to send notification'})
