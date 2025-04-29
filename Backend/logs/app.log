@@ -6203,15 +6203,98 @@ WHERE documents.driver_id = ?]
 [2025-04-28 16:24:22,461] [WARNING] logistics_app: [Redis] Connection failed. Caching will be disabled.
 [2025-04-28 16:24:24,536] [INFO] logistics_app: Models initialized successfully.
 [2025-04-28 16:24:24,536] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
-[2025-04-29 10:02:31,230] [WARNING] logistics_app: [Redis] Connection failed. Caching will be disabled.
-[2025-04-29 10:02:33,424] [INFO] logistics_app: Models initialized successfully.
-[2025-04-29 10:02:33,424] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
-[2025-04-29 10:02:36,504] [WARNING] logistics_app: [Redis] Connection failed. Caching will be disabled.
-[2025-04-29 10:02:38,845] [INFO] logistics_app: Models initialized successfully.
-[2025-04-29 10:02:38,845] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
-[2025-04-29 10:45:29,702] [WARNING] logistics_app: [Redis] Connection failed. Caching will be disabled.
-[2025-04-29 10:45:31,340] [INFO] logistics_app: Models initialized successfully.
-[2025-04-29 10:45:31,340] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
-[2025-04-29 10:45:33,393] [WARNING] logistics_app: [Redis] Connection failed. Caching will be disabled.
-[2025-04-29 10:45:35,036] [INFO] logistics_app: Models initialized successfully.
-[2025-04-29 10:45:35,036] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-29 10:45:51,348] [INFO] logistics_app: Models initialized successfully.
+[2025-04-29 10:45:51,348] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-29 10:45:57,824] [INFO] logistics_app: Models initialized successfully.
+[2025-04-29 10:45:57,825] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-29 17:26:29,875] [INFO] logistics_app: Models initialized successfully.
+[2025-04-29 17:26:29,878] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-29 17:31:27,466] [INFO] logistics_app: Models initialized successfully.
+[2025-04-29 17:31:27,466] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-29 17:46:53,341] [INFO] logistics_app: Models initialized successfully.
+[2025-04-29 17:46:53,341] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-29 17:46:58,713] [INFO] logistics_app: Models initialized successfully.
+[2025-04-29 17:46:58,714] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-29 17:47:14,230] [INFO] logistics_app: Models initialized successfully.
+[2025-04-29 17:47:14,231] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-29 17:49:55,843] [INFO] logistics_app: Models initialized successfully.
+[2025-04-29 17:49:55,848] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-29 17:50:19,791] [INFO] logistics_app: Models initialized successfully.
+[2025-04-29 17:50:19,791] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-29 18:02:23,322] [INFO] logistics_app: Models initialized successfully.
+[2025-04-29 18:02:23,322] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-29 18:02:29,702] [INFO] logistics_app: Models initialized successfully.
+[2025-04-29 18:02:29,703] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-29 18:03:57,260] [INFO] logistics_app: Models initialized successfully.
+[2025-04-29 18:03:57,263] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-29 18:04:53,399] [INFO] logistics_app: Models initialized successfully.
+[2025-04-29 18:04:53,404] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-29 18:06:13,858] [INFO] logistics_app: Models initialized successfully.
+[2025-04-29 18:06:13,859] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-29 18:06:39,499] [INFO] logistics_app: Models initialized successfully.
+[2025-04-29 18:06:39,503] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-29 18:07:01,599] [INFO] logistics_app: Models initialized successfully.
+[2025-04-29 18:07:01,599] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-29 18:07:08,110] [INFO] logistics_app: Models initialized successfully.
+[2025-04-29 18:07:08,111] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-29 18:10:20,602] [INFO] logistics_app: Models initialized successfully.
+[2025-04-29 18:10:20,602] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-29 18:10:35,381] [INFO] logistics_app: Models initialized successfully.
+[2025-04-29 18:10:35,382] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-29 18:11:00,439] [INFO] logistics_app: Models initialized successfully.
+[2025-04-29 18:11:00,440] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-29 18:11:21,103] [INFO] logistics_app: Models initialized successfully.
+[2025-04-29 18:11:21,104] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-29 18:12:23,788] [INFO] logistics_app: Models initialized successfully.
+[2025-04-29 18:12:23,788] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-29 18:12:40,771] [INFO] logistics_app: Models initialized successfully.
+[2025-04-29 18:12:40,771] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-29 18:14:20,213] [INFO] logistics_app: Models initialized successfully.
+[2025-04-29 18:14:20,213] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-29 18:16:22,789] [INFO] logistics_app: Models initialized successfully.
+[2025-04-29 18:16:22,790] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-29 18:17:44,028] [INFO] logistics_app: Models initialized successfully.
+[2025-04-29 18:17:44,030] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-29 18:17:50,660] [INFO] logistics_app: Models initialized successfully.
+[2025-04-29 18:17:50,661] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-29 20:26:39,044] [WARNING] logistics_app: [Redis] Connection failed. Caching will be disabled.
+[2025-04-29 20:27:27,014] [WARNING] logistics_app: [Redis] Connection failed. Caching will be disabled.
+[2025-04-29 20:29:08,778] [WARNING] logistics_app: [Redis] Connection failed. Caching will be disabled.
+[2025-04-29 20:29:11,149] [INFO] logistics_app: Models initialized successfully.
+[2025-04-29 20:29:11,149] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-29 20:29:34,299] [WARNING] logistics_app: [Redis] Connection failed. Caching will be disabled.
+[2025-04-29 20:29:36,649] [INFO] logistics_app: Models initialized successfully.
+[2025-04-29 20:29:36,650] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-29 20:31:36,741] [WARNING] logistics_app: [Redis] Connection failed. Caching will be disabled.
+[2025-04-29 20:31:38,701] [INFO] logistics_app: Models initialized successfully.
+[2025-04-29 20:31:38,702] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-29 20:31:44,744] [WARNING] logistics_app: [Redis] Connection failed. Caching will be disabled.
+[2025-04-29 20:31:47,614] [INFO] logistics_app: Models initialized successfully.
+[2025-04-29 20:31:47,614] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-29 20:32:27,120] [WARNING] logistics_app: [Redis] Connection failed. Caching will be disabled.
+[2025-04-29 20:32:28,978] [INFO] logistics_app: Models initialized successfully.
+[2025-04-29 20:32:28,978] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-29 20:32:34,927] [WARNING] logistics_app: [Redis] Connection failed. Caching will be disabled.
+[2025-04-29 20:32:36,876] [INFO] logistics_app: Models initialized successfully.
+[2025-04-29 20:32:36,876] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-29 20:33:25,257] [WARNING] logistics_app: [Redis] Connection failed. Caching will be disabled.
+[2025-04-29 20:33:27,039] [INFO] logistics_app: Models initialized successfully.
+[2025-04-29 20:33:27,039] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-29 20:33:52,743] [WARNING] logistics_app: [Redis] Connection failed. Caching will be disabled.
+[2025-04-29 20:33:54,587] [INFO] logistics_app: Models initialized successfully.
+[2025-04-29 20:33:54,587] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-29 20:36:32,044] [WARNING] logistics_app: [Redis] Connection failed. Caching will be disabled.
+[2025-04-29 20:36:33,919] [INFO] logistics_app: Models initialized successfully.
+[2025-04-29 20:36:33,919] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-29 20:37:28,156] [WARNING] logistics_app: [Redis] Connection failed. Caching will be disabled.
+[2025-04-29 20:37:30,035] [INFO] logistics_app: Models initialized successfully.
+[2025-04-29 20:37:30,036] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-29 20:37:41,474] [WARNING] logistics_app: [Redis] Connection failed. Caching will be disabled.
+[2025-04-29 20:37:43,475] [INFO] logistics_app: Models initialized successfully.
+[2025-04-29 20:37:43,476] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-29 20:43:54,151] [WARNING] logistics_app: [Redis] Connection failed. Caching will be disabled.
+[2025-04-29 20:43:55,983] [INFO] logistics_app: Models initialized successfully.
+[2025-04-29 20:43:55,983] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-29 20:44:02,929] [WARNING] logistics_app: [Redis] Connection failed. Caching will be disabled.
+[2025-04-29 20:44:04,687] [INFO] logistics_app: Models initialized successfully.
+[2025-04-29 20:44:04,687] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.

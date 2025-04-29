@@ -15,11 +15,14 @@ from flask_socketio import SocketIO
 from flask_login import LoginManager
 import os
 
+from src.startup.mail import mail
+
 from flask_apscheduler import APScheduler
 from src.handlers.repositories.driver_repository import DriverRepository
 
 
 app = Flask(__name__)
+mail.init_app(app)
 
 login_manager = LoginManager(app)
 login_manager.init_app(app)
