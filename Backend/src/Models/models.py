@@ -14,8 +14,8 @@ class Models:
         self.customer_feedback = None
         self.driver_ratings = None
         # self.driver_location = None
-        self.driver_status = None
         self.driver = None
+        self.driver_schedule = None
         self.system_users = None
         self.employee = None
         self.incidents = None
@@ -48,8 +48,8 @@ class Models:
             from src.Models.customerfeedback import Customer_Feedback
             from src.Models.driverRating import Driver_Ratings
             # from src.Models.driverLocation import DriverLocation
-            from src.Models.driverStatus import DriverStatus
             from src.Models.drivers import Driver
+            from src.Models.driverSchedule import DriverSchedule
             from src.Models.systemusers import System_Users
             from src.Models.employee import Employee
             from src.Models.incidents import Incidents
@@ -78,8 +78,8 @@ class Models:
             self.customer_feedback = Customer_Feedback
             self.driver_ratings = Driver_Ratings
             # self.driver_location = DriverLocation
-            self.driver_status = DriverStatus
             self.driver = Driver
+            self.driver_schedule = DriverSchedule
             self.system_users = System_Users
             self.employee = Employee
             self.incidents = Incidents

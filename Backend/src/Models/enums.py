@@ -11,3 +11,8 @@ class ShippingMethodEnum(enum.Enum):
     AIR = 'air'
     SEA = 'sea'
     RAIL = 'rail'
+
+class DocumentType(enum.Enum):
+    ID = 'id'
+    CV = 'cv'
+    DL = 'dl' 
