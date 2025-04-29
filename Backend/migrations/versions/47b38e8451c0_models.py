@@ -1,8 +1,8 @@
-"""empty message
+"""models
 
-Revision ID: f44b614a872e
+Revision ID: 47b38e8451c0
 Revises: 
-Create Date: 2025-04-21 12:31:29.953128
+Create Date: 2025-04-29 20:43:57.781614
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = 'f44b614a872e'
+revision = '47b38e8451c0'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -318,6 +318,35 @@ def upgrade():
     sa.ForeignKeyConstraint(['user_id'], ['system_users.user_id'], ),
     sa.PrimaryKeyConstraint('log_id')
     )
+    op.create_table('documents',
+    sa.Column('document_id', sa.UUID(), nullable=False),
+    sa.Column('document_name', sa.String(length=255), nullable=False),
+    sa.Column('driver_id', sa.UUID(), nullable=False),
+    sa.Column('type', sa.String(length=100), nullable=False),
+    sa.Column('file_url', sa.String(length=255), nullable=False),
+    sa.Column('status', sa.String(length=50), nullable=False),
+    sa.Column('uploaded_at', sa.DateTime(), nullable=True),
+    sa.Column('expiry_date', sa.Date(), nullable=True),
+    sa.Column('is_deleted', sa.Boolean(), nullable=True),
+    sa.Column('created_at', sa.DateTime(), nullable=True),
+    sa.Column('updated_at', sa.DateTime(), nullable=True),
+    sa.ForeignKeyConstraint(['driver_id'], ['drivers.driver_id'], ),
+    sa.PrimaryKeyConstraint('document_id')
+    )
+    with op.batch_alter_table('documents', schema=None) as batch_op:
+        batch_op.create_index('ix_documents_driver_id', ['driver_id'], unique=False)
+
+    op.create_table('driver_schedules',
+    sa.Column('schedule_id', sa.UUID(), nullable=False),
+    sa.Column('driver_id', sa.UUID(), nullable=False),
+    sa.Column('weekly_schedule', sa.JSON(), nullable=False),
+    sa.Column('is_deleted', sa.Boolean(), nullable=True),
+    sa.Column('created_at', sa.DateTime(), nullable=True),
+    sa.Column('updated_at', sa.DateTime(), nullable=True),
+    sa.ForeignKeyConstraint(['driver_id'], ['drivers.driver_id'], ),
+    sa.PrimaryKeyConstraint('schedule_id'),
+    sa.UniqueConstraint('driver_id')
+    )
     op.create_table('inventory',
     sa.Column('inventory_id', sa.UUID(), nullable=False),
     sa.Column('product_id', sa.UUID(), nullable=False),
@@ -373,6 +402,17 @@ def upgrade():
     sa.Column('updated_at', sa.DateTime(), nullable=False),
     sa.ForeignKeyConstraint(['invoice_id'], ['billing.invoice_id'], ),
     sa.PrimaryKeyConstraint('invoice_item_id')
+    )
+    op.create_table('order_responses',
+    sa.Column('response_id', sa.UUID(), nullable=False),
+    sa.Column('order_id', sa.UUID(), nullable=False),
+    sa.Column('driver_id', sa.UUID(), nullable=False),
+    sa.Column('status', sa.Enum('ACCEPTED', 'REJECTED', name='responsestatus'), nullable=False),
+    sa.Column('reason', sa.String(length=255), nullable=True),
+    sa.Column('responded_at', sa.DateTime(), nullable=False),
+    sa.ForeignKeyConstraint(['driver_id'], ['drivers.driver_id'], ),
+    sa.ForeignKeyConstraint(['order_id'], ['orders.order_id'], ),
+    sa.PrimaryKeyConstraint('response_id')
     )
     op.create_table('shipments',
     sa.Column('shipment_id', sa.UUID(), nullable=False),
@@ -501,6 +541,7 @@ def downgrade():
     op.drop_table('shipment_orders')
     op.drop_table('order_items')
     op.drop_table('shipments')
+    op.drop_table('order_responses')
     op.drop_table('invoice_items')
     op.drop_table('inventory_movements')
     with op.batch_alter_table('inventory', schema=None) as batch_op:
@@ -508,6 +549,11 @@ def downgrade():
         batch_op.drop_index('idx_inventory_location_id')
 
     op.drop_table('inventory')
+    op.drop_table('driver_schedules')
+    with op.batch_alter_table('documents', schema=None) as batch_op:
+        batch_op.drop_index('ix_documents_driver_id')
+
+    op.drop_table('documents')
     op.drop_table('audit_logs')
     op.drop_table('warehouse_operations')
     op.drop_table('vehicles')

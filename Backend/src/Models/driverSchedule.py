@@ -1,8 +1,8 @@
 import uuid
 import logging
 # from datetime import datetime, time, date
-from sqlalchemy import Column, ForeignKey
-from sqlalchemy.dialects.postgresql import UUID, JSONB
+from sqlalchemy import Column, ForeignKey, JSON
+from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.orm import relationship
 from src.Models.base_model import BaseModel
 from src.startup.database import db
@@ -21,11 +21,10 @@ class DriverSchedule(BaseModel):
     schedule_id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
     driver_id = Column(UUID(as_uuid=True), ForeignKey('drivers.driver_id'), nullable=False, unique=True)
 
-    # JSONB column to store weekly work schedule.
-    weekly_schedule = Column(JSONB, nullable=False, default=lambda: {
+    weekly_schedule = Column(JSON, nullable=False, default=lambda: {
         day: {"work": False, "start": None, "end": None}
         for day in DAYS
-    })    
+    })
 
     # Relationship to the Driver model
     driver = relationship("Driver", backref="schedule", lazy=True)
