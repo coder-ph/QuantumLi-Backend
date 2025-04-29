@@ -36,6 +36,7 @@ class Driver(BaseModel):
     # location = relationship('DriverLocation', backref='driver')
     documents = relationship('Document', back_populates='driver', lazy=True)
     responses = relationship('OrderResponse', backref='drivers', lazy=True)
+    schedule = relationship("DriverSchedule", back_populates="driver", lazy=True)
 
     def __repr__(self):
         return f"<Driver(driver_id={self.driver_id}, first_name={self.first_name}, last_name={self.last_name})>"
