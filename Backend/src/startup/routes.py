@@ -8,6 +8,10 @@ from src.routers.incident_routes import incidents_bp
 from src.routers.client_routes import client_bp
 from src.routers.order_routes import orders_bp
 from src.routers.order_response_routes import order_responses_bp
+from src.routers.notification_routes import notification_bp
+from src.routers.driver_assignment_routes import driver_assignment_bp
+
+
 def register_routes(app):
      app.register_blueprint(auth_bp, url_prefix='/auth')
      app.register_blueprint(product_bp, url_prefix='/api/v1')
@@ -18,5 +22,5 @@ def register_routes(app):
      app.register_blueprint(client_bp, url_prefix='/api/v1')
      app.register_blueprint(orders_bp, url_prefix='/api/v1')
      app.register_blueprint(order_responses_bp, url_prefix='/api/v1')
-     
-     
+     app.register_blueprint(notification_bp, url_prefix='/api/v1')
+     app.register_blueprint(driver_assignment_bp, url_prefix='/api/v1/driver-assignment')     
