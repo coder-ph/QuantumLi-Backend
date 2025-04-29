@@ -7,6 +7,8 @@ from src.handlers.repositories.order_repository import (
 from src.decorators.permissions import role_required
 from src.utils.logger import logger
 from src.handlers.services.notification_service import NotificationService
+from src.services.driver_assignment_service import DriverAssignmentService
+from src.startup.database import db
 
 @jwt_required()
 @role_required(['admin', 'employee', 'user', 'manager'])
@@ -66,28 +68,31 @@ def update_order_view(order_id):
 @jwt_required()
 @role_required(['admin', 'manager'])
 def assign_driver_view(order_id):
-    
     try:
-        data = request.get_json()
-        driver_id = data.get("driver_id")
-        if not driver_id:
-            return jsonify({"message": "Driver ID is required"}), 400
-
-        order = assign_driver_to_order(order_id, driver_id)
-        if not order:
-            return jsonify({"message": "Order not found"}), 404
-
-        # Notify the driver
-        NotificationService.create_notification(
-            recipient_id=driver_id,
-            message=f"You have been assigned to Order {order_id}.",
-            type="task_assignment",
-            related_entity="order",
-            related_id=order_id
-        )
-
-        logger.info(f"Driver {driver_id} assigned to order {order.id}")
-        return jsonify(order.to_dict()), 200
+        driver_assignment_service = DriverAssignmentService()
+        result, status_code = driver_assignment_service.assign_driver_to_order(order_id)
+        return jsonify(result), status_code
     except Exception as e:
         logger.error(f"Error assigning driver to order {order_id}: {str(e)}")
         return jsonify({"message": "Internal server error"}), 500
+
+def get_order_by_id(order_id):
+    try:
+        return Order.query.filter_by(order_id=order_id).first()
+    except Exception as e:
+        logger.error(f"Error fetching order by ID {order_id}: {str(e)}")
+        raise
+
+def update_order(order_id, data):
+    try:
+        order = get_order_by_id(order_id)
+        if not order:
+            return None
+        for key, value in data.items():
+            setattr(order, key, value)
+        db.session.commit()
+        return order
+    except Exception as e:
+        logger.error(f"Error updating order {order_id}: {str(e)}")
+        db.session.rollback()
+        raise
