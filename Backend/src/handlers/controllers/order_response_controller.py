@@ -8,7 +8,7 @@ from src.decorators.permissions import role_required
 from src.utils.logger import logger
 
 @jwt_required()
-@role_required(['user'])  
+@role_required([ 'admin', 'manager'])   
 def create_order_response_view():
     data = request.get_json()
     try:
@@ -23,7 +23,7 @@ def create_order_response_view():
         return jsonify({"message": "Internal server error"}), 500
 
 @jwt_required()
-@role_required(['admin', 'employee', 'user', 'manager'])
+@role_required(['admin' , 'user' , 'manager', 'driver'])
 def get_order_responses_view():
     try:
         order_responses = get_all_order_responses()
@@ -33,7 +33,7 @@ def get_order_responses_view():
         return jsonify({"message": "Internal server error"}), 500
 
 @jwt_required()
-@role_required(['admin', 'employee', 'user', 'manager'])
+@role_required(['admin', 'user', 'manager', 'driver'])
 def get_order_response_view(response_id):
     try:
         order_response = get_order_response_by_id(response_id)
@@ -45,7 +45,7 @@ def get_order_response_view(response_id):
         return jsonify({"message": "Internal server error"}), 500
 
 @jwt_required()
-@role_required(['user'])
+@role_required(['admin', 'manager'])
 def update_order_response_view(response_id):
     data = request.get_json()
     try:
