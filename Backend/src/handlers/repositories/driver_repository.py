@@ -289,8 +289,18 @@ class DriverRepository:
             db.session.rollback()
             logger.error(f"Error updating manual driver status of driver ID {driver_id}: {str(e)}")
             raise Exception(f"Error updating manual driver status of driver ID {driver_id}") from e
-   
-   
+    
+    
+    def get_dispatch_queue(self):
+        """
+        Fetch drivers sorted by rating (descending) and load (ascending).
+        Only include drivers who are eligible for dispatch (e.g., active status).
+        """
+        return Driver.query.filter_by(is_active=True).order_by(
+            Driver.rating.desc(), 
+            Driver.load.asc()     
+        ).all()
+    
     # def create_driver_location(self, data):
 
     #     try:
