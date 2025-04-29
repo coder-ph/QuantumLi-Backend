@@ -89,58 +89,6 @@ def restore_driver_view(driver_id):
     except Exception as e:
         logger.error(f"Error restoring driver {driver_id}: {str(e)}")
         return jsonify({"message": "Internal server error"}), 500
-    
-
-# # @jwt_required()
-# # @role_required(['admin', 'manager'])
-# def create_driver_location_view():
-#     data = request.get_json()
-#     try:
-#         driver_location = driver_repo.create_driver_location(data)
-#         logger.info(f"Driver location created: ID {driver_location.driver_location_id}")
-#         return jsonify({"message": "Driver location created successfully", "driver_id": str(driver_location.driver_id)}), 201
-#     except ValueError as e:
-#         logger.warning(f"Driver location creation failed: {str(e)}")
-#         return jsonify({"message": str(e)}), 400
-#     except Exception as e:
-#         logger.error(f"Unexpected error creating driver location: {str(e)}")
-#         return jsonify({"message": "Internal server error"}), 500
-
-# # @jwt_required()
-# # @role_required(['admin', 'manager'])
-# def get_all_driver_location_view():
-#     try:
-#         driver_locations = driver_repo.get_all_driver_location()
-#         return jsonify(driver_locations if driver_locations else []), 200
-    
-#     except Exception as e:
-#         logger.error(f"Error fetching driver locations: {str(e)}")
-#         return jsonify({"message": "Internal server error"}), 500
-
-# def get_driver_location_by_id_view(driver_id):
-#     try:
-#         driver_location = driver_repo.get_driver_location_by_id(driver_id)
-#         if not driver_location:
-#             return jsonify({"message": "Driver not found"}), 404
-#         return jsonify(driver_location), 200
-#     except Exception as e:
-#         logger.error(f"Error fetching driver location for driver id {driver_id}: {str(e)}")
-#         return jsonify({"message": "Internal server error"}), 500
-    
-# def update_driver_location_view(driver_id):
-#     data = request.get_json()
-#     try:
-#         driver_location = driver_repo.get_driver_location_by_id(driver_id)
-#         if not driver_location:
-#             return jsonify({"message": "Driver not found"}), 404
-        
-#         updated_driver_location = driver_repo.update_driver_location(driver_id, data)
-#         logger.info(f"Drive location of driver ID {driver_id} updated")
-
-#         return jsonify(updated_driver_location), 200
-#     except Exception as e:
-#         logger.error(f"Error updating driver location for driver id {driver_id}: {str(e)}")
-#         return jsonify({"message": "Internal server error"}), 500
 
 # @jwt_required()  # Authorization required
 # @role_required(['admin', 'manager', 'employee'])
@@ -228,55 +176,56 @@ def get_notifications_view():
         logger.error(f"Error fetching notifications for driver {driver_id}: {str(e)}")
         return jsonify({"message": "Internal server error"}), 500
     
-
-#@jwt_required()
-#@role_required(['employee'])
-def update_driver_status_view(driver_id):
-    try:
-        data = request.get_json()
-        updated_manual_status = driver_repo.update_manual_driver_status(driver_id, data)
-        logger.info(f"Driver {driver_id} manual status updated.")
-
-        return jsonify(updated_manual_status), 200
     
-    except Exception as e:
-        logger.error(f"Error updating manual status of driver {driver_id}: {str(e)}")
-        return jsonify({"message": "Internal server error"}), 500
 
+# # @jwt_required()
+# # @role_required(['admin', 'manager'])
+# def create_driver_location_view():
+#     data = request.get_json()
+#     try:
+#         driver_location = driver_repo.create_driver_location(data)
+#         logger.info(f"Driver location created: ID {driver_location.driver_location_id}")
+#         return jsonify({"message": "Driver location created successfully", "driver_id": str(driver_location.driver_id)}), 201
+#     except ValueError as e:
+#         logger.warning(f"Driver location creation failed: {str(e)}")
+#         return jsonify({"message": str(e)}), 400
+#     except Exception as e:
+#         logger.error(f"Unexpected error creating driver location: {str(e)}")
+#         return jsonify({"message": "Internal server error"}), 500
 
-# @jwt_required()  # Authorization required
-# @role_required(['admin', 'manager'])
-def create_driver_status_view():
-    try:
-        data = request.get_json()
-        driver_status = driver_repo.create_driver_status(data)
-        logger.info(f"Driver Status created for driver ID {driver_status.driver_id}")
-        return jsonify({"message": "Driver Status created successfully", "driver_id": str(driver_status.driver_id)}), 201
-    except ValueError as e:
-        logger.warning(f"Driver Status creation failed: {str(e)}")
-        return jsonify({"message": str(e)}), 400
-    except Exception as e:
-        logger.error(f"Unexpected error creating driver status: {str(e)}")
-        return jsonify({"message": "Internal server error"}), 500
+# # @jwt_required()
+# # @role_required(['admin', 'manager'])
+# def get_all_driver_location_view():
+#     try:
+#         driver_locations = driver_repo.get_all_driver_location()
+#         return jsonify(driver_locations if driver_locations else []), 200
+    
+#     except Exception as e:
+#         logger.error(f"Error fetching driver locations: {str(e)}")
+#         return jsonify({"message": "Internal server error"}), 500
 
-# @jwt_required()  # Authorization required
-# @role_required(['admin', 'manager'])
-def get_all_drivers_statuses_view():
-    try:
-        all_drivers_statuses = driver_repo.get_all_drivers_statuses()
-        return jsonify(all_drivers_statuses if all_drivers_statuses else []), 200
-    except Exception as e:
-        logger.error(f"Error fetching drivers statuses: {str(e)}")
-        return jsonify({"message": "Internal server error"}), 500
+# def get_driver_location_by_id_view(driver_id):
+#     try:
+#         driver_location = driver_repo.get_driver_location_by_id(driver_id)
+#         if not driver_location:
+#             return jsonify({"message": "Driver not found"}), 404
+#         return jsonify(driver_location), 200
+#     except Exception as e:
+#         logger.error(f"Error fetching driver location for driver id {driver_id}: {str(e)}")
+#         return jsonify({"message": "Internal server error"}), 500
+    
+# def update_driver_location_view(driver_id):
+#     data = request.get_json()
+#     try:
+#         driver_location = driver_repo.get_driver_location_by_id(driver_id)
+#         if not driver_location:
+#             return jsonify({"message": "Driver not found"}), 404
+        
+#         updated_driver_location = driver_repo.update_driver_location(driver_id, data)
+#         logger.info(f"Drive location of driver ID {driver_id} updated")
 
-# @jwt_required()  # Authorization required
-# @role_required(['admin', 'manager', 'employee'])
-def get_driver_status_by_id_view(driver_id):
-    try:
-        driver_status = driver_repo.get_driver_status_by_id(driver_id)
-        if not driver_status:
-            return jsonify({"message": "Driver status not found"}), 404
-        return jsonify(driver_status), 200
-    except Exception as e:
-        logger.error(f"Error fetching driver status of driver ID: {driver_id}: {str(e)}")
-        return jsonify({"message": "Internal server error"}), 500
+#         return jsonify(updated_driver_location), 200
+#     except Exception as e:
+#         logger.error(f"Error updating driver location for driver id {driver_id}: {str(e)}")
+#         return jsonify({"message": "Internal server error"}), 500
+
