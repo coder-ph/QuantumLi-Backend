@@ -30,16 +30,13 @@ class Driver(BaseModel):
     medical_certificate_expiry = Column(Date, nullable=False)
     training_certifications = Column(String(255), nullable=True)
     status = Column(String(50), nullable=False, default='active')  
-    #  is_active = Column(Boolean, nullable=False, default=True)
     # reason = Column(String(200), nullable=True)
-   
-
    
     carrier = relationship('Carrier', backref='drivers', lazy=True)
     # location = relationship('DriverLocation', backref='driver')
     documents = relationship('Document', back_populates='driver', lazy=True)
-
     responses = relationship('OrderResponse', backref='drivers', lazy=True)
+    schedule = relationship("DriverSchedule", back_populates="driver", lazy=True)
 
     def __repr__(self):
         return f"<Driver(driver_id={self.driver_id}, first_name={self.first_name}, last_name={self.last_name})>"
