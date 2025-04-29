@@ -7,7 +7,7 @@ from src.utils.logger import logger
 from sqlalchemy.exc import SQLAlchemyError
 
 from datetime import datetime
-from src.Models.driverWorkSchedule import DriverRecurringSchedule, DriverOffDay
+from Backend.src.Models.driverSchedule import DriverRecurringSchedule, DriverOffDay
 from src.Models.driverStatus import DriverStatus
 from werkzeug.utils import secure_filename
 import os
