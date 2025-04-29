@@ -12,7 +12,7 @@ class DriverStatus(db.Model):
     driver_id = Column(UUID(as_uuid=True), ForeignKey('drivers.driver_id'),unique=True, nullable=False)
     is_active = Column(Boolean, nullable=False, default=True)
     reason = Column(String(200), nullable=True)
-    updated_at = Column(Date, nullable=False, default=datetime.utcnow, onupdate=datetime.utcnow)
+    # updated_at = Column(Date, nullable=False, default=datetime.utcnow, onupdate=datetime.utcnow)
 
 
     def __repr__(self):

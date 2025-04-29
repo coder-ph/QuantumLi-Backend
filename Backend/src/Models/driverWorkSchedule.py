@@ -17,7 +17,8 @@ class DriverRecurringSchedule(BaseModel):
     
     id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
     driver_id = Column(UUID(as_uuid=True), ForeignKey('drivers.driver_id'), nullable=False)
-    day_of_week = Column(String(10), nullable=False)  
+    day_of_week = Column(String(10), nullable=False)  #MON,TUE,THUR,FRI
+    #  off_day = Column(Date, nullable=False)     #WED - off day
     start_time = Column(Time, nullable=False)
     end_time = Column(Time, nullable=False)
     is_active = Column(Boolean, default=True)
