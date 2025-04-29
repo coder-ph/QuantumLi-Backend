@@ -4,7 +4,9 @@ from sqlalchemy import Column, String, Date, ForeignKey, DateTime, Index
 from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.orm import relationship
 from src.Models.base_model import BaseModel
+from src.Models.enums import DocumentType
 
+# add enums
 class Document(BaseModel):
     __tablename__ = 'documents'
 
