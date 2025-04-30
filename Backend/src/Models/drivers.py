@@ -7,6 +7,9 @@ from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.orm import relationship
 from src.startup.database import db
 import re
+from src.Models.documents import Document  
+from src.Models.orderResponse import OrderResponse  
+
 
 
 # Configure logging
@@ -37,6 +40,7 @@ class Driver(BaseModel):
     documents = relationship('Document', back_populates='driver', lazy=True)
     responses = relationship('OrderResponse', backref='drivers', lazy=True)
     schedule = relationship("DriverSchedule", back_populates="driver", lazy=True)
+    order_responses = relationship('OrderResponse', back_populates='driver', lazy='dynamic')
 
     def __repr__(self):
         return f"<Driver(driver_id={self.driver_id}, first_name={self.first_name}, last_name={self.last_name})>"
