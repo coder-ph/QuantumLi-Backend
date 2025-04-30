@@ -6298,3 +6298,43 @@ WHERE documents.driver_id = ?]
 [2025-04-29 20:44:02,929] [WARNING] logistics_app: [Redis] Connection failed. Caching will be disabled.
 [2025-04-29 20:44:04,687] [INFO] logistics_app: Models initialized successfully.
 [2025-04-29 20:44:04,687] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-30 12:14:39,316] [WARNING] logistics_app: [Redis] Connection failed. Caching will be disabled.
+[2025-04-30 12:14:42,675] [INFO] logistics_app: Models initialized successfully.
+[2025-04-30 12:14:42,676] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-30 12:14:51,591] [WARNING] logistics_app: [Redis] Connection failed. Caching will be disabled.
+[2025-04-30 12:14:53,736] [INFO] logistics_app: Models initialized successfully.
+[2025-04-30 12:14:53,736] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-30 12:15:14,702] [WARNING] logistics_app: [Redis] Connection failed. Caching will be disabled.
+[2025-04-30 12:15:16,776] [INFO] logistics_app: Models initialized successfully.
+[2025-04-30 12:15:16,776] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-30 12:15:23,646] [WARNING] logistics_app: [Redis] Connection failed. Caching will be disabled.
+[2025-04-30 12:15:25,481] [INFO] logistics_app: Models initialized successfully.
+[2025-04-30 12:15:25,482] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-30 12:15:32,660] [WARNING] logistics_app: [Redis] Connection failed. Caching will be disabled.
+[2025-04-30 12:15:34,389] [INFO] logistics_app: Models initialized successfully.
+[2025-04-30 12:15:34,389] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-30 12:15:36,511] [WARNING] logistics_app: [Redis] Connection failed. Caching will be disabled.
+[2025-04-30 12:15:38,792] [INFO] logistics_app: Models initialized successfully.
+[2025-04-30 12:15:38,793] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-30 12:16:36,060] [INFO] logistics_app: Retrieved 0 active drivers.
+[2025-04-30 12:16:40,457] [INFO] logistics_app: Retrieved 0 active drivers.
+[2025-04-30 12:17:21,763] [WARNING] logistics_app: [Redis] Connection failed. Caching will be disabled.
+[2025-04-30 12:35:31,943] [WARNING] logistics_app: [Redis] Connection failed. Caching will be disabled.
+[2025-04-30 12:50:54,012] [WARNING] logistics_app: [Redis] Connection failed. Caching will be disabled.
+[2025-04-30 12:54:35,160] [WARNING] logistics_app: [Redis] Connection failed. Caching will be disabled.
+[2025-04-30 12:54:37,957] [INFO] logistics_app: Models initialized successfully.
+[2025-04-30 12:54:37,958] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-30 12:54:39,529] [INFO] logistics_app: Starting database seeding...
+[2025-04-30 12:54:39,553] [INFO] logistics_app: Admin user seeded successfully.
+[2025-04-30 12:54:39,558] [INFO] logistics_app: Driver seeded successfully.
+[2025-04-30 12:54:39,604] [INFO] logistics_app: Driver schedule seeded successfully.
+[2025-04-30 12:54:39,608] [INFO] logistics_app: Client seeded successfully.
+[2025-04-30 12:54:39,616] [INFO] logistics_app: Location seeded successfully.
+[2025-04-30 12:54:39,622] [INFO] logistics_app: order_reference validated successfully: ORD001
+[2025-04-30 12:54:39,623] [INFO] logistics_app: order_date validated successfully: 2025-04-30 09:54:39.622766
+[2025-04-30 12:54:39,623] [INFO] logistics_app: requested_pickup_date validated successfully: 2025-05-01 09:54:39.622788
+[2025-04-30 12:54:39,623] [INFO] logistics_app: requested_delivery_date validated successfully: 2025-05-03 09:54:39.622811
+[2025-04-30 12:54:39,623] [INFO] logistics_app: total_weight validated successfully: 100.0
+[2025-04-30 12:54:39,623] [INFO] logistics_app: total_volume validated successfully: 1.0
+[2025-04-30 12:54:39,623] [INFO] logistics_app: declared_value validated successfully: 1000.0
+[2025-04-30 12:54:39,623] [INFO] logistics_app: Order seeded successfully.
