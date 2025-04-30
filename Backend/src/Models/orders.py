@@ -5,7 +5,7 @@ from datetime import date
 from sqlalchemy import Column, String, Date, Float, Enum, ForeignKey
 from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.orm import relationship, validates
-from   src.startup.database import db
+from src.startup.database import db
 from src.utils.logger import logger
 
 # Enums
@@ -51,7 +51,6 @@ class Order(db.Model):
 
     def __repr__(self):
         return f"<Order(order_id={self.order_id}, order_reference={self.order_reference}, client_id={self.client_id})>"
-
 
     @validates('total_weight', 'total_volume', 'declared_value')
     def validate_positive_values(self, key, value):
