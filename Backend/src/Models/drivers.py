@@ -7,6 +7,9 @@ from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.orm import relationship
 from src.startup.database import db
 import re
+from src.Models.documents import Document  
+from src.Models.orderResponse import OrderResponse  
+
 
 
 # Configure logging
