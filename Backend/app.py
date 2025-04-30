@@ -69,10 +69,12 @@ scheduler = APScheduler()
 scheduler.init_app(app)
 scheduler.start()
 
+driver_repo = DriverRepository()
 def update_driver_status_cronjob():
-    DriverRepository.update_all_driver_statuses()
+    with app.app_context():
+        driver_repo.update_all_driver_statuses()
 
-scheduler.add_job(id='Update Driver Status', func=update_driver_status_cronjob, trigger='interval', minutes=5)
+scheduler.add_job(id='Update Driver Status', func=update_driver_status_cronjob, trigger='interval', minutes=1)
 
 @app.errorhandler(APIError)
 def handle_api_error(error):
