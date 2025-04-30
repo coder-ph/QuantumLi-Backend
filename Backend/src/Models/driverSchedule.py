@@ -14,7 +14,7 @@ logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(
 logger = logging.getLogger(__name__)
 
 
-class DriverSchedule(BaseModel):
+class DriverSchedule(db.Model):
     
     __tablename__ = 'driver_schedules'
 
@@ -27,8 +27,8 @@ class DriverSchedule(BaseModel):
     })
 
     # Relationship to the Driver model
-    driver = relationship("Driver", backref="schedule", lazy=True)
-
+    # driver = relationship("Driver", back="schedule", lazy=True)
+    driver = relationship("Driver", backref="driver_schedule", lazy=True)
 
 
     # Check if a driver is available on a given day and time.       
