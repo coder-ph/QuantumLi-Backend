@@ -31,6 +31,7 @@ def seed_admin_user():
             email="admin@example.com",
             password_hash="hashed_password",  
             role="admin",
+            phone="+254700000000",
             is_active=True,
             created_at=datetime.utcnow(),
             updated_at=datetime.utcnow()
@@ -51,6 +52,7 @@ def seed_drivers():
             email="driver1@example.com",
             license_number="ABC12345",
             license_expiry=datetime.utcnow() + timedelta(days=365),
+            license_type="Class A",
             contact_phone="+254700000000",
             medical_certificate_expiry=datetime.utcnow() + timedelta(days=365),
             status="active",
@@ -61,24 +63,37 @@ def seed_drivers():
         logger.info("Driver seeded successfully.")
 
         # Seed driver schedule
-        schedule = DriverSchedule(
-            driver_id=driver.driver_id,
-            weekly_schedule={
+        def seed_driver_schedule():
+    # First, get the driver we created earlier
+            driver = Driver.query.filter_by(email="driver1@example.com").first()
+    
+    if driver:  # Make sure the driver exists
+        # Check if the schedule already exists
+        schedule = DriverSchedule.query.filter_by(driver_id=driver.driver_id).first()
+        
+        if not schedule:
+            weekly_schedule = {
                 "monday": {"work": True, "start": "08:00", "end": "17:00"},
                 "tuesday": {"work": True, "start": "08:00", "end": "17:00"},
                 "wednesday": {"work": True, "start": "08:00", "end": "17:00"},
                 "thursday": {"work": True, "start": "08:00", "end": "17:00"},
                 "friday": {"work": True, "start": "08:00", "end": "17:00"},
                 "saturday": {"work": False, "start": None, "end": None},
-                "sunday": {"work": False, "start": None, "end": None},
-            },
-            created_at=datetime.utcnow(),
-            updated_at=datetime.utcnow()
-        )
-        db.session.add(schedule)
-        logger.info("Driver schedule seeded successfully.")
+                "sunday": {"work": False, "start": None, "end": None}
+            }
+            
+            # Create the schedule WITH the driver_id
+            schedule = DriverSchedule(
+                driver_id=driver.driver_id,  # This is the key line that was missing
+                weekly_schedule=weekly_schedule
+            )
+            
+            db.session.add(schedule)
+            db.session.commit()
+            logger.info("Driver schedule seeded successfully.")
     else:
-        logger.info("Driver already exists.")
+        logger.warning("Cannot create driver schedule - driver not found")
+
 
 
 def seed_clients():
@@ -118,8 +133,8 @@ def seed_locations():
             contact_person="Jane Doe",
             contact_phone="+254700123456",
             is_active=True,
-            created_at=datetime.utcnow(),
-            updated_at=datetime.utcnow()
+            # created_at=datetime.utcnow(),
+            # updated_at=datetime.utcnow()
         )
         db.session.add(location)
         logger.info("Location seeded successfully.")
@@ -145,8 +160,8 @@ def seed_orders():
             total_weight=100.0,
             total_volume=1.0,
             declared_value=1000.0,
-            created_at=datetime.utcnow(),
-            updated_at=datetime.utcnow()
+            # created_at=datetime.utcnow(),
+            # updated_at=datetime.utcnow()
         )
         db.session.add(order)
         logger.info("Order seeded successfully.")

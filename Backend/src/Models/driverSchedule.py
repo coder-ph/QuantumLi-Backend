@@ -27,7 +27,7 @@ class DriverSchedule(BaseModel):
     })
 
     # Relationship to the Driver model
-    driver = relationship("Driver", backref="schedule", lazy=True)
+    driver = relationship("Driver", back_populates="schedule", lazy=True)
 
 
 
