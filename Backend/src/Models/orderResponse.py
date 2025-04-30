@@ -24,8 +24,8 @@ class OrderResponse(db.Model):
     responded_at = Column(DateTime, default=datetime.utcnow, nullable=False)
 
     # Relationships
-    order = relationship('Order', back_populates='responses', lazy=True)
-    driver = relationship('Driver', back_populates='order_responses')
+    order = relationship('Order', backref='responses', lazy=True)
+    driver = relationship('Driver', backref='order_responses')
 
     def __repr__(self):
         return f"<OrderResponse(response_id={self.response_id}, driver_id={self.driver_id}, order_id={self.order_id}, status={self.status})>"

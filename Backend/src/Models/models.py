@@ -52,6 +52,7 @@ class Models:
             from src.Models.driverSchedule import DriverSchedule
             from src.Models.systemusers import System_Users
             from src.Models.employee import Employee
+            self.employee = Employee
             from src.Models.incidents import Incidents
             from src.Models.inventory import Inventory
             from src.Models.inventoryMovement import InventoryMovement
@@ -81,7 +82,6 @@ class Models:
             self.driver = Driver
             self.driver_schedule = DriverSchedule
             self.system_users = System_Users
-            self.employee = Employee
             self.incidents = Incidents
             self.inventory = Inventory
             self.inventory_movement = InventoryMovement

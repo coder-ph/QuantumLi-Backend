@@ -7,6 +7,7 @@ from   src.startup.database import db
 from src.Models.enums import ShipmentStatusEnum, ShippingMethodEnum
 from src.Models.base_model import BaseModel
 from src.utils.logger import logger
+from src.Models.vehicles import Vehicle
 
 class Shipment(BaseModel):
     __tablename__ = 'shipments'

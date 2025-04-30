@@ -38,8 +38,8 @@ class Driver(BaseModel):
     carrier = relationship('Carrier', backref='drivers', lazy=True)
     # location = relationship('DriverLocation', backref='driver')
     documents = relationship('Document', back_populates='driver', lazy=True)
-    responses = relationship('OrderResponse', backref='drivers', lazy=True)
-    schedule = relationship("DriverSchedule", back_populates="driver", lazy=True)
+    # responses = relationship('OrderResponse', backref='drivers', lazy=True)
+    schedule = relationship("DriverSchedule", back_populates="driver",uselist=False, lazy=True)
     order_responses = relationship('OrderResponse', back_populates='driver', lazy='dynamic')
 
     def __repr__(self):
