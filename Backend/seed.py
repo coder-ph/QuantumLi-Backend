@@ -23,7 +23,6 @@ from src.utils.logger import logger
 
 
 def seed_admin_user():
-    """Seed an admin user."""
     admin_user = System_Users.query.filter_by(email="admin@example.com").first()
     if not admin_user:
         admin_user = System_Users(
@@ -42,8 +41,32 @@ def seed_admin_user():
         logger.info("Admin user already exists.")
 
 
+def seed_driver_schedule():
+    driver = Driver.query.filter_by(email="driver1@example.com").first()
+    if driver:
+        schedule = DriverSchedule.query.filter_by(driver_id=driver.driver_id).first()
+        if not schedule:
+            weekly_schedule = {
+                "monday": {"work": True, "start": "08:00", "end": "17:00"},
+                "tuesday": {"work": True, "start": "08:00", "end": "17:00"},
+                "wednesday": {"work": True, "start": "08:00", "end": "17:00"},
+                "thursday": {"work": True, "start": "08:00", "end": "17:00"},
+                "friday": {"work": True, "start": "08:00", "end": "17:00"},
+                "saturday": {"work": False, "start": None, "end": None},
+                "sunday": {"work": False, "start": None, "end": None}
+            }
+            schedule = DriverSchedule(
+                driver_id=driver.driver_id,
+                weekly_schedule=weekly_schedule
+            )
+            db.session.add(schedule)
+            db.session.commit()
+            logger.info("Driver schedule seeded successfully.")
+    else:
+        logger.warning("Cannot create driver schedule - driver not found.")
+
+
 def seed_drivers():
-    """Seed drivers with schedules."""
     driver = Driver.query.filter_by(email="driver1@example.com").first()
     if not driver:
         driver = Driver(
@@ -60,68 +83,38 @@ def seed_drivers():
             updated_at=datetime.utcnow()
         )
         db.session.add(driver)
+        db.session.commit()  # Needed to generate driver_id
         logger.info("Driver seeded successfully.")
-
-        # Seed driver schedule
-        def seed_driver_schedule():
-    # First, get the driver we created earlier
-            driver = Driver.query.filter_by(email="driver1@example.com").first()
-    
-    if driver:  # Make sure the driver exists
-        # Check if the schedule already exists
-        schedule = DriverSchedule.query.filter_by(driver_id=driver.driver_id).first()
-        
-        if not schedule:
-            weekly_schedule = {
-                "monday": {"work": True, "start": "08:00", "end": "17:00"},
-                "tuesday": {"work": True, "start": "08:00", "end": "17:00"},
-                "wednesday": {"work": True, "start": "08:00", "end": "17:00"},
-                "thursday": {"work": True, "start": "08:00", "end": "17:00"},
-                "friday": {"work": True, "start": "08:00", "end": "17:00"},
-                "saturday": {"work": False, "start": None, "end": None},
-                "sunday": {"work": False, "start": None, "end": None}
-            }
-            
-            # Create the schedule WITH the driver_id
-            schedule = DriverSchedule(
-                driver_id=driver.driver_id,  # This is the key line that was missing
-                weekly_schedule=weekly_schedule
-            )
-            
-            db.session.add(schedule)
-            db.session.commit()
-            logger.info("Driver schedule seeded successfully.")
     else:
-        logger.warning("Cannot create driver schedule - driver not found")
-
+        logger.info("Driver already exists.")
+    seed_driver_schedule()
 
 
 def seed_clients():
-    """Seed clients."""
-    client = Client.query.filter_by(email="client1@example.com").first()
-    if not client:
-        client = Client(
-            company_name="Example Company",
-            contact_person="Jane Doe",
-            email="client1@example.com",
-            phone="+254700123456",
-            address="123 Main Street, Nairobi, Kenya",
-            tax_id="123456789",
-            registration_number="REG12345",
-            account_status="active",
-            credit_limit=10000.0,
-            payment_terms="Net 30",
-            date_created=datetime.utcnow(),
-            last_updated=datetime.utcnow()
-        )
-        db.session.add(client)
-        logger.info("Client seeded successfully.")
-    else:
-        logger.info("Client already exists.")
+    try:
+        client = Client.query.filter_by(email="client1@example.com").first()
+        if not client:
+            client = Client(
+                company_name="Example Company",
+                contact_person="Jane Doe",
+                email="client1@example.com",
+                phone="+254700123456",
+                address="123 Main Street, Nairobi, Kenya",
+                tax_id="123456789",
+                registration_number="REG12345",
+                account_status="active",
+                credit_limit=10000.0,
+                payment_terms="Net 30",
+            )
+            db.session.add(client)
+            logger.info("Client seeded successfully.")
+        else:
+            logger.info("Client already exists.")
+    except Exception as e:
+        logger.error(f"Error seeding client: {e}")
 
 
 def seed_locations():
-    """Seed locations."""
     location = Location.query.filter_by(location_name="Warehouse A").first()
     if not location:
         location = Location(
@@ -133,8 +126,6 @@ def seed_locations():
             contact_person="Jane Doe",
             contact_phone="+254700123456",
             is_active=True,
-            # created_at=datetime.utcnow(),
-            # updated_at=datetime.utcnow()
         )
         db.session.add(location)
         logger.info("Location seeded successfully.")
@@ -143,11 +134,14 @@ def seed_locations():
 
 
 def seed_orders():
-    """Seed orders."""
     order = Order.query.filter_by(order_reference="ORD001").first()
     if not order:
+        client = Client.query.filter_by(email="client1@example.com").first()
+        if not client:
+            logger.warning("Client for order not found.")
+            return
         order = Order(
-            client_id=None,  # Replace with a valid client ID
+            client_id=client.client_id,
             order_reference="ORD001",
             order_date=datetime.utcnow(),
             requested_pickup_date=datetime.utcnow() + timedelta(days=1),
@@ -170,10 +164,14 @@ def seed_orders():
 
 
 def seed_products():
-    """Seed products."""
     product = Product.query.filter_by(sku="PROD001").first()
     if not product:
+        client = Client.query.filter_by(email="client1@example.com").first()
+        if not client:
+            logger.warning("Client for product not found.")
+            return
         product = Product(
+            client_id=client.client_id,
             sku="PROD001",
             name="Sample Product",
             description="This is a sample product.",
@@ -184,8 +182,6 @@ def seed_products():
             hazardous=False,
             perishable=False,
             value=100.0,
-            created_at=datetime.utcnow(),
-            updated_at=datetime.utcnow()
         )
         db.session.add(product)
         logger.info("Product seeded successfully.")
@@ -206,6 +202,6 @@ def main():
 
 
 if __name__ == "__main__":
-    from app import app  
+    from app import app
     with app.app_context():
         main()
