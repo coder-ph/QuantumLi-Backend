@@ -6338,3 +6338,84 @@ WHERE documents.driver_id = ?]
 [2025-04-30 12:54:39,623] [INFO] logistics_app: total_volume validated successfully: 1.0
 [2025-04-30 12:54:39,623] [INFO] logistics_app: declared_value validated successfully: 1000.0
 [2025-04-30 12:54:39,623] [INFO] logistics_app: Order seeded successfully.
+[2025-04-30 17:58:22,352] [WARNING] logistics_app: [Redis] Connection failed. Caching will be disabled.
+[2025-04-30 17:58:24,648] [INFO] logistics_app: Models initialized successfully.
+[2025-04-30 17:58:24,649] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-04-30 17:58:26,339] [INFO] logistics_app: Starting database seeding...
+[2025-04-30 17:58:26,399] [INFO] logistics_app: Admin user already exists.
+[2025-04-30 17:58:26,419] [INFO] logistics_app: Client seeded successfully.
+[2025-04-30 17:58:26,438] [INFO] logistics_app: Location seeded successfully.
+[2025-04-30 17:58:26,453] [INFO] logistics_app: order_reference validated successfully: ORD001
+[2025-04-30 17:58:26,453] [INFO] logistics_app: order_date validated successfully: 2025-04-30 14:58:26.453272
+[2025-04-30 17:58:26,454] [INFO] logistics_app: requested_pickup_date validated successfully: 2025-05-01 14:58:26.453280
+[2025-04-30 17:58:26,454] [INFO] logistics_app: requested_delivery_date validated successfully: 2025-05-03 14:58:26.453293
+[2025-04-30 17:58:26,454] [INFO] logistics_app: total_weight validated successfully: 100.0
+[2025-04-30 17:58:26,454] [INFO] logistics_app: total_volume validated successfully: 1.0
+[2025-04-30 17:58:26,454] [INFO] logistics_app: declared_value validated successfully: 1000.0
+[2025-04-30 17:58:26,455] [INFO] logistics_app: Order seeded successfully.
+[2025-05-01 11:49:41,239] [WARNING] logistics_app: [Redis] Connection failed. Caching will be disabled.
+[2025-05-01 11:49:43,214] [INFO] logistics_app: Models initialized successfully.
+[2025-05-01 11:49:43,214] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-05-01 11:49:44,827] [INFO] logistics_app: Starting database seeding...
+[2025-05-01 11:49:44,871] [INFO] logistics_app: Admin user already exists.
+[2025-05-01 11:49:44,889] [INFO] logistics_app: Client seeded successfully.
+[2025-05-01 11:49:44,903] [INFO] logistics_app: Location seeded successfully.
+[2025-05-01 11:49:44,918] [INFO] logistics_app: order_reference validated successfully: ORD001
+[2025-05-01 11:49:44,918] [INFO] logistics_app: order_date validated successfully: 2025-05-01 08:49:44.917870
+[2025-05-01 11:49:44,918] [INFO] logistics_app: requested_pickup_date validated successfully: 2025-05-02 08:49:44.917877
+[2025-05-01 11:49:44,919] [INFO] logistics_app: requested_delivery_date validated successfully: 2025-05-04 08:49:44.917891
+[2025-05-01 11:49:44,919] [INFO] logistics_app: total_weight validated successfully: 100.0
+[2025-05-01 11:49:44,919] [INFO] logistics_app: total_volume validated successfully: 1.0
+[2025-05-01 11:49:44,919] [INFO] logistics_app: declared_value validated successfully: 1000.0
+[2025-05-01 11:49:44,920] [INFO] logistics_app: Order seeded successfully.
+[2025-05-01 11:56:33,028] [WARNING] logistics_app: [Redis] Connection failed. Caching will be disabled.
+[2025-05-01 11:56:35,123] [INFO] logistics_app: Models initialized successfully.
+[2025-05-01 11:56:35,123] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-05-01 11:56:36,609] [INFO] logistics_app: Starting database seeding...
+[2025-05-01 11:56:36,655] [INFO] logistics_app: Admin user already exists.
+[2025-05-01 11:56:36,661] [INFO] logistics_app: Driver already exists.
+[2025-05-01 11:56:36,678] [INFO] logistics_app: Client seeded successfully.
+[2025-05-01 11:56:36,692] [INFO] logistics_app: Location seeded successfully.
+[2025-05-01 11:56:36,706] [INFO] logistics_app: order_reference validated successfully: ORD001
+[2025-05-01 11:56:36,707] [INFO] logistics_app: order_date validated successfully: 2025-05-01 08:56:36.705702
+[2025-05-01 11:56:36,707] [INFO] logistics_app: requested_pickup_date validated successfully: 2025-05-02 08:56:36.705715
+[2025-05-01 11:56:36,708] [INFO] logistics_app: requested_delivery_date validated successfully: 2025-05-04 08:56:36.705744
+[2025-05-01 11:56:36,708] [INFO] logistics_app: total_weight validated successfully: 100.0
+[2025-05-01 11:56:36,708] [INFO] logistics_app: total_volume validated successfully: 1.0
+[2025-05-01 11:56:36,708] [INFO] logistics_app: declared_value validated successfully: 1000.0
+[2025-05-01 11:59:57,295] [WARNING] logistics_app: [Redis] Connection failed. Caching will be disabled.
+[2025-05-01 11:59:59,811] [INFO] logistics_app: Models initialized successfully.
+[2025-05-01 11:59:59,812] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-05-01 12:00:01,599] [INFO] logistics_app: Starting database seeding...
+[2025-05-01 12:00:01,649] [INFO] logistics_app: Admin user already exists.
+[2025-05-01 12:00:01,659] [INFO] logistics_app: Driver already exists.
+[2025-05-01 12:00:01,679] [INFO] logistics_app: Client seeded successfully.
+[2025-05-01 12:00:01,697] [INFO] logistics_app: Location seeded successfully.
+[2025-05-01 12:00:01,715] [INFO] logistics_app: order_reference validated successfully: ORD001
+[2025-05-01 12:00:01,716] [INFO] logistics_app: order_date validated successfully: 2025-05-01 09:00:01.715609
+[2025-05-01 12:00:01,717] [INFO] logistics_app: requested_pickup_date validated successfully: 2025-05-02 09:00:01.715616
+[2025-05-01 12:00:01,717] [INFO] logistics_app: requested_delivery_date validated successfully: 2025-05-04 09:00:01.715632
+[2025-05-01 12:00:01,717] [INFO] logistics_app: total_weight validated successfully: 100.0
+[2025-05-01 12:00:01,718] [INFO] logistics_app: total_volume validated successfully: 1.0
+[2025-05-01 12:00:01,718] [INFO] logistics_app: declared_value validated successfully: 1000.0
+[2025-05-01 12:00:01,718] [INFO] logistics_app: Order seeded successfully.
+[2025-05-01 12:00:01,734] [INFO] logistics_app: Product seeded successfully.
+[2025-05-01 12:08:34,536] [WARNING] logistics_app: [Redis] Connection failed. Caching will be disabled.
+[2025-05-01 12:11:24,385] [WARNING] logistics_app: [Redis] Connection failed. Caching will be disabled.
+[2025-05-01 12:11:26,397] [INFO] logistics_app: Models initialized successfully.
+[2025-05-01 12:11:26,397] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-05-01 12:11:28,066] [INFO] logistics_app: Starting database seeding...
+[2025-05-01 12:11:28,116] [INFO] logistics_app: Admin user already exists.
+[2025-05-01 12:11:28,123] [INFO] logistics_app: Driver already exists.
+[2025-05-01 12:11:28,141] [INFO] logistics_app: Client seeded successfully.
+[2025-05-01 12:11:28,156] [INFO] logistics_app: Location seeded successfully.
+[2025-05-01 12:11:28,173] [INFO] logistics_app: order_reference validated successfully: ORD001
+[2025-05-01 12:11:28,173] [INFO] logistics_app: order_date validated successfully: 2025-05-01 09:11:28.172820
+[2025-05-01 12:11:28,173] [INFO] logistics_app: requested_pickup_date validated successfully: 2025-05-02 09:11:28.172826
+[2025-05-01 12:11:28,174] [INFO] logistics_app: requested_delivery_date validated successfully: 2025-05-04 09:11:28.172838
+[2025-05-01 12:11:28,174] [INFO] logistics_app: total_weight validated successfully: 100.0
+[2025-05-01 12:11:28,174] [INFO] logistics_app: total_volume validated successfully: 1.0
+[2025-05-01 12:11:28,174] [INFO] logistics_app: declared_value validated successfully: 1000.0
+[2025-05-01 12:11:28,175] [INFO] logistics_app: Order seeded successfully.
+[2025-05-01 12:11:28,195] [INFO] logistics_app: Product seeded successfully.
+[2025-05-01 12:11:28,207] [INFO] logistics_app: Database seeding completed successfully.
