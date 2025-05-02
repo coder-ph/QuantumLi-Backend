@@ -6,6 +6,7 @@ from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.orm import relationship
 from sqlalchemy.ext.declarative import declarative_base
 from   src.startup.database import db
+from src.Models.vehicles import Vehicle
 
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
@@ -27,8 +28,8 @@ class Carrier(db.Model):
     performance_rating = Column(Float, nullable=True)
 
     
-    vehicles = relationship("Vehicle", back_populates="carrier", lazy=True)
-    shipments = relationship("Shipment",back_populates ="carrier", lazy=True)
+    vehicles = relationship("Vehicle", backref="carrier", lazy=True)
+    shipments = relationship("Shipment",backref ="carrier", lazy=True)
     
     __table_args__ = (
         CheckConstraint('performance_rating >= 0 AND performance_rating <= 5', name='check_performance_rating'),
