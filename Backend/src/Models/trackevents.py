@@ -63,6 +63,6 @@ class TrackingEvent(BaseModel):
         db.session.commit()
         logger.info(f"TrackingEvent with ID {self.tracking_event_id} marked as deleted at {self.deleted_at}.")
         
-    @classmethod
-    def query(cls):
-        return db.session.query(cls).filter(cls.deleted_at == None)
+    # @classmethod
+    # def query(cls):
+    #     return db.session.query(cls).filter(cls.deleted_at == None)

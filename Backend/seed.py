@@ -19,6 +19,7 @@ from src.Models.client import Client
 from src.Models.rates import Rates
 from src.Models.thirdparty import ThirdPartyService
 from src.Models.incidents import Incidents
+from src.Models.vehicles import Vehicle
 from src.utils.logger import logger
 
 
@@ -189,6 +190,120 @@ def seed_products():
         logger.info("Product already exists.")
 
 
+def seed_vehicles():
+    vehicle = Vehicle.query.filter_by(registration_number="KAA123A").first()
+    if not vehicle:
+        carrier = Carrier.query.first()
+        location = Location.query.first()
+
+        if not carrier:
+            logger.warning("No carrier found to associate with vehicle.")
+            return
+        if not location:
+            logger.warning("No location found to associate with vehicle.")
+            return
+
+        vehicle = Vehicle(
+            registration_number="KAA123A",
+            vehicle_type="Truck",
+            make="Toyota",
+            model="Hilux",
+            year=2020,
+            max_weight_capacity=1500.0,
+            max_volume_capacity=12.5,
+            carrier_id=carrier.carrier_id,
+            current_location_id=location.location_id,
+            status="active",
+            insurance_expiry=datetime.utcnow() + timedelta(days=365),
+            last_maintenance_date=datetime.utcnow() - timedelta(days=30),
+            next_maintenance_date=datetime.utcnow() + timedelta(days=60)
+        )
+        vehicle.validate_vehicle()  # Optional: enforce your model's validation logic
+        db.session.add(vehicle)
+        logger.info("Vehicle seeded successfully.")
+    else:
+        logger.info("Vehicle already exists.")
+
+
+def seed_carriers():
+    carrier = Carrier.query.filter_by(carrier_name="Example Carrier").first()
+    if not carrier:
+        carrier = Carrier(
+            carrier_name="Example Carrier",
+            carrier_type="Freight",
+            contact_person="John Smith",
+            phone="+254700123456",
+            email="carrier@example.com",
+            # address="456 Main Street, Nairobi, Kenya",
+            # created_at=datetime.utcnow(),
+            # updated_at=datetime.utcnow()
+        )
+        db.session.add(carrier)
+        logger.info("Carrier seeded successfully.")
+    else:
+        logger.info("Carrier already exists.")
+
+
+def seed_shipments():
+    shipment = Shipment.query.filter_by(shipment_reference="SHIP001").first()
+    if not shipment:
+        shipment = Shipment(
+            shipment_reference="SHIP001",
+            carrier_id=1,  # Replace with a valid carrier ID
+            status=ShipmentStatusEnum.IN_TRANSIT,
+            shipping_method=ShippingMethodEnum.AIR,
+            # departure_date=datetime.utcnow(),
+            # arrival_date=datetime.utcnow() + timedelta(days=3),
+            created_at=datetime.utcnow(),
+            updated_at=datetime.utcnow()
+        )
+        db.session.add(shipment)
+        logger.info("Shipment seeded successfully.")
+    else:
+        logger.info("Shipment already exists.")
+
+
+def seed_tracking_events():
+    tracking_event = TrackingEvent.query.first()
+    if not tracking_event:
+        shipment = Shipment.query.first()
+        location = Location.query.first()
+
+        if not shipment or not location:
+            logger.warning("Cannot seed TrackingEvent - missing shipment or location.")
+            return
+
+        tracking_event = TrackingEvent(
+            shipment_id=shipment.shipment_id,
+            event_type="DELIVERED",
+            event_time=datetime.utcnow(),
+            location_id=location.location_id,
+            gps_coordinates="1.2921,36.8219",  # Nairobi coordinates
+            event_description="Package delivered at final destination.",
+            recorded_by="admin@example.com"
+        )
+        db.session.add(tracking_event)
+        logger.info("TrackingEvent seeded successfully.")
+    else:
+        logger.info("TrackingEvent already exists.")
+
+def seed_warehouse_operations():
+    operation = WarehouseOperation.query.filter_by(operation_reference="OP001").first()
+    if not operation:
+        operation = WarehouseOperation(
+            operation_reference="OP001",
+            operation_type="LOADING",
+            status=OperationStatus.COMPLETED,
+            warehouse_id=1,  # Replace with a valid warehouse ID
+            created_at=datetime.utcnow(),
+            updated_at=datetime.utcnow()
+        )
+        db.session.add(operation)
+        logger.info("WarehouseOperation seeded successfully.")
+    else:
+        logger.info("WarehouseOperation already exists.")
+
+
 def main():
     logger.info("Starting database seeding...")
     seed_admin_user()
@@ -197,6 +312,12 @@ def main():
     seed_locations()
     seed_orders()
     seed_products()
+    seed_vehicles()
+    seed_carriers()
+    seed_shipments()
+    # seed_order_items()
+    seed_tracking_events()
+    seed_warehouse_operations()
     db.session.commit()
     logger.info("Database seeding completed successfully.")
 
