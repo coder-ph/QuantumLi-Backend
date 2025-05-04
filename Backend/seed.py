@@ -86,7 +86,7 @@ def seed_drivers():
             updated_at=datetime.now(timezone.utc)
         )
         db.session.add(driver)
-        db.session.commit()  # Needed to generate driver_id
+        db.session.commit()  
         logger.info("Driver seeded successfully.")
     else:
         logger.info("Driver already exists.")
@@ -157,8 +157,6 @@ def seed_orders():
             total_weight=100.0,
             total_volume=1.0,
             declared_value=1000.0,
-            # created_at=datetime.now(timezone.utc),
-            # updated_at=datetime.now(timezone.utc)
         )
         db.session.add(order)
         logger.info("Order seeded successfully.")
@@ -220,7 +218,7 @@ def seed_vehicles():
             last_maintenance_date=datetime.utcnow() - timedelta(days=30),
             next_maintenance_date=datetime.utcnow() + timedelta(days=60)
         )
-        vehicle.validate_vehicle()  # Optional: enforce your model's validation logic
+        vehicle.validate_vehicle()  
         db.session.add(vehicle)
         logger.info("Vehicle seeded successfully.")
     else:
@@ -236,9 +234,6 @@ def seed_carriers():
             contact_person="John Smith",
             phone="+254700123456",
             email="carrier@example.com",
-            # address="456 Main Street, Nairobi, Kenya",
-            # created_at=datetime.now(timezone.utc),
-            # updated_at=datetime.now(timezone.utc)
         )
         db.session.add(carrier)
         logger.info("Carrier seeded successfully.")
@@ -261,8 +256,6 @@ def seed_shipments():
             destination_location_id=location.location_id,
             status=ShipmentStatusEnum.IN_TRANSIT,
             shipping_method=ShippingMethodEnum.AIR,
-            # departure_date=datetime.now(timezone.utc),
-            # arrival_date=datetime.utcnow() + timedelta(days=3),
             created_at=datetime.now(timezone.utc),
             updated_at=datetime.now(timezone.utc)
         )
@@ -282,14 +275,13 @@ def seed_tracking_events():
             logger.warning("Cannot seed TrackingEvent - missing shipment or location.")
             return
 
-        # Use session.no_autoflush to prevent premature flushing
         with db.session.no_autoflush:
             tracking_event = TrackingEvent(
                 shipment_id=UUID(str(shipment.shipment_id)) if not isinstance(shipment.shipment_id, UUID) else shipment.shipment_id,
                 event_type="DELIVERED",
-                event_time=datetime.now(timezone.utc),  # Use timezone-aware datetime
+                event_time=datetime.now(timezone.utc),  
                 location_id=UUID(str(location.location_id)) if not isinstance(location.location_id, UUID) else location.location_id,
-                gps_coordinates="1.2921,36.8219",  # Example GPS coordinates
+                gps_coordinates="1.2921,36.8219",  
                 event_description="Package delivered at final destination.",
                 recorded_by="admin@example.com"
             )
@@ -301,15 +293,13 @@ def seed_tracking_events():
 
 
 def seed_warehouse_operations():
-    # Since WarehouseOperation has no operation_reference column, use reference_id instead
     from uuid import uuid4
-    operation = WarehouseOperation.query().filter_by(reference_id=uuid4()).first()  # This will always be None, so we check differently below
-    # Instead, query for any existing operation with the same reference_id value we want to seed
+    operation = WarehouseOperation.query().filter_by(reference_id=uuid4()).first()  
     reference_id_to_seed = uuid4()
     operation = WarehouseOperation.query().filter_by(reference_id=reference_id_to_seed).first()
     if not operation:
         location = Location.query.first()
-        operator = Employee.query.first()  # Assuming Employee model is imported and seeded
+        operator = Employee.query.first()  
         if not location or not operator:
             logger.warning("Cannot seed WarehouseOperation - missing location or operator.")
             return
@@ -339,7 +329,6 @@ def main():
     seed_vehicles()
     seed_carriers()
     seed_shipments()
-    # seed_order_items()
     seed_tracking_events()
     seed_warehouse_operations()
     db.session.commit()
