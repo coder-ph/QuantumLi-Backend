@@ -1,5 +1,6 @@
 import os
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
+from uuid import UUID
 from src.startup.database import db
 from src.Models.systemusers import System_Users
 from src.Models.drivers import Driver
@@ -20,6 +21,7 @@ from src.Models.rates import Rates
 from src.Models.thirdparty import ThirdPartyService
 from src.Models.incidents import Incidents
 from src.Models.vehicles import Vehicle
+from src.Models.employee import Employee
 from src.utils.logger import logger
 
 
@@ -33,8 +35,8 @@ def seed_admin_user():
             role="admin",
             phone="+254700000000",
             is_active=True,
-            created_at=datetime.utcnow(),
-            updated_at=datetime.utcnow()
+            created_at=datetime.now(timezone.utc),
+            updated_at=datetime.now(timezone.utc)
         )
         db.session.add(admin_user)
         logger.info("Admin user seeded successfully.")
@@ -80,8 +82,8 @@ def seed_drivers():
             contact_phone="+254700000000",
             medical_certificate_expiry=datetime.utcnow() + timedelta(days=365),
             status="active",
-            created_at=datetime.utcnow(),
-            updated_at=datetime.utcnow()
+            created_at=datetime.now(timezone.utc),
+            updated_at=datetime.now(timezone.utc)
         )
         db.session.add(driver)
         db.session.commit()  # Needed to generate driver_id
@@ -144,7 +146,7 @@ def seed_orders():
         order = Order(
             client_id=client.client_id,
             order_reference="ORD001",
-            order_date=datetime.utcnow(),
+            order_date=datetime.now(timezone.utc),
             requested_pickup_date=datetime.utcnow() + timedelta(days=1),
             requested_delivery_date=datetime.utcnow() + timedelta(days=3),
             priority="high",
@@ -155,8 +157,8 @@ def seed_orders():
             total_weight=100.0,
             total_volume=1.0,
             declared_value=1000.0,
-            # created_at=datetime.utcnow(),
-            # updated_at=datetime.utcnow()
+            # created_at=datetime.now(timezone.utc),
+            # updated_at=datetime.now(timezone.utc)
         )
         db.session.add(order)
         logger.info("Order seeded successfully.")
@@ -235,8 +237,8 @@ def seed_carriers():
             phone="+254700123456",
             email="carrier@example.com",
             # address="456 Main Street, Nairobi, Kenya",
-            # created_at=datetime.utcnow(),
-            # updated_at=datetime.utcnow()
+            # created_at=datetime.now(timezone.utc),
+            # updated_at=datetime.now(timezone.utc)
         )
         db.session.add(carrier)
         logger.info("Carrier seeded successfully.")
@@ -247,15 +249,22 @@ def seed_carriers():
 def seed_shipments():
     shipment = Shipment.query.filter_by(shipment_reference="SHIP001").first()
     if not shipment:
+        carrier = Carrier.query.first()
+        location = Location.query.first()
+        if not carrier or not location:
+            logger.warning("Cannot seed Shipment - missing carrier or location.")
+            return
         shipment = Shipment(
             shipment_reference="SHIP001",
-            carrier_id=1,  # Replace with a valid carrier ID
+            carrier_id=carrier.carrier_id,
+            origin_location_id=location.location_id,
+            destination_location_id=location.location_id,
             status=ShipmentStatusEnum.IN_TRANSIT,
             shipping_method=ShippingMethodEnum.AIR,
-            # departure_date=datetime.utcnow(),
+            # departure_date=datetime.now(timezone.utc),
             # arrival_date=datetime.utcnow() + timedelta(days=3),
-            created_at=datetime.utcnow(),
-            updated_at=datetime.utcnow()
+            created_at=datetime.now(timezone.utc),
+            updated_at=datetime.now(timezone.utc)
         )
         db.session.add(shipment)
         logger.info("Shipment seeded successfully.")
@@ -273,30 +282,45 @@ def seed_tracking_events():
             logger.warning("Cannot seed TrackingEvent - missing shipment or location.")
             return
 
-        tracking_event = TrackingEvent(
-            shipment_id=shipment.shipment_id,
-            event_type="DELIVERED",
-            event_time=datetime.utcnow(),
-            location_id=location.location_id,
-            gps_coordinates="1.2921,36.8219",  # Nairobi coordinates
-            event_description="Package delivered at final destination.",
-            recorded_by="admin@example.com"
-        )
-        db.session.add(tracking_event)
-        logger.info("TrackingEvent seeded successfully.")
+        # Use session.no_autoflush to prevent premature flushing
+        with db.session.no_autoflush:
+            tracking_event = TrackingEvent(
+                shipment_id=UUID(str(shipment.shipment_id)) if not isinstance(shipment.shipment_id, UUID) else shipment.shipment_id,
+                event_type="DELIVERED",
+                event_time=datetime.now(timezone.utc),  # Use timezone-aware datetime
+                location_id=UUID(str(location.location_id)) if not isinstance(location.location_id, UUID) else location.location_id,
+                gps_coordinates="1.2921,36.8219",  # Example GPS coordinates
+                event_description="Package delivered at final destination.",
+                recorded_by="admin@example.com"
+            )
+            db.session.add(tracking_event)
+            db.session.commit()
+            logger.info("TrackingEvent seeded successfully.")
     else:
         logger.info("TrackingEvent already exists.")
 
+
 def seed_warehouse_operations():
-    operation = WarehouseOperation.query.filter_by(operation_reference="OP001").first()
+    # Since WarehouseOperation has no operation_reference column, use reference_id instead
+    from uuid import uuid4
+    operation = WarehouseOperation.query().filter_by(reference_id=uuid4()).first()  # This will always be None, so we check differently below
+    # Instead, query for any existing operation with the same reference_id value we want to seed
+    reference_id_to_seed = uuid4()
+    operation = WarehouseOperation.query().filter_by(reference_id=reference_id_to_seed).first()
     if not operation:
+        location = Location.query.first()
+        operator = Employee.query.first()  # Assuming Employee model is imported and seeded
+        if not location or not operator:
+            logger.warning("Cannot seed WarehouseOperation - missing location or operator.")
+            return
         operation = WarehouseOperation(
-            operation_reference="OP001",
+            reference_id=reference_id_to_seed,
             operation_type="LOADING",
             status=OperationStatus.COMPLETED,
-            warehouse_id=1,  # Replace with a valid warehouse ID
-            created_at=datetime.utcnow(),
-            updated_at=datetime.utcnow()
+            location_id=location.location_id,
+            operator_id=operator.employee_id,
+            created_at=datetime.now(timezone.utc),
+            updated_at=datetime.now(timezone.utc)
         )
         db.session.add(operation)
         logger.info("WarehouseOperation seeded successfully.")
