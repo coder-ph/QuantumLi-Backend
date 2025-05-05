@@ -1,5 +1,6 @@
 import os
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
+from uuid import UUID
 from src.startup.database import db
 from src.Models.systemusers import System_Users
 from src.Models.drivers import Driver
@@ -19,6 +20,8 @@ from src.Models.client import Client
 from src.Models.rates import Rates
 from src.Models.thirdparty import ThirdPartyService
 from src.Models.incidents import Incidents
+from src.Models.vehicles import Vehicle
+from src.Models.employee import Employee
 from src.utils.logger import logger
 
 
@@ -32,8 +35,8 @@ def seed_admin_user():
             role="admin",
             phone="+254700000000",
             is_active=True,
-            created_at=datetime.utcnow(),
-            updated_at=datetime.utcnow()
+            created_at=datetime.now(timezone.utc),
+            updated_at=datetime.now(timezone.utc)
         )
         db.session.add(admin_user)
         logger.info("Admin user seeded successfully.")
@@ -79,11 +82,11 @@ def seed_drivers():
             contact_phone="+254700000000",
             medical_certificate_expiry=datetime.utcnow() + timedelta(days=365),
             status="active",
-            created_at=datetime.utcnow(),
-            updated_at=datetime.utcnow()
+            created_at=datetime.now(timezone.utc),
+            updated_at=datetime.now(timezone.utc)
         )
         db.session.add(driver)
-        db.session.commit()  # Needed to generate driver_id
+        db.session.commit()  
         logger.info("Driver seeded successfully.")
     else:
         logger.info("Driver already exists.")
@@ -143,7 +146,7 @@ def seed_orders():
         order = Order(
             client_id=client.client_id,
             order_reference="ORD001",
-            order_date=datetime.utcnow(),
+            order_date=datetime.now(timezone.utc),
             requested_pickup_date=datetime.utcnow() + timedelta(days=1),
             requested_delivery_date=datetime.utcnow() + timedelta(days=3),
             priority="high",
@@ -154,8 +157,6 @@ def seed_orders():
             total_weight=100.0,
             total_volume=1.0,
             declared_value=1000.0,
-            # created_at=datetime.utcnow(),
-            # updated_at=datetime.utcnow()
         )
         db.session.add(order)
         logger.info("Order seeded successfully.")
@@ -189,6 +190,134 @@ def seed_products():
         logger.info("Product already exists.")
 
 
+def seed_vehicles():
+    vehicle = Vehicle.query.filter_by(registration_number="KAA123A").first()
+    if not vehicle:
+        carrier = Carrier.query.first()
+        location = Location.query.first()
+
+        if not carrier:
+            logger.warning("No carrier found to associate with vehicle.")
+            return
+        if not location:
+            logger.warning("No location found to associate with vehicle.")
+            return
+
+        vehicle = Vehicle(
+            registration_number="KAA123A",
+            vehicle_type="Truck",
+            make="Toyota",
+            model="Hilux",
+            year=2020,
+            max_weight_capacity=1500.0,
+            max_volume_capacity=12.5,
+            carrier_id=carrier.carrier_id,
+            current_location_id=location.location_id,
+            status="active",
+            insurance_expiry=datetime.utcnow() + timedelta(days=365),
+            last_maintenance_date=datetime.utcnow() - timedelta(days=30),
+            next_maintenance_date=datetime.utcnow() + timedelta(days=60)
+        )
+        vehicle.validate_vehicle()  
+        db.session.add(vehicle)
+        logger.info("Vehicle seeded successfully.")
+    else:
+        logger.info("Vehicle already exists.")
+
+
+def seed_carriers():
+    carrier = Carrier.query.filter_by(carrier_name="Example Carrier").first()
+    if not carrier:
+        carrier = Carrier(
+            carrier_name="Example Carrier",
+            carrier_type="Freight",
+            contact_person="John Smith",
+            phone="+254700123456",
+            email="carrier@example.com",
+        )
+        db.session.add(carrier)
+        logger.info("Carrier seeded successfully.")
+    else:
+        logger.info("Carrier already exists.")
+
+
+def seed_shipments():
+    shipment = Shipment.query.filter_by(shipment_reference="SHIP001").first()
+    if not shipment:
+        carrier = Carrier.query.first()
+        location = Location.query.first()
+        if not carrier or not location:
+            logger.warning("Cannot seed Shipment - missing carrier or location.")
+            return
+        shipment = Shipment(
+            shipment_reference="SHIP001",
+            carrier_id=carrier.carrier_id,
+            origin_location_id=location.location_id,
+            destination_location_id=location.location_id,
+            status=ShipmentStatusEnum.IN_TRANSIT,
+            shipping_method=ShippingMethodEnum.AIR,
+            created_at=datetime.now(timezone.utc),
+            updated_at=datetime.now(timezone.utc)
+        )
+        db.session.add(shipment)
+        logger.info("Shipment seeded successfully.")
+    else:
+        logger.info("Shipment already exists.")
+
+
+def seed_tracking_events():
+    tracking_event = TrackingEvent.query.first()
+    if not tracking_event:
+        shipment = Shipment.query.first()
+        location = Location.query.first()
+
+        if not shipment or not location:
+            logger.warning("Cannot seed TrackingEvent - missing shipment or location.")
+            return
+
+        with db.session.no_autoflush:
+            tracking_event = TrackingEvent(
+                shipment_id=UUID(str(shipment.shipment_id)) if not isinstance(shipment.shipment_id, UUID) else shipment.shipment_id,
+                event_type="DELIVERED",
+                event_time=datetime.now(timezone.utc),  
+                location_id=UUID(str(location.location_id)) if not isinstance(location.location_id, UUID) else location.location_id,
+                gps_coordinates="1.2921,36.8219",  
+                event_description="Package delivered at final destination.",
+                recorded_by="admin@example.com"
+            )
+            db.session.add(tracking_event)
+            db.session.commit()
+            logger.info("TrackingEvent seeded successfully.")
+    else:
+        logger.info("TrackingEvent already exists.")
+
+
+def seed_warehouse_operations():
+    from uuid import uuid4
+    operation = WarehouseOperation.query().filter_by(reference_id=uuid4()).first()  
+    reference_id_to_seed = uuid4()
+    operation = WarehouseOperation.query().filter_by(reference_id=reference_id_to_seed).first()
+    if not operation:
+        location = Location.query.first()
+        operator = Employee.query.first()  
+        if not location or not operator:
+            logger.warning("Cannot seed WarehouseOperation - missing location or operator.")
+            return
+        operation = WarehouseOperation(
+            reference_id=reference_id_to_seed,
+            operation_type="LOADING",
+            status=OperationStatus.COMPLETED,
+            location_id=location.location_id,
+            operator_id=operator.employee_id,
+            created_at=datetime.now(timezone.utc),
+            updated_at=datetime.now(timezone.utc)
+        )
+        db.session.add(operation)
+        logger.info("WarehouseOperation seeded successfully.")
+    else:
+        logger.info("WarehouseOperation already exists.")
+
+
 def main():
     logger.info("Starting database seeding...")
     seed_admin_user()
@@ -197,6 +326,11 @@ def main():
     seed_locations()
     seed_orders()
     seed_products()
+    seed_vehicles()
+    seed_carriers()
+    seed_shipments()
+    seed_tracking_events()
+    seed_warehouse_operations()
     db.session.commit()
     logger.info("Database seeding completed successfully.")
 

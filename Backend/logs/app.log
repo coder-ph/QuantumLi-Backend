@@ -6419,3 +6419,338 @@ WHERE documents.driver_id = ?]
 [2025-05-01 12:11:28,175] [INFO] logistics_app: Order seeded successfully.
 [2025-05-01 12:11:28,195] [INFO] logistics_app: Product seeded successfully.
 [2025-05-01 12:11:28,207] [INFO] logistics_app: Database seeding completed successfully.
+[2025-05-01 12:18:15,684] [WARNING] logistics_app: [Redis] Connection failed. Caching will be disabled.
+[2025-05-01 12:18:18,891] [INFO] logistics_app: Models initialized successfully.
+[2025-05-01 12:18:18,892] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-05-01 12:18:23,038] [INFO] logistics_app: Starting database seeding...
+[2025-05-01 12:18:23,087] [INFO] logistics_app: Admin user already exists.
+[2025-05-01 12:18:23,093] [INFO] logistics_app: Driver driver1@example.com already exists.
+[2025-05-01 12:18:23,134] [INFO] logistics_app: Driver schedule seeded for driver driver2@example.com.
+[2025-05-01 12:18:23,135] [INFO] logistics_app: Driver driver2@example.com seeded successfully.
+[2025-05-01 12:18:23,161] [INFO] logistics_app: Driver schedule seeded for driver driver3@example.com.
+[2025-05-01 12:18:23,161] [INFO] logistics_app: Driver driver3@example.com seeded successfully.
+[2025-05-01 12:19:50,210] [WARNING] logistics_app: [Redis] Connection failed. Caching will be disabled.
+[2025-05-01 12:19:52,625] [INFO] logistics_app: Models initialized successfully.
+[2025-05-01 12:19:52,625] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-05-01 12:19:54,641] [INFO] logistics_app: Starting database seeding...
+[2025-05-01 12:19:54,691] [INFO] logistics_app: Admin user already exists.
+[2025-05-01 12:19:54,697] [INFO] logistics_app: Driver already exists.
+[2025-05-01 12:19:54,712] [INFO] logistics_app: Client already exists.
+[2025-05-01 12:19:54,719] [INFO] logistics_app: Location already exists.
+[2025-05-01 12:19:54,729] [INFO] logistics_app: Order already exists.
+[2025-05-01 12:19:54,736] [INFO] logistics_app: Product already exists.
+[2025-05-01 12:19:54,738] [INFO] logistics_app: Database seeding completed successfully.
+[2025-05-03 16:59:27,996] [WARNING] logistics_app: [Redis] Connection failed. Caching will be disabled.
+[2025-05-03 16:59:30,508] [INFO] logistics_app: Models initialized successfully.
+[2025-05-03 16:59:30,509] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-05-03 16:59:32,270] [INFO] logistics_app: Starting database seeding...
+[2025-05-03 16:59:32,321] [INFO] logistics_app: Admin user already exists.
+[2025-05-03 16:59:32,328] [INFO] logistics_app: Driver already exists.
+[2025-05-03 16:59:32,340] [INFO] logistics_app: Client already exists.
+[2025-05-03 16:59:32,347] [INFO] logistics_app: Location already exists.
+[2025-05-03 16:59:32,357] [INFO] logistics_app: Order already exists.
+[2025-05-03 16:59:32,367] [INFO] logistics_app: Product already exists.
+[2025-05-03 17:01:10,895] [WARNING] logistics_app: [Redis] Connection failed. Caching will be disabled.
+[2025-05-03 17:01:12,892] [INFO] logistics_app: Models initialized successfully.
+[2025-05-03 17:01:12,893] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-05-03 17:01:14,611] [INFO] logistics_app: Starting database seeding...
+[2025-05-03 17:01:14,651] [INFO] logistics_app: Admin user already exists.
+[2025-05-03 17:01:14,658] [INFO] logistics_app: Driver already exists.
+[2025-05-03 17:01:14,674] [INFO] logistics_app: Client already exists.
+[2025-05-03 17:01:14,681] [INFO] logistics_app: Location already exists.
+[2025-05-03 17:01:14,688] [INFO] logistics_app: Order already exists.
+[2025-05-03 17:01:14,694] [INFO] logistics_app: Product already exists.
+[2025-05-04 13:02:09,796] [WARNING] logistics_app: [Redis] Connection failed. Caching will be disabled.
+[2025-05-04 13:02:11,952] [INFO] logistics_app: Models initialized successfully.
+[2025-05-04 13:02:11,952] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-05-04 13:02:13,553] [INFO] logistics_app: Starting database seeding...
+[2025-05-04 13:02:13,599] [INFO] logistics_app: Admin user already exists.
+[2025-05-04 13:02:13,606] [INFO] logistics_app: Driver already exists.
+[2025-05-04 13:02:13,619] [INFO] logistics_app: Client already exists.
+[2025-05-04 13:02:13,624] [INFO] logistics_app: Location already exists.
+[2025-05-04 13:02:13,632] [INFO] logistics_app: Order already exists.
+[2025-05-04 13:02:13,642] [INFO] logistics_app: Product already exists.
+[2025-05-04 13:13:14,062] [WARNING] logistics_app: [Redis] Connection failed. Caching will be disabled.
+[2025-05-04 13:13:17,103] [INFO] logistics_app: Models initialized successfully.
+[2025-05-04 13:13:17,103] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-05-04 13:13:18,768] [INFO] logistics_app: Starting database seeding...
+[2025-05-04 13:13:18,821] [INFO] logistics_app: Admin user already exists.
+[2025-05-04 13:13:18,828] [INFO] logistics_app: Driver already exists.
+[2025-05-04 13:13:18,842] [INFO] logistics_app: Client already exists.
+[2025-05-04 13:13:18,849] [INFO] logistics_app: Location already exists.
+[2025-05-04 13:13:18,860] [INFO] logistics_app: Order already exists.
+[2025-05-04 13:13:18,868] [INFO] logistics_app: Product already exists.
+[2025-05-04 13:13:18,891] [WARNING] logistics_app: No carrier found to associate with vehicle.
+[2025-05-04 13:24:12,765] [WARNING] logistics_app: [Redis] Connection failed. Caching will be disabled.
+[2025-05-04 13:24:14,885] [INFO] logistics_app: Models initialized successfully.
+[2025-05-04 13:24:14,885] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-05-04 13:24:16,494] [INFO] logistics_app: Starting database seeding...
+[2025-05-04 13:24:16,548] [INFO] logistics_app: Admin user already exists.
+[2025-05-04 13:24:16,555] [INFO] logistics_app: Driver already exists.
+[2025-05-04 13:24:16,568] [INFO] logistics_app: Client already exists.
+[2025-05-04 13:24:16,576] [INFO] logistics_app: Location already exists.
+[2025-05-04 13:24:16,585] [INFO] logistics_app: Order already exists.
+[2025-05-04 13:24:16,595] [INFO] logistics_app: Product already exists.
+[2025-05-04 13:24:16,614] [WARNING] logistics_app: No carrier found to associate with vehicle.
+[2025-05-04 14:15:57,318] [WARNING] logistics_app: [Redis] Connection failed. Caching will be disabled.
+[2025-05-04 14:15:59,417] [INFO] logistics_app: Models initialized successfully.
+[2025-05-04 14:15:59,417] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-05-04 14:16:01,121] [INFO] logistics_app: Starting database seeding...
+[2025-05-04 14:16:01,167] [INFO] logistics_app: Admin user already exists.
+[2025-05-04 14:16:01,174] [INFO] logistics_app: Driver already exists.
+[2025-05-04 14:16:01,189] [INFO] logistics_app: Client already exists.
+[2025-05-04 14:16:01,197] [INFO] logistics_app: Location already exists.
+[2025-05-04 14:16:01,206] [INFO] logistics_app: Order already exists.
+[2025-05-04 14:16:01,214] [INFO] logistics_app: Product already exists.
+[2025-05-04 14:16:01,235] [WARNING] logistics_app: No carrier found to associate with vehicle.
+[2025-05-04 14:17:34,002] [WARNING] logistics_app: [Redis] Connection failed. Caching will be disabled.
+[2025-05-04 14:17:36,095] [INFO] logistics_app: Models initialized successfully.
+[2025-05-04 14:17:36,096] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-05-04 14:17:38,425] [INFO] logistics_app: Starting database seeding...
+[2025-05-04 14:17:38,479] [INFO] logistics_app: Admin user already exists.
+[2025-05-04 14:17:38,487] [INFO] logistics_app: Driver already exists.
+[2025-05-04 14:17:38,502] [INFO] logistics_app: Client already exists.
+[2025-05-04 14:17:38,510] [INFO] logistics_app: Location already exists.
+[2025-05-04 14:17:38,518] [INFO] logistics_app: Order already exists.
+[2025-05-04 14:17:38,526] [INFO] logistics_app: Product already exists.
+[2025-05-04 14:17:38,545] [WARNING] logistics_app: No carrier found to associate with vehicle.
+[2025-05-04 14:17:53,901] [WARNING] logistics_app: [Redis] Connection failed. Caching will be disabled.
+[2025-05-04 14:17:56,053] [INFO] logistics_app: Models initialized successfully.
+[2025-05-04 14:17:56,053] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-05-04 14:17:57,605] [INFO] logistics_app: Starting database seeding...
+[2025-05-04 14:17:57,680] [INFO] logistics_app: Admin user already exists.
+[2025-05-04 14:17:57,691] [INFO] logistics_app: Driver already exists.
+[2025-05-04 14:17:57,711] [INFO] logistics_app: Client already exists.
+[2025-05-04 14:17:57,723] [INFO] logistics_app: Location already exists.
+[2025-05-04 14:17:57,739] [INFO] logistics_app: Order already exists.
+[2025-05-04 14:17:57,750] [INFO] logistics_app: Product already exists.
+[2025-05-04 14:17:57,773] [WARNING] logistics_app: No carrier found to associate with vehicle.
+[2025-05-04 14:17:57,778] [INFO] logistics_app: Carrier seeded successfully.
+[2025-05-04 14:20:44,621] [WARNING] logistics_app: [Redis] Connection failed. Caching will be disabled.
+[2025-05-04 14:20:46,699] [INFO] logistics_app: Models initialized successfully.
+[2025-05-04 14:20:46,699] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-05-04 14:20:48,202] [INFO] logistics_app: Starting database seeding...
+[2025-05-04 14:20:48,248] [INFO] logistics_app: Admin user already exists.
+[2025-05-04 14:20:48,255] [INFO] logistics_app: Driver already exists.
+[2025-05-04 14:20:48,266] [INFO] logistics_app: Client already exists.
+[2025-05-04 14:20:48,272] [INFO] logistics_app: Location already exists.
+[2025-05-04 14:20:48,282] [INFO] logistics_app: Order already exists.
+[2025-05-04 14:20:48,289] [INFO] logistics_app: Product already exists.
+[2025-05-04 14:20:48,307] [WARNING] logistics_app: No carrier found to associate with vehicle.
+[2025-05-04 14:20:48,313] [INFO] logistics_app: Carrier seeded successfully.
+[2025-05-04 14:22:33,734] [WARNING] logistics_app: [Redis] Connection failed. Caching will be disabled.
+[2025-05-04 14:22:35,815] [INFO] logistics_app: Models initialized successfully.
+[2025-05-04 14:22:35,815] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-05-04 14:22:37,293] [INFO] logistics_app: Starting database seeding...
+[2025-05-04 14:22:37,338] [INFO] logistics_app: Admin user already exists.
+[2025-05-04 14:22:37,345] [INFO] logistics_app: Driver already exists.
+[2025-05-04 14:22:37,356] [INFO] logistics_app: Client already exists.
+[2025-05-04 14:22:37,364] [INFO] logistics_app: Location already exists.
+[2025-05-04 14:22:37,370] [INFO] logistics_app: Order already exists.
+[2025-05-04 14:22:37,378] [INFO] logistics_app: Product already exists.
+[2025-05-04 14:22:37,398] [WARNING] logistics_app: No carrier found to associate with vehicle.
+[2025-05-04 14:22:37,403] [INFO] logistics_app: Carrier seeded successfully.
+[2025-05-04 14:22:37,418] [INFO] logistics_app: Validation passed for shipment_reference: SHIP001 is valid.
+[2025-05-04 14:23:13,318] [WARNING] logistics_app: [Redis] Connection failed. Caching will be disabled.
+[2025-05-04 14:23:15,375] [INFO] logistics_app: Models initialized successfully.
+[2025-05-04 14:23:15,376] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-05-04 14:23:16,743] [INFO] logistics_app: Starting database seeding...
+[2025-05-04 14:23:16,788] [INFO] logistics_app: Admin user already exists.
+[2025-05-04 14:23:16,795] [INFO] logistics_app: Driver already exists.
+[2025-05-04 14:23:16,807] [INFO] logistics_app: Client already exists.
+[2025-05-04 14:23:16,813] [INFO] logistics_app: Location already exists.
+[2025-05-04 14:23:16,821] [INFO] logistics_app: Order already exists.
+[2025-05-04 14:23:16,829] [INFO] logistics_app: Product already exists.
+[2025-05-04 14:23:16,845] [WARNING] logistics_app: No carrier found to associate with vehicle.
+[2025-05-04 14:23:16,851] [INFO] logistics_app: Carrier seeded successfully.
+[2025-05-04 14:23:16,867] [INFO] logistics_app: Validation passed for shipment_reference: SHIP001 is valid.
+[2025-05-04 14:23:41,106] [WARNING] logistics_app: [Redis] Connection failed. Caching will be disabled.
+[2025-05-04 14:23:43,196] [INFO] logistics_app: Models initialized successfully.
+[2025-05-04 14:23:43,197] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-05-04 14:23:44,785] [INFO] logistics_app: Starting database seeding...
+[2025-05-04 14:23:44,834] [INFO] logistics_app: Admin user already exists.
+[2025-05-04 14:23:44,840] [INFO] logistics_app: Driver already exists.
+[2025-05-04 14:23:44,855] [INFO] logistics_app: Client already exists.
+[2025-05-04 14:23:44,861] [INFO] logistics_app: Location already exists.
+[2025-05-04 14:23:44,873] [INFO] logistics_app: Order already exists.
+[2025-05-04 14:23:44,883] [INFO] logistics_app: Product already exists.
+[2025-05-04 14:23:44,900] [WARNING] logistics_app: No carrier found to associate with vehicle.
+[2025-05-04 14:23:44,906] [INFO] logistics_app: Carrier seeded successfully.
+[2025-05-04 14:23:44,922] [INFO] logistics_app: Validation passed for shipment_reference: SHIP001 is valid.
+[2025-05-04 14:23:44,923] [INFO] logistics_app: Shipment seeded successfully.
+[2025-05-04 14:24:12,668] [WARNING] logistics_app: [Redis] Connection failed. Caching will be disabled.
+[2025-05-04 14:24:14,735] [INFO] logistics_app: Models initialized successfully.
+[2025-05-04 14:24:14,736] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-05-04 14:24:16,363] [INFO] logistics_app: Starting database seeding...
+[2025-05-04 14:24:16,426] [INFO] logistics_app: Admin user already exists.
+[2025-05-04 14:24:16,433] [INFO] logistics_app: Driver already exists.
+[2025-05-04 14:24:16,450] [INFO] logistics_app: Client already exists.
+[2025-05-04 14:24:16,459] [INFO] logistics_app: Location already exists.
+[2025-05-04 14:24:16,470] [INFO] logistics_app: Order already exists.
+[2025-05-04 14:24:16,480] [INFO] logistics_app: Product already exists.
+[2025-05-04 14:24:16,506] [WARNING] logistics_app: No carrier found to associate with vehicle.
+[2025-05-04 14:24:16,514] [INFO] logistics_app: Carrier seeded successfully.
+[2025-05-04 14:24:16,535] [INFO] logistics_app: Validation passed for shipment_reference: SHIP001 is valid.
+[2025-05-04 14:24:16,536] [INFO] logistics_app: Shipment seeded successfully.
+[2025-05-04 14:50:43,758] [WARNING] logistics_app: [Redis] Connection failed. Caching will be disabled.
+[2025-05-04 14:50:45,858] [INFO] logistics_app: Models initialized successfully.
+[2025-05-04 14:50:45,859] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-05-04 14:50:47,461] [INFO] logistics_app: Starting database seeding...
+[2025-05-04 14:50:47,508] [INFO] logistics_app: Admin user already exists.
+[2025-05-04 14:50:47,515] [INFO] logistics_app: Driver already exists.
+[2025-05-04 14:50:47,528] [INFO] logistics_app: Client already exists.
+[2025-05-04 14:50:47,535] [INFO] logistics_app: Location already exists.
+[2025-05-04 14:50:47,543] [INFO] logistics_app: Order already exists.
+[2025-05-04 14:50:47,549] [INFO] logistics_app: Product already exists.
+[2025-05-04 14:50:47,570] [WARNING] logistics_app: No carrier found to associate with vehicle.
+[2025-05-04 14:50:47,575] [INFO] logistics_app: Carrier seeded successfully.
+[2025-05-04 14:50:47,591] [INFO] logistics_app: Validation passed for shipment_reference: SHIP001 is valid.
+[2025-05-04 14:50:47,592] [INFO] logistics_app: Shipment seeded successfully.
+[2025-05-04 14:56:15,863] [WARNING] logistics_app: [Redis] Connection failed. Caching will be disabled.
+[2025-05-04 14:56:18,872] [INFO] logistics_app: Models initialized successfully.
+[2025-05-04 14:56:18,872] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-05-04 14:56:20,384] [INFO] logistics_app: Starting database seeding...
+[2025-05-04 14:56:20,439] [INFO] logistics_app: Admin user already exists.
+[2025-05-04 14:56:20,447] [INFO] logistics_app: Driver already exists.
+[2025-05-04 14:56:20,460] [INFO] logistics_app: Client already exists.
+[2025-05-04 14:56:20,469] [INFO] logistics_app: Location already exists.
+[2025-05-04 14:56:20,479] [INFO] logistics_app: Order already exists.
+[2025-05-04 14:56:20,486] [INFO] logistics_app: Product already exists.
+[2025-05-04 14:56:20,505] [WARNING] logistics_app: No carrier found to associate with vehicle.
+[2025-05-04 14:56:20,510] [INFO] logistics_app: Carrier seeded successfully.
+[2025-05-04 14:56:20,524] [INFO] logistics_app: Validation passed for shipment_reference: SHIP001 is valid.
+[2025-05-04 14:56:20,525] [INFO] logistics_app: Shipment seeded successfully.
+[2025-05-04 23:15:42,020] [WARNING] logistics_app: [Redis] Connection failed. Caching will be disabled.
+[2025-05-04 23:15:43,700] [INFO] logistics_app: Models initialized successfully.
+[2025-05-04 23:15:43,700] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-05-04 23:15:44,979] [INFO] logistics_app: Starting database seeding...
+[2025-05-04 23:15:45,011] [INFO] logistics_app: Admin user already exists.
+[2025-05-04 23:15:45,016] [INFO] logistics_app: Driver already exists.
+[2025-05-04 23:15:45,023] [INFO] logistics_app: Client already exists.
+[2025-05-04 23:15:45,028] [INFO] logistics_app: Location already exists.
+[2025-05-04 23:15:45,032] [INFO] logistics_app: Order already exists.
+[2025-05-04 23:15:45,036] [INFO] logistics_app: Product already exists.
+[2025-05-04 23:15:45,050] [WARNING] logistics_app: No carrier found to associate with vehicle.
+[2025-05-04 23:15:45,052] [INFO] logistics_app: Carrier seeded successfully.
+[2025-05-04 23:15:45,063] [INFO] logistics_app: Validation passed for shipment_reference: SHIP001 is valid.
+[2025-05-04 23:15:45,063] [INFO] logistics_app: Shipment seeded successfully.
+[2025-05-04 23:27:32,350] [WARNING] logistics_app: [Redis] Connection failed. Caching will be disabled.
+[2025-05-04 23:27:34,065] [INFO] logistics_app: Models initialized successfully.
+[2025-05-04 23:27:34,065] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-05-04 23:27:35,334] [INFO] logistics_app: Starting database seeding...
+[2025-05-04 23:27:35,364] [INFO] logistics_app: Admin user already exists.
+[2025-05-04 23:27:35,369] [INFO] logistics_app: Driver already exists.
+[2025-05-04 23:27:35,377] [INFO] logistics_app: Client already exists.
+[2025-05-04 23:27:35,380] [INFO] logistics_app: Location already exists.
+[2025-05-04 23:27:35,383] [INFO] logistics_app: Order already exists.
+[2025-05-04 23:27:35,387] [INFO] logistics_app: Product already exists.
+[2025-05-04 23:27:35,399] [WARNING] logistics_app: No carrier found to associate with vehicle.
+[2025-05-04 23:27:35,401] [INFO] logistics_app: Carrier seeded successfully.
+[2025-05-04 23:27:35,411] [INFO] logistics_app: Validation passed for shipment_reference: SHIP001 is valid.
+[2025-05-04 23:27:35,411] [INFO] logistics_app: Shipment seeded successfully.
+[2025-05-04 23:32:16,559] [WARNING] logistics_app: [Redis] Connection failed. Caching will be disabled.
+[2025-05-04 23:32:18,506] [INFO] logistics_app: Models initialized successfully.
+[2025-05-04 23:32:18,506] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-05-04 23:32:19,798] [INFO] logistics_app: Starting database seeding...
+[2025-05-04 23:32:19,849] [INFO] logistics_app: Admin user already exists.
+[2025-05-04 23:32:19,858] [INFO] logistics_app: Driver already exists.
+[2025-05-04 23:32:19,869] [INFO] logistics_app: Client already exists.
+[2025-05-04 23:32:19,875] [INFO] logistics_app: Location already exists.
+[2025-05-04 23:32:19,885] [INFO] logistics_app: Order already exists.
+[2025-05-04 23:32:19,892] [INFO] logistics_app: Product already exists.
+[2025-05-04 23:32:19,908] [WARNING] logistics_app: No carrier found to associate with vehicle.
+[2025-05-04 23:32:19,913] [INFO] logistics_app: Carrier seeded successfully.
+[2025-05-04 23:32:19,928] [INFO] logistics_app: Validation passed for shipment_reference: SHIP001 is valid.
+[2025-05-04 23:32:19,929] [INFO] logistics_app: Shipment seeded successfully.
+[2025-05-04 23:37:02,512] [WARNING] logistics_app: [Redis] Connection failed. Caching will be disabled.
+[2025-05-04 23:37:04,946] [INFO] logistics_app: Models initialized successfully.
+[2025-05-04 23:37:04,947] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-05-04 23:37:06,308] [INFO] logistics_app: Starting database seeding...
+[2025-05-04 23:37:06,321] [INFO] logistics_app: Admin user already exists.
+[2025-05-04 23:37:06,323] [INFO] logistics_app: Driver already exists.
+[2025-05-04 23:37:06,330] [INFO] logistics_app: Client already exists.
+[2025-05-04 23:37:06,334] [INFO] logistics_app: Location already exists.
+[2025-05-04 23:37:06,337] [INFO] logistics_app: Order already exists.
+[2025-05-04 23:37:06,340] [INFO] logistics_app: Product already exists.
+[2025-05-04 23:37:06,346] [WARNING] logistics_app: No carrier found to associate with vehicle.
+[2025-05-04 23:37:06,347] [INFO] logistics_app: Carrier seeded successfully.
+[2025-05-04 23:37:06,351] [INFO] logistics_app: Validation passed for shipment_reference: SHIP001 is valid.
+[2025-05-04 23:37:06,351] [INFO] logistics_app: Shipment seeded successfully.
+[2025-05-04 23:37:06,354] [INFO] logistics_app: Valid GPS coordinates: 1.2921,36.8219
+[2025-05-04 23:37:06,368] [INFO] logistics_app: TrackingEvent seeded successfully.
+[2025-05-04 23:38:25,641] [WARNING] logistics_app: [Redis] Connection failed. Caching will be disabled.
+[2025-05-04 23:38:27,503] [INFO] logistics_app: Models initialized successfully.
+[2025-05-04 23:38:27,503] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-05-04 23:38:28,818] [INFO] logistics_app: Starting database seeding...
+[2025-05-04 23:38:28,834] [INFO] logistics_app: Admin user already exists.
+[2025-05-04 23:38:28,836] [INFO] logistics_app: Driver already exists.
+[2025-05-04 23:38:28,839] [INFO] logistics_app: Client already exists.
+[2025-05-04 23:38:28,841] [INFO] logistics_app: Location already exists.
+[2025-05-04 23:38:28,844] [INFO] logistics_app: Order already exists.
+[2025-05-04 23:38:28,847] [INFO] logistics_app: Product already exists.
+[2025-05-04 23:38:28,857] [INFO] logistics_app: Vehicle seeded successfully.
+[2025-05-04 23:38:28,862] [INFO] logistics_app: Carrier already exists.
+[2025-05-04 23:38:28,864] [INFO] logistics_app: Shipment already exists.
+[2025-05-04 23:38:28,865] [INFO] logistics_app: TrackingEvent already exists.
+[2025-05-04 23:39:36,535] [WARNING] logistics_app: [Redis] Connection failed. Caching will be disabled.
+[2025-05-04 23:39:38,182] [INFO] logistics_app: Models initialized successfully.
+[2025-05-04 23:39:38,182] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-05-04 23:39:39,398] [INFO] logistics_app: Starting database seeding...
+[2025-05-04 23:39:39,411] [INFO] logistics_app: Admin user already exists.
+[2025-05-04 23:39:39,413] [INFO] logistics_app: Driver already exists.
+[2025-05-04 23:39:39,416] [INFO] logistics_app: Client already exists.
+[2025-05-04 23:39:39,419] [INFO] logistics_app: Location already exists.
+[2025-05-04 23:39:39,423] [INFO] logistics_app: Order already exists.
+[2025-05-04 23:39:39,426] [INFO] logistics_app: Product already exists.
+[2025-05-04 23:39:39,433] [INFO] logistics_app: Vehicle seeded successfully.
+[2025-05-04 23:39:39,437] [INFO] logistics_app: Carrier already exists.
+[2025-05-04 23:39:39,439] [INFO] logistics_app: Shipment already exists.
+[2025-05-04 23:39:39,441] [INFO] logistics_app: TrackingEvent already exists.
+[2025-05-04 23:40:48,921] [WARNING] logistics_app: [Redis] Connection failed. Caching will be disabled.
+[2025-05-04 23:40:50,603] [INFO] logistics_app: Models initialized successfully.
+[2025-05-04 23:40:50,604] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-05-04 23:40:51,848] [INFO] logistics_app: Starting database seeding...
+[2025-05-04 23:40:51,869] [INFO] logistics_app: Admin user already exists.
+[2025-05-04 23:40:51,871] [INFO] logistics_app: Driver already exists.
+[2025-05-04 23:40:51,874] [INFO] logistics_app: Client already exists.
+[2025-05-04 23:40:51,877] [INFO] logistics_app: Location already exists.
+[2025-05-04 23:40:51,882] [INFO] logistics_app: Order already exists.
+[2025-05-04 23:40:51,885] [INFO] logistics_app: Product already exists.
+[2025-05-04 23:40:51,893] [INFO] logistics_app: Vehicle seeded successfully.
+[2025-05-04 23:40:51,898] [INFO] logistics_app: Carrier already exists.
+[2025-05-04 23:40:51,901] [INFO] logistics_app: Shipment already exists.
+[2025-05-04 23:40:51,903] [INFO] logistics_app: TrackingEvent already exists.
+[2025-05-04 23:40:51,907] [WARNING] logistics_app: Cannot seed WarehouseOperation - missing location or operator.
+[2025-05-04 23:40:51,912] [INFO] logistics_app: Database seeding completed successfully.
+[2025-05-04 23:41:01,136] [WARNING] logistics_app: [Redis] Connection failed. Caching will be disabled.
+[2025-05-04 23:41:02,736] [INFO] logistics_app: Models initialized successfully.
+[2025-05-04 23:41:02,736] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-05-04 23:41:04,968] [INFO] logistics_app: Starting database seeding...
+[2025-05-04 23:41:04,988] [INFO] logistics_app: Admin user already exists.
+[2025-05-04 23:41:04,992] [INFO] logistics_app: Driver already exists.
+[2025-05-04 23:41:04,999] [INFO] logistics_app: Client already exists.
+[2025-05-04 23:41:05,002] [INFO] logistics_app: Location already exists.
+[2025-05-04 23:41:05,006] [INFO] logistics_app: Order already exists.
+[2025-05-04 23:41:05,010] [INFO] logistics_app: Product already exists.
+[2025-05-04 23:41:05,013] [INFO] logistics_app: Vehicle already exists.
+[2025-05-04 23:41:05,018] [INFO] logistics_app: Carrier already exists.
+[2025-05-04 23:41:05,021] [INFO] logistics_app: Shipment already exists.
+[2025-05-04 23:41:05,023] [INFO] logistics_app: TrackingEvent already exists.
+[2025-05-04 23:41:05,031] [WARNING] logistics_app: Cannot seed WarehouseOperation - missing location or operator.
+[2025-05-04 23:41:05,031] [INFO] logistics_app: Database seeding completed successfully.
+[2025-05-04 23:49:34,635] [WARNING] logistics_app: [Redis] Connection failed. Caching will be disabled.
+[2025-05-04 23:49:36,805] [INFO] logistics_app: Models initialized successfully.
+[2025-05-04 23:49:36,806] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-05-04 23:49:38,405] [INFO] logistics_app: Starting database seeding...
+[2025-05-04 23:49:38,453] [INFO] logistics_app: Admin user already exists.
+[2025-05-04 23:49:38,460] [INFO] logistics_app: Driver already exists.
+[2025-05-04 23:49:38,473] [INFO] logistics_app: Client already exists.
+[2025-05-04 23:49:38,480] [INFO] logistics_app: Location already exists.
+[2025-05-04 23:49:38,488] [INFO] logistics_app: Order already exists.
+[2025-05-04 23:49:38,495] [INFO] logistics_app: Product already exists.
+[2025-05-04 23:49:38,506] [INFO] logistics_app: Vehicle already exists.
+[2025-05-04 23:49:38,519] [INFO] logistics_app: Carrier already exists.
+[2025-05-04 23:49:38,529] [INFO] logistics_app: Shipment already exists.
+[2025-05-04 23:49:38,536] [INFO] logistics_app: TrackingEvent already exists.
+[2025-05-04 23:49:38,555] [WARNING] logistics_app: Cannot seed WarehouseOperation - missing location or operator.
+[2025-05-04 23:49:38,556] [INFO] logistics_app: Database seeding completed successfully.
