@@ -6754,3 +6754,27 @@ WHERE documents.driver_id = ?]
 [2025-05-04 23:49:38,536] [INFO] logistics_app: TrackingEvent already exists.
 [2025-05-04 23:49:38,555] [WARNING] logistics_app: Cannot seed WarehouseOperation - missing location or operator.
 [2025-05-04 23:49:38,556] [INFO] logistics_app: Database seeding completed successfully.
+[2025-05-05 18:45:09,020] [WARNING] logistics_app: [Redis] Connection failed. Caching will be disabled.
+[2025-05-05 18:54:27,882] [WARNING] logistics_app: [Redis] Connection failed. Caching will be disabled.
+[2025-05-05 18:55:52,108] [WARNING] logistics_app: [Redis] Connection failed. Caching will be disabled.
+[2025-05-05 18:55:54,069] [INFO] logistics_app: Models initialized successfully.
+[2025-05-05 18:55:54,070] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-05-05 18:55:55,847] [WARNING] logistics_app: [Redis] Connection failed. Caching will be disabled.
+[2025-05-05 18:55:57,562] [INFO] logistics_app: Models initialized successfully.
+[2025-05-05 18:55:57,563] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-05-05 18:56:35,188] [WARNING] logistics_app: [Redis] Connection failed. Caching will be disabled.
+[2025-05-05 18:56:38,413] [INFO] logistics_app: Models initialized successfully.
+[2025-05-05 18:56:38,413] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-05-05 18:56:40,887] [INFO] logistics_app: Starting database seeding...
+[2025-05-05 18:56:40,900] [INFO] logistics_app: Admin user already exists.
+[2025-05-05 18:56:40,902] [INFO] logistics_app: Driver already exists.
+[2025-05-05 18:56:40,907] [INFO] logistics_app: Client already exists.
+[2025-05-05 18:56:40,910] [INFO] logistics_app: Location already exists.
+[2025-05-05 18:56:40,912] [INFO] logistics_app: Order already exists.
+[2025-05-05 18:56:40,914] [INFO] logistics_app: Product already exists.
+[2025-05-05 18:56:40,916] [INFO] logistics_app: Vehicle already exists.
+[2025-05-05 18:56:40,919] [INFO] logistics_app: Carrier already exists.
+[2025-05-05 18:56:40,923] [INFO] logistics_app: Shipment already exists.
+[2025-05-05 18:56:40,925] [INFO] logistics_app: TrackingEvent already exists.
+[2025-05-05 18:56:40,931] [WARNING] logistics_app: Cannot seed WarehouseOperation - missing location or operator.
+[2025-05-05 18:56:40,932] [INFO] logistics_app: Database seeding completed successfully.
