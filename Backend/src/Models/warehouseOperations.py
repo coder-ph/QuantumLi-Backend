@@ -6,6 +6,7 @@ from datetime import datetime
 from  src.startup.database import db
 from src.Models.base_model import BaseModel
 from src.Models.employee import Employee
+from src.Models.locations import Location
 
 from src.utils.logger import logger
 import enum
