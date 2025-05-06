@@ -6778,6 +6778,117 @@ WHERE documents.driver_id = ?]
 [2025-05-05 18:56:40,925] [INFO] logistics_app: TrackingEvent already exists.
 [2025-05-05 18:56:40,931] [WARNING] logistics_app: Cannot seed WarehouseOperation - missing location or operator.
 [2025-05-05 18:56:40,932] [INFO] logistics_app: Database seeding completed successfully.
+[2025-05-06 09:55:08,305] [INFO] logistics_app: Models initialized successfully.
+[2025-05-06 09:55:08,306] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-05-06 09:55:25,366] [INFO] logistics_app: Models initialized successfully.
+[2025-05-06 09:55:25,368] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-05-06 09:55:26,651] [INFO] logistics_app: Starting database seeding...
+[2025-05-06 09:55:26,723] [INFO] logistics_app: Admin user already exists.
+[2025-05-06 09:55:26,734] [INFO] logistics_app: Driver already exists.
+[2025-05-06 09:55:26,750] [INFO] logistics_app: Client already exists.
+[2025-05-06 09:55:26,760] [INFO] logistics_app: Location already exists.
+[2025-05-06 09:55:26,775] [INFO] logistics_app: Order already exists.
+[2025-05-06 09:55:26,791] [INFO] logistics_app: Product already exists.
+[2025-05-06 09:55:26,802] [INFO] logistics_app: Vehicle already exists.
+[2025-05-06 09:55:26,814] [INFO] logistics_app: Carrier already exists.
+[2025-05-06 09:55:26,830] [INFO] logistics_app: Shipment already exists.
+[2025-05-06 09:55:26,843] [INFO] logistics_app: TrackingEvent already exists.
+[2025-05-06 09:55:26,882] [WARNING] logistics_app: Cannot seed WarehouseOperation - missing location or operator.
+[2025-05-06 09:55:26,884] [INFO] logistics_app: Database seeding completed successfully.
+[2025-05-06 09:55:38,301] [INFO] logistics_app: Models initialized successfully.
+[2025-05-06 09:55:38,308] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-05-06 09:55:43,421] [INFO] logistics_app: Models initialized successfully.
+[2025-05-06 09:55:43,422] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-05-06 09:56:40,270] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-06 09:56:40,286] [INFO] logistics_app: Drivers statuses updated successfully.
+[2025-05-06 09:56:45,133] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-06 09:57:39,885] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-06 09:57:44,810] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-06 09:58:39,881] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-06 09:58:44,808] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-06 09:59:39,877] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-06 09:59:44,809] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-06 10:00:39,881] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-06 10:00:44,809] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-06 10:01:39,880] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-06 10:01:44,808] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-06 10:02:39,885] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-06 10:02:44,812] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-06 10:03:39,883] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-06 10:03:44,810] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-06 10:04:39,885] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-06 10:04:44,808] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-06 10:05:39,881] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-06 10:05:44,813] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-06 10:06:39,877] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-06 10:06:44,809] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-06 10:07:26,845] [INFO] logistics_app: Models initialized successfully.
+[2025-05-06 10:07:26,846] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-05-06 10:07:39,879] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-06 10:08:28,623] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-06 10:08:39,884] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-06 10:09:28,422] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-06 10:09:39,878] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-06 10:09:50,162] [INFO] logistics_app: Models initialized successfully.
+[2025-05-06 10:09:50,163] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-05-06 10:10:26,835] [INFO] logistics_app: Models initialized successfully.
+[2025-05-06 10:10:26,836] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-05-06 10:10:39,878] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-06 10:11:28,323] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-06 10:11:39,879] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-06 10:12:28,171] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-06 10:12:39,884] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-06 10:13:28,176] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-06 10:13:39,880] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-06 10:14:28,174] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-06 10:14:39,877] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-06 10:15:28,171] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-06 10:15:39,879] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-06 10:16:28,171] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-06 10:16:39,881] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-06 10:17:28,173] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-06 10:17:39,880] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-06 10:18:28,171] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-06 10:18:39,878] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-06 10:19:28,175] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-06 10:19:39,881] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-06 11:22:48,818] [INFO] logistics_app: Models initialized successfully.
+[2025-05-06 11:22:48,820] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-05-06 11:22:55,039] [INFO] logistics_app: Models initialized successfully.
+[2025-05-06 11:22:55,039] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-05-06 11:23:51,804] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-06 11:23:51,833] [INFO] logistics_app: Drivers statuses updated successfully.
+[2025-05-06 11:23:56,394] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-06 11:24:51,785] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-06 11:24:56,369] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-06 11:25:51,770] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-06 11:25:56,372] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-06 11:26:51,770] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-06 11:26:56,371] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-06 11:27:51,783] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-06 11:27:56,365] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-06 11:28:51,774] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-06 11:28:56,368] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-06 11:29:51,765] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-06 11:29:56,370] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-06 11:30:45,563] [INFO] logistics_app: Models initialized successfully.
+[2025-05-06 11:30:45,566] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-05-06 11:30:51,781] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-06 11:31:47,555] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-06 11:31:51,906] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-06 11:32:47,978] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-06 11:32:52,785] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-06 11:33:47,858] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-06 11:33:51,944] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-06 11:34:47,398] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-06 11:34:51,792] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-06 11:35:47,396] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-06 11:35:55,413] [INFO] logistics_app: Models initialized successfully.
+[2025-05-06 11:35:55,414] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-05-06 11:36:03,613] [INFO] logistics_app: Models initialized successfully.
+[2025-05-06 11:36:03,614] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-05-06 11:36:58,642] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-06 11:37:05,062] [INFO] logistics_app: Retrieved 3 active drivers.
 [2025-05-05 21:25:25,474] [WARNING] logistics_app: [Redis] Connection failed. Caching will be disabled.
 [2025-05-05 21:25:27,648] [INFO] logistics_app: Models initialized successfully.
 [2025-05-05 21:25:27,648] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
