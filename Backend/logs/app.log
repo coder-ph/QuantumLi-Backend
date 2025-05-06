@@ -6778,3 +6778,128 @@ WHERE documents.driver_id = ?]
 [2025-05-05 18:56:40,925] [INFO] logistics_app: TrackingEvent already exists.
 [2025-05-05 18:56:40,931] [WARNING] logistics_app: Cannot seed WarehouseOperation - missing location or operator.
 [2025-05-05 18:56:40,932] [INFO] logistics_app: Database seeding completed successfully.
+[2025-05-05 22:05:45,691] [WARNING] logistics_app: [Redis] Connection failed. Caching will be disabled.
+[2025-05-05 22:05:47,571] [INFO] logistics_app: Models initialized successfully.
+[2025-05-05 22:05:47,572] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-05-05 22:05:50,134] [WARNING] logistics_app: [Redis] Connection failed. Caching will be disabled.
+[2025-05-05 22:05:51,926] [INFO] logistics_app: Models initialized successfully.
+[2025-05-05 22:05:51,927] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-05-05 22:06:49,315] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-05 22:06:49,325] [INFO] logistics_app: Drivers statuses updated successfully.
+[2025-05-05 22:06:53,696] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-05 22:07:49,188] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-05 22:07:53,582] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-05 22:08:49,188] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-05 22:08:53,581] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-05 22:09:49,189] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-05 22:09:53,581] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-05 22:10:49,188] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-05 22:10:53,581] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-05 22:11:31,018] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-05 22:11:31,019] [ERROR] logistics_app: Error fetching drivers: Object of type Driver is not JSON serializable
+[2025-05-05 22:11:31,027] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-05 22:11:31,028] [ERROR] logistics_app: Error fetching drivers: Object of type Driver is not JSON serializable
+[2025-05-05 22:11:49,188] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-05 22:11:53,581] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-05 22:12:49,189] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-05 22:12:53,581] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-05 22:13:49,188] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-05 22:13:53,581] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-05 22:14:06,868] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-05 22:14:06,868] [ERROR] logistics_app: Error fetching drivers: Object of type Driver is not JSON serializable
+[2025-05-05 22:14:49,188] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-05 22:14:53,581] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-05 22:15:49,188] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-05 22:15:53,581] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-05 22:16:49,188] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-05 22:16:53,581] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-05 22:17:49,188] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-05 22:17:53,581] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-05 22:18:49,188] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-05 22:18:53,581] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-05 22:19:49,188] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-05 22:19:53,581] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-05 22:20:48,865] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-05 22:20:48,866] [ERROR] logistics_app: Error fetching drivers: Object of type Driver is not JSON serializable
+[2025-05-05 22:20:49,188] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-05 22:20:53,581] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-05 22:21:49,188] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-05 22:21:53,581] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-05 22:22:49,188] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-05 22:22:53,581] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-05 22:23:31,176] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-05 22:23:31,176] [ERROR] logistics_app: Error fetching drivers: Object of type Driver is not JSON serializable
+[2025-05-05 22:23:49,188] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-05 22:23:53,581] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-05 22:24:49,188] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-05 22:24:53,581] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-05 22:25:49,188] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-05 22:25:53,581] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-05 22:26:49,188] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-05 22:26:53,580] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-05 22:27:49,188] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-05 22:27:53,581] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-05 22:28:49,188] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-05 22:28:53,582] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-05 22:29:49,188] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-05 22:29:53,581] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-05 22:30:49,188] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-05 22:30:53,581] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-05 22:31:49,188] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-05 22:31:53,580] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-05 22:32:49,188] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-05 22:32:53,581] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-05 22:33:49,188] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-05 22:33:53,580] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-05 22:34:49,188] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-05 22:34:53,581] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-05 22:35:37,693] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-05 22:35:37,694] [ERROR] logistics_app: Error fetching drivers: Object of type Driver is not JSON serializable
+[2025-05-05 22:35:49,188] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-05 22:35:53,580] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-05 22:36:49,188] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-05 22:36:53,580] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-05 22:37:30,422] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-05 22:37:30,423] [ERROR] logistics_app: Error fetching drivers: Object of type Driver is not JSON serializable
+[2025-05-05 22:37:42,389] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-05 22:37:42,389] [ERROR] logistics_app: Error fetching drivers: Object of type Driver is not JSON serializable
+[2025-05-05 22:37:42,396] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-05 22:37:42,397] [ERROR] logistics_app: Error fetching drivers: Object of type Driver is not JSON serializable
+[2025-05-05 22:37:49,188] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-05 22:37:53,581] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-05 22:38:49,188] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-05 22:38:53,581] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-05 22:39:24,297] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-05 22:39:24,297] [ERROR] logistics_app: Error fetching drivers: Object of type Driver is not JSON serializable
+[2025-05-05 22:39:24,304] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-05 22:39:24,305] [ERROR] logistics_app: Error fetching drivers: Object of type Driver is not JSON serializable
+[2025-05-05 22:39:34,341] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-05 22:39:34,342] [ERROR] logistics_app: Error fetching drivers: Object of type Driver is not JSON serializable
+[2025-05-05 22:39:34,349] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-05 22:39:34,350] [ERROR] logistics_app: Error fetching drivers: Object of type Driver is not JSON serializable
+[2025-05-05 22:39:49,188] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-05 22:39:53,581] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-05 22:39:56,247] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-05 22:39:56,247] [ERROR] logistics_app: Error fetching drivers: Object of type Driver is not JSON serializable
+[2025-05-05 22:39:56,255] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-05 22:39:56,255] [ERROR] logistics_app: Error fetching drivers: Object of type Driver is not JSON serializable
+[2025-05-05 22:40:49,188] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-05 22:40:53,581] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-05 22:41:49,188] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-05 22:41:53,581] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-05 22:42:49,188] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-05 22:42:53,581] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-05 22:43:49,188] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-05 22:43:53,580] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-05 22:44:49,188] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-05 22:44:53,581] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-05 22:45:49,188] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-05 22:45:53,581] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-05 22:46:49,188] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-05 22:46:53,580] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-05 22:47:49,188] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-05 22:47:53,581] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-05 22:48:49,188] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-05 22:48:53,581] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-05 22:49:49,188] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-05 22:49:53,581] [INFO] logistics_app: Retrieved 3 active drivers.
