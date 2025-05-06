@@ -7141,3 +7141,32 @@ WHERE documents.driver_id = ?]
 [2025-05-06 10:45:11,527] [INFO] logistics_app: Models initialized successfully.
 [2025-05-06 10:45:11,528] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
 [2025-05-06 10:45:12,923] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-06 12:10:33,888] [INFO] logistics_app: Models initialized successfully.
+[2025-05-06 12:10:33,889] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-05-06 12:10:38,063] [INFO] logistics_app: Models initialized successfully.
+[2025-05-06 12:10:38,064] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-05-06 12:11:35,117] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-06 12:11:35,145] [INFO] logistics_app: Drivers statuses updated successfully.
+[2025-05-06 12:11:39,565] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-06 12:12:35,065] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-06 12:12:39,527] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-06 12:13:35,062] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-06 12:13:39,524] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-06 12:14:35,064] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-06 12:14:39,521] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-06 12:15:35,061] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-06 12:15:39,520] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-06 12:16:35,065] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-06 12:16:39,526] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-06 12:17:35,066] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-06 12:17:39,525] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-06 12:18:35,066] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-06 12:18:39,525] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-06 12:19:35,069] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-06 12:19:39,524] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-06 12:20:35,061] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-06 12:20:39,523] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-06 12:21:35,062] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-06 12:21:39,525] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-06 12:22:35,061] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-06 12:22:39,523] [INFO] logistics_app: Retrieved 3 active drivers.

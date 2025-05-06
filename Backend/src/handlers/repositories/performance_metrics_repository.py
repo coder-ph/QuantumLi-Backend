@@ -82,17 +82,17 @@ def fetch_customer_ratings(filters):
     min_rating = filters.get('min_rating', 0)
     max_rating = filters.get('max_rating', 5)
 
-    query = db.session.query(Driver.name, func.avg(Rating.rating).label('avg_rating')) \
-        .join(Rating, Rating.driver_id == Driver.driver_id)
+    query = db.session.query(Driver.name, func.avg(Driver_Ratings.rating).label('avg_rating')) \
+        .join(Driver_Ratings, Driver_Ratings.driver_id == Driver.driver_id)
 
     if start_date:
-        query = query.filter(Rating.date >= datetime.strptime(start_date, '%Y-%m-%d'))
+        query = query.filter(Driver_Ratings.rating_date >= datetime.strptime(start_date, '%Y-%m-%d'))
     if end_date:
-        query = query.filter(Rating.date <= datetime.strptime(end_date, '%Y-%m-%d'))
+        query = query.filter(Driver_Ratings.rating_date <= datetime.strptime(end_date, '%Y-%m-%d'))
 
     query = query.group_by(Driver.driver_id) \
-        .having(func.avg(Rating.rating) >= min_rating) \
-        .having(func.avg(Rating.rating) <= max_rating)
+        .having(func.avg(Driver_Ratings.rating) >= min_rating) \
+        .having(func.avg(Driver_Ratings.rating) <= max_rating)
 
     result = query.all()
     return result
