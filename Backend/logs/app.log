@@ -6903,3 +6903,19 @@ WHERE documents.driver_id = ?]
 [2025-05-05 22:48:53,581] [INFO] logistics_app: Retrieved 3 active drivers.
 [2025-05-05 22:49:49,188] [INFO] logistics_app: Retrieved 3 active drivers.
 [2025-05-05 22:49:53,581] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-06 12:38:03,038] [WARNING] logistics_app: [Redis] Connection failed. Caching will be disabled.
+[2025-05-06 12:38:05,645] [INFO] logistics_app: Models initialized successfully.
+[2025-05-06 12:38:05,646] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-05-06 12:38:07,215] [INFO] logistics_app: Starting database seeding...
+[2025-05-06 12:38:07,243] [INFO] logistics_app: Admin user already exists.
+[2025-05-06 12:38:07,248] [INFO] logistics_app: Driver already exists.
+[2025-05-06 12:38:07,255] [INFO] logistics_app: Client already exists.
+[2025-05-06 12:38:07,259] [INFO] logistics_app: Location already exists.
+[2025-05-06 12:38:07,263] [INFO] logistics_app: Order already exists.
+[2025-05-06 12:38:07,267] [INFO] logistics_app: Product already exists.
+[2025-05-06 12:38:07,270] [INFO] logistics_app: Vehicle already exists.
+[2025-05-06 12:38:07,277] [INFO] logistics_app: Carrier already exists.
+[2025-05-06 12:38:07,282] [INFO] logistics_app: Shipment already exists.
+[2025-05-06 12:38:07,286] [INFO] logistics_app: TrackingEvent already exists.
+[2025-05-06 12:38:07,296] [WARNING] logistics_app: Cannot seed WarehouseOperation - missing location or operator.
+[2025-05-06 12:38:07,297] [INFO] logistics_app: Database seeding completed successfully.
