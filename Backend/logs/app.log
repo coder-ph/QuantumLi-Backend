@@ -7141,3 +7141,276 @@ WHERE documents.driver_id = ?]
 [2025-05-06 10:45:11,527] [INFO] logistics_app: Models initialized successfully.
 [2025-05-06 10:45:11,528] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
 [2025-05-06 10:45:12,923] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-06 11:56:56,041] [WARNING] logistics_app: [Redis] Connection failed. Caching will be disabled.
+[2025-05-06 11:56:58,017] [INFO] logistics_app: Models initialized successfully.
+[2025-05-06 11:56:58,018] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-05-06 11:56:59,273] [INFO] logistics_app: Starting database seeding...
+[2025-05-06 11:56:59,288] [INFO] logistics_app: Admin user already exists.
+[2025-05-06 11:56:59,301] [INFO] logistics_app: Driver driver1@example.com already exists.
+[2025-05-06 11:56:59,306] [INFO] logistics_app: Driver driver2@example.com already exists.
+[2025-05-06 11:56:59,311] [INFO] logistics_app: Driver driver3@example.com already exists.
+[2025-05-06 11:56:59,319] [INFO] logistics_app: Driver driver4@example.com seeded successfully.
+[2025-05-06 11:56:59,335] [INFO] logistics_app: Driver driver5@example.com seeded successfully.
+[2025-05-06 11:56:59,339] [INFO] logistics_app: Driver driver6@example.com seeded successfully.
+[2025-05-06 11:56:59,347] [INFO] logistics_app: Driver driver7@example.com seeded successfully.
+[2025-05-06 11:56:59,350] [INFO] logistics_app: Driver driver8@example.com seeded successfully.
+[2025-05-06 11:56:59,354] [INFO] logistics_app: Driver driver9@example.com seeded successfully.
+[2025-05-06 11:56:59,363] [INFO] logistics_app: Driver driver10@example.com seeded successfully.
+[2025-05-06 11:56:59,375] [INFO] logistics_app: Driver driver11@example.com seeded successfully.
+[2025-05-06 11:56:59,389] [INFO] logistics_app: Driver driver12@example.com seeded successfully.
+[2025-05-06 11:56:59,399] [INFO] logistics_app: Driver driver13@example.com seeded successfully.
+[2025-05-06 11:56:59,406] [INFO] logistics_app: Driver driver14@example.com seeded successfully.
+[2025-05-06 11:56:59,420] [INFO] logistics_app: Driver driver15@example.com seeded successfully.
+[2025-05-06 11:56:59,428] [INFO] logistics_app: Driver driver16@example.com seeded successfully.
+[2025-05-06 11:56:59,438] [INFO] logistics_app: Driver driver17@example.com seeded successfully.
+[2025-05-06 11:56:59,449] [INFO] logistics_app: Driver driver18@example.com seeded successfully.
+[2025-05-06 11:56:59,462] [INFO] logistics_app: Driver driver19@example.com seeded successfully.
+[2025-05-06 11:56:59,471] [INFO] logistics_app: Driver driver20@example.com seeded successfully.
+[2025-05-06 11:56:59,528] [INFO] logistics_app: Client already exists.
+[2025-05-06 11:56:59,541] [INFO] logistics_app: Location already exists.
+[2025-05-06 11:56:59,566] [INFO] logistics_app: Order already exists.
+[2025-05-06 11:56:59,573] [INFO] logistics_app: Product already exists.
+[2025-05-06 11:56:59,590] [INFO] logistics_app: Vehicle already exists.
+[2025-05-06 11:56:59,611] [INFO] logistics_app: Carrier already exists.
+[2025-05-06 11:56:59,626] [INFO] logistics_app: Shipment already exists.
+[2025-05-06 11:56:59,649] [INFO] logistics_app: TrackingEvent already exists.
+[2025-05-06 11:56:59,673] [WARNING] logistics_app: Cannot seed WarehouseOperation - missing location or operator.
+[2025-05-06 11:56:59,674] [INFO] logistics_app: Database seeding completed successfully.
+[2025-05-06 11:57:05,875] [WARNING] logistics_app: [Redis] Connection failed. Caching will be disabled.
+[2025-05-06 11:57:08,080] [INFO] logistics_app: Models initialized successfully.
+[2025-05-06 11:57:08,080] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-05-06 11:57:12,764] [WARNING] logistics_app: [Redis] Connection failed. Caching will be disabled.
+[2025-05-06 11:57:15,654] [INFO] logistics_app: Models initialized successfully.
+[2025-05-06 11:57:15,656] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-05-06 11:57:33,498] [WARNING] logistics_app: [Redis] Connection failed. Caching will be disabled.
+[2025-05-06 11:57:36,020] [INFO] logistics_app: Models initialized successfully.
+[2025-05-06 11:57:36,021] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-05-06 11:57:37,379] [INFO] logistics_app: Starting database seeding...
+[2025-05-06 11:57:37,399] [INFO] logistics_app: Admin user already exists.
+[2025-05-06 11:57:37,407] [INFO] logistics_app: Driver driver1@example.com already exists.
+[2025-05-06 11:57:37,412] [INFO] logistics_app: Driver driver2@example.com already exists.
+[2025-05-06 11:57:37,418] [INFO] logistics_app: Driver driver3@example.com already exists.
+[2025-05-06 11:57:37,421] [INFO] logistics_app: Driver driver4@example.com already exists.
+[2025-05-06 11:57:37,426] [INFO] logistics_app: Driver driver5@example.com already exists.
+[2025-05-06 11:57:37,434] [INFO] logistics_app: Driver driver6@example.com already exists.
+[2025-05-06 11:57:37,437] [INFO] logistics_app: Driver driver7@example.com already exists.
+[2025-05-06 11:57:37,442] [INFO] logistics_app: Driver driver8@example.com already exists.
+[2025-05-06 11:57:37,450] [INFO] logistics_app: Driver driver9@example.com already exists.
+[2025-05-06 11:57:37,453] [INFO] logistics_app: Driver driver10@example.com already exists.
+[2025-05-06 11:57:37,457] [INFO] logistics_app: Driver driver11@example.com already exists.
+[2025-05-06 11:57:37,458] [INFO] logistics_app: Driver driver12@example.com already exists.
+[2025-05-06 11:57:37,459] [INFO] logistics_app: Driver driver13@example.com already exists.
+[2025-05-06 11:57:37,461] [INFO] logistics_app: Driver driver14@example.com already exists.
+[2025-05-06 11:57:37,465] [INFO] logistics_app: Driver driver15@example.com already exists.
+[2025-05-06 11:57:37,469] [INFO] logistics_app: Driver driver16@example.com already exists.
+[2025-05-06 11:57:37,471] [INFO] logistics_app: Driver driver17@example.com already exists.
+[2025-05-06 11:57:37,475] [INFO] logistics_app: Driver driver18@example.com already exists.
+[2025-05-06 11:57:37,478] [INFO] logistics_app: Driver driver19@example.com already exists.
+[2025-05-06 11:57:37,484] [INFO] logistics_app: Driver driver20@example.com already exists.
+[2025-05-06 11:57:37,507] [INFO] logistics_app: Client already exists.
+[2025-05-06 11:57:37,523] [INFO] logistics_app: Location already exists.
+[2025-05-06 11:57:37,537] [INFO] logistics_app: Order already exists.
+[2025-05-06 11:57:37,556] [INFO] logistics_app: Product already exists.
+[2025-05-06 11:57:37,566] [INFO] logistics_app: Vehicle already exists.
+[2025-05-06 11:57:37,592] [INFO] logistics_app: Carrier already exists.
+[2025-05-06 11:57:37,617] [INFO] logistics_app: Shipment already exists.
+[2025-05-06 11:57:37,633] [INFO] logistics_app: TrackingEvent already exists.
+[2025-05-06 11:57:37,669] [WARNING] logistics_app: Cannot seed WarehouseOperation - missing location or operator.
+[2025-05-06 11:57:37,670] [INFO] logistics_app: Database seeding completed successfully.
+[2025-05-06 12:06:33,729] [WARNING] logistics_app: [Redis] Connection failed. Caching will be disabled.
+[2025-05-06 12:06:35,650] [INFO] logistics_app: Models initialized successfully.
+[2025-05-06 12:06:35,650] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-05-06 12:06:37,238] [INFO] logistics_app: Starting database seeding...
+[2025-05-06 12:06:37,245] [INFO] logistics_app: Admin user already exists.
+[2025-05-06 12:06:37,259] [INFO] logistics_app: Driver jaredfry@example.net seeded successfully.
+[2025-05-06 12:06:37,263] [INFO] logistics_app: Driver obecker@example.com seeded successfully.
+[2025-05-06 12:06:37,266] [INFO] logistics_app: Driver beckyortiz@example.net seeded successfully.
+[2025-05-06 12:06:37,270] [INFO] logistics_app: Driver wardryan@example.org seeded successfully.
+[2025-05-06 12:08:08,433] [WARNING] logistics_app: [Redis] Connection failed. Caching will be disabled.
+[2025-05-06 12:08:10,270] [INFO] logistics_app: Models initialized successfully.
+[2025-05-06 12:08:10,270] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-05-06 12:08:11,748] [INFO] logistics_app: Starting database seeding...
+[2025-05-06 12:08:11,801] [INFO] logistics_app: Admin user seeded successfully.
+[2025-05-06 12:08:11,809] [INFO] logistics_app: Driver ramirezbrent@example.org seeded successfully.
+[2025-05-06 12:08:11,813] [INFO] logistics_app: Driver cruzdenise@example.com seeded successfully.
+[2025-05-06 12:08:11,815] [INFO] logistics_app: Driver bryan@example.org seeded successfully.
+[2025-05-06 12:08:11,817] [INFO] logistics_app: Driver haroldcoleman@example.org seeded successfully.
+[2025-05-06 12:08:11,819] [INFO] logistics_app: Driver vanessa26@example.com seeded successfully.
+[2025-05-06 12:08:11,822] [INFO] logistics_app: Driver micheleanderson@example.org seeded successfully.
+[2025-05-06 12:08:11,826] [INFO] logistics_app: Driver ngriffin@example.org seeded successfully.
+[2025-05-06 12:08:11,828] [INFO] logistics_app: Driver elizabethbrown@example.org seeded successfully.
+[2025-05-06 12:08:11,830] [INFO] logistics_app: Driver vjackson@example.com seeded successfully.
+[2025-05-06 12:08:11,831] [INFO] logistics_app: Driver jferguson@example.net seeded successfully.
+[2025-05-06 12:08:11,833] [INFO] logistics_app: Driver hmorrison@example.com seeded successfully.
+[2025-05-06 12:08:11,837] [INFO] logistics_app: Driver rogerslisa@example.org seeded successfully.
+[2025-05-06 12:08:11,840] [INFO] logistics_app: Driver meganbaker@example.org seeded successfully.
+[2025-05-06 12:08:11,843] [INFO] logistics_app: Driver robinsonmaurice@example.net seeded successfully.
+[2025-05-06 12:08:11,845] [INFO] logistics_app: Driver brandon12@example.org seeded successfully.
+[2025-05-06 12:08:11,846] [INFO] logistics_app: Driver pholland@example.org seeded successfully.
+[2025-05-06 12:08:11,848] [INFO] logistics_app: Driver clarktracy@example.org seeded successfully.
+[2025-05-06 12:08:11,851] [INFO] logistics_app: Driver collinsluis@example.com seeded successfully.
+[2025-05-06 12:08:11,854] [INFO] logistics_app: Driver sharonwong@example.net seeded successfully.
+[2025-05-06 12:08:11,857] [INFO] logistics_app: Driver vjones@example.net seeded successfully.
+[2025-05-06 12:08:11,861] [WARNING] logistics_app: Cannot create driver schedule - driver not found.
+[2025-05-06 12:08:11,866] [INFO] logistics_app: Client seeded successfully.
+[2025-05-06 12:08:11,872] [INFO] logistics_app: Location seeded successfully.
+[2025-05-06 12:08:11,878] [INFO] logistics_app: order_reference validated successfully: ORD001
+[2025-05-06 12:08:11,878] [INFO] logistics_app: order_date validated successfully: 2025-05-06 09:08:11.878439+00:00
+[2025-05-06 12:08:11,878] [INFO] logistics_app: requested_pickup_date validated successfully: 2025-05-07 09:08:11.878505
+[2025-05-06 12:08:11,879] [INFO] logistics_app: requested_delivery_date validated successfully: 2025-05-09 09:08:11.878534
+[2025-05-06 12:08:11,879] [INFO] logistics_app: total_weight validated successfully: 100.0
+[2025-05-06 12:08:11,879] [INFO] logistics_app: total_volume validated successfully: 1.0
+[2025-05-06 12:08:11,879] [INFO] logistics_app: declared_value validated successfully: 1000.0
+[2025-05-06 12:08:11,879] [INFO] logistics_app: Order seeded successfully.
+[2025-05-06 12:08:11,888] [INFO] logistics_app: Product seeded successfully.
+[2025-05-06 12:08:11,897] [WARNING] logistics_app: No carrier found to associate with vehicle.
+[2025-05-06 12:08:11,899] [INFO] logistics_app: Carrier seeded successfully.
+[2025-05-06 12:08:11,909] [INFO] logistics_app: Validation passed for shipment_reference: SHIP001 is valid.
+[2025-05-06 12:08:11,909] [INFO] logistics_app: Shipment seeded successfully.
+[2025-05-06 12:08:11,916] [INFO] logistics_app: Valid GPS coordinates: 1.2921,36.8219
+[2025-05-06 12:08:11,920] [INFO] logistics_app: TrackingEvent seeded successfully.
+[2025-05-06 12:08:11,931] [WARNING] logistics_app: Cannot seed WarehouseOperation - missing location or operator.
+[2025-05-06 12:08:11,931] [INFO] logistics_app: Database seeding completed successfully.
+[2025-05-06 12:09:48,252] [WARNING] logistics_app: [Redis] Connection failed. Caching will be disabled.
+[2025-05-06 12:10:00,402] [WARNING] logistics_app: [Redis] Connection failed. Caching will be disabled.
+[2025-05-06 12:10:15,079] [WARNING] logistics_app: [Redis] Connection failed. Caching will be disabled.
+[2025-05-06 12:11:05,974] [WARNING] logistics_app: [Redis] Connection failed. Caching will be disabled.
+[2025-05-06 12:11:07,828] [INFO] logistics_app: Models initialized successfully.
+[2025-05-06 12:11:07,828] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-05-06 12:11:09,308] [INFO] logistics_app: Starting database seeding...
+[2025-05-06 12:11:09,335] [INFO] logistics_app: Admin user seeded successfully.
+[2025-05-06 12:11:09,343] [INFO] logistics_app: Driver hgrant@example.com seeded successfully.
+[2025-05-06 12:11:09,348] [INFO] logistics_app: Driver mullinsstephen@example.com seeded successfully.
+[2025-05-06 12:11:09,351] [INFO] logistics_app: Driver mcdonaldkyle@example.com seeded successfully.
+[2025-05-06 12:11:09,352] [INFO] logistics_app: Driver zmckee@example.com seeded successfully.
+[2025-05-06 12:11:09,354] [INFO] logistics_app: Driver nburton@example.com seeded successfully.
+[2025-05-06 12:11:09,355] [INFO] logistics_app: Driver briggstimothy@example.com seeded successfully.
+[2025-05-06 12:11:09,359] [INFO] logistics_app: Driver rsalazar@example.com seeded successfully.
+[2025-05-06 12:11:09,362] [INFO] logistics_app: Driver stephaniejackson@example.org seeded successfully.
+[2025-05-06 12:11:09,365] [INFO] logistics_app: Driver floresshannon@example.net seeded successfully.
+[2025-05-06 12:11:09,368] [INFO] logistics_app: Driver aprilcosta@example.org seeded successfully.
+[2025-05-06 12:11:09,370] [INFO] logistics_app: Driver robertjones@example.net seeded successfully.
+[2025-05-06 12:11:09,372] [INFO] logistics_app: Driver john76@example.org seeded successfully.
+[2025-05-06 12:11:09,375] [INFO] logistics_app: Driver briddle@example.com seeded successfully.
+[2025-05-06 12:11:09,379] [INFO] logistics_app: Driver georgemichael@example.net seeded successfully.
+[2025-05-06 12:11:09,381] [INFO] logistics_app: Driver jessica94@example.com seeded successfully.
+[2025-05-06 12:11:09,384] [INFO] logistics_app: Driver mgarcia@example.net seeded successfully.
+[2025-05-06 12:11:09,386] [INFO] logistics_app: Driver robinsonmichele@example.net seeded successfully.
+[2025-05-06 12:11:09,388] [INFO] logistics_app: Driver nicholsondavid@example.org seeded successfully.
+[2025-05-06 12:11:09,391] [INFO] logistics_app: Driver cwhite@example.net seeded successfully.
+[2025-05-06 12:11:09,393] [INFO] logistics_app: Driver angelicabeard@example.org seeded successfully.
+[2025-05-06 12:11:09,398] [WARNING] logistics_app: Cannot create driver schedule - driver not found.
+[2025-05-06 12:11:09,406] [INFO] logistics_app: Client seeded successfully.
+[2025-05-06 12:11:09,416] [INFO] logistics_app: Location seeded successfully.
+[2025-05-06 12:11:09,424] [INFO] logistics_app: order_reference validated successfully: ORD001
+[2025-05-06 12:11:09,424] [INFO] logistics_app: order_date validated successfully: 2025-05-06 09:11:09.423998+00:00
+[2025-05-06 12:11:09,424] [INFO] logistics_app: requested_pickup_date validated successfully: 2025-05-07 09:11:09.424099
+[2025-05-06 12:11:09,425] [INFO] logistics_app: requested_delivery_date validated successfully: 2025-05-09 09:11:09.424152
+[2025-05-06 12:11:09,425] [INFO] logistics_app: total_weight validated successfully: 100.0
+[2025-05-06 12:11:09,425] [INFO] logistics_app: total_volume validated successfully: 1.0
+[2025-05-06 12:11:09,425] [INFO] logistics_app: declared_value validated successfully: 1000.0
+[2025-05-06 12:11:09,426] [INFO] logistics_app: Order seeded successfully.
+[2025-05-06 12:11:09,435] [INFO] logistics_app: Product seeded successfully.
+[2025-05-06 12:11:09,448] [WARNING] logistics_app: No carrier found to associate with vehicle.
+[2025-05-06 12:11:09,451] [INFO] logistics_app: Carrier seeded successfully.
+[2025-05-06 12:11:09,461] [INFO] logistics_app: Validation passed for shipment_reference: SHIP001 is valid.
+[2025-05-06 12:11:09,462] [INFO] logistics_app: Shipment seeded successfully.
+[2025-05-06 12:11:09,471] [INFO] logistics_app: Valid GPS coordinates: 1.2921,36.8219
+[2025-05-06 12:11:09,474] [INFO] logistics_app: TrackingEvent seeded successfully.
+[2025-05-06 12:11:09,484] [WARNING] logistics_app: Cannot seed WarehouseOperation - missing location or operator.
+[2025-05-06 12:11:09,485] [INFO] logistics_app: Database seeding completed successfully.
+[2025-05-06 12:13:13,490] [WARNING] logistics_app: [Redis] Connection failed. Caching will be disabled.
+[2025-05-06 12:13:15,317] [INFO] logistics_app: Models initialized successfully.
+[2025-05-06 12:13:15,317] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-05-06 12:13:16,895] [INFO] logistics_app: Starting database seeding...
+[2025-05-06 12:13:16,920] [INFO] logistics_app: Admin user seeded successfully.
+[2025-05-06 12:13:31,337] [WARNING] logistics_app: [Redis] Connection failed. Caching will be disabled.
+[2025-05-06 12:13:33,236] [INFO] logistics_app: Models initialized successfully.
+[2025-05-06 12:13:33,236] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-05-06 12:13:34,813] [INFO] logistics_app: Starting database seeding...
+[2025-05-06 12:13:34,838] [INFO] logistics_app: Admin user seeded successfully.
+[2025-05-06 12:13:34,844] [INFO] logistics_app: Driver hicksjose@example.com seeded successfully.
+[2025-05-06 12:13:34,848] [INFO] logistics_app: Driver jlozano@example.com seeded successfully.
+[2025-05-06 12:13:34,851] [INFO] logistics_app: Driver hessnicole@example.net seeded successfully.
+[2025-05-06 12:13:34,854] [INFO] logistics_app: Driver christopherflores@example.com seeded successfully.
+[2025-05-06 12:13:34,856] [INFO] logistics_app: Driver melissagriffin@example.net seeded successfully.
+[2025-05-06 12:13:34,858] [INFO] logistics_app: Driver juliehines@example.com seeded successfully.
+[2025-05-06 12:13:34,860] [INFO] logistics_app: Driver richardhicks@example.com seeded successfully.
+[2025-05-06 12:13:34,862] [INFO] logistics_app: Driver ashley76@example.com seeded successfully.
+[2025-05-06 12:13:34,865] [INFO] logistics_app: Driver zwhite@example.net seeded successfully.
+[2025-05-06 12:13:34,867] [INFO] logistics_app: Driver teresa33@example.org seeded successfully.
+[2025-05-06 12:13:34,870] [INFO] logistics_app: Driver atkinskevin@example.org seeded successfully.
+[2025-05-06 12:13:34,872] [INFO] logistics_app: Driver bonnieramos@example.com seeded successfully.
+[2025-05-06 12:13:34,874] [INFO] logistics_app: Driver millerheather@example.com seeded successfully.
+[2025-05-06 12:13:34,877] [INFO] logistics_app: Driver dodsonstephanie@example.net seeded successfully.
+[2025-05-06 12:13:34,880] [INFO] logistics_app: Driver carloshayes@example.com seeded successfully.
+[2025-05-06 12:13:34,883] [INFO] logistics_app: Driver michelebecker@example.net seeded successfully.
+[2025-05-06 12:13:34,885] [INFO] logistics_app: Driver tonyamckinney@example.net seeded successfully.
+[2025-05-06 12:13:34,888] [INFO] logistics_app: Driver vincent87@example.net seeded successfully.
+[2025-05-06 12:13:34,890] [INFO] logistics_app: Driver leroyolson@example.org seeded successfully.
+[2025-05-06 12:13:34,892] [INFO] logistics_app: Driver whiteharold@example.net seeded successfully.
+[2025-05-06 12:13:34,895] [WARNING] logistics_app: Cannot create driver schedule - driver not found.
+[2025-05-06 12:13:34,900] [INFO] logistics_app: Client seeded successfully.
+[2025-05-06 12:13:34,906] [INFO] logistics_app: Location seeded successfully.
+[2025-05-06 12:13:34,912] [INFO] logistics_app: order_reference validated successfully: ORD001
+[2025-05-06 12:13:34,912] [INFO] logistics_app: order_date validated successfully: 2025-05-06 09:13:34.912182+00:00
+[2025-05-06 12:13:34,913] [INFO] logistics_app: requested_pickup_date validated successfully: 2025-05-07 09:13:34.912249
+[2025-05-06 12:13:34,913] [INFO] logistics_app: requested_delivery_date validated successfully: 2025-05-09 09:13:34.912289
+[2025-05-06 12:13:34,913] [INFO] logistics_app: total_weight validated successfully: 100.0
+[2025-05-06 12:13:34,913] [INFO] logistics_app: total_volume validated successfully: 1.0
+[2025-05-06 12:13:34,913] [INFO] logistics_app: declared_value validated successfully: 1000.0
+[2025-05-06 12:13:34,913] [INFO] logistics_app: Order seeded successfully.
+[2025-05-06 12:13:34,922] [INFO] logistics_app: Product seeded successfully.
+[2025-05-06 12:13:34,932] [WARNING] logistics_app: No carrier found to associate with vehicle.
+[2025-05-06 12:13:34,933] [INFO] logistics_app: Carrier seeded successfully.
+[2025-05-06 12:13:34,943] [INFO] logistics_app: Validation passed for shipment_reference: SHIP001 is valid.
+[2025-05-06 12:13:34,943] [INFO] logistics_app: Shipment seeded successfully.
+[2025-05-06 12:13:34,953] [INFO] logistics_app: Valid GPS coordinates: 1.2921,36.8219
+[2025-05-06 12:13:34,957] [INFO] logistics_app: TrackingEvent seeded successfully.
+[2025-05-06 12:13:34,965] [WARNING] logistics_app: Cannot seed WarehouseOperation - missing location or operator.
+[2025-05-06 12:13:34,965] [INFO] logistics_app: Database seeding completed successfully.
+[2025-05-06 12:16:43,635] [WARNING] logistics_app: [Redis] Connection failed. Caching will be disabled.
+[2025-05-06 12:16:45,600] [INFO] logistics_app: Models initialized successfully.
+[2025-05-06 12:16:45,600] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-05-06 12:16:47,136] [INFO] logistics_app: Starting database seeding...
+[2025-05-06 12:16:47,164] [INFO] logistics_app: Admin user seeded successfully.
+[2025-05-06 12:16:47,171] [INFO] logistics_app: Driver georgeburgess@example.net seeded successfully.
+[2025-05-06 12:16:47,175] [INFO] logistics_app: Driver cnguyen@example.net seeded successfully.
+[2025-05-06 12:16:47,177] [INFO] logistics_app: Driver michael17@example.net seeded successfully.
+[2025-05-06 12:16:47,180] [INFO] logistics_app: Driver floydbonnie@example.com seeded successfully.
+[2025-05-06 12:16:47,182] [INFO] logistics_app: Driver dcox@example.org seeded successfully.
+[2025-05-06 12:16:47,183] [INFO] logistics_app: Driver robertosmith@example.com seeded successfully.
+[2025-05-06 12:16:47,185] [INFO] logistics_app: Driver sandy41@example.com seeded successfully.
+[2025-05-06 12:16:47,186] [INFO] logistics_app: Driver nguyentimothy@example.org seeded successfully.
+[2025-05-06 12:16:47,189] [INFO] logistics_app: Driver johndiaz@example.org seeded successfully.
+[2025-05-06 12:16:47,191] [INFO] logistics_app: Driver walkergina@example.com seeded successfully.
+[2025-05-06 12:16:47,193] [INFO] logistics_app: Driver yhancock@example.net seeded successfully.
+[2025-05-06 12:16:47,196] [INFO] logistics_app: Driver rebeccataylor@example.org seeded successfully.
+[2025-05-06 12:16:47,198] [INFO] logistics_app: Driver benjaminriley@example.org seeded successfully.
+[2025-05-06 12:16:47,199] [INFO] logistics_app: Driver lauren66@example.net seeded successfully.
+[2025-05-06 12:16:47,201] [INFO] logistics_app: Driver lstevens@example.org seeded successfully.
+[2025-05-06 12:16:47,203] [INFO] logistics_app: Driver kellerwendy@example.net seeded successfully.
+[2025-05-06 12:16:47,205] [INFO] logistics_app: Driver danielle53@example.com seeded successfully.
+[2025-05-06 12:16:47,207] [INFO] logistics_app: Driver williamfuller@example.com seeded successfully.
+[2025-05-06 12:16:47,209] [INFO] logistics_app: Driver mtrevino@example.com seeded successfully.
+[2025-05-06 12:16:47,211] [INFO] logistics_app: Driver ygarza@example.com seeded successfully.
+[2025-05-06 12:16:47,214] [WARNING] logistics_app: Cannot create driver schedule - driver not found.
+[2025-05-06 12:16:47,217] [INFO] logistics_app: Client seeded successfully.
+[2025-05-06 12:16:47,221] [INFO] logistics_app: Location seeded successfully.
+[2025-05-06 12:16:47,226] [INFO] logistics_app: order_reference validated successfully: ORD001
+[2025-05-06 12:16:47,226] [INFO] logistics_app: order_date validated successfully: 2025-05-06 09:16:47.226595+00:00
+[2025-05-06 12:16:47,226] [INFO] logistics_app: requested_pickup_date validated successfully: 2025-05-07 09:16:47.226641
+[2025-05-06 12:16:47,227] [INFO] logistics_app: requested_delivery_date validated successfully: 2025-05-09 09:16:47.226662
+[2025-05-06 12:16:47,227] [INFO] logistics_app: total_weight validated successfully: 100.0
+[2025-05-06 12:16:47,227] [INFO] logistics_app: total_volume validated successfully: 1.0
+[2025-05-06 12:16:47,227] [INFO] logistics_app: declared_value validated successfully: 1000.0
+[2025-05-06 12:16:47,227] [INFO] logistics_app: Order seeded successfully.
+[2025-05-06 12:16:47,235] [INFO] logistics_app: Product seeded successfully.
+[2025-05-06 12:16:47,246] [WARNING] logistics_app: No carrier found to associate with vehicle.
+[2025-05-06 12:16:47,247] [INFO] logistics_app: Carrier seeded successfully.
+[2025-05-06 12:16:47,256] [INFO] logistics_app: Validation passed for shipment_reference: SHIP001 is valid.
+[2025-05-06 12:16:47,256] [INFO] logistics_app: Shipment seeded successfully.
+[2025-05-06 12:16:47,265] [INFO] logistics_app: Valid GPS coordinates: 1.2921,36.8219
+[2025-05-06 12:16:47,268] [INFO] logistics_app: TrackingEvent seeded successfully.
+[2025-05-06 12:16:47,279] [WARNING] logistics_app: Cannot seed WarehouseOperation - missing location or operator.
+[2025-05-06 12:16:47,280] [INFO] logistics_app: Database seeding completed successfully.
