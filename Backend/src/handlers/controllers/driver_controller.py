@@ -30,7 +30,7 @@ def create_driver_view():
 def get_all_drivers_view():
     try:
         drivers = driver_repo.get_all_drivers()
-        return jsonify(drivers if drivers else []), 200
+        return jsonify([driver.to_dict() for driver in drivers]), 200
     except Exception as e:
         logger.error(f"Error fetching drivers: {str(e)}")
         return jsonify({"message": "Internal server error"}), 500

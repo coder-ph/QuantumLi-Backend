@@ -43,6 +43,24 @@ class Driver(BaseModel):
     def __repr__(self):
         return f"<Driver(driver_id={self.driver_id}, first_name={self.first_name}, last_name={self.last_name})>"
 
+    def to_dict(self):
+        return {
+            "driver_id": str(self.driver_id),
+            "carrier_id": str(self.carrier_id) if self.carrier_id else None,
+            "first_name": self.first_name,
+            "last_name": self.last_name,
+            "license_number": self.license_number,
+            "license_type": self.license_type,
+            "license_expiry": self.license_expiry.isoformat() if self.license_expiry else None,
+            "contact_phone": self.contact_phone,
+            "email": self.email,
+            "address": self.address,
+            "emergency_contact": self.emergency_contact,
+            "medical_certificate_expiry": self.medical_certificate_expiry.isoformat() if self.medical_certificate_expiry else None,
+            "training_certifications": self.training_certifications,
+            "status": self.status
+        }
+
     @staticmethod
     def validate_license_number(license_number):
         if len(license_number) > 100 or not license_number.isalnum():
