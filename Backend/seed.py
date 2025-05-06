@@ -70,28 +70,29 @@ def seed_driver_schedule():
 
 
 def seed_drivers():
-    driver = Driver.query.filter_by(email="driver1@example.com").first()
-    if not driver:
-        driver = Driver(
-            first_name="John",
-            last_name="Doe",
-            email="driver1@example.com",
-            license_number="ABC12345",
-            license_expiry=datetime.utcnow() + timedelta(days=365),
-            license_type="Class A",
-            contact_phone="+254700000000",
-            medical_certificate_expiry=datetime.utcnow() + timedelta(days=365),
-            status="active",
-            created_at=datetime.now(timezone.utc),
-            updated_at=datetime.now(timezone.utc)
-        )
-        db.session.add(driver)
-        db.session.commit()  
-        logger.info("Driver seeded successfully.")
-    else:
-        logger.info("Driver already exists.")
-    seed_driver_schedule()
-
+    for i in range(1, 21):  
+        email = f"driver{i}@example.com"
+        driver = Driver.query.filter_by(email=email).first()
+        if not driver:
+            driver = Driver(
+                first_name=f"Driver{i}",
+                last_name="Doe",
+                email=email,
+                license_number=f"ABC12345{i}",
+                license_expiry=datetime.utcnow() + timedelta(days=365),
+                license_type="Class A",
+                contact_phone=f"+25470000000{i}",
+                medical_certificate_expiry=datetime.utcnow() + timedelta(days=365),
+                status="active",
+                created_at=datetime.now(timezone.utc),
+                updated_at=datetime.now(timezone.utc)
+            )
+            db.session.add(driver)
+            logger.info(f"Driver {email} seeded successfully.")
+        else:
+            logger.info(f"Driver {email} already exists.")
+    db.session.commit()  
+    seed_driver_schedule()  
 
 def seed_clients():
     try:
