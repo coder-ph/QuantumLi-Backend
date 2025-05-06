@@ -1,4 +1,5 @@
 from flask import Blueprint
+
 from src.routers.auth_routes import auth_bp
 from src.routers.product_routes import product_bp
 from src.routers.system_user_routes import system_user_bp
@@ -10,6 +11,7 @@ from src.routers.order_routes import orders_bp
 from src.routers.order_response_routes import order_responses_bp
 from src.routers.notification_routes import notification_bp
 from src.routers.driver_assignment_routes import driver_assignment_bp
+from src.routers.performance_metrics_routes import performance_metrics_bp
 
 
 def register_routes(app):
@@ -23,4 +25,5 @@ def register_routes(app):
      app.register_blueprint(orders_bp, url_prefix='/api/v1')
      app.register_blueprint(order_responses_bp, url_prefix='/api/v1')
      app.register_blueprint(notification_bp, url_prefix='/api/v1')
-     app.register_blueprint(driver_assignment_bp, url_prefix='/api/v1/driver-assignment')     
+     app.register_blueprint(driver_assignment_bp, url_prefix='/api/v1/driver-assignment')
+     app.register_blueprint(performance_metrics_bp, url_prefix='/api/v1/performance')
