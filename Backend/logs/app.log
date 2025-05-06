@@ -6778,3 +6778,64 @@ WHERE documents.driver_id = ?]
 [2025-05-05 18:56:40,925] [INFO] logistics_app: TrackingEvent already exists.
 [2025-05-05 18:56:40,931] [WARNING] logistics_app: Cannot seed WarehouseOperation - missing location or operator.
 [2025-05-05 18:56:40,932] [INFO] logistics_app: Database seeding completed successfully.
+[2025-05-06 10:06:23,207] [WARNING] logistics_app: [Redis] Connection failed. Caching will be disabled.
+[2025-05-06 10:06:24,946] [INFO] logistics_app: Models initialized successfully.
+[2025-05-06 10:06:24,946] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-05-06 10:06:26,901] [WARNING] logistics_app: [Redis] Connection failed. Caching will be disabled.
+[2025-05-06 10:06:28,321] [INFO] logistics_app: Models initialized successfully.
+[2025-05-06 10:06:28,322] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-05-06 10:06:37,339] [WARNING] logistics_app: [Redis] Connection failed. Caching will be disabled.
+[2025-05-06 10:06:38,942] [INFO] logistics_app: Models initialized successfully.
+[2025-05-06 10:06:38,942] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-05-06 10:06:40,410] [INFO] logistics_app: Starting database seeding...
+[2025-05-06 10:06:40,434] [INFO] logistics_app: Admin user already exists.
+[2025-05-06 10:06:40,438] [INFO] logistics_app: Driver already exists.
+[2025-05-06 10:06:40,443] [INFO] logistics_app: Client already exists.
+[2025-05-06 10:06:40,446] [INFO] logistics_app: Location already exists.
+[2025-05-06 10:06:40,451] [INFO] logistics_app: Order already exists.
+[2025-05-06 10:06:40,455] [INFO] logistics_app: Product already exists.
+[2025-05-06 10:06:40,458] [INFO] logistics_app: Vehicle already exists.
+[2025-05-06 10:06:40,462] [INFO] logistics_app: Carrier already exists.
+[2025-05-06 10:06:40,468] [INFO] logistics_app: Shipment already exists.
+[2025-05-06 10:06:40,472] [INFO] logistics_app: TrackingEvent already exists.
+[2025-05-06 10:06:40,479] [WARNING] logistics_app: Cannot seed WarehouseOperation - missing location or operator.
+[2025-05-06 10:06:40,479] [INFO] logistics_app: Database seeding completed successfully.
+[2025-05-06 10:32:33,476] [WARNING] logistics_app: [Redis] Connection failed. Caching will be disabled.
+[2025-05-06 10:32:50,715] [WARNING] logistics_app: [Redis] Connection failed. Caching will be disabled.
+[2025-05-06 10:32:52,254] [INFO] logistics_app: Models initialized successfully.
+[2025-05-06 10:32:52,255] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-05-06 10:32:54,166] [WARNING] logistics_app: [Redis] Connection failed. Caching will be disabled.
+[2025-05-06 10:37:50,309] [WARNING] logistics_app: [Redis] Connection failed. Caching will be disabled.
+[2025-05-06 10:37:52,314] [INFO] logistics_app: Models initialized successfully.
+[2025-05-06 10:37:52,315] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-05-06 10:37:54,384] [WARNING] logistics_app: [Redis] Connection failed. Caching will be disabled.
+[2025-05-06 10:37:56,090] [INFO] logistics_app: Models initialized successfully.
+[2025-05-06 10:37:56,090] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-05-06 10:38:53,780] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-06 10:38:53,788] [INFO] logistics_app: Drivers statuses updated successfully.
+[2025-05-06 10:38:57,669] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-06 10:39:53,672] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-06 10:39:57,569] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-06 10:40:53,673] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-06 10:40:57,568] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-06 10:41:05,497] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-06 10:41:05,497] [ERROR] logistics_app: Error fetching drivers: Object of type Driver is not JSON serializable
+[2025-05-06 10:41:53,672] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-06 10:41:57,568] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-06 10:42:53,673] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-06 10:42:57,569] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-06 10:43:00,897] [WARNING] logistics_app: [Redis] Connection failed. Caching will be disabled.
+[2025-05-06 10:43:03,095] [INFO] logistics_app: Models initialized successfully.
+[2025-05-06 10:43:03,096] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-05-06 10:43:05,298] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-06 10:43:05,299] [ERROR] logistics_app: Error fetching drivers: Object of type Driver is not JSON serializable
+[2025-05-06 10:43:53,673] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-06 10:44:03,065] [WARNING] logistics_app: [Redis] Connection failed. Caching will be disabled.
+[2025-05-06 10:44:04,724] [INFO] logistics_app: Models initialized successfully.
+[2025-05-06 10:44:04,724] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-05-06 10:44:53,672] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-06 10:45:06,226] [INFO] logistics_app: Retrieved 3 active drivers.
+[2025-05-06 10:45:09,823] [WARNING] logistics_app: [Redis] Connection failed. Caching will be disabled.
+[2025-05-06 10:45:11,527] [INFO] logistics_app: Models initialized successfully.
+[2025-05-06 10:45:11,528] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-05-06 10:45:12,923] [INFO] logistics_app: Retrieved 3 active drivers.
