@@ -24,8 +24,10 @@ from src.Models.vehicles import Vehicle
 from src.Models.employee import Employee
 from src.utils.logger import logger
 
-from faker import Faker
-from random import randint, choice
+from faker import Faker #type: ignore
+from random import randint, choice, uniform
+import json
+import uuid
 
 fake = Faker()
 
@@ -47,21 +49,34 @@ def seed_admin_user():
         logger.info("Admin user seeded successfully.")
     else:
         logger.info("Admin user already exists.")
-
+ 
 
 def seed_driver_schedule():
-    driver = Driver.query.filter_by(email="driver1@example.com").first()
-    if driver:
-        schedule = DriverSchedule.query.filter_by(driver_id=driver.driver_id).first()
-        if not schedule:
+
+    drivers = Driver.query.all()
+
+    def random_time_between(start="06:00", end="18:00"):
+        start_dt = datetime.strptime(start, "%H:%M")
+        end_dt = datetime.strptime(end, "%H:%M")
+        delta = end_dt - start_dt
+        random_minutes = fake.random_int(min=0, max=int(delta.total_seconds() // 60))
+        random_time = (start_dt + timedelta(minutes=random_minutes)).strftime("%H:%M")
+        return random_time
+
+    for driver in drivers:
+        try:
+            if DriverSchedule.query.filter_by(driver_id=driver.driver_id).first():
+                logger.info(f"Schedule already exists for driver_id={driver.driver_id}")
+                continue
+
             weekly_schedule = {
-                "monday": {"work": True, "start": "08:00", "end": "17:00"},
-                "tuesday": {"work": True, "start": "08:00", "end": "17:00"},
-                "wednesday": {"work": True, "start": "08:00", "end": "17:00"},
-                "thursday": {"work": True, "start": "08:00", "end": "17:00"},
-                "friday": {"work": True, "start": "08:00", "end": "17:00"},
-                "saturday": {"work": False, "start": None, "end": None},
-                "sunday": {"work": False, "start": None, "end": None}
+                "monday": {"work": choice([True,False]), "start": f"{random_time_between("06:00", "10:00")}", "end": f"{random_time_between("15:00", "20:00")}"},
+                "tuesday": {"work": choice([True,False]), "start": f"{random_time_between("06:00", "10:00")}", "end": f"{random_time_between("15:00", "20:00")}"},
+                "wednesday": {"work": choice([True,False]), "start":f"{random_time_between("06:00", "10:00")}", "end": f"{random_time_between("15:00", "20:00")}"},
+                "thursday": {"work": choice([True,False]), "start": f"{random_time_between("06:00", "10:00")}", "end": f"{random_time_between("15:00", "20:00")}"},
+                "friday": {"work": choice([True,False]), "start": f"{random_time_between("06:00", "10:00")}", "end": f"{random_time_between("15:00", "20:00")}"},
+                "saturday": {"work": choice([True,False]), "start": None, "end": None},
+                "sunday": {"work": choice([True,False]), "start": None, "end": None}
             }
             schedule = DriverSchedule(
                 driver_id=driver.driver_id,
@@ -70,25 +85,81 @@ def seed_driver_schedule():
             db.session.add(schedule)
             db.session.commit()
             logger.info("Driver schedule seeded successfully.")
-    else:
-        logger.warning("Cannot create driver schedule - driver not found.")
+        
+        except:
+            weekly_schedule=json.dumps(weekly_schedule)
+            logger.warning("Cannot create driver schedule.")
+
+    # driver = Driver.query.filter_by(email="driver1@example.com").first()
+    # if driver:
+    #     schedule = DriverSchedule.query.filter_by(driver_id=driver.driver_id).first()
+    #     if not schedule:
+            
+    # else:
+def seed_carriers():
+    for i in range(1, 11): 
+        email = fake.unique.company_email()
+        
+        try:
+            carrier = Carrier(
+                carrier_id=uuid.uuid4(),
+                carrier_name=fake.company(),
+                carrier_type=choice(['Logistics', 'Freight', 'Courier', 'Trucking', 'Air Cargo']),
+                contact_person=fake.name(),
+                email=email,
+                phone=fake.phone_number(),
+                account_number=fake.bban(), 
+                contract_details=fake.text(max_nb_chars=200),
+                service_levels=choice([
+                    "Standard, Express, Overnight",
+                    "Basic, Premium, Priority",
+                    "Ground, Air, International"
+                ]),
+                insurance_details=fake.text(max_nb_chars=150),
+                performance_rating=round(uniform(3.0, 5.0), 2)
+            )
+            
+            db.session.add(carrier)
+            db.session.commit()  
+            
+            logger.info(f"Carrier seeded successfully.")
+        
+        except Exception as e:
+            logger.error(f"Carrier seeding failed for: {e}")
+            db.session.rollback() 
+    
+    logger.info("Carriers seeding process completed.")
 
 
 def seed_drivers():
     for i in range(1, 21):  
         email = f"{fake.email()}"
         driver = Driver.query.filter_by(email=email).first()
+        carriers = Carrier.query.all()
         if not driver:
             driver = Driver(
-                first_name=f"{fake.first_name()}",
-                last_name=f"{fake.last_name()}",
+                first_name=fake.first_name(),
+                last_name=fake.last_name(),
                 email=email,
+                address = fake.address(),
+                carrier_id=choice(carriers).carrier_id,
+                emergency_contact = f"+2547{randint(00_000_000, 99_999_999):08d}",
                 license_number=f"ABC{randint(1000,9999)}",
                 license_expiry=datetime.utcnow() + timedelta(days=365),
                 license_type=f"Class {choice(['A', 'B', 'C'])}",
                 contact_phone=f"+2547{randint(00_000_000, 99_999_999):08d}",
                 medical_certificate_expiry=datetime.utcnow() + timedelta(days=randint(10,360)),
                 status=f"{choice(['active', 'inactive'])}",
+                training_certifications= choice( [
+                                        "First Aid Training",
+                                        "Defensive Driving",
+                                        "Hazardous Materials Handling",
+                                        "Customer Service Excellence",
+                                        "Vehicle Maintenance Basics",
+                                        "Logistics & Supply Chain Essentials",
+                                        "Road Safety Awareness",
+                                        "Fleet Management Certificate"
+                                    ]),
                 created_at=datetime.now(timezone.utc) + timedelta(days=choice([0,30,60,90])),
                 updated_at=datetime.now(timezone.utc)
             )
@@ -100,27 +171,47 @@ def seed_drivers():
     seed_driver_schedule()  
 
 def seed_clients():
-    try:
-        client = Client.query.filter_by(email="client1@example.com").first()
-        if not client:
+    # try:
+    #     # client = Client.query.filter_by(email="client1@example.com").first()
+    #     if not client:
+    #         client = Client(
+    #             company_name=fake.company(),
+    #             contact_person=fake.name(),
+    #             email=fake.email(),
+    #             phone=f"+2547{randint(00_000_000, 99_999_999):08d}",
+    #             address=fake.address(),
+    #             tax_id=randint(100000000, 999999999),
+    #             registration_number=f"REG{randint(10000,99999)}",
+    #             account_status=choice(["active", "inactive"]),
+    #             credit_limit=fake.pyfloat(left_digits=5, right_digits=2, positive=True),
+    #             payment_terms=choice(["Net 15", "Net 30", "Net 45"]),
+    #         )
+    #         db.session.add(client)
+    #         logger.info("Client seeded successfully.")
+    #     else:
+    #         logger.info("Client already exists.")
+    # except Exception as e:
+    #     logger.error(f"Error seeding client: {e}")
+    
+    for i in range(1, 21): 
+        try:
             client = Client(
-                company_name="Example Company",
-                contact_person="Jane Doe",
-                email="client1@example.com",
-                phone="+254700123456",
-                address="123 Main Street, Nairobi, Kenya",
-                tax_id="123456789",
-                registration_number="REG12345",
-                account_status="active",
-                credit_limit=10000.0,
-                payment_terms="Net 30",
+                company_name=fake.company(),
+                contact_person=fake.name(),
+                email=fake.email(),
+                phone=f"+2547{randint(00_000_000, 99_999_999):08d}",
+                address=fake.address(),
+                tax_id=randint(100000000, 999999999),
+                registration_number=f"REG{randint(10000,99999)}",
+                account_status=choice(["active", "inactive"]),
+                credit_limit=fake.pyfloat(left_digits=5, right_digits=2, positive=True),
+                payment_terms=choice(["Net 15", "Net 30", "Net 45"]),
             )
             db.session.add(client)
-            logger.info("Client seeded successfully.")
-        else:
-            logger.info("Client already exists.")
-    except Exception as e:
-        logger.error(f"Error seeding client: {e}")
+        except Exception as e:
+            logger.error(f"Error seeding client: {e}")
+
+    logger.info("Client seeded successfully.")
 
 
 def seed_locations():
@@ -231,20 +322,20 @@ def seed_vehicles():
         logger.info("Vehicle already exists.")
 
 
-def seed_carriers():
-    carrier = Carrier.query.filter_by(carrier_name="Example Carrier").first()
-    if not carrier:
-        carrier = Carrier(
-            carrier_name="Example Carrier",
-            carrier_type="Freight",
-            contact_person="John Smith",
-            phone="+254700123456",
-            email="carrier@example.com",
-        )
-        db.session.add(carrier)
-        logger.info("Carrier seeded successfully.")
-    else:
-        logger.info("Carrier already exists.")
+# def seed_carriers():
+#     carrier = Carrier.query.filter_by(carrier_name="Example Carrier").first()
+#     if not carrier:
+#         carrier = Carrier(
+#             carrier_name="Example Carrier",
+#             carrier_type="Freight",
+#             contact_person="John Smith",
+#             phone="+254700123456",
+#             email="carrier@example.com",
+#         )
+#         db.session.add(carrier)
+#         logger.info("Carrier seeded successfully.")
+#     else:
+#         logger.info("Carrier already exists.")
 
 
 def seed_shipments():
@@ -326,14 +417,16 @@ def seed_warehouse_operations():
 
 def main():
     logger.info("Starting database seeding...")
-    models = [System_Users, Driver, Client, Location, Order, Product, Vehicle, Carrier, Shipment, WarehouseOperation, TrackingEvent]
+    models = [System_Users, Driver, Client, Location, Order, Product, Vehicle, Carrier, Shipment, DriverSchedule, WarehouseOperation, TrackingEvent]
 
     for model in models:
         db.session.query(model).delete()
 
     db.session.commit()
     seed_admin_user()
+    seed_carriers()
     seed_drivers()
+    seed_driver_schedule()
     seed_clients()
     seed_locations()
     seed_orders()
