@@ -12,6 +12,9 @@ from src.Models.drivers import Driver
 from werkzeug.utils import secure_filename
 import os
 from datetime import datetime
+from src.schemas.driver_schema import DriverSchema
+from flask import jsonify
+
 class DriverRepository:
 
     def create_driver(self, data):
@@ -32,6 +35,8 @@ class DriverRepository:
             drivers = Driver.query.filter_by(is_deleted=False).all()
             logger.info(f"Retrieved {len(drivers)} active drivers.")
             return drivers
+            # schema = DriverSchema()
+            # return jsonify(schema.dump(drivers)), 200 
         except SQLAlchemyError as e:
             logger.error(f"Error retrieving drivers: {str(e)}")
             raise Exception("Error retrieving drivers.") from e

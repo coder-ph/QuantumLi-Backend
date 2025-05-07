@@ -24,6 +24,11 @@ from src.Models.vehicles import Vehicle
 from src.Models.employee import Employee
 from src.utils.logger import logger
 
+from faker import Faker
+from random import randint, choice
+
+fake = Faker()
+
 
 def seed_admin_user():
     admin_user = System_Users.query.filter_by(email="admin@example.com").first()
@@ -70,28 +75,29 @@ def seed_driver_schedule():
 
 
 def seed_drivers():
-    driver = Driver.query.filter_by(email="driver1@example.com").first()
-    if not driver:
-        driver = Driver(
-            first_name="John",
-            last_name="Doe",
-            email="driver1@example.com",
-            license_number="ABC12345",
-            license_expiry=datetime.utcnow() + timedelta(days=365),
-            license_type="Class A",
-            contact_phone="+254700000000",
-            medical_certificate_expiry=datetime.utcnow() + timedelta(days=365),
-            status="active",
-            created_at=datetime.now(timezone.utc),
-            updated_at=datetime.now(timezone.utc)
-        )
-        db.session.add(driver)
-        db.session.commit()  
-        logger.info("Driver seeded successfully.")
-    else:
-        logger.info("Driver already exists.")
-    seed_driver_schedule()
-
+    for i in range(1, 21):  
+        email = f"{fake.email()}"
+        driver = Driver.query.filter_by(email=email).first()
+        if not driver:
+            driver = Driver(
+                first_name=f"{fake.first_name()}",
+                last_name=f"{fake.last_name()}",
+                email=email,
+                license_number=f"ABC{randint(1000,9999)}",
+                license_expiry=datetime.utcnow() + timedelta(days=randint(15, 365)),
+                license_type=f"Class {choice(['A', 'B', 'C'])}",
+                contact_phone=f"+2547{randint(00_000_000, 99_999_999):08d}",
+                medical_certificate_expiry=datetime.utcnow() + timedelta(days=randint(10,360)),
+                status=f"{choice(['active', 'inactive'])}",
+                created_at=datetime.now(timezone.utc) + timedelta(days=choice([0,30,60,90])),
+                updated_at=datetime.now(timezone.utc)
+            )
+            db.session.add(driver)
+            logger.info(f"Driver {email} seeded successfully.")
+        else:
+            logger.info(f"Driver {email} already exists.")
+    db.session.commit()  
+    seed_driver_schedule()  
 
 def seed_clients():
     try:
@@ -320,6 +326,12 @@ def seed_warehouse_operations():
 
 def main():
     logger.info("Starting database seeding...")
+    models = [System_Users, Driver, Client, Location, Order, Product, Vehicle, Carrier, Shipment, WarehouseOperation, TrackingEvent]
+
+    for model in models:
+        db.session.query(model).delete()
+
+    db.session.commit()
     seed_admin_user()
     seed_drivers()
     seed_clients()
