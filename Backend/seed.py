@@ -1,6 +1,8 @@
 import os
 from datetime import datetime, timedelta, timezone
 from uuid import UUID
+from dotenv import load_dotenv
+import os
 from sqlalchemy.sql import func
 from src.startup.database import db
 from src.Models.systemusers import System_Users
@@ -845,7 +847,7 @@ def seed_system_users():
     roles = ['admin', 'employee', 'driver', 'user', 'manager']
     for _ in range(10):
         try:
-            password = "P@ssw0rd123"
+            password = os.getenv("SEED_PASSWORD")
             user = System_Users(
                 user_id=uuid4(),
                 username=fake.user_name(),
