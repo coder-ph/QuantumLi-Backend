@@ -27,7 +27,7 @@ class Driver(BaseModel):
     license_type = Column(String(50), nullable=False)
     license_expiry = Column(Date, nullable=False)
     contact_phone = Column(String(15), nullable=False)
-    email = Column(String(150), nullable=False, unique=True)
+    email = Column(String(150), nullable=False, unique=True) 
     address = Column(String(255), nullable=True)
     emergency_contact = Column(String(255), nullable=True)
     medical_certificate_expiry = Column(Date, nullable=False)
@@ -58,7 +58,9 @@ class Driver(BaseModel):
             "emergency_contact": self.emergency_contact,
             "medical_certificate_expiry": self.medical_certificate_expiry.isoformat() if self.medical_certificate_expiry else None,
             "training_certifications": self.training_certifications,
-            "status": self.status
+            "status": self.status,
+            "created_at": self.created_at,
+            "updated_at": self.updated_at,            
         }
 
     @staticmethod
