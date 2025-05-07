@@ -7,14 +7,18 @@ from src.Models.orderResponse import OrderResponse
 from src.Models.shipment import Shipment
 
 def fetch_deliveries_per_driver(filters):
-    start_date = filters.get('start_date', None)
+    start_date = filters.get('start_date', "2025-05-05")
     end_date = filters.get('end_date', None)
     min_deliveries = filters.get('min_deliveries', 0)
     max_deliveries = filters.get('max_deliveries', 100)
 
+    query = db.session.query(Driver.first_name, Driver.last_name,Order.order_date).join(OrderResponse, OrderResponse.driver_id == Driver.driver_id).join(Order, Order.order_id == OrderResponse.order_id)
+    print(query.all(), "queryyyyyyyyyyyyyyyyyyyyyyyyyyy")
+
     query = db.session.query(Driver.first_name, Driver.last_name, func.count(Order.order_id).label('deliveries')) \
         .join(OrderResponse, OrderResponse.driver_id == Driver.driver_id) \
         .join(Order, Order.order_id == OrderResponse.order_id)
+    # print(query.all(), "queryyyyyyyyyyyyyyyyyyyyyyyyyyy")
 
     if start_date:
         query = query.filter(Order.order_date >= datetime.strptime(start_date, '%Y-%m-%d'))
@@ -25,7 +29,10 @@ def fetch_deliveries_per_driver(filters):
         .having(func.count(Order.order_id) >= min_deliveries) \
         .having(func.count(Order.order_id) <= max_deliveries)
 
+
+
     result = query.all()
+    print(query.filter(Order.order_date >= datetime.strptime(start_date, '%Y-%m-%d')).first(),"querrryyyyy")
     return result
 
 from sqlalchemy import extract
