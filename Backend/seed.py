@@ -1,3 +1,4 @@
+
 import os
 from datetime import datetime, timedelta, timezone
 from uuid import UUID
@@ -24,10 +25,12 @@ from src.Models.vehicles import Vehicle
 from src.Models.employee import Employee
 from src.utils.logger import logger
 
-from faker import Faker #type: ignore
+from faker import Faker 
 from random import randint, choice, uniform
 import json
 import uuid
+from src.Models.orderResponse import OrderResponse
+from src.Models.driverRating import Driver_Ratings
 
 fake = Faker()
 
@@ -171,47 +174,57 @@ def seed_drivers():
     seed_driver_schedule()  
 
 def seed_clients():
-    # try:
-    #     # client = Client.query.filter_by(email="client1@example.com").first()
-    #     if not client:
-    #         client = Client(
-    #             company_name=fake.company(),
-    #             contact_person=fake.name(),
-    #             email=fake.email(),
-    #             phone=f"+2547{randint(00_000_000, 99_999_999):08d}",
-    #             address=fake.address(),
-    #             tax_id=randint(100000000, 999999999),
-    #             registration_number=f"REG{randint(10000,99999)}",
-    #             account_status=choice(["active", "inactive"]),
-    #             credit_limit=fake.pyfloat(left_digits=5, right_digits=2, positive=True),
-    #             payment_terms=choice(["Net 15", "Net 30", "Net 45"]),
-    #         )
-    #         db.session.add(client)
-    #         logger.info("Client seeded successfully.")
-    #     else:
-    #         logger.info("Client already exists.")
-    # except Exception as e:
-    #     logger.error(f"Error seeding client: {e}")
-    
-    for i in range(1, 21): 
+    # Add a default client with email client1@example.com to satisfy product seeding dependency
+    default_email = "client1@example.com"
+    existing_client = Client.query.filter_by(email=default_email).first()
+    if not existing_client:
         try:
             client = Client(
-                company_name=fake.company(),
-                contact_person=fake.name(),
-                email=fake.email(),
-                phone=f"+2547{randint(00_000_000, 99_999_999):08d}",
-                address=fake.address(),
-                tax_id=randint(100000000, 999999999),
-                registration_number=f"REG{randint(10000,99999)}",
-                account_status=choice(["active", "inactive"]),
-                credit_limit=fake.pyfloat(left_digits=5, right_digits=2, positive=True),
-                payment_terms=choice(["Net 15", "Net 30", "Net 45"]),
+                company_name="Default Client",
+                contact_person="Default Contact",
+                email=default_email,
+                phone="+254700000001",
+                address="Default Address",
+                tax_id=123456789,
+                registration_number="REG00001",
+                account_status="active",
+                credit_limit=10000.0,
+                payment_terms="Net 30",
             )
             db.session.add(client)
+            db.session.commit()
+            logger.info(f"Default client {default_email} seeded successfully.")
+        except Exception as e:
+            logger.error(f"Error seeding default client: {e}")
+    else:
+        logger.info(f"Default client {default_email} already exists.")
+
+    # Seed other clients as before
+    for i in range(1, 21): 
+        try:
+            email = fake.email()
+            existing_client = Client.query.filter_by(email=email).first()
+            if not existing_client:
+                client = Client(
+                    company_name=fake.company(),
+                    contact_person=fake.name(),
+                    email=email,
+                    phone=f"+2547{randint(00_000_000, 99_999_999):08d}",
+                    address=fake.address(),
+                    tax_id=randint(100000000, 999999999),
+                    registration_number=f"REG{randint(10000,99999)}",
+                    account_status=choice(["active", "inactive"]),
+                    credit_limit=fake.pyfloat(left_digits=5, right_digits=2, positive=True),
+                    payment_terms=choice(["Net 15", "Net 30", "Net 45"]),
+                )
+                db.session.add(client)
+                logger.info(f"Client {email} seeded successfully.")
+            else:
+                logger.info(f"Client {email} already exists.")
         except Exception as e:
             logger.error(f"Error seeding client: {e}")
 
-    logger.info("Client seeded successfully.")
+    logger.info("Client seeding process completed.")
 
 
 def seed_locations():
@@ -236,10 +249,24 @@ def seed_locations():
 def seed_orders():
     order = Order.query.filter_by(order_reference="ORD001").first()
     if not order:
-        client = Client.query.filter_by(email="client1@example.com").first()
+        client = Client.query.first()
         if not client:
-            logger.warning("Client for order not found.")
-            return
+            logger.warning("No clients found, creating a new client for order.")
+            client = Client(
+                company_name="Default Company",
+                contact_person="Default Contact",
+                email="defaultclient@example.com",
+                phone="+254700000000",
+                address="Default Address",
+                tax_id=123456789,
+                registration_number="REG00001",
+                account_status="active",
+                credit_limit=10000.0,
+                payment_terms="Net 30"
+            )
+            db.session.add(client)
+            db.session.commit()
+            logger.info("Default client created for order seeding.")
         order = Order(
             client_id=client.client_id,
             order_reference="ORD001",
@@ -256,35 +283,62 @@ def seed_orders():
             declared_value=1000.0,
         )
         db.session.add(order)
+        db.session.commit()
         logger.info("Order seeded successfully.")
     else:
         logger.info("Order already exists.")
 
 
 def seed_products():
+    logger.info("Starting seed_products function.")
+    # Ensure client1@example.com exists before seeding product
+    client = Client.query.filter_by(email="client1@example.com").first()
+    if not client:
+        logger.warning("Client for product not found. Seeding default client.")
+        # Seed default client
+        from datetime import datetime, timezone
+        default_client = Client(
+            company_name="Default Client",
+            contact_person="Default Contact",
+            email="client1@example.com",
+            phone="+254700000001",
+            address="Default Address",
+            tax_id=123456789,
+            registration_number="REG00001",
+            account_status="active",
+            credit_limit=10000.0,
+            payment_terms="Net 30",
+            created_at=datetime.now(timezone.utc),
+            updated_at=datetime.now(timezone.utc)
+        )
+        db.session.add(default_client)
+        db.session.commit()
+        client = default_client
+
     product = Product.query.filter_by(sku="PROD001").first()
     if not product:
-        client = Client.query.filter_by(email="client1@example.com").first()
-        if not client:
-            logger.warning("Client for product not found.")
-            return
-        product = Product(
-            client_id=client.client_id,
-            sku="PROD001",
-            name="Sample Product",
-            description="This is a sample product.",
-            category="General",
-            weight=10.0,
-            dimensions="10x10x10",
-            unit_volume=1.0,
-            hazardous=False,
-            perishable=False,
-            value=100.0,
-        )
-        db.session.add(product)
-        logger.info("Product seeded successfully.")
+        try:
+            product = Product(
+                client_id=client.client_id,
+                sku="PROD001",
+                name="Sample Product",
+                description="This is a sample product.",
+                category="General",
+                weight=10.0,
+                dimensions="10x10x10",
+                unit_volume=1.0,
+                hazardous=False,
+                perishable=False,
+                value=100.0,
+            )
+            db.session.add(product)
+            db.session.commit()
+            logger.info("Product seeded successfully.")
+        except Exception as e:
+            logger.error(f"Error seeding product: {e}")
     else:
         logger.info("Product already exists.")
+    logger.info("Completed seed_products function.")
 
 
 def seed_vehicles():
@@ -343,18 +397,23 @@ def seed_shipments():
     if not shipment:
         carrier = Carrier.query.first()
         location = Location.query.first()
-        if not carrier or not location:
-            logger.warning("Cannot seed Shipment - missing carrier or location.")
+        order = Order.query.first()
+        if not carrier or not location or not order:
+            logger.warning("Cannot seed Shipment - missing carrier, location, or order.")
             return
+        now = datetime.now(timezone.utc)
         shipment = Shipment(
             shipment_reference="SHIP001",
             carrier_id=carrier.carrier_id,
             origin_location_id=location.location_id,
             destination_location_id=location.location_id,
+            order_id=order.order_id,
             status=ShipmentStatusEnum.IN_TRANSIT,
             shipping_method=ShippingMethodEnum.AIR,
-            created_at=datetime.now(timezone.utc),
-            updated_at=datetime.now(timezone.utc)
+            created_at=now,
+            updated_at=now,
+            actual_departure=now - timedelta(hours=2),
+            actual_arrival=now
         )
         db.session.add(shipment)
         logger.info("Shipment seeded successfully.")
@@ -415,6 +474,129 @@ def seed_warehouse_operations():
         logger.info("WarehouseOperation already exists.")
 
 
+def seed_order_responses():
+    from random import randint
+    from datetime import datetime, timezone, timedelta
+    import uuid
+    from src.Models.orderResponse import ResponseStatus
+    existing_orders = Order.query.all()
+    existing_drivers = Driver.query.all()
+    logger.info(f"Existing orders count: {len(existing_orders)}")
+    logger.info(f"Existing drivers count: {len(existing_drivers)}")
+    count = 0
+    total_responses = 20
+    half_responses = total_responses // 2
+    accepted_count = 0
+    rejected_count = 0
+    for i in range(1, total_responses + 1):
+        order = choice(existing_orders) if existing_orders else None
+        driver = choice(existing_drivers) if existing_drivers else None
+        if order and driver:
+            existing_response = OrderResponse.query.filter_by(order_id=order.order_id, driver_id=driver.driver_id).first()
+            if not existing_response:
+                try:
+                    if accepted_count < half_responses:
+                        status = ResponseStatus.ACCEPTED
+                        accepted_count += 1
+                        reason = None
+                    elif rejected_count < half_responses:
+                        status = ResponseStatus.REJECTED
+                        rejected_count += 1
+                        reason = "Rejected due to capacity"
+                    else:
+                        status = ResponseStatus.ACCEPTED
+                        reason = None
+                    response = OrderResponse(
+                        response_id=uuid.uuid4(),
+                        order_id=order.order_id,
+                        driver_id=driver.driver_id,
+                        status=status,
+                        reason=reason,
+                        responded_at=datetime.now(timezone.utc) - timedelta(days=randint(0, 10))
+                    )
+                    db.session.add(response)
+                    count += 1
+                except Exception as e:
+                    logger.error(f"Error adding OrderResponse: {e}")
+    try:
+        db.session.commit()
+        logger.info(f"Seeded {count} OrderResponse records.")
+    except Exception as e:
+        logger.error(f"Error committing OrderResponse records: {e}")
+
+def seed_order_items():
+    from random import choice, randint
+    import uuid
+    existing_orders = Order.query.all()
+    existing_products = Product.query.all()
+    count = 0
+    for i in range(1, 21):
+        order = choice(existing_orders) if existing_orders else None
+        product = choice(existing_products) if existing_products else None
+        if order and product:
+            try:
+                order_item = OrderItem(
+                    order_item_id=uuid.uuid4(),
+                    order_id=order.order_id,
+                    product_id=product.product_id,
+                    quantity=randint(1, 10),
+                    unit_weight=product.weight,
+                    unit_volume=product.unit_volume
+                )
+                db.session.add(order_item)
+                count += 1
+            except Exception as e:
+                logger.error(f"Error adding OrderItem: {e}")
+    try:
+        db.session.commit()
+        logger.info(f"Seeded {count} OrderItem records.")
+    except Exception as e:
+        logger.error(f"Error committing OrderItem records: {e}")
+
+def seed_driver_ratings():
+    from random import randint, choice
+    from datetime import datetime, timezone, timedelta
+    import uuid
+    existing_drivers = Driver.query.all()
+    existing_order_items = OrderItem.query.all()
+    logger.info(f"Seeding driver ratings: found {len(existing_drivers)} drivers and {len(existing_order_items)} order items.")
+    for i in range(1, 21):
+        driver = choice(existing_drivers) if existing_drivers else None
+        order_item = choice(existing_order_items) if existing_order_items else None
+        if driver and order_item:
+            try:
+                existing_rating = Driver_Ratings.query.filter_by(driver_id=driver.driver_id, order_item_id=order_item.order_item_id).first()
+                if not existing_rating:
+                    client_id = None
+                    if order_item.order and order_item.order.client_id:
+                        client_id = order_item.order.client_id
+                    else:
+                        logger.warning(f"OrderItem {order_item.order_item_id} missing order or client_id.")
+                        continue
+                    rating = Driver_Ratings(
+                        rating_id=uuid.uuid4(),
+                        driver_id=driver.driver_id,
+                        order_item_id=order_item.order_item_id,
+                        rating=round(randint(30, 50) / 10, 1),  # 3.0 to 5.0
+                        comments=choice(["Good service", "Average service", "Excellent", "Needs improvement"]),
+                        rating_date=datetime.now(timezone.utc) - timedelta(days=randint(0, 10)),
+                        follow_up_required=choice([True, False]),
+                        follow_up_status=choice([None, "Pending", "Completed"]),
+                        client_id=client_id,
+                        is_deleted=False,
+                        created_at=datetime.now(timezone.utc) - timedelta(days=randint(0, 10)),
+                        updated_at=datetime.now(timezone.utc)
+                    )
+                    db.session.add(rating)
+                    logger.info(f"Added driver rating for driver_id={driver.driver_id} and order_item_id={order_item.order_item_id}")
+            except Exception as e:
+                logger.error(f"Error adding Driver_Ratings: {e}")
+    try:
+        db.session.commit()
+        logger.info("Committed driver ratings to the database.")
+    except Exception as e:
+        logger.error(f"Error committing Driver_Ratings records: {e}")
+
 def main():
     logger.info("Starting database seeding...")
     models = [System_Users, Driver, Client, Location, Order, Product, Vehicle, Carrier, Shipment, DriverSchedule, WarehouseOperation, TrackingEvent]
@@ -431,11 +613,14 @@ def main():
     seed_locations()
     seed_orders()
     seed_products()
+    seed_order_items()
     seed_vehicles()
     seed_carriers()
     seed_shipments()
     seed_tracking_events()
     seed_warehouse_operations()
+    seed_order_responses()
+    seed_driver_ratings()
     db.session.commit()
     logger.info("Database seeding completed successfully.")
 
