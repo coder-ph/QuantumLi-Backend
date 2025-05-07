@@ -7414,3 +7414,178 @@ WHERE documents.driver_id = ?]
 [2025-05-06 12:16:47,268] [INFO] logistics_app: TrackingEvent seeded successfully.
 [2025-05-06 12:16:47,279] [WARNING] logistics_app: Cannot seed WarehouseOperation - missing location or operator.
 [2025-05-06 12:16:47,280] [INFO] logistics_app: Database seeding completed successfully.
+[2025-05-07 10:17:17,932] [INFO] logistics_app: Models initialized successfully.
+[2025-05-07 10:17:17,932] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-05-07 10:17:22,651] [INFO] logistics_app: Models initialized successfully.
+[2025-05-07 10:17:22,652] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-05-07 10:18:19,521] [INFO] logistics_app: Retrieved 20 active drivers.
+[2025-05-07 10:18:19,534] [INFO] logistics_app: Drivers statuses updated successfully.
+[2025-05-07 10:18:23,896] [INFO] logistics_app: Retrieved 20 active drivers.
+[2025-05-07 10:20:19,494] [INFO] logistics_app: Retrieved 20 active drivers.
+[2025-05-07 10:20:23,872] [INFO] logistics_app: Retrieved 20 active drivers.
+[2025-05-07 10:21:19,490] [INFO] logistics_app: Retrieved 20 active drivers.
+[2025-05-07 10:21:23,871] [INFO] logistics_app: Retrieved 20 active drivers.
+[2025-05-07 10:22:19,490] [INFO] logistics_app: Retrieved 20 active drivers.
+[2025-05-07 10:22:23,870] [INFO] logistics_app: Retrieved 20 active drivers.
+[2025-05-07 10:23:19,492] [INFO] logistics_app: Retrieved 20 active drivers.
+[2025-05-07 10:23:23,867] [INFO] logistics_app: Retrieved 20 active drivers.
+[2025-05-07 10:24:19,487] [INFO] logistics_app: Retrieved 20 active drivers.
+[2025-05-07 10:24:23,870] [INFO] logistics_app: Retrieved 20 active drivers.
+[2025-05-07 10:25:19,490] [INFO] logistics_app: Retrieved 20 active drivers.
+[2025-05-07 10:25:23,870] [INFO] logistics_app: Retrieved 20 active drivers.
+[2025-05-07 10:26:19,488] [INFO] logistics_app: Retrieved 20 active drivers.
+[2025-05-07 10:26:23,870] [INFO] logistics_app: Retrieved 20 active drivers.
+[2025-05-07 10:27:19,502] [INFO] logistics_app: Retrieved 20 active drivers.
+[2025-05-07 10:27:23,878] [INFO] logistics_app: Retrieved 20 active drivers.
+[2025-05-07 10:28:19,496] [INFO] logistics_app: Retrieved 20 active drivers.
+[2025-05-07 10:28:23,870] [INFO] logistics_app: Retrieved 20 active drivers.
+[2025-05-07 10:29:19,494] [INFO] logistics_app: Retrieved 20 active drivers.
+[2025-05-07 10:29:23,870] [INFO] logistics_app: Retrieved 20 active drivers.
+[2025-05-07 10:30:19,488] [INFO] logistics_app: Retrieved 20 active drivers.
+[2025-05-07 10:30:23,867] [INFO] logistics_app: Retrieved 20 active drivers.
+[2025-05-07 10:31:19,498] [INFO] logistics_app: Retrieved 20 active drivers.
+[2025-05-07 10:31:23,868] [INFO] logistics_app: Retrieved 20 active drivers.
+[2025-05-07 10:32:19,499] [INFO] logistics_app: Retrieved 20 active drivers.
+[2025-05-07 10:32:23,872] [INFO] logistics_app: Retrieved 20 active drivers.
+[2025-05-07 10:33:19,490] [INFO] logistics_app: Retrieved 20 active drivers.
+[2025-05-07 10:33:23,870] [INFO] logistics_app: Retrieved 20 active drivers.
+[2025-05-07 10:34:19,489] [INFO] logistics_app: Retrieved 20 active drivers.
+[2025-05-07 10:34:23,870] [INFO] logistics_app: Retrieved 20 active drivers.
+[2025-05-07 10:35:19,490] [INFO] logistics_app: Retrieved 20 active drivers.
+[2025-05-07 10:35:23,869] [INFO] logistics_app: Retrieved 20 active drivers.
+[2025-05-07 10:36:19,489] [INFO] logistics_app: Retrieved 20 active drivers.
+[2025-05-07 10:36:23,870] [INFO] logistics_app: Retrieved 20 active drivers.
+[2025-05-07 10:37:19,490] [INFO] logistics_app: Retrieved 20 active drivers.
+[2025-05-07 10:37:23,869] [INFO] logistics_app: Retrieved 20 active drivers.
+[2025-05-07 10:38:19,490] [INFO] logistics_app: Retrieved 20 active drivers.
+[2025-05-07 10:38:23,870] [INFO] logistics_app: Retrieved 20 active drivers.
+[2025-05-07 10:39:19,489] [INFO] logistics_app: Retrieved 20 active drivers.
+[2025-05-07 10:39:23,869] [INFO] logistics_app: Retrieved 20 active drivers.
+[2025-05-07 10:40:19,489] [INFO] logistics_app: Retrieved 20 active drivers.
+[2025-05-07 10:40:23,867] [INFO] logistics_app: Retrieved 20 active drivers.
+[2025-05-07 10:41:19,502] [INFO] logistics_app: Retrieved 20 active drivers.
+[2025-05-07 10:41:23,873] [INFO] logistics_app: Retrieved 20 active drivers.
+[2025-05-07 10:42:19,664] [INFO] logistics_app: Retrieved 20 active drivers.
+[2025-05-07 10:42:23,876] [INFO] logistics_app: Retrieved 20 active drivers.
+[2025-05-07 10:43:19,492] [INFO] logistics_app: Retrieved 20 active drivers.
+[2025-05-07 10:43:23,870] [INFO] logistics_app: Retrieved 20 active drivers.
+[2025-05-07 10:44:19,500] [INFO] logistics_app: Retrieved 20 active drivers.
+[2025-05-07 10:44:23,878] [INFO] logistics_app: Retrieved 20 active drivers.
+[2025-05-07 10:45:19,496] [INFO] logistics_app: Retrieved 20 active drivers.
+[2025-05-07 10:45:24,314] [INFO] logistics_app: Retrieved 20 active drivers.
+[2025-05-07 10:46:19,945] [INFO] logistics_app: Retrieved 20 active drivers.
+[2025-05-07 10:46:23,881] [INFO] logistics_app: Retrieved 20 active drivers.
+[2025-05-07 10:47:19,501] [INFO] logistics_app: Retrieved 20 active drivers.
+[2025-05-07 10:47:23,879] [INFO] logistics_app: Retrieved 20 active drivers.
+[2025-05-07 10:48:20,668] [INFO] logistics_app: Retrieved 20 active drivers.
+[2025-05-07 10:48:24,723] [INFO] logistics_app: Retrieved 20 active drivers.
+[2025-05-07 10:49:20,210] [INFO] logistics_app: Retrieved 20 active drivers.
+[2025-05-07 10:49:24,379] [INFO] logistics_app: Retrieved 20 active drivers.
+[2025-05-07 10:50:20,290] [INFO] logistics_app: Retrieved 20 active drivers.
+[2025-05-07 10:50:25,653] [INFO] logistics_app: Retrieved 20 active drivers.
+[2025-05-07 10:51:19,499] [INFO] logistics_app: Retrieved 20 active drivers.
+[2025-05-07 10:51:23,867] [INFO] logistics_app: Retrieved 20 active drivers.
+[2025-05-07 10:52:19,500] [INFO] logistics_app: Retrieved 20 active drivers.
+[2025-05-07 10:52:23,867] [INFO] logistics_app: Retrieved 20 active drivers.
+[2025-05-07 10:53:19,490] [INFO] logistics_app: Retrieved 20 active drivers.
+[2025-05-07 10:53:23,867] [INFO] logistics_app: Retrieved 20 active drivers.
+[2025-05-07 10:54:19,500] [INFO] logistics_app: Retrieved 20 active drivers.
+[2025-05-07 10:54:23,867] [INFO] logistics_app: Retrieved 20 active drivers.
+[2025-05-07 11:12:17,646] [INFO] logistics_app: Models initialized successfully.
+[2025-05-07 11:12:17,650] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-05-07 11:12:21,318] [INFO] logistics_app: Models initialized successfully.
+[2025-05-07 11:12:21,318] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-05-07 11:13:19,046] [INFO] logistics_app: Retrieved 20 active drivers.
+[2025-05-07 11:13:23,142] [INFO] logistics_app: Retrieved 20 active drivers.
+[2025-05-07 11:14:05,777] [INFO] logistics_app: Models initialized successfully.
+[2025-05-07 11:14:05,778] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-05-07 11:14:19,039] [INFO] logistics_app: Retrieved 20 active drivers.
+[2025-05-07 11:15:07,034] [INFO] logistics_app: Retrieved 20 active drivers.
+[2025-05-07 11:15:19,034] [INFO] logistics_app: Retrieved 20 active drivers.
+[2025-05-07 11:15:30,998] [INFO] logistics_app: Models initialized successfully.
+[2025-05-07 11:15:30,999] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-05-07 11:16:19,039] [INFO] logistics_app: Retrieved 20 active drivers.
+[2025-05-07 11:16:32,293] [INFO] logistics_app: Retrieved 20 active drivers.
+[2025-05-07 11:16:57,286] [INFO] logistics_app: Models initialized successfully.
+[2025-05-07 11:16:57,286] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-05-07 11:17:19,035] [INFO] logistics_app: Retrieved 20 active drivers.
+[2025-05-07 11:17:51,462] [INFO] logistics_app: Models initialized successfully.
+[2025-05-07 11:17:51,462] [INFO] logistics_app: App initialized with Models, Redis, and Migrate.
+[2025-05-07 11:18:19,038] [INFO] logistics_app: Retrieved 20 active drivers.
+[2025-05-07 11:18:52,785] [INFO] logistics_app: Retrieved 20 active drivers.
+[2025-05-07 11:19:19,036] [INFO] logistics_app: Retrieved 20 active drivers.
+[2025-05-07 11:19:52,781] [INFO] logistics_app: Retrieved 20 active drivers.
+[2025-05-07 11:20:19,036] [INFO] logistics_app: Retrieved 20 active drivers.
+[2025-05-07 11:20:52,781] [INFO] logistics_app: Retrieved 20 active drivers.
+[2025-05-07 11:21:19,038] [INFO] logistics_app: Retrieved 20 active drivers.
+[2025-05-07 11:21:52,782] [INFO] logistics_app: Retrieved 20 active drivers.
+[2025-05-07 11:22:19,037] [INFO] logistics_app: Retrieved 20 active drivers.
+[2025-05-07 11:22:52,781] [INFO] logistics_app: Retrieved 20 active drivers.
+[2025-05-07 11:23:19,037] [INFO] logistics_app: Retrieved 20 active drivers.
+[2025-05-07 11:23:52,780] [INFO] logistics_app: Retrieved 20 active drivers.
+[2025-05-07 11:24:19,039] [INFO] logistics_app: Retrieved 20 active drivers.
+[2025-05-07 11:24:52,780] [INFO] logistics_app: Retrieved 20 active drivers.
+[2025-05-07 11:25:19,040] [INFO] logistics_app: Retrieved 20 active drivers.
+[2025-05-07 11:25:52,781] [INFO] logistics_app: Retrieved 20 active drivers.
+[2025-05-07 11:26:19,034] [INFO] logistics_app: Retrieved 20 active drivers.
+[2025-05-07 11:26:52,780] [INFO] logistics_app: Retrieved 20 active drivers.
+[2025-05-07 11:27:19,037] [INFO] logistics_app: Retrieved 20 active drivers.
+[2025-05-07 11:27:52,779] [INFO] logistics_app: Retrieved 20 active drivers.
+[2025-05-07 11:28:19,037] [INFO] logistics_app: Retrieved 20 active drivers.
+[2025-05-07 11:28:52,781] [INFO] logistics_app: Retrieved 20 active drivers.
+[2025-05-07 11:29:19,034] [INFO] logistics_app: Retrieved 20 active drivers.
+[2025-05-07 11:29:52,783] [INFO] logistics_app: Retrieved 20 active drivers.
+[2025-05-07 11:30:19,037] [INFO] logistics_app: Retrieved 20 active drivers.
+[2025-05-07 11:30:52,781] [INFO] logistics_app: Retrieved 20 active drivers.
+[2025-05-07 11:31:19,038] [INFO] logistics_app: Retrieved 20 active drivers.
+[2025-05-07 11:31:52,778] [INFO] logistics_app: Retrieved 20 active drivers.
+[2025-05-07 11:32:19,034] [INFO] logistics_app: Retrieved 20 active drivers.
+[2025-05-07 11:32:52,782] [INFO] logistics_app: Retrieved 20 active drivers.
+[2025-05-07 11:33:19,037] [INFO] logistics_app: Retrieved 20 active drivers.
+[2025-05-07 11:33:52,782] [INFO] logistics_app: Retrieved 20 active drivers.
+[2025-05-07 11:34:19,037] [INFO] logistics_app: Retrieved 20 active drivers.
+[2025-05-07 11:34:52,782] [INFO] logistics_app: Retrieved 20 active drivers.
+[2025-05-07 11:35:19,037] [INFO] logistics_app: Retrieved 20 active drivers.
+[2025-05-07 11:35:52,780] [INFO] logistics_app: Retrieved 20 active drivers.
+[2025-05-07 11:36:19,037] [INFO] logistics_app: Retrieved 20 active drivers.
+[2025-05-07 11:36:52,777] [INFO] logistics_app: Retrieved 20 active drivers.
+[2025-05-07 11:37:19,037] [INFO] logistics_app: Retrieved 20 active drivers.
+[2025-05-07 11:37:52,781] [INFO] logistics_app: Retrieved 20 active drivers.
+[2025-05-07 11:38:19,036] [INFO] logistics_app: Retrieved 20 active drivers.
+[2025-05-07 11:38:52,777] [INFO] logistics_app: Retrieved 20 active drivers.
+[2025-05-07 11:39:19,038] [INFO] logistics_app: Retrieved 20 active drivers.
+[2025-05-07 11:39:52,777] [INFO] logistics_app: Retrieved 20 active drivers.
+[2025-05-07 11:40:19,037] [INFO] logistics_app: Retrieved 20 active drivers.
+[2025-05-07 11:40:52,781] [INFO] logistics_app: Retrieved 20 active drivers.
+[2025-05-07 11:41:19,039] [INFO] logistics_app: Retrieved 20 active drivers.
+[2025-05-07 11:41:52,778] [INFO] logistics_app: Retrieved 20 active drivers.
+[2025-05-07 11:42:19,039] [INFO] logistics_app: Retrieved 20 active drivers.
+[2025-05-07 11:42:52,780] [INFO] logistics_app: Retrieved 20 active drivers.
+[2025-05-07 11:43:19,035] [INFO] logistics_app: Retrieved 20 active drivers.
+[2025-05-07 11:43:52,783] [INFO] logistics_app: Retrieved 20 active drivers.
+[2025-05-07 11:44:19,034] [INFO] logistics_app: Retrieved 20 active drivers.
+[2025-05-07 11:44:52,780] [INFO] logistics_app: Retrieved 20 active drivers.
+[2025-05-07 11:45:19,039] [INFO] logistics_app: Retrieved 20 active drivers.
+[2025-05-07 11:45:52,781] [INFO] logistics_app: Retrieved 20 active drivers.
+[2025-05-07 11:46:19,033] [INFO] logistics_app: Retrieved 20 active drivers.
+[2025-05-07 11:46:52,777] [INFO] logistics_app: Retrieved 20 active drivers.
+[2025-05-07 11:47:19,034] [INFO] logistics_app: Retrieved 20 active drivers.
+[2025-05-07 11:47:52,778] [INFO] logistics_app: Retrieved 20 active drivers.
+[2025-05-07 11:48:19,037] [INFO] logistics_app: Retrieved 20 active drivers.
+[2025-05-07 11:48:52,780] [INFO] logistics_app: Retrieved 20 active drivers.
+[2025-05-07 11:49:19,037] [INFO] logistics_app: Retrieved 20 active drivers.
+[2025-05-07 11:49:52,783] [INFO] logistics_app: Retrieved 20 active drivers.
+[2025-05-07 11:50:19,034] [INFO] logistics_app: Retrieved 20 active drivers.
+[2025-05-07 11:50:52,777] [INFO] logistics_app: Retrieved 20 active drivers.
+[2025-05-07 11:51:19,035] [INFO] logistics_app: Retrieved 20 active drivers.
+[2025-05-07 11:51:52,777] [INFO] logistics_app: Retrieved 20 active drivers.
+[2025-05-07 11:52:19,033] [INFO] logistics_app: Retrieved 20 active drivers.
+[2025-05-07 11:52:52,780] [INFO] logistics_app: Retrieved 20 active drivers.
+[2025-05-07 11:53:19,033] [INFO] logistics_app: Retrieved 20 active drivers.
+[2025-05-07 11:53:52,777] [INFO] logistics_app: Retrieved 20 active drivers.
+[2025-05-07 11:54:19,038] [INFO] logistics_app: Retrieved 20 active drivers.
+[2025-05-07 11:54:52,781] [INFO] logistics_app: Retrieved 20 active drivers.
+[2025-05-07 11:55:19,033] [INFO] logistics_app: Retrieved 20 active drivers.
+[2025-05-07 11:55:52,778] [INFO] logistics_app: Retrieved 20 active drivers.
+[2025-05-07 11:56:19,037] [INFO] logistics_app: Retrieved 20 active drivers.
+[2025-05-07 11:56:52,778] [INFO] logistics_app: Retrieved 20 active drivers.
