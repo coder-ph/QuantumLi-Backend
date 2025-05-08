@@ -7,10 +7,10 @@ from src.Models.orderResponse import OrderResponse
 from src.Models.shipment import Shipment
 
 def fetch_deliveries_per_driver(filters):
-    start_date = filters.get('start_date', "2025-05-05")
+    start_date = filters.get('start_date', None)
     end_date = filters.get('end_date', None)
     min_deliveries = int(filters.get('min_deliveries', 0))
-    max_deliveries = int(filters.get('max_deliveries', 100))
+    max_deliveries = int(filters.get('max_deliveries', 1000000))
 
     # Convert empty string dates to None
     if start_date == '':
@@ -18,13 +18,12 @@ def fetch_deliveries_per_driver(filters):
     if end_date == '':
         end_date = None
 
-    query = db.session.query(Driver.first_name, Driver.last_name,Order.order_date).join(OrderResponse, OrderResponse.driver_id == Driver.driver_id).join(Order, Order.order_id == OrderResponse.order_id)
-    print(query.all(), "queryyyyyyyyyyyyyyyyyyyyyyyyyyy")
+    query = db.session.query(Driver.first_name, Driver.last_name, Order.order_date).join(OrderResponse, OrderResponse.driver_id == Driver.driver_id).join(Order, Order.order_id == OrderResponse.order_id)
+    # print(query.all(), "queryyyyyyyyyyyyyyyyyyyyyyyyyyy")
 
     query = db.session.query(Driver.first_name, Driver.last_name, func.count(Order.order_id).label('deliveries')) \
         .join(OrderResponse, OrderResponse.driver_id == Driver.driver_id) \
         .join(Order, Order.order_id == OrderResponse.order_id)
-    # print(query.all(), "queryyyyyyyyyyyyyyyyyyyyyyyyyyy")
 
     if start_date:
         query = query.filter(Order.order_date >= datetime.strptime(start_date, '%Y-%m-%d'))
@@ -34,8 +33,6 @@ def fetch_deliveries_per_driver(filters):
     query = query.group_by(Driver.driver_id) \
         .having(func.count(Order.order_id) >= min_deliveries) \
         .having(func.count(Order.order_id) <= max_deliveries)
-
-
 
     result = query.all()
     return result
@@ -129,7 +126,8 @@ def fetch_customer_ratings(filters):
     max_rating = float(filters.get('max_rating', 5))
 
     query = db.session.query(Driver.first_name, Driver.last_name, func.avg(Driver_Ratings.rating).label('avg_rating')) \
-        .join(Driver_Ratings, Driver_Ratings.driver_id == Driver.driver_id)
+        .join(Driver_Ratings, Driver_Ratings.driver_id == Driver.driver_id) \
+        .filter(Driver_Ratings.is_deleted == False)
 
     if start_date:
         query = query.filter(Driver_Ratings.rating_date >= datetime.strptime(start_date, '%Y-%m-%d'))
