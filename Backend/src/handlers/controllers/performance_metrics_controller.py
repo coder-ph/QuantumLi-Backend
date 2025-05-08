@@ -9,7 +9,15 @@ from src.handlers.repositories.performance_metrics_repository import (
 def get_deliveries_per_driver():
     filters = request.args.to_dict()
     data = fetch_deliveries_per_driver(filters)
-    return jsonify(data), 200
+    # Convert SQLAlchemy Row objects to list of dicts for JSON serialization
+    result = []
+    for row in data:
+        result.append({
+            "first_name": row[0],
+            "last_name": row[1],
+            "deliveries": row[2]
+        })
+    return jsonify(result), 200
 
 def get_average_delivery_time():
     filters = request.args.to_dict()

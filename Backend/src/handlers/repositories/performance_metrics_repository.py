@@ -12,6 +12,12 @@ def fetch_deliveries_per_driver(filters):
     min_deliveries = filters.get('min_deliveries', 0)
     max_deliveries = filters.get('max_deliveries', 100)
 
+    # Convert empty string dates to None
+    if start_date == '':
+        start_date = None
+    if end_date == '':
+        end_date = None
+
     query = db.session.query(Driver.first_name, Driver.last_name,Order.order_date).join(OrderResponse, OrderResponse.driver_id == Driver.driver_id).join(Order, Order.order_id == OrderResponse.order_id)
     print(query.all(), "queryyyyyyyyyyyyyyyyyyyyyyyyyyy")
 
@@ -32,7 +38,6 @@ def fetch_deliveries_per_driver(filters):
 
 
     result = query.all()
-    print(query.filter(Order.order_date >= datetime.strptime(start_date, '%Y-%m-%d')).first(),"querrryyyyy")
     return result
 
 from sqlalchemy import extract

@@ -156,11 +156,11 @@ def seed_driver_schedule():
                 continue
 
             weekly_schedule = {
-                "monday": {"work": choice([True,False]), "start": f"{random_time_between("06:00", "10:00")}", "end": f"{random_time_between("15:00", "20:00")}"},
-                "tuesday": {"work": choice([True,False]), "start": f"{random_time_between("06:00", "10:00")}", "end": f"{random_time_between("15:00", "20:00")}"},
-                "wednesday": {"work": choice([True,False]), "start":f"{random_time_between("06:00", "10:00")}", "end": f"{random_time_between("15:00", "20:00")}"},
-                "thursday": {"work": choice([True,False]), "start": f"{random_time_between("06:00", "10:00")}", "end": f"{random_time_between("15:00", "20:00")}"},
-                "friday": {"work": choice([True,False]), "start": f"{random_time_between("06:00", "10:00")}", "end": f"{random_time_between("15:00", "20:00")}"},
+                "monday": {"work": choice([True,False]), "start": f"{random_time_between('06:00', '10:00')}", "end": f"{random_time_between('15:00', '20:00')}"},
+                "tuesday": {"work": choice([True,False]), "start": f"{random_time_between('06:00', '10:00')}", "end": f"{random_time_between('15:00', '20:00')}"},
+                "wednesday": {"work": choice([True,False]), "start":f"{random_time_between('06:00', '10:00')}", "end": f"{random_time_between('15:00', '20:00')}"},
+                "thursday": {"work": choice([True,False]), "start": f"{random_time_between('06:00', '10:00')}", "end": f"{random_time_between('15:00', '20:00')}"},
+                "friday": {"work": choice([True,False]), "start": f"{random_time_between('06:00', '10:00')}", "end": f"{random_time_between('15:00', '20:00')}"},
                 "saturday": {"work": choice([True,False]), "start": None, "end": None},
                 "sunday": {"work": choice([True,False]), "start": None, "end": None}
             }
