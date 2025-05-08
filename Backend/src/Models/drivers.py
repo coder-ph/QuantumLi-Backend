@@ -44,6 +44,9 @@ class Driver(BaseModel):
         return f"<Driver(driver_id={self.driver_id}, first_name={self.first_name}, last_name={self.last_name})>"
 
     def to_dict(self):
+        # print(self.driver_schedule.weekly_schedule)
+        # for sched in self.driver_schedule:
+        #     print(sched.weekly_schedule)
         return {
             "driver_id": str(self.driver_id),
             "carrier_id": str(self.carrier_id) if self.carrier_id else None,
@@ -60,7 +63,10 @@ class Driver(BaseModel):
             "training_certifications": self.training_certifications,
             "status": self.status,
             "created_at": self.created_at,
-            "updated_at": self.updated_at,            
+            "updated_at": self.updated_at,  
+            "carrier":self.carrier.carrier_name if self.carrier else None,    
+            "driver_schedule": [sched.weekly_schedule for sched in self.driver_schedule] if self.driver_schedule else None,  
+
         }
 
     @staticmethod
