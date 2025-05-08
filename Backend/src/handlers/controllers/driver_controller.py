@@ -6,6 +6,7 @@ from src.utils.logger import logger
 from werkzeug.utils import secure_filename
 import os
 from src.startup.database import db
+from src.schemas.driver_schema import DriverSchema
 
 
 driver_repo = DriverRepository()
@@ -30,7 +31,10 @@ def create_driver_view():
 def get_all_drivers_view():
     try:
         drivers = driver_repo.get_all_drivers()
-        return jsonify([driver.to_dict() for driver in drivers]), 200
+        schema = DriverSchema(many=True)
+        driver_data = schema.dump(drivers)
+        return jsonify({"drivers": driver_data}), 200
+        # return jsonify([driver.to_dict() for driver in drivers]), 200
     except Exception as e:
         logger.error(f"Error fetching drivers: {str(e)}")
         return jsonify({"message": "Internal server error"}), 500
